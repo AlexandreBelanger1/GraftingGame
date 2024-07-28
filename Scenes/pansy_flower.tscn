@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cr4iodft2gqew"]
+
+[ext_resource type="Texture2D" uid="uid://ekldrf3d6x8x" path="res://Assets/Sprites/PansyFlowers.png" id="1_ix4t4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfc5e"]
+atlas = ExtResource("1_ix4t4")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiu8k"]
+atlas = ExtResource("1_ix4t4")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gucp1"]
+atlas = ExtResource("1_ix4t4")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dsx0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfc5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eiu8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gucp1")
+}],
+"loop": true,
+"name": &"Flowers",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PansyFlower" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_dsx0u")
+animation = &"Flowers"
+autoplay = "Flowers"

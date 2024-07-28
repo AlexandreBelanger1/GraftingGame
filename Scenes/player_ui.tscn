@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://33hfn4s0xca2"]
+
+[ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/LeftArrow.png" id="1_cmnag"]
+[ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
+[ext_resource type="Texture2D" uid="uid://bty7uvdq5owoh" path="res://Assets/Sprites/RightArrow.png" id="2_kyxwa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dmpm"]
+size = Vector2(121, 675)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajftf"]
+size = Vector2(119, 676)
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d7na4")
+
+[node name="LeftArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArea"]
+position = Vector2(50.5, 327.5)
+shape = SubResource("RectangleShape2D_5dmpm")
+
+[node name="LeftArrow" type="Sprite2D" parent="LeftArea"]
+position = Vector2(52, 328)
+texture = ExtResource("1_cmnag")
+
+[node name="RightArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
+position = Vector2(1090, 330)
+shape = SubResource("RectangleShape2D_ajftf")
+
+[node name="RightArrow" type="Sprite2D" parent="RightArea"]
+position = Vector2(1090, 329)
+texture = ExtResource("2_kyxwa")
+
+[connection signal="mouse_entered" from="LeftArea" to="." method="_on_left_area_mouse_entered"]
+[connection signal="mouse_exited" from="LeftArea" to="." method="_on_left_area_mouse_exited"]
+[connection signal="mouse_entered" from="RightArea" to="." method="_on_right_area_mouse_entered"]
+[connection signal="mouse_exited" from="RightArea" to="." method="_on_right_area_mouse_exited"]
