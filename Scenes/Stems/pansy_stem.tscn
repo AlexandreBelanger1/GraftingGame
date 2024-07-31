@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bldewhsovcwm2"]
+
+[ext_resource type="Script" path="res://Scenes/Stems/pansy_stem.gd" id="1_1vmeu"]
+[ext_resource type="Texture2D" uid="uid://dvvj776l2gnju" path="res://Assets/Sprites/PansyStem.png" id="1_x20u2"]
+
+[node name="pansy_stem" type="Node2D"]
+script = ExtResource("1_1vmeu")
+
+[node name="PansyStem" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
+texture = ExtResource("1_x20u2")

@@ -26,17 +26,24 @@ position = Vector2(50.5, 327.5)
 shape = SubResource("RectangleShape2D_5dmpm")
 
 [node name="LeftArrow" type="Sprite2D" parent="LeftArea"]
-position = Vector2(52, 328)
+visible = false
+z_index = 10
+position = Vector2(96, 330)
+scale = Vector2(4, 4)
 texture = ExtResource("1_cmnag")
 
 [node name="RightArea" type="Area2D" parent="."]
+position = Vector2(-23, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
-position = Vector2(1090, 330)
+position = Vector2(1023, 332)
 shape = SubResource("RectangleShape2D_ajftf")
 
 [node name="RightArrow" type="Sprite2D" parent="RightArea"]
-position = Vector2(1090, 329)
+visible = false
+z_index = 10
+position = Vector2(986, 334)
+scale = Vector2(4, 4)
 texture = ExtResource("2_kyxwa")
 
 [connection signal="mouse_entered" from="LeftArea" to="." method="_on_left_area_mouse_entered"]

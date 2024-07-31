@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://cr4iodft2gqew"]
 
-[ext_resource type="Texture2D" uid="uid://ekldrf3d6x8x" path="res://Assets/Sprites/PansyFlowers.png" id="1_ix4t4"]
+[ext_resource type="Texture2D" uid="uid://ekldrf3d6x8x" path="res://Assets/Sprites/PansyFlowers.png" id="1_g6src"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vfc5e"]
-atlas = ExtResource("1_ix4t4")
+atlas = ExtResource("1_g6src")
 region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eiu8k"]
-atlas = ExtResource("1_ix4t4")
+atlas = ExtResource("1_g6src")
 region = Rect2(0, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gucp1"]
-atlas = ExtResource("1_ix4t4")
+atlas = ExtResource("1_g6src")
 region = Rect2(8, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dsx0u"]
