@@ -9,6 +9,21 @@ var offset2
 var Plant
 
 func _process(delta):
+	#Mode 1: placving from shop
+	if Global.placingItem and dragging:
+		offset2 = get_global_mouse_position() - offset1
+		global_position = initialPosition + offset2
+		if Input.is_action_just_pressed("LMB"):
+			if overlap == 1:
+				dragging = false
+				Global.is_dragging = false
+				Global.placingItem = false
+		if Input.is_action_just_pressed("plantSeed"):
+			Global.is_dragging = false
+			Global.placingItem = false
+			queue_free()
+			#refund cost
+	#Mode 2: sitting on desk	
 	if draggable:
 		if Input.is_action_just_pressed("LMB"):
 			dragging = true
@@ -18,7 +33,8 @@ func _process(delta):
 		if Input.is_action_just_pressed("plantSeed") and !dragging:
 			if Plant == null:
 				newPlant()
-	if dragging:
+	#Mode 3: moving existing pot
+	if dragging and !Global.placingItem:
 		if Input.is_action_pressed("LMB"):
 			offset2 = get_global_mouse_position() - offset1
 			global_position = initialPosition + offset2
@@ -57,3 +73,8 @@ func newPlant():
 	Plant = PLANT.instantiate()
 	add_child(Plant)
 	Plant.global_position = global_position
+
+func potSetup():
+	initialPosition = get_global_mouse_position()
+	offset1 = get_global_mouse_position()
+	dragging = true

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmi6lli7gpcnv"]
+
+[ext_resource type="Script" path="res://scripts/pot.gd" id="1_p1apk"]
+[ext_resource type="Texture2D" uid="uid://bum5ttnh3gaao" path="res://Assets/Sprites/SmallPot.png" id="2_gtlxt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bshxx"]
+size = Vector2(6, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucbj5"]
+size = Vector2(6, 3)
+
+[node name="SmallPot" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_p1apk")
+
+[node name="SmallPot" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("2_gtlxt")
+
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_bshxx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_ucbj5")
+
+[connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
+[connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]
+[connection signal="mouse_entered" from="GrabArea" to="." method="_on_grab_area_mouse_entered"]
+[connection signal="mouse_exited" from="GrabArea" to="." method="_on_grab_area_mouse_exited"]

@@ -3,7 +3,8 @@ extends Node2D
 
 
 func _on_hitbox_mouse_entered():
-	sprite_2d.visible = true
+	if !Global.is_dragging:
+		sprite_2d.visible = true
 
 
 func _on_hitbox_mouse_exited():

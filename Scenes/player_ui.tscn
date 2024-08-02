@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://33hfn4s0xca2"]
+[gd_scene load_steps=8 format=3 uid="uid://33hfn4s0xca2"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/LeftArrow.png" id="1_cmnag"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
 [ext_resource type="Texture2D" uid="uid://bty7uvdq5owoh" path="res://Assets/Sprites/RightArrow.png" id="2_kyxwa"]
+[ext_resource type="Texture2D" uid="uid://bum5ttnh3gaao" path="res://Assets/Sprites/SmallPot.png" id="4_f70oo"]
+[ext_resource type="Texture2D" uid="uid://ceo8mmd6lpxfb" path="res://Assets/Sprites/MediumPot.png" id="5_y8ofj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dmpm"]
 size = Vector2(121, 675)
@@ -46,7 +48,82 @@ position = Vector2(986, 334)
 scale = Vector2(4, 4)
 texture = ExtResource("2_kyxwa")
 
+[node name="ShopButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 631.0
+offset_right = 233.0
+offset_bottom = 662.0
+text = "Shop"
+
+[node name="SeedsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 632.0
+offset_right = 177.0
+offset_bottom = 663.0
+text = "Seeds"
+
+[node name="ShopPanel" type="ColorRect" parent="SeedsButton"]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -521.0
+offset_right = 808.0
+offset_bottom = -272.0
+mouse_filter = 2
+color = Color(0.458405, 0.458405, 0.458405, 0.345098)
+
+[node name="SmallPot" type="Button" parent="SeedsButton/ShopPanel"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 21.0
+offset_right = 155.0
+offset_bottom = 138.0
+
+[node name="Label" type="Label" parent="SeedsButton/ShopPanel/SmallPot"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 116.0
+offset_right = 88.0
+offset_bottom = 139.0
+text = "Cost: 5"
+
+[node name="Sprite2D" type="Sprite2D" parent="SeedsButton/ShopPanel/SmallPot"]
+position = Vector2(62, -74)
+scale = Vector2(10, 10)
+texture = ExtResource("4_f70oo")
+
+[node name="MediumPot" type="Button" parent="SeedsButton/ShopPanel"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 20.0
+offset_right = 292.0
+offset_bottom = 139.0
+
+[node name="Label2" type="Label" parent="SeedsButton/ShopPanel/MediumPot"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 119.0
+offset_right = 94.0
+offset_bottom = 142.0
+text = "Cost: 10"
+
+[node name="Sprite2D" type="Sprite2D" parent="SeedsButton/ShopPanel/MediumPot"]
+position = Vector2(68, -33)
+scale = Vector2(8, 8)
+texture = ExtResource("5_y8ofj")
+
+[node name="PlacePotUI" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
 [connection signal="mouse_entered" from="LeftArea" to="." method="_on_left_area_mouse_entered"]
 [connection signal="mouse_exited" from="LeftArea" to="." method="_on_left_area_mouse_exited"]
 [connection signal="mouse_entered" from="RightArea" to="." method="_on_right_area_mouse_entered"]
 [connection signal="mouse_exited" from="RightArea" to="." method="_on_right_area_mouse_exited"]
+[connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="SeedsButton/ShopPanel/SmallPot" to="." method="_on_small_pot_pressed"]
+[connection signal="pressed" from="SeedsButton/ShopPanel/MediumPot" to="." method="_on_medium_pot_pressed"]
