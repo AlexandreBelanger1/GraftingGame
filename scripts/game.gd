@@ -1,11 +1,17 @@
 extends Node2D
-
-
-# Called when the node enters the scene tree for the first time.
+@onready var player_ui = $Camera2D/PlayerUI
 func _ready():
-	pass # Replace with function body.
+	SignalBus.addGold.connect(addCurrency)
+	SignalBus.removeGold.connect(removeCurrency)
+
+func addCurrency(value: int):
+	Global.gold += value
+	player_ui.updateCurrency()
+
+func removeCurrency(value: int):
+	Global.gold -= value
+	player_ui.updateCurrency()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_plant_generate_gold():
+	addCurrency(1)

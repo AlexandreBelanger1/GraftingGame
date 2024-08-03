@@ -21,6 +21,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("plantSeed"):
 			Global.is_dragging = false
 			Global.placingItem = false
+			SignalBus.addGold.emit(Global.itemCost)
 			queue_free()
 			#refund cost
 	#Mode 2: sitting on desk	

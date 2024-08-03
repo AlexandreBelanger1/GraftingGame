@@ -5,15 +5,22 @@ extends Control
 @onready var seeds_button = $SeedsButton
 @onready var shop_panel = $SeedsButton/ShopPanel
 @onready var place_pot_ui = $PlacePotUI
+@onready var currency_counter = $CurrencyCounter
 
 
 signal moveCameraLeft
 signal stopCamera
 signal moveCameraRight
 
+var shopPrices ={"medium_pot": 10,"small_pot": 5}
+
+
 func _input(event):
 	if event.is_action_pressed("plantSeed"):
 		placePotUI(false)
+	if event.is_action_released("LMB"):
+		if Global.placingItem == false:
+			placePotUI(false)
 
 func _on_left_area_mouse_entered():
 	emit_signal("moveCameraLeft")
@@ -39,25 +46,37 @@ func _on_right_area_mouse_exited():
 func _on_shop_button_pressed():
 	shop_panel.visible = !shop_panel.visible
 
-
+const SMALL_POT = preload("res://Scenes/Pots/SmallPot.tscn")
 func _on_small_pot_pressed():
-	shop_panel.visible = false
-	placePotUI(true)
-	Global.is_dragging = true
-	Global.placingItem = true
+	if Global.gold >= shopPrices["small_pot"]:
+		shop_panel.visible = false
+		placePotUI(true)
+		Global.is_dragging = true
+		Global.placingItem = true
+		var smallPot = SMALL_POT.instantiate()
+		get_parent().get_parent().add_child(smallPot)
+		smallPot.potSetup()
+		SignalBus.removeGold.emit(shopPrices["small_pot"])
+		Global.itemCost = shopPrices["small_pot"]
 
 
 const MEDIUM_POT = preload("res://Scenes/Pots/MediumPot.tscn")
 func _on_medium_pot_pressed():
-	shop_panel.visible = false
-	placePotUI(true)
-	Global.is_dragging = true
-	Global.placingItem = true
-	var medPot = MEDIUM_POT.instantiate()
-	get_parent().get_parent().add_child(medPot)
-	medPot.potSetup()
+	if Global.gold >= shopPrices["medium_pot"]:
+		shop_panel.visible = false
+		placePotUI(true)
+		Global.is_dragging = true
+		Global.placingItem = true
+		var medPot = MEDIUM_POT.instantiate()
+		get_parent().get_parent().add_child(medPot)
+		medPot.potSetup()
+		SignalBus.removeGold.emit(shopPrices["medium_pot"])
+		Global.itemCost = shopPrices["medium_pot"]
 
 func placePotUI(enable: bool):
 	place_pot_ui.visible = enable
 	shop_button.visible = !enable
 	seeds_button.visible = !enable
+
+func updateCurrency():
+	currency_counter.text = str(Global.gold)

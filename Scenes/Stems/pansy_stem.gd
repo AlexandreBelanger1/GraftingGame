@@ -1,11 +1,13 @@
 extends Node2D
+@onready var pansy_stem = $PansyStem
+@onready var grow_timer = $GrowTimer
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+signal stemComplete
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_grow_timer_timeout():
+	pansy_stem.frame +=1
+	if pansy_stem.frame == 31:
+		grow_timer.stop()
+		emit_signal("stemComplete")
