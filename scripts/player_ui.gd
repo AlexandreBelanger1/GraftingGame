@@ -12,7 +12,7 @@ signal moveCameraLeft
 signal stopCamera
 signal moveCameraRight
 
-var shopPrices ={"medium_pot": 10,"small_pot": 5}
+var shopPrices ={"medium_pot": 0,"small_pot": 0}
 
 
 func _input(event):
@@ -55,7 +55,7 @@ func _on_small_pot_pressed():
 		Global.placingItem = true
 		var smallPot = SMALL_POT.instantiate()
 		get_parent().get_parent().add_child(smallPot)
-		smallPot.potSetup()
+		smallPot.potSetup("smallPot")
 		SignalBus.removeGold.emit(shopPrices["small_pot"])
 		Global.itemCost = shopPrices["small_pot"]
 
@@ -69,7 +69,7 @@ func _on_medium_pot_pressed():
 		Global.placingItem = true
 		var medPot = MEDIUM_POT.instantiate()
 		get_parent().get_parent().add_child(medPot)
-		medPot.potSetup()
+		medPot.potSetup("mediumPot")
 		SignalBus.removeGold.emit(shopPrices["medium_pot"])
 		Global.itemCost = shopPrices["medium_pot"]
 

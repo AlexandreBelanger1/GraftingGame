@@ -65,6 +65,7 @@ offset_bottom = 663.0
 text = "Seeds"
 
 [node name="ShopPanel" type="ColorRect" parent="SeedsButton"]
+visible = false
 layout_mode = 0
 offset_left = -6.0
 offset_top = -521.0

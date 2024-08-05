@@ -244,6 +244,5 @@ sprite_frames = SubResource("SpriteFrames_s5kl6")
 frame_progress = 0.41784
 
 [node name="GrowTimer" type="Timer" parent="."]
-autostart = true
 
 [connection signal="timeout" from="GrowTimer" to="." method="_on_grow_timer_timeout"]

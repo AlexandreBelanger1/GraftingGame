@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="potStats" load_steps=2 format=3 uid="uid://cxrbknrjgsdfy"]
+
+[ext_resource type="Script" path="res://Scenes/Pots/potStats.gd" id="1_mf4s1"]
+
+[resource]
+script = ExtResource("1_mf4s1")
+plantOffset = 0
+growthRate = 1
+productionRate = 1
+type = 1
+typeDominance = 1

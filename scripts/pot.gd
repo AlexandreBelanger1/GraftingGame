@@ -7,6 +7,9 @@ var initialPosition
 var offset1
 var offset2
 var Plant
+var statsDict  = {"smallPot": "res://Scenes/Pots/SmallPot.tres", "mediumPot": "res://Scenes/Pots/MediumPot.tres"}
+var stats = potStats.new()
+
 
 func _process(delta):
 	#Mode 1: placving from shop
@@ -23,7 +26,6 @@ func _process(delta):
 			Global.placingItem = false
 			SignalBus.addGold.emit(Global.itemCost)
 			queue_free()
-			#refund cost
 	#Mode 2: sitting on desk	
 	if draggable:
 		if Input.is_action_just_pressed("LMB"):
@@ -73,9 +75,17 @@ const PLANT = preload("res://Scenes/plant.tscn")
 func newPlant():
 	Plant = PLANT.instantiate()
 	add_child(Plant)
-	Plant.global_position = global_position
+	Plant.global_position.x = global_position.x
+	Plant.global_position.y = global_position.y - stats.plantOffset
+	Plant.setup()
 
-func potSetup():
+func potSetup(potName: String):
 	initialPosition = get_global_mouse_position()
 	offset1 = get_global_mouse_position()
 	dragging = true
+	loadStats(statsDict[potName])
+
+func loadStats(path: String):
+	stats = load(path)
+	print(stats.plantOffset)
+ 

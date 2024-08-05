@@ -1,42 +1,87 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr4iodft2gqew"]
+[gd_scene load_steps=13 format=3 uid="uid://cr4iodft2gqew"]
 
-[ext_resource type="Texture2D" uid="uid://ekldrf3d6x8x" path="res://Assets/Sprites/PansyFlowers.png" id="1_g6src"]
+[ext_resource type="Texture2D" uid="uid://ctsw11iphp5vm" path="res://Assets/Sprites/PansyFlower.png" id="1_iatpo"]
+[ext_resource type="Script" path="res://scripts/flower.gd" id="2_ruc6q"]
+[ext_resource type="Texture2D" uid="uid://t6df4oxeqflk" path="res://Assets/Sprites/cactusFlower.png" id="2_yakb3"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vfc5e"]
-atlas = ExtResource("1_g6src")
-region = Rect2(0, 0, 8, 8)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl8cc"]
+atlas = ExtResource("2_yakb3")
+region = Rect2(0, 0, 6, 6)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eiu8k"]
-atlas = ExtResource("1_g6src")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sido8"]
+atlas = ExtResource("2_yakb3")
+region = Rect2(6, 0, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86a47"]
+atlas = ExtResource("2_yakb3")
+region = Rect2(0, 6, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_himix"]
+atlas = ExtResource("2_yakb3")
+region = Rect2(6, 6, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s57s"]
+atlas = ExtResource("1_iatpo")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m42ug"]
+atlas = ExtResource("1_iatpo")
 region = Rect2(0, 8, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gucp1"]
-atlas = ExtResource("1_g6src")
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6ix1"]
+atlas = ExtResource("1_iatpo")
 region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbhcs"]
+atlas = ExtResource("1_iatpo")
+region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dsx0u"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vfc5e")
+"texture": SubResource("AtlasTexture_gl8cc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eiu8k")
+"texture": SubResource("AtlasTexture_sido8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gucp1")
+"texture": SubResource("AtlasTexture_86a47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_himix")
 }],
 "loop": true,
-"name": &"Flowers",
-"speed": 0.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"default",
+"name": &"Cactus",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s57s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m42ug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6ix1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbhcs")
+}],
+"loop": true,
+"name": &"Pansy",
+"speed": 0.0
 }]
 
-[node name="PansyFlower" type="AnimatedSprite2D"]
+[node name="Flower" type="Node2D"]
+script = ExtResource("2_ruc6q")
+
+[node name="GrowthTimer" type="Timer" parent="."]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_dsx0u")
-animation = &"Flowers"
-autoplay = "Flowers"
+animation = &"Cactus"
+autoplay = "Pansy"
+
+[connection signal="timeout" from="GrowthTimer" to="." method="_on_growth_timer_timeout"]
