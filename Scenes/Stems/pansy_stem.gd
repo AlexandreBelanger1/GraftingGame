@@ -1,13 +1,28 @@
 extends Node2D
-@onready var pansy_stem = $PansyStem
-@onready var grow_timer = $GrowTimer
+@onready var sprite_2d = $Sprite2d
+@onready var growth_timer = $GrowthTimer
 
 
 signal stemComplete
 
+var statsDict  = {"pansyStem": "res://Scenes/Stems/pansyStem.tres", "cactusStem": "res://Scenes/Stems/cactusStem.tres"}
+var stats = stemStats.new()
 
-func _on_grow_timer_timeout():
-	pansy_stem.frame +=1
-	if pansy_stem.frame == 31:
-		grow_timer.stop()
+
+func setup(stemName: String):
+	if stemName == "null":
+		get_parent().queue_free()
+	else:
+		loadStats(statsDict[stemName])
+		sprite_2d.play(stemName)
+		growth_timer.start()
+
+func loadStats(path: String):
+	stats = load(path)
+  
+func _on_growth_timer_timeout():
+	if sprite_2d.frame == stats.growthFrames:
+		growth_timer.stop()
 		emit_signal("stemComplete")
+	else:
+		sprite_2d.frame += 1

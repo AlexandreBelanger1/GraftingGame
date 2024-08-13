@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="rootStats" load_steps=2 format=3 uid="uid://0segiticjiub"]
+
+[ext_resource type="Script" path="res://Scenes/Roots/rootStats.gd" id="1_ahcie"]
+
+[resource]
+script = ExtResource("1_ahcie")
+growthRate = 1
+productionRate = 1
+size = 2
+growthFrames = 5

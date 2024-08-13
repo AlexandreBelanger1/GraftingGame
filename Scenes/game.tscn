@@ -1,14 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://h66tp54xyqug"]
+[gd_scene load_steps=13 format=3 uid="uid://h66tp54xyqug"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7p2bg"]
 [ext_resource type="Texture2D" uid="uid://bne07bpn5j82m" path="res://Assets/Sprites/StoneTiles.png" id="1_pxo4w"]
 [ext_resource type="Texture2D" uid="uid://242ayidd2sbf" path="res://Assets/Sprites/DeskTiles.png" id="2_k67re"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="3_tva00"]
 [ext_resource type="PackedScene" uid="uid://33hfn4s0xca2" path="res://Scenes/player_ui.tscn" id="6_wttbp"]
-[ext_resource type="PackedScene" uid="uid://cmi6lli7gpcnv" path="res://Scenes/Pots/SmallPot.tscn" id="7_1dlaw"]
 [ext_resource type="PackedScene" uid="uid://bpv7k62w41erp" path="res://Scenes/parallax_background.tscn" id="8_3xpqh"]
-[ext_resource type="PackedScene" uid="uid://d1tym43230g2v" path="res://Scenes/plant.tscn" id="8_w0e1w"]
-[ext_resource type="PackedScene" uid="uid://cexs3jaedttkh" path="res://Scenes/Pots/MediumPot.tscn" id="9_rijsp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h10fv"]
 texture = ExtResource("1_pxo4w")
@@ -86,26 +83,6 @@ shape = SubResource("WorldBoundaryShape2D_ockx7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeskHitbox"]
 shape = SubResource("WorldBoundaryShape2D_s7sj8")
-
-[node name="MediumPot2" parent="." instance=ExtResource("9_rijsp")]
-position = Vector2(-29, 43)
-
-[node name="plant" parent="MediumPot2" instance=ExtResource("8_w0e1w")]
-
-[node name="MediumPot3" parent="." instance=ExtResource("9_rijsp")]
-position = Vector2(-11, 53)
-
-[node name="MediumPot4" parent="." instance=ExtResource("9_rijsp")]
-position = Vector2(16, 36)
-
-[node name="SmallPot" parent="." instance=ExtResource("7_1dlaw")]
-position = Vector2(-130, 47)
-
-[node name="SmallPot2" parent="." instance=ExtResource("7_1dlaw")]
-position = Vector2(-61, 47)
-
-[node name="SmallPot3" parent="." instance=ExtResource("7_1dlaw")]
-position = Vector2(59, 49)
 
 [connection signal="moveCameraLeft" from="Camera2D/PlayerUI" to="Camera2D" method="_on_player_ui_move_camera_left"]
 [connection signal="moveCameraRight" from="Camera2D/PlayerUI" to="Camera2D" method="_on_player_ui_move_camera_right"]

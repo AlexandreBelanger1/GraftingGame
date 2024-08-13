@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=3 uid="uid://b2xtu5tmkv7iu"]
+
+[ext_resource type="Script" path="res://Scenes/Roots/roots.gd" id="1_qv2jn"]
+[ext_resource type="Texture2D" uid="uid://cd7tqtb4f0s30" path="res://Assets/Sprites/PansyRoots.png" id="2_qqset"]
+[ext_resource type="Texture2D" uid="uid://dbwaubjujwmg7" path="res://Assets/Sprites/cactusRoots.png" id="2_yhxxc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20s8g"]
+atlas = ExtResource("2_yhxxc")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_401ya"]
+atlas = ExtResource("2_yhxxc")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sblw"]
+atlas = ExtResource("2_yhxxc")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oddsl"]
+atlas = ExtResource("2_yhxxc")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6bjk"]
+atlas = ExtResource("2_qqset")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3k4by"]
+atlas = ExtResource("2_qqset")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d7ho"]
+atlas = ExtResource("2_qqset")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvhjh"]
+atlas = ExtResource("2_qqset")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv0b3"]
+atlas = ExtResource("2_qqset")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nsm2i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20s8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_401ya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sblw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oddsl")
+}],
+"loop": true,
+"name": &"cactusRoots",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6bjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3k4by")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d7ho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvhjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mv0b3")
+}],
+"loop": true,
+"name": &"pansyRoots",
+"speed": 0.0
+}]
+
+[node name="Roots" type="Node2D"]
+script = ExtResource("1_qv2jn")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_nsm2i")
+animation = &"pansyRoots"
+autoplay = "pansyRoots"
+
+[node name="GrowthTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="GrowthTimer" to="." method="_on_growth_timer_timeout"]

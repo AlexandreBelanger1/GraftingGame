@@ -1,0 +1,134 @@
+[gd_scene load_steps=3 format=3 uid="uid://csma6nnn2h3ck"]
+
+[ext_resource type="Script" path="res://scripts/SeedsUI.gd" id="1_24tvx"]
+[ext_resource type="FontFile" uid="uid://decbyrlmfeftw" path="res://Assets/Fonts/Kenney Pixel Square.ttf" id="2_s85hb"]
+
+[node name="SeedsUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_24tvx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 41.0
+offset_right = 640.0
+offset_bottom = 157.0
+color = Color(1, 1, 1, 0.392157)
+
+[node name="pansyButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 68.0
+offset_right = 90.0
+offset_bottom = 132.0
+theme_override_fonts/font = ExtResource("2_s85hb")
+text = "Pansy"
+
+[node name="cactusButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 94.0
+offset_top = 68.0
+offset_right = 161.0
+offset_bottom = 132.0
+theme_override_fonts/font = ExtResource("2_s85hb")
+text = "Cactus"
+
+[node name="HybridButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 68.0
+offset_right = 253.0
+offset_bottom = 133.0
+theme_override_fonts/font = ExtResource("2_s85hb")
+text = "Hybrid"
+
+[node name="UnlockButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 68.0
+offset_right = 334.0
+offset_bottom = 133.0
+theme_override_fonts/font = ExtResource("2_s85hb")
+text = "??"
+
+[node name="sunflowerButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 256.0
+offset_top = 67.0
+offset_right = 386.0
+offset_bottom = 177.0
+scale = Vector2(0.6, 0.6)
+theme_override_fonts/font = ExtResource("2_s85hb")
+text = "Sunflower"
+
+[node name="UnlockButton2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 68.0
+offset_right = 415.0
+offset_bottom = 133.0
+theme_override_fonts/font = ExtResource("2_s85hb")
+text = "??"
+
+[node name="onionButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 337.0
+offset_top = 68.0
+offset_right = 415.0
+offset_bottom = 133.0
+theme_override_fonts/font = ExtResource("2_s85hb")
+text = "Onion"
+
+[node name="UnlockButton3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 68.0
+offset_right = 496.0
+offset_bottom = 133.0
+theme_override_fonts/font = ExtResource("2_s85hb")
+text = "??"
+
+[node name="PepperButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 418.0
+offset_top = 68.0
+offset_right = 505.0
+offset_bottom = 141.0
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("2_s85hb")
+text = "Pepper"
+
+[node name="UnlockButton4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 68.0
+offset_right = 577.0
+offset_bottom = 133.0
+theme_override_fonts/font = ExtResource("2_s85hb")
+text = "??"
+
+[node name="bonsaiButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 499.0
+offset_top = 68.0
+offset_right = 577.0
+offset_bottom = 133.0
+theme_override_fonts/font = ExtResource("2_s85hb")
+text = "Bonsai"
+
+[connection signal="pressed" from="pansyButton" to="." method="_on_pansy_button_pressed"]
+[connection signal="pressed" from="cactusButton" to="." method="_on_cactus_button_pressed"]
+[connection signal="pressed" from="HybridButton" to="." method="_on_hybrid_button_pressed"]
+[connection signal="pressed" from="UnlockButton" to="." method="_on_unlock_button_pressed"]
+[connection signal="pressed" from="sunflowerButton" to="." method="_on_sunflower_button_pressed"]
+[connection signal="pressed" from="UnlockButton2" to="." method="_on_unlock_button_2_pressed"]

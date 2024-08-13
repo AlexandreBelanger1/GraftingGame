@@ -55,12 +55,18 @@ func _on_grab_area_mouse_entered():
 	if not Global.is_dragging:
 		draggable = true
 		scale = Vector2(1.05,1.05)
+		z_index = 1
+		if Plant != null:
+			Plant.revealRoots(true)
 
 
 func _on_grab_area_mouse_exited():
 	if not Global.is_dragging:
 		draggable = false
 		scale = Vector2(1,1)
+		z_index = 0
+		if Plant != null:
+			Plant.revealRoots(false)
 
 
 func _on_grab_area_body_entered(body):
@@ -76,7 +82,7 @@ func newPlant():
 	Plant = PLANT.instantiate()
 	add_child(Plant)
 	Plant.global_position.x = global_position.x
-	Plant.global_position.y = global_position.y - stats.plantOffset
+	Plant.global_position.y = global_position.y + stats.plantOffset
 	Plant.setup()
 
 func potSetup(potName: String):
@@ -87,5 +93,5 @@ func potSetup(potName: String):
 
 func loadStats(path: String):
 	stats = load(path)
-	print(stats.plantOffset)
+
  

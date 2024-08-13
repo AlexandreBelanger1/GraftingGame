@@ -1,23 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1tym43230g2v"]
+[gd_scene load_steps=4 format=3 uid="uid://d1tym43230g2v"]
 
 [ext_resource type="Script" path="res://scripts/plant.gd" id="1_y75h5"]
-[ext_resource type="PackedScene" uid="uid://bldewhsovcwm2" path="res://Scenes/Stems/pansy_stem.tscn" id="2_fqgwj"]
-[ext_resource type="PackedScene" uid="uid://b2xtu5tmkv7iu" path="res://Scenes/Roots/pansy_roots.tscn" id="3_dw8oi"]
-[ext_resource type="PackedScene" uid="uid://cr4iodft2gqew" path="res://Scenes/flowers/pansy_flower.tscn" id="4_pghr7"]
+[ext_resource type="PackedScene" uid="uid://bldewhsovcwm2" path="res://Scenes/Stems/stem.tscn" id="2_q32vt"]
+[ext_resource type="PackedScene" uid="uid://b2xtu5tmkv7iu" path="res://Scenes/Roots/roots.tscn" id="3_a5yw7"]
 
 [node name="plant" type="Node2D"]
 script = ExtResource("1_y75h5")
 
-[node name="pansy_stem" parent="." instance=ExtResource("2_fqgwj")]
-position = Vector2(0, -7)
+[node name="pansy_stem" parent="." instance=ExtResource("2_q32vt")]
 
-[node name="PansyRoots" parent="." instance=ExtResource("3_dw8oi")]
-
-[node name="PansyFlower" parent="." instance=ExtResource("4_pghr7")]
-position = Vector2(10, -16)
+[node name="PansyRoots" parent="." instance=ExtResource("3_a5yw7")]
+position = Vector2(0, 7)
 
 [node name="CurrencyGen" type="Timer" parent="."]
 
 [connection signal="stemComplete" from="pansy_stem" to="." method="_on_pansy_stem_stem_complete"]
-[connection signal="flowerComplete" from="PansyFlower" to="." method="_on_pansy_flower_flower_complete"]
 [connection signal="timeout" from="CurrencyGen" to="." method="_on_currency_gen_timeout"]

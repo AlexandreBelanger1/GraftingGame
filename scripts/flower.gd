@@ -1,19 +1,34 @@
 extends Node2D
-@onready var sprite = $Sprite
+@onready var sprite_2d = $Sprite2D
 @onready var growth_timer = $GrowthTimer
+@onready var currency_gen_timer = $CurrencyGenTimer
 
-signal flowerComplete
 
+var statsDict  = {"pansyFlower": "res://Scenes/flowers/pansyFlower.tres", "cactusFlower": "res://Scenes/flowers/cactusFlower.tres"}
 var stats = flowerStats.new()
 
-func startGrowth():
-	sprite.visible = true
-	growth_timer.start()
-
 func _on_growth_timer_timeout():
-	if sprite.frame == stats.growthFrames:
+	if sprite_2d.frame == stats.growthFrames:
 		growth_timer.stop()
-		emit_signal("flowerComplete")
+		currency_gen_timer.start()
 	else: 
-		sprite.frame += 1
+		sprite_2d.frame += 1
 
+
+func setup(flowerName: String):
+	if flowerName == "null":
+		loadStats("pansyFlower")
+		sprite_2d.play(flowerName)
+		growth_timer.start()
+	else:
+		loadStats(statsDict[flowerName])
+		sprite_2d.play(flowerName)
+		growth_timer.start()
+
+func loadStats(path: String):
+	stats = load(path)
+  
+
+
+func _on_currency_gen_timer_timeout():
+	SignalBus.addGold.emit(1)

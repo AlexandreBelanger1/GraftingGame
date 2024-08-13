@@ -4,8 +4,7 @@
 
 [resource]
 script = ExtResource("1_mf4s1")
-plantOffset = 0
+plantOffset = -7
 growthRate = 1
 productionRate = 1
-type = 1
-typeDominance = 1
+size = 2

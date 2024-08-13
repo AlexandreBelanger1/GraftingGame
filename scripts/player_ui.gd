@@ -6,13 +6,14 @@ extends Control
 @onready var shop_panel = $SeedsButton/ShopPanel
 @onready var place_pot_ui = $PlacePotUI
 @onready var currency_counter = $CurrencyCounter
+@onready var seeds_ui = $SeedsUI
 
 
 signal moveCameraLeft
 signal stopCamera
 signal moveCameraRight
 
-var shopPrices ={"medium_pot": 0,"small_pot": 0}
+var shopPrices ={"medium_pot": 10,"small_pot": 5}
 
 
 func _input(event):
@@ -44,6 +45,7 @@ func _on_right_area_mouse_exited():
 
 
 func _on_shop_button_pressed():
+	seeds_ui.visible = false
 	shop_panel.visible = !shop_panel.visible
 
 const SMALL_POT = preload("res://Scenes/Pots/SmallPot.tscn")
@@ -80,3 +82,8 @@ func placePotUI(enable: bool):
 
 func updateCurrency():
 	currency_counter.text = str(Global.gold)
+
+
+func _on_seeds_button_pressed():
+	seeds_ui.visible = !seeds_ui.visible
+	shop_panel.visible = false
