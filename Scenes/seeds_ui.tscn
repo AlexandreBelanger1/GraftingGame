@@ -69,6 +69,7 @@ theme_override_fonts/font = ExtResource("2_s85hb")
 text = "Sunflower"
 
 [node name="UnlockButton2" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 337.0
 offset_top = 68.0
@@ -76,6 +77,15 @@ offset_right = 415.0
 offset_bottom = 133.0
 theme_override_fonts/font = ExtResource("2_s85hb")
 text = "??"
+
+[node name="BonsaiButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 68.0
+offset_right = 415.0
+offset_bottom = 133.0
+theme_override_fonts/font = ExtResource("2_s85hb")
+text = "Bonsai"
 
 [node name="onionButton" type="Button" parent="."]
 visible = false
@@ -132,3 +142,4 @@ text = "Bonsai"
 [connection signal="pressed" from="UnlockButton" to="." method="_on_unlock_button_pressed"]
 [connection signal="pressed" from="sunflowerButton" to="." method="_on_sunflower_button_pressed"]
 [connection signal="pressed" from="UnlockButton2" to="." method="_on_unlock_button_2_pressed"]
+[connection signal="pressed" from="BonsaiButton" to="." method="_on_bonsai_button_pressed"]

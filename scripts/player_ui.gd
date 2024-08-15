@@ -13,7 +13,7 @@ signal moveCameraLeft
 signal stopCamera
 signal moveCameraRight
 
-var shopPrices ={"medium_pot": 10,"small_pot": 5}
+var shopPrices ={"medium_pot": 10,"small_pot": 5, "bonsai_pot": 10}
 
 
 func _input(event):
@@ -87,3 +87,16 @@ func updateCurrency():
 func _on_seeds_button_pressed():
 	seeds_ui.visible = !seeds_ui.visible
 	shop_panel.visible = false
+
+const BONSAI_POT = preload("res://Scenes/Pots/BonsaiPot.tscn")
+func _on_bonsai_pot_2_pressed():
+	if Global.gold >= shopPrices["bonsai_pot"]:
+		shop_panel.visible = false
+		placePotUI(true)
+		Global.is_dragging = true
+		Global.placingItem = true
+		var bonsaiPot = BONSAI_POT.instantiate()
+		get_parent().get_parent().add_child(bonsaiPot)
+		bonsaiPot.potSetup("bonsaiPot")
+		SignalBus.removeGold.emit(shopPrices["bonsai_pot"])
+		Global.itemCost = shopPrices["bonsai_pot"]

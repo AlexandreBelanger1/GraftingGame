@@ -5,7 +5,7 @@ extends Node2D
 
 signal stemComplete
 
-var statsDict  = {"pansyStem": "res://Scenes/Stems/pansyStem.tres", "cactusStem": "res://Scenes/Stems/cactusStem.tres"}
+var statsDict  = {"pansyStem": "res://Scenes/Stems/pansyStem.tres", "cactusStem": "res://Scenes/Stems/cactusStem.tres", "sunflowerStem": "res://Scenes/Stems/sunflowerStem.tres", "bonsaiStem": "res://Scenes/Stems/bonsaiStem.tres"}
 var stats = stemStats.new()
 
 

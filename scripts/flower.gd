@@ -4,7 +4,7 @@ extends Node2D
 @onready var currency_gen_timer = $CurrencyGenTimer
 
 
-var statsDict  = {"pansyFlower": "res://Scenes/flowers/pansyFlower.tres", "cactusFlower": "res://Scenes/flowers/cactusFlower.tres"}
+var statsDict  = {"pansyFlower": "res://Scenes/flowers/pansyFlower.tres", "cactusFlower": "res://Scenes/flowers/cactusFlower.tres", "sunflowerFlower":"res://Scenes/flowers/sunflowerFlower.tres" }
 var stats = flowerStats.new()
 
 func _on_growth_timer_timeout():

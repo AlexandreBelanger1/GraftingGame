@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cr4iodft2gqew"]
+[gd_scene load_steps=23 format=3 uid="uid://cr4iodft2gqew"]
 
 [ext_resource type="Script" path="res://scripts/flower.gd" id="1_crkqh"]
 [ext_resource type="Texture2D" uid="uid://t6df4oxeqflk" path="res://Assets/Sprites/cactusFlower.png" id="2_j74i6"]
 [ext_resource type="Texture2D" uid="uid://ctsw11iphp5vm" path="res://Assets/Sprites/PansyFlower.png" id="3_06v63"]
+[ext_resource type="Texture2D" uid="uid://dwxsxt44ldv5f" path="res://Assets/Sprites/SunflowerFlower.png" id="4_rqc15"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gl8cc"]
 atlas = ExtResource("2_j74i6")
@@ -35,6 +36,42 @@ region = Rect2(8, 0, 8, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bbhcs"]
 atlas = ExtResource("3_06v63")
 region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ilhf"]
+atlas = ExtResource("4_rqc15")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn5eh"]
+atlas = ExtResource("4_rqc15")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2wcd"]
+atlas = ExtResource("4_rqc15")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orpen"]
+atlas = ExtResource("4_rqc15")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn2hm"]
+atlas = ExtResource("4_rqc15")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e578j"]
+atlas = ExtResource("4_rqc15")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex4k8"]
+atlas = ExtResource("4_rqc15")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n2gk"]
+atlas = ExtResource("4_rqc15")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrv2d"]
+atlas = ExtResource("4_rqc15")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dsx0u"]
 animations = [{
@@ -71,6 +108,38 @@ animations = [{
 "loop": false,
 "name": &"pansyFlower",
 "speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ilhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn5eh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2wcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orpen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rn2hm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e578j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex4k8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n2gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrv2d")
+}],
+"loop": false,
+"name": &"sunflowerFlower",
+"speed": 0.0
 }]
 
 [node name="Flower" type="Node2D"]
@@ -81,7 +150,7 @@ autostart = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dsx0u")
-animation = &"cactusFlower"
+animation = &"sunflowerFlower"
 
 [node name="CurrencyGenTimer" type="Timer" parent="."]
 

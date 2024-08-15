@@ -11,7 +11,7 @@ extends Control
 @onready var bonsai_button = $bonsaiButton
 
 
-var seed1Price = 500
+var seed1Price = 0
 var seed2Price = 5000
 var seed3Price = 50000
 var seed4Price = 500000
@@ -50,5 +50,11 @@ func _on_unlock_button_2_pressed():
 
 func _on_sunflower_button_pressed():
 	Global.plantFlower = "sunflowerFlower"
-	Global.plantRoots= "sunflowerRoots"
+	Global.plantRoots= "pansyRoots"
 	Global.plantStem= "sunflowerStem"
+
+
+func _on_bonsai_button_pressed():
+	Global.plantFlower = "null"
+	Global.plantRoots= "bonsaiRoots"
+	Global.plantStem= "bonsaiStem"
