@@ -54,9 +54,9 @@ func _process(delta):
 func _on_grab_area_mouse_entered():
 	if not Global.is_dragging:
 		draggable = true
-		scale = Vector2(1.05,1.05)
 		z_index = 1
 		if Plant != null:
+			scale = Vector2(1.05,1.05)
 			Plant.revealRoots(true)
 
 

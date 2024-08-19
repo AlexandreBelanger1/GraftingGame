@@ -7,6 +7,7 @@ extends Control
 @onready var place_pot_ui = $PlacePotUI
 @onready var currency_counter = $CurrencyCounter
 @onready var seeds_ui = $SeedsUI
+@onready var options_menu = $OptionsMenu
 
 
 signal moveCameraLeft
@@ -22,6 +23,8 @@ func _input(event):
 	if event.is_action_released("LMB"):
 		if Global.placingItem == false:
 			placePotUI(false)
+	if event.is_action_pressed("options"):
+		options_menu.visible = !options_menu.visible
 
 func _on_left_area_mouse_entered():
 	emit_signal("moveCameraLeft")
@@ -100,3 +103,7 @@ func _on_bonsai_pot_2_pressed():
 		bonsaiPot.potSetup("bonsaiPot")
 		SignalBus.removeGold.emit(shopPrices["bonsai_pot"])
 		Global.itemCost = shopPrices["bonsai_pot"]
+
+
+func _on_options_button_pressed():
+	options_menu.visible = !options_menu.visible

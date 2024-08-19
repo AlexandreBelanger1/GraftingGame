@@ -2,7 +2,10 @@ extends Node2D
 @onready var sprite_2d = $Sprite2D
 @onready var growth_timer = $GrowthTimer
 
-var statsDict  = {"pansyRoots": "res://Scenes/Roots/pansyRoots.tres", "cactusRoots":"res://Scenes/Roots/cactusRoots.tres", "sunflowerRoots": "res://Scenes/Roots/cactusRoots.tres", "bonsaiRoots":"res://Scenes/Roots/bonsaiRoots.tres"}
+var statsDict  = {"pansyRoots": "res://Scenes/Roots/pansyRoots.tres",
+"cactusRoots":"res://Scenes/Roots/cactusRoots.tres",
+"sunflowerRoots": "res://Scenes/Roots/cactusRoots.tres",
+"bonsaiRoots":"res://Scenes/Roots/bonsaiRoots.tres"}
 var stats = rootStats.new()
 
 

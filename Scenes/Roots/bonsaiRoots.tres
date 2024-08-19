@@ -7,4 +7,5 @@ script = ExtResource("1_hn4sw")
 growthRate = 1
 productionRate = 1
 size = 1
-growthFrames = 10
+growthFrames = 8
+specialType = 1

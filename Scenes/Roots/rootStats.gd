@@ -4,3 +4,4 @@ class_name rootStats extends Resource
 @export var productionRate = 1
 @export var size = 1
 @export var growthFrames = 1
+@export var specialType = 0

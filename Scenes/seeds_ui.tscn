@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://csma6nnn2h3ck"]
+[gd_scene load_steps=4 format=3 uid="uid://csma6nnn2h3ck"]
 
 [ext_resource type="Script" path="res://scripts/SeedsUI.gd" id="1_24tvx"]
 [ext_resource type="FontFile" uid="uid://decbyrlmfeftw" path="res://Assets/Fonts/Kenney Pixel Square.ttf" id="2_s85hb"]
+[ext_resource type="PackedScene" uid="uid://idqersc05yvp" path="res://Scenes/custom_menu.tscn" id="3_uix3r"]
 
 [node name="SeedsUI" type="Control"]
 layout_mode = 3
@@ -69,11 +70,10 @@ theme_override_fonts/font = ExtResource("2_s85hb")
 text = "Sunflower"
 
 [node name="UnlockButton2" type="Button" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 337.0
+offset_left = 418.0
 offset_top = 68.0
-offset_right = 415.0
+offset_right = 496.0
 offset_bottom = 133.0
 theme_override_fonts/font = ExtResource("2_s85hb")
 text = "??"
@@ -87,24 +87,15 @@ offset_bottom = 133.0
 theme_override_fonts/font = ExtResource("2_s85hb")
 text = "Bonsai"
 
-[node name="onionButton" type="Button" parent="."]
+[node name="chiveButton" type="Button" parent="."]
 visible = false
-layout_mode = 0
-offset_left = 337.0
-offset_top = 68.0
-offset_right = 415.0
-offset_bottom = 133.0
-theme_override_fonts/font = ExtResource("2_s85hb")
-text = "Onion"
-
-[node name="UnlockButton3" type="Button" parent="."]
 layout_mode = 0
 offset_left = 418.0
 offset_top = 68.0
 offset_right = 496.0
 offset_bottom = 133.0
 theme_override_fonts/font = ExtResource("2_s85hb")
-text = "??"
+text = "Chive"
 
 [node name="PepperButton" type="Button" parent="."]
 visible = false
@@ -117,14 +108,14 @@ scale = Vector2(0.9, 0.9)
 theme_override_fonts/font = ExtResource("2_s85hb")
 text = "Pepper"
 
-[node name="UnlockButton4" type="Button" parent="."]
+[node name="CustomButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 499.0
 offset_top = 68.0
 offset_right = 577.0
 offset_bottom = 133.0
 theme_override_fonts/font = ExtResource("2_s85hb")
-text = "??"
+text = "Custom"
 
 [node name="bonsaiButton" type="Button" parent="."]
 visible = false
@@ -136,6 +127,8 @@ offset_bottom = 133.0
 theme_override_fonts/font = ExtResource("2_s85hb")
 text = "Bonsai"
 
+[node name="CustomMenu" parent="." instance=ExtResource("3_uix3r")]
+
 [connection signal="pressed" from="pansyButton" to="." method="_on_pansy_button_pressed"]
 [connection signal="pressed" from="cactusButton" to="." method="_on_cactus_button_pressed"]
 [connection signal="pressed" from="HybridButton" to="." method="_on_hybrid_button_pressed"]
@@ -143,3 +136,5 @@ text = "Bonsai"
 [connection signal="pressed" from="sunflowerButton" to="." method="_on_sunflower_button_pressed"]
 [connection signal="pressed" from="UnlockButton2" to="." method="_on_unlock_button_2_pressed"]
 [connection signal="pressed" from="BonsaiButton" to="." method="_on_bonsai_button_pressed"]
+[connection signal="pressed" from="chiveButton" to="." method="_on_chive_button_pressed"]
+[connection signal="pressed" from="CustomButton" to="." method="_on_custom_button_pressed"]

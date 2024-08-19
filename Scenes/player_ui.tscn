@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://33hfn4s0xca2"]
+[gd_scene load_steps=12 format=3 uid="uid://33hfn4s0xca2"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/LeftArrow.png" id="1_cmnag"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ceo8mmd6lpxfb" path="res://Assets/Sprites/MediumPot.png" id="5_y8ofj"]
 [ext_resource type="PackedScene" uid="uid://csma6nnn2h3ck" path="res://Scenes/seeds_ui.tscn" id="6_7edgo"]
 [ext_resource type="Texture2D" uid="uid://ctpm6381wtd6k" path="res://Assets/Sprites/BonsaiPot.png" id="7_oyygy"]
+[ext_resource type="PackedScene" uid="uid://brw2nd1ekpwdt" path="res://Scenes/options_menu.tscn" id="9_0pr4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dmpm"]
 size = Vector2(121, 675)
@@ -70,6 +71,7 @@ theme_override_fonts/font = ExtResource("4_6hr8t")
 text = "Seeds"
 
 [node name="ShopPanel" type="ColorRect" parent="SeedsButton"]
+visible = false
 layout_mode = 0
 offset_left = -6.0
 offset_top = -521.0
@@ -169,6 +171,22 @@ offset_top = 120.0
 offset_right = 210.0
 offset_bottom = 120.0
 
+[node name="OptionsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 883.0
+offset_top = 77.0
+offset_right = 917.0
+offset_bottom = 108.0
+text = "o"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("9_0pr4o")]
+visible = false
+layout_mode = 1
+offset_left = 746.0
+offset_top = 109.0
+offset_right = 709.0
+offset_bottom = 109.0
+
 [connection signal="mouse_entered" from="LeftArea" to="." method="_on_left_area_mouse_entered"]
 [connection signal="mouse_exited" from="LeftArea" to="." method="_on_left_area_mouse_exited"]
 [connection signal="mouse_entered" from="RightArea" to="." method="_on_right_area_mouse_entered"]
@@ -178,3 +196,4 @@ offset_bottom = 120.0
 [connection signal="pressed" from="SeedsButton/ShopPanel/SmallPot" to="." method="_on_small_pot_pressed"]
 [connection signal="pressed" from="SeedsButton/ShopPanel/MediumPot" to="." method="_on_medium_pot_pressed"]
 [connection signal="pressed" from="SeedsButton/ShopPanel/BonsaiPot2" to="." method="_on_bonsai_pot_2_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

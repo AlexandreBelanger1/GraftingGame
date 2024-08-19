@@ -1,0 +1,292 @@
+[gd_scene load_steps=13 format=3 uid="uid://idqersc05yvp"]
+
+[ext_resource type="Texture2D" uid="uid://ctpm6381wtd6k" path="res://Assets/Sprites/BonsaiPot.png" id="1_pqwfu"]
+[ext_resource type="Script" path="res://scripts/custom_menu.gd" id="1_xf1a6"]
+[ext_resource type="Texture2D" uid="uid://ceo8mmd6lpxfb" path="res://Assets/Sprites/MediumPot.png" id="2_vxq2e"]
+[ext_resource type="Texture2D" uid="uid://bum5ttnh3gaao" path="res://Assets/Sprites/SmallPot.png" id="3_5jnao"]
+[ext_resource type="FontFile" uid="uid://kahfo2hevu88" path="res://Assets/Fonts/Kenney Mini Square.ttf" id="4_i54s1"]
+[ext_resource type="Texture2D" uid="uid://cnpmiypngbp8j" path="res://Assets/Sprites/BonsaiStemFrame.png" id="5_p2jrt"]
+[ext_resource type="Texture2D" uid="uid://v8oub6d2rhn8" path="res://Assets/Sprites/CactusStemFrame.png" id="6_qwudu"]
+[ext_resource type="Texture2D" uid="uid://c0hbkvrwg1xwn" path="res://Assets/Sprites/PansyStemFrame.png" id="7_jsj3r"]
+[ext_resource type="Texture2D" uid="uid://b47dktujmbq8n" path="res://Assets/Sprites/SunflowerStemFrame.png" id="8_36k22"]
+[ext_resource type="Texture2D" uid="uid://jcvaboyl7chw" path="res://Assets/Sprites/SunflowerFlowerFrame.png" id="9_3p1ol"]
+[ext_resource type="Texture2D" uid="uid://cf6cdobkreubk" path="res://Assets/Sprites/PansyFlowerFrame.png" id="10_wprdb"]
+[ext_resource type="Texture2D" uid="uid://b0e6ipt8emy1c" path="res://Assets/Sprites/CactusFlowerFrame.png" id="11_c1vyc"]
+
+[node name="CustomMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_xf1a6")
+
+[node name="RootSelect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 41.0
+offset_right = 640.0
+offset_bottom = 157.0
+color = Color(0.686275, 0.768627, 0.427451, 1)
+
+[node name="ButtonBackground" type="ColorRect" parent="RootSelect"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 14.0
+offset_right = 97.0
+offset_bottom = 102.0
+color = Color(0.31, 0.793, 1, 0.360784)
+
+[node name="BonsaiRootsButton" type="TextureButton" parent="RootSelect/ButtonBackground"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 19.0
+offset_bottom = 21.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("1_pqwfu")
+
+[node name="ButtonBackground2" type="ColorRect" parent="RootSelect"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 14.0
+offset_right = 196.0
+offset_bottom = 102.0
+color = Color(0.31, 0.793, 1, 0.360784)
+
+[node name="MediumRootsButton" type="TextureButton" parent="RootSelect/ButtonBackground2"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 19.0
+offset_bottom = 21.0
+scale = Vector2(5, 5)
+
+[node name="MediumPot" type="Sprite2D" parent="RootSelect/ButtonBackground2"]
+position = Vector2(46, 5)
+scale = Vector2(5, 5)
+texture = ExtResource("2_vxq2e")
+
+[node name="ButtonBackground3" type="ColorRect" parent="RootSelect"]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 14.0
+offset_right = 295.0
+offset_bottom = 102.0
+color = Color(0.31, 0.793, 1, 0.360784)
+
+[node name="SmallRootsButton" type="TextureButton" parent="RootSelect/ButtonBackground3"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 19.0
+offset_bottom = 21.0
+scale = Vector2(5, 5)
+
+[node name="SmallPot" type="Sprite2D" parent="RootSelect/ButtonBackground3"]
+position = Vector2(41, 5)
+scale = Vector2(5, 5)
+texture = ExtResource("3_5jnao")
+
+[node name="Label" type="Label" parent="RootSelect"]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 6.0
+offset_right = 468.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("4_i54s1")
+text = "Select Roots"
+
+[node name="StemSelect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 41.0
+offset_right = 640.0
+offset_bottom = 157.0
+color = Color(0.686275, 0.768627, 0.427451, 1)
+
+[node name="ButtonBackground" type="ColorRect" parent="StemSelect"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 14.0
+offset_right = 97.0
+offset_bottom = 102.0
+color = Color(0.31, 0.793, 1, 0.360784)
+
+[node name="BonsaiStemButton" type="TextureButton" parent="StemSelect/ButtonBackground"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 19.0
+offset_bottom = 21.0
+scale = Vector2(5, 5)
+
+[node name="BonsaiStemFrame" type="Sprite2D" parent="StemSelect/ButtonBackground"]
+position = Vector2(42, 36)
+scale = Vector2(3, 3)
+texture = ExtResource("5_p2jrt")
+
+[node name="ButtonBackground2" type="ColorRect" parent="StemSelect"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 14.0
+offset_right = 196.0
+offset_bottom = 102.0
+color = Color(0.31, 0.793, 1, 0.360784)
+
+[node name="CactusStemButton" type="TextureButton" parent="StemSelect/ButtonBackground2"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 19.0
+offset_bottom = 21.0
+scale = Vector2(5, 5)
+
+[node name="CactusStemFrame" type="Sprite2D" parent="StemSelect/ButtonBackground2"]
+position = Vector2(42, 36)
+scale = Vector2(3, 3)
+texture = ExtResource("6_qwudu")
+
+[node name="ButtonBackground3" type="ColorRect" parent="StemSelect"]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 14.0
+offset_right = 295.0
+offset_bottom = 102.0
+color = Color(0.31, 0.793, 1, 0.360784)
+
+[node name="PansyStemButton" type="TextureButton" parent="StemSelect/ButtonBackground3"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 19.0
+offset_bottom = 21.0
+scale = Vector2(5, 5)
+
+[node name="PansyStemFrame" type="Sprite2D" parent="StemSelect/ButtonBackground3"]
+position = Vector2(44, 36)
+scale = Vector2(3, 3)
+texture = ExtResource("7_jsj3r")
+
+[node name="ButtonBackground4" type="ColorRect" parent="StemSelect"]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 14.0
+offset_right = 394.0
+offset_bottom = 102.0
+color = Color(0.31, 0.793, 1, 0.360784)
+
+[node name="SunflowerStemButton" type="TextureButton" parent="StemSelect/ButtonBackground4"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 19.0
+offset_bottom = 21.0
+scale = Vector2(5, 5)
+
+[node name="SunflowerStemFrame" type="Sprite2D" parent="StemSelect/ButtonBackground4"]
+position = Vector2(43, 50)
+scale = Vector2(2, 2)
+texture = ExtResource("8_36k22")
+
+[node name="Label" type="Label" parent="StemSelect"]
+layout_mode = 0
+offset_left = 411.0
+offset_top = 6.0
+offset_right = 575.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("4_i54s1")
+text = "Select Stem"
+
+[node name="FlowerSelect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 41.0
+offset_right = 640.0
+offset_bottom = 157.0
+color = Color(0.686275, 0.768627, 0.427451, 1)
+
+[node name="ButtonBackground" type="ColorRect" parent="FlowerSelect"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 14.0
+offset_right = 97.0
+offset_bottom = 102.0
+color = Color(0.31, 0.793, 1, 0.360784)
+
+[node name="SunflowerFlowerButton" type="TextureButton" parent="FlowerSelect/ButtonBackground"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 19.0
+offset_bottom = 21.0
+scale = Vector2(5, 5)
+
+[node name="SunflowerFlowerFrame" type="Sprite2D" parent="FlowerSelect/ButtonBackground"]
+position = Vector2(41, 47)
+scale = Vector2(5, 5)
+texture = ExtResource("9_3p1ol")
+
+[node name="ButtonBackground2" type="ColorRect" parent="FlowerSelect"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 14.0
+offset_right = 196.0
+offset_bottom = 102.0
+color = Color(0.31, 0.793, 1, 0.360784)
+
+[node name="PansyFlowerButton" type="TextureButton" parent="FlowerSelect/ButtonBackground2"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 19.0
+offset_bottom = 21.0
+scale = Vector2(5, 5)
+
+[node name="PansyFlowerFrame" type="Sprite2D" parent="FlowerSelect/ButtonBackground2"]
+position = Vector2(43, 48)
+scale = Vector2(6, 6)
+texture = ExtResource("10_wprdb")
+
+[node name="ButtonBackground3" type="ColorRect" parent="FlowerSelect"]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 14.0
+offset_right = 295.0
+offset_bottom = 102.0
+color = Color(0.31, 0.793, 1, 0.360784)
+
+[node name="CactusFlowerButton" type="TextureButton" parent="FlowerSelect/ButtonBackground3"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 19.0
+offset_bottom = 21.0
+scale = Vector2(5, 5)
+
+[node name="CactusFlowerFrame" type="Sprite2D" parent="FlowerSelect/ButtonBackground3"]
+position = Vector2(44, 47)
+scale = Vector2(6, 6)
+texture = ExtResource("11_c1vyc")
+
+[node name="Label" type="Label" parent="FlowerSelect"]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 6.0
+offset_right = 476.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("4_i54s1")
+text = "Select Flower"
+
+[connection signal="pressed" from="RootSelect/ButtonBackground/BonsaiRootsButton" to="." method="_on_bonsai_roots_button_pressed"]
+[connection signal="pressed" from="RootSelect/ButtonBackground2/MediumRootsButton" to="." method="_on_medium_roots_button_pressed"]
+[connection signal="pressed" from="RootSelect/ButtonBackground3/SmallRootsButton" to="." method="_on_small_roots_button_pressed"]
+[connection signal="pressed" from="StemSelect/ButtonBackground/BonsaiStemButton" to="." method="_on_bonsai_stem_button_pressed"]
+[connection signal="pressed" from="StemSelect/ButtonBackground2/CactusStemButton" to="." method="_on_cactus_stem_button_pressed"]
+[connection signal="pressed" from="StemSelect/ButtonBackground3/PansyStemButton" to="." method="_on_pansy_stem_button_pressed"]
+[connection signal="pressed" from="StemSelect/ButtonBackground4/SunflowerStemButton" to="." method="_on_sunflower_stem_button_pressed"]
+[connection signal="pressed" from="FlowerSelect/ButtonBackground/SunflowerFlowerButton" to="." method="_on_sunflower_flower_button_pressed"]
+[connection signal="pressed" from="FlowerSelect/ButtonBackground2/PansyFlowerButton" to="." method="_on_pansy_flower_button_pressed"]
+[connection signal="pressed" from="FlowerSelect/ButtonBackground3/CactusFlowerButton" to="." method="_on_cactus_flower_button_pressed"]

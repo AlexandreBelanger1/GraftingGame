@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://brw2nd1ekpwdt"]
+
+[ext_resource type="Script" path="res://scripts/OptionsMenu.gd" id="1_783ex"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_783ex")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 358.0
+color = Color(0.340339, 0.340339, 0.340339, 0.564706)
+
+[node name="SaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 32.0
+offset_right = 151.0
+offset_bottom = 75.0
+text = "SAVE"
+
+[node name="LoadButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 83.0
+offset_right = 150.0
+offset_bottom = 126.0
+text = "LOAD"
+
+[connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="LoadButton" to="." method="_on_load_button_pressed"]

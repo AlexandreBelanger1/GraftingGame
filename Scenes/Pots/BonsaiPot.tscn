@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://ctpm6381wtd6k" path="res://Assets/Sprites/BonsaiPot.png" id="2_6mvev"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bshxx"]
-size = Vector2(28, 12)
+size = Vector2(14, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucbj5"]
-size = Vector2(6, 3)
+size = Vector2(14, 7)
 
 [node name="BonsaiPot" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -24,11 +24,11 @@ collision_layer = 2
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
-position = Vector2(0, -6)
+position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_bshxx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1.5)
+position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_ucbj5")
 
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]

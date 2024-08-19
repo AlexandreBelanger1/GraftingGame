@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="flowerStats" load_steps=2 format=3 uid="uid://ctqomrt7862ag"]
+
+[ext_resource type="Script" path="res://Scenes/flowers/flowerStats.gd" id="1_37j2k"]
+
+[resource]
+script = ExtResource("1_37j2k")
+growthRate = 1
+productionRate = 1
+type = 1
+typeDominance = 1
+growthFrames = 7
