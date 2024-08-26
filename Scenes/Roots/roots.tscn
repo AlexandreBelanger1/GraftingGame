@@ -153,6 +153,7 @@ animations = [{
 script = ExtResource("1_qv2jn")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_nsm2i")
 animation = &"bonsaiRoots"

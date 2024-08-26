@@ -17,6 +17,11 @@ func setup(rootName: String):
 		sprite_2d.play(rootName)
 		growth_timer.start()
 
+func loadRoots(data: potData):
+	loadStats(statsDict[data.plantRoots])
+	sprite_2d.play(data.plantRoots)
+	sprite_2d.frame = stats.growthFrames
+
 func loadStats(path: String):
 	stats = load(path)
   

@@ -19,3 +19,4 @@ func _on_player_ui_move_camera_right():
 
 func _on_player_ui_stop_camera():
 	direction = 0
+

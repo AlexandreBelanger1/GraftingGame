@@ -3,19 +3,25 @@ extends Control
 @onready var right_arrow = $RightArea/RightArrow
 @onready var shop_button = $ShopButton
 @onready var seeds_button = $SeedsButton
-@onready var shop_panel = $SeedsButton/ShopPanel
+@onready var shop_UI = $ShopUI
 @onready var place_pot_ui = $PlacePotUI
 @onready var currency_counter = $CurrencyCounter
 @onready var seeds_ui = $SeedsUI
 @onready var options_menu = $OptionsMenu
+@onready var button_hover = $ButtonHover
+@onready var button_clicked = $ButtonClicked
+@onready var spade_equip = $SpadeEquip
+@onready var confirm_selection_ui = $ConfirmSelectionUI
+@onready var mouse_tool_tip = $MouseToolTip
 
 
 signal moveCameraLeft
 signal stopCamera
 signal moveCameraRight
 
-var shopPrices ={"medium_pot": 10,"small_pot": 5, "bonsai_pot": 10}
-
+func _ready():
+	SignalBus.confirmUI.connect(enableConfirmUI)
+	SignalBus.mouseTooltip.connect(setMouseTooltip)
 
 func _input(event):
 	if event.is_action_pressed("plantSeed"):
@@ -45,38 +51,11 @@ func _on_right_area_mouse_exited():
 	right_arrow.visible = false
 
 
-
-
 func _on_shop_button_pressed():
+	button_clicked.play()
 	seeds_ui.visible = false
-	shop_panel.visible = !shop_panel.visible
+	shop_UI.toggleVisible()
 
-const SMALL_POT = preload("res://Scenes/Pots/SmallPot.tscn")
-func _on_small_pot_pressed():
-	if Global.gold >= shopPrices["small_pot"]:
-		shop_panel.visible = false
-		placePotUI(true)
-		Global.is_dragging = true
-		Global.placingItem = true
-		var smallPot = SMALL_POT.instantiate()
-		get_parent().get_parent().add_child(smallPot)
-		smallPot.potSetup("smallPot")
-		SignalBus.removeGold.emit(shopPrices["small_pot"])
-		Global.itemCost = shopPrices["small_pot"]
-
-
-const MEDIUM_POT = preload("res://Scenes/Pots/MediumPot.tscn")
-func _on_medium_pot_pressed():
-	if Global.gold >= shopPrices["medium_pot"]:
-		shop_panel.visible = false
-		placePotUI(true)
-		Global.is_dragging = true
-		Global.placingItem = true
-		var medPot = MEDIUM_POT.instantiate()
-		get_parent().get_parent().add_child(medPot)
-		medPot.potSetup("mediumPot")
-		SignalBus.removeGold.emit(shopPrices["medium_pot"])
-		Global.itemCost = shopPrices["medium_pot"]
 
 func placePotUI(enable: bool):
 	place_pot_ui.visible = enable
@@ -88,22 +67,47 @@ func updateCurrency():
 
 
 func _on_seeds_button_pressed():
+	button_clicked.play()
 	seeds_ui.visible = !seeds_ui.visible
-	shop_panel.visible = false
-
-const BONSAI_POT = preload("res://Scenes/Pots/BonsaiPot.tscn")
-func _on_bonsai_pot_2_pressed():
-	if Global.gold >= shopPrices["bonsai_pot"]:
-		shop_panel.visible = false
-		placePotUI(true)
-		Global.is_dragging = true
-		Global.placingItem = true
-		var bonsaiPot = BONSAI_POT.instantiate()
-		get_parent().get_parent().add_child(bonsaiPot)
-		bonsaiPot.potSetup("bonsaiPot")
-		SignalBus.removeGold.emit(shopPrices["bonsai_pot"])
-		Global.itemCost = shopPrices["bonsai_pot"]
-
+	shop_UI.setVisible(false)
 
 func _on_options_button_pressed():
+	button_clicked.play()
 	options_menu.visible = !options_menu.visible
+
+
+func _on_shop_button_mouse_entered():
+	button_hover.play()
+
+
+func _on_seeds_button_mouse_entered():
+	button_hover.play()
+
+
+func _on_options_button_mouse_entered():
+	button_hover.play()
+
+
+func _on_remove_plant_button_toggled(toggled_on):
+	if toggled_on:
+		SignalBus.setState.emit(2)
+		spade_equip.play()
+	else:
+		SignalBus.setState.emit(1)
+
+func enableConfirmUI():
+	confirm_selection_ui.visible = true
+	SignalBus.setTooltip.emit("null",0)
+	SignalBus.mouseTooltip.emit("null")
+	
+
+
+func _on_remove_plant_button_mouse_entered():
+	button_hover.play()
+
+func setMouseTooltip(value:String):
+	if value == "null":
+		mouse_tool_tip.visible = false
+	else:
+		mouse_tool_tip.visible = true
+		mouse_tool_tip.setText(value)

@@ -1,5 +1,7 @@
 extends Node
 
+var mobileControls = false
+
 var is_planting = false
 var is_dragging = false
 var placingItem = false

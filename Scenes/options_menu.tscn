@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://brw2nd1ekpwdt"]
+[gd_scene load_steps=5 format=3 uid="uid://brw2nd1ekpwdt"]
 
 [ext_resource type="Script" path="res://scripts/OptionsMenu.gd" id="1_783ex"]
+[ext_resource type="Texture2D" uid="uid://dxg765bgqtn8a" path="res://Assets/Sprites/Checkbox.png" id="2_pncre"]
+[ext_resource type="Texture2D" uid="uid://18h1rvi5pmjr" path="res://Assets/Sprites/CheckButtonToggled.png" id="3_rrl60"]
+[ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="4_ckvc2"]
 
 [node name="OptionsMenu" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,24 +18,63 @@ script = ExtResource("1_783ex")
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 187.0
-offset_bottom = 358.0
+offset_bottom = 291.0
 color = Color(0.340339, 0.340339, 0.340339, 0.564706)
 
 [node name="SaveButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 36.0
-offset_top = 32.0
-offset_right = 151.0
-offset_bottom = 75.0
+offset_left = 32.0
+offset_top = 12.0
+offset_right = 147.0
+offset_bottom = 55.0
 text = "SAVE"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 134.0
+offset_right = 148.0
+offset_bottom = 177.0
+text = "QUIT"
+
+[node name="NewSaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 180.0
+offset_right = 148.0
+offset_bottom = 223.0
+text = "NEW SAVE"
 
 [node name="LoadButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 35.0
-offset_top = 83.0
-offset_right = 150.0
-offset_bottom = 126.0
+offset_left = 32.0
+offset_top = 58.0
+offset_right = 147.0
+offset_bottom = 101.0
 text = "LOAD"
 
+[node name="MobileControlsButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 252.0
+offset_right = 107.0
+offset_bottom = 284.0
+toggle_mode = true
+texture_normal = ExtResource("2_pncre")
+texture_pressed = ExtResource("3_rrl60")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 223.0
+offset_right = 157.0
+offset_bottom = 249.0
+theme_override_fonts/font = ExtResource("4_ckvc2")
+theme_override_font_sizes/font_size = 32
+text = "Mobile Controls"
+
 [connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="NewSaveButton" to="." method="_on_new_save_button_pressed"]
 [connection signal="pressed" from="LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="MobileControlsButton" to="." method="_on_mobile_controls_button_pressed"]

@@ -1,40 +1,53 @@
-[gd_scene load_steps=12 format=3 uid="uid://33hfn4s0xca2"]
+[gd_scene load_steps=28 format=3 uid="uid://33hfn4s0xca2"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/LeftArrow.png" id="1_cmnag"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
 [ext_resource type="Texture2D" uid="uid://bty7uvdq5owoh" path="res://Assets/Sprites/RightArrow.png" id="2_kyxwa"]
 [ext_resource type="FontFile" uid="uid://decbyrlmfeftw" path="res://Assets/Fonts/Kenney Pixel Square.ttf" id="4_6hr8t"]
-[ext_resource type="Texture2D" uid="uid://bum5ttnh3gaao" path="res://Assets/Sprites/SmallPot.png" id="4_f70oo"]
-[ext_resource type="Texture2D" uid="uid://ceo8mmd6lpxfb" path="res://Assets/Sprites/MediumPot.png" id="5_y8ofj"]
+[ext_resource type="Texture2D" uid="uid://b7cfxe0haji4" path="res://Assets/Sprites/PotButton.png" id="4_dfctj"]
+[ext_resource type="Texture2D" uid="uid://dl5g0wk5m77em" path="res://Assets/Sprites/PotButtonHighlight.png" id="5_ghux7"]
+[ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="5_krgbh"]
 [ext_resource type="PackedScene" uid="uid://csma6nnn2h3ck" path="res://Scenes/seeds_ui.tscn" id="6_7edgo"]
-[ext_resource type="Texture2D" uid="uid://ctpm6381wtd6k" path="res://Assets/Sprites/BonsaiPot.png" id="7_oyygy"]
+[ext_resource type="PackedScene" uid="uid://b0cgbfnl4vmte" path="res://Scenes/shop_panel.tscn" id="6_cbd4w"]
+[ext_resource type="Texture2D" uid="uid://okwd8lx0ovyx" path="res://Assets/Sprites/Options.png" id="7_5yl0y"]
+[ext_resource type="Texture2D" uid="uid://dl1xgp872h6fj" path="res://Assets/Sprites/SeedPouch.png" id="7_tyfg5"]
+[ext_resource type="Texture2D" uid="uid://bt1y7euw22xkp" path="res://Assets/Sprites/GardenSpade.png" id="8_bek6u"]
+[ext_resource type="Texture2D" uid="uid://j17thefc01wv" path="res://Assets/Sprites/SeedPouchHighlight.png" id="8_f0syd"]
 [ext_resource type="PackedScene" uid="uid://brw2nd1ekpwdt" path="res://Scenes/options_menu.tscn" id="9_0pr4o"]
+[ext_resource type="Texture2D" uid="uid://bxspppyxcoyg2" path="res://Assets/Sprites/GardenSpadeToggled.png" id="9_r8qe3"]
+[ext_resource type="AudioStream" uid="uid://dpc2gweqfe1um" path="res://Assets/Audio/ButtonHover.wav" id="11_emu7a"]
+[ext_resource type="Texture2D" uid="uid://d02us4volwjqq" path="res://Assets/Sprites/Flower Symbol.png" id="12_i4cvl"]
+[ext_resource type="Texture2D" uid="uid://dk7t00j1bybjd" path="res://Assets/Sprites/Vegetable Symbol.png" id="13_ea28y"]
+[ext_resource type="PackedScene" uid="uid://b6lvcvorg4s4" path="res://Scenes/confirm_selection_ui.tscn" id="13_v7vt8"]
+[ext_resource type="Texture2D" uid="uid://boh0h368vo5ha" path="res://Assets/Sprites/Tree Symbol.png" id="14_tilba"]
+[ext_resource type="Texture2D" uid="uid://c2hvmferoahf8" path="res://Assets/Sprites/Succulent Symbol.png" id="15_juwgp"]
+[ext_resource type="Texture2D" uid="uid://52ux1jdj28g" path="res://Assets/Sprites/GoldSymbol.png" id="16_pw1t5"]
+[ext_resource type="PackedScene" uid="uid://y6isy4kjqnqv" path="res://Scenes/tooltip.tscn" id="19_yw2fp"]
+[ext_resource type="AudioStream" uid="uid://4y1gwmwjpvjj" path="res://Assets/Audio/spadeEquip.mp3" id="20_23ld8"]
+[ext_resource type="PackedScene" uid="uid://cgg1cbrhdkj8m" path="res://Scenes/mouse_tool_tip.tscn" id="25_qw6m8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dmpm"]
-size = Vector2(121, 675)
+size = Vector2(107.5, 402.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajftf"]
-size = Vector2(119, 676)
+size = Vector2(123.5, 401)
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_d7na4")
+metadata/_edit_use_anchors_ = true
 
 [node name="LeftArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArea"]
-position = Vector2(50.5, 327.5)
+position = Vector2(55.25, 199.75)
 shape = SubResource("RectangleShape2D_5dmpm")
 
 [node name="LeftArrow" type="Sprite2D" parent="LeftArea"]
 visible = false
 z_index = 10
-position = Vector2(96, 330)
+position = Vector2(75, 197)
 scale = Vector2(4, 4)
 texture = ExtResource("1_cmnag")
 
@@ -42,106 +55,67 @@ texture = ExtResource("1_cmnag")
 position = Vector2(-23, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
-position = Vector2(1023, 332)
+position = Vector2(1881, 204)
 shape = SubResource("RectangleShape2D_ajftf")
 
 [node name="RightArrow" type="Sprite2D" parent="RightArea"]
 visible = false
 z_index = 10
-position = Vector2(986, 334)
+position = Vector2(1867, 193)
 scale = Vector2(4, 4)
 texture = ExtResource("2_kyxwa")
 
-[node name="ShopButton" type="Button" parent="."]
+[node name="ShopButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 199.0
-offset_top = 632.0
-offset_right = 255.0
-offset_bottom = 665.0
-theme_override_fonts/font = ExtResource("4_6hr8t")
-text = "Shop"
+offset_left = 205.0
+offset_top = 352.0
+offset_right = 253.0
+offset_bottom = 400.0
+texture_normal = ExtResource("4_dfctj")
+texture_pressed = ExtResource("5_ghux7")
+texture_hover = ExtResource("5_ghux7")
 
-[node name="SeedsButton" type="Button" parent="."]
+[node name="Label" type="Label" parent="ShopButton"]
 layout_mode = 0
-offset_left = 124.0
-offset_top = 632.0
-offset_right = 177.0
-offset_bottom = 663.0
-theme_override_fonts/font = ExtResource("4_6hr8t")
-text = "Seeds"
+offset_left = 2.0
+offset_top = -42.0
+offset_right = 50.0
+offset_bottom = -4.0
+theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_krgbh")
+theme_override_font_sizes/font_size = 48
+text = "POTS"
 
-[node name="ShopPanel" type="ColorRect" parent="SeedsButton"]
-visible = false
+[node name="SeedsButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = -6.0
-offset_top = -521.0
-offset_right = 808.0
-offset_bottom = -272.0
-mouse_filter = 2
-color = Color(1, 1, 1, 0.431373)
+offset_left = 137.0
+offset_top = 346.0
+offset_right = 187.0
+offset_bottom = 394.0
+texture_normal = ExtResource("7_tyfg5")
+texture_pressed = ExtResource("8_f0syd")
+texture_hover = ExtResource("8_f0syd")
 
-[node name="SmallPot" type="Button" parent="SeedsButton/ShopPanel"]
+[node name="Label" type="Label" parent="SeedsButton"]
 layout_mode = 0
-offset_left = 26.0
-offset_top = 21.0
-offset_right = 155.0
-offset_bottom = 138.0
-
-[node name="Label" type="Label" parent="SeedsButton/ShopPanel/SmallPot"]
-layout_mode = 0
-offset_left = 36.0
-offset_top = 116.0
-offset_right = 88.0
-offset_bottom = 139.0
-theme_override_fonts/font = ExtResource("4_6hr8t")
-text = "Cost: 5"
-
-[node name="Sprite2D" type="Sprite2D" parent="SeedsButton/ShopPanel/SmallPot"]
-position = Vector2(62, -74)
-scale = Vector2(10, 10)
-texture = ExtResource("4_f70oo")
-
-[node name="MediumPot" type="Button" parent="SeedsButton/ShopPanel"]
-layout_mode = 0
-offset_left = 164.0
-offset_top = 20.0
-offset_right = 292.0
-offset_bottom = 139.0
-
-[node name="Label2" type="Label" parent="SeedsButton/ShopPanel/MediumPot"]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 119.0
-offset_right = 94.0
-offset_bottom = 142.0
-theme_override_fonts/font = ExtResource("4_6hr8t")
-text = "Cost: 10"
-
-[node name="Sprite2D" type="Sprite2D" parent="SeedsButton/ShopPanel/MediumPot"]
-position = Vector2(68, -33)
-scale = Vector2(8, 8)
-texture = ExtResource("5_y8ofj")
-
-[node name="BonsaiPot2" type="Button" parent="SeedsButton/ShopPanel"]
-layout_mode = 0
-offset_left = 299.0
-offset_top = 19.0
-offset_right = 427.0
-offset_bottom = 138.0
-
-[node name="Label2" type="Label" parent="SeedsButton/ShopPanel/BonsaiPot2"]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 119.0
-offset_right = 94.0
-offset_bottom = 142.0
-theme_override_fonts/font = ExtResource("4_6hr8t")
-text = "Cost: 10"
-
-[node name="Sprite2D" type="Sprite2D" parent="SeedsButton/ShopPanel/BonsaiPot2"]
-position = Vector2(64, 31)
-scale = Vector2(8, 8)
-texture = ExtResource("7_oyygy")
+offset_left = -5.0
+offset_top = -40.0
+offset_right = 55.0
+offset_bottom = -2.0
+theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_krgbh")
+theme_override_font_sizes/font_size = 48
+text = "SEEDS"
 
 [node name="PlacePotUI" type="Control" parent="."]
 visible = false
@@ -152,10 +126,10 @@ mouse_filter = 2
 
 [node name="CurrencyCounter" type="Label" parent="."]
 layout_mode = 0
-offset_left = 984.0
-offset_top = 78.0
-offset_right = 1050.0
-offset_bottom = 111.0
+offset_left = 428.0
+offset_top = 360.0
+offset_right = 494.0
+offset_bottom = 393.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
@@ -163,37 +137,121 @@ theme_override_fonts/font = ExtResource("4_6hr8t")
 text = "20
 "
 
+[node name="OptionsButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 356.0
+offset_right = 360.0
+offset_bottom = 373.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("7_5yl0y")
+texture_pressed = ExtResource("7_5yl0y")
+texture_hover = ExtResource("7_5yl0y")
+texture_disabled = ExtResource("7_5yl0y")
+texture_focused = ExtResource("7_5yl0y")
+
+[node name="RemovePlantButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 349.0
+offset_right = 323.0
+offset_bottom = 397.0
+toggle_mode = true
+texture_normal = ExtResource("8_bek6u")
+texture_pressed = ExtResource("9_r8qe3")
+texture_hover = ExtResource("9_r8qe3")
+
 [node name="SeedsUI" parent="." instance=ExtResource("6_7edgo")]
 visible = false
 layout_mode = 1
-offset_left = 210.0
-offset_top = 120.0
-offset_right = 210.0
-offset_bottom = 120.0
-
-[node name="OptionsButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 883.0
-offset_top = 77.0
-offset_right = 917.0
-offset_bottom = 108.0
-text = "o"
+anchors_preset = 15
+anchor_left = 0.0
+offset_left = 575.0
+offset_top = -24.0
+offset_right = 565.0
+offset_bottom = -31.0
 
 [node name="OptionsMenu" parent="." instance=ExtResource("9_0pr4o")]
+layout_mode = 1
+offset_left = 271.0
+offset_top = 23.0
+offset_right = 271.0
+offset_bottom = 23.0
+
+[node name="ShopUI" parent="." instance=ExtResource("6_cbd4w")]
+layout_mode = 1
+offset_top = -1.0
+offset_right = 0.0
+offset_bottom = -1.0
+
+[node name="ConfirmSelectionUI" parent="." instance=ExtResource("13_v7vt8")]
 visible = false
 layout_mode = 1
-offset_left = 746.0
-offset_top = 109.0
-offset_right = 709.0
-offset_bottom = 109.0
+offset_left = -2.0
+offset_top = -5.0
+offset_right = -2.0
+offset_bottom = -5.0
+
+[node name="ButtonHover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_emu7a")
+volume_db = -11.063
+pitch_scale = 2.01
+
+[node name="ButtonClicked" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_emu7a")
+pitch_scale = 0.71
+
+[node name="FlowerSymbol" type="Sprite2D" parent="."]
+position = Vector2(527, 372)
+scale = Vector2(2, 2)
+texture = ExtResource("12_i4cvl")
+
+[node name="VegetableSymbol" type="Sprite2D" parent="."]
+position = Vector2(569, 368)
+scale = Vector2(2, 2)
+texture = ExtResource("13_ea28y")
+
+[node name="TreeSymbol" type="Sprite2D" parent="."]
+position = Vector2(616, 372)
+scale = Vector2(2, 2)
+texture = ExtResource("14_tilba")
+
+[node name="SucculentSymbol" type="Sprite2D" parent="."]
+position = Vector2(656, 372)
+scale = Vector2(2, 2)
+texture = ExtResource("15_juwgp")
+
+[node name="GoldSymbol" type="Sprite2D" parent="."]
+position = Vector2(405, 376)
+scale = Vector2(2, 2)
+texture = ExtResource("16_pw1t5")
+
+[node name="Tooltip" parent="." instance=ExtResource("19_yw2fp")]
+layout_mode = 1
+offset_left = -439.0
+offset_top = 114.5
+offset_right = -439.0
+offset_bottom = 114.5
+
+[node name="SpadeEquip" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_23ld8")
+
+[node name="MouseToolTip" parent="." instance=ExtResource("25_qw6m8")]
+visible = false
+layout_mode = 1
+offset_top = 1.0
+offset_right = 0.0
+offset_bottom = 1.0
 
 [connection signal="mouse_entered" from="LeftArea" to="." method="_on_left_area_mouse_entered"]
 [connection signal="mouse_exited" from="LeftArea" to="." method="_on_left_area_mouse_exited"]
 [connection signal="mouse_entered" from="RightArea" to="." method="_on_right_area_mouse_entered"]
 [connection signal="mouse_exited" from="RightArea" to="." method="_on_right_area_mouse_exited"]
+[connection signal="mouse_entered" from="ShopButton" to="." method="_on_shop_button_mouse_entered"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="mouse_entered" from="SeedsButton" to="." method="_on_seeds_button_mouse_entered"]
 [connection signal="pressed" from="SeedsButton" to="." method="_on_seeds_button_pressed"]
-[connection signal="pressed" from="SeedsButton/ShopPanel/SmallPot" to="." method="_on_small_pot_pressed"]
-[connection signal="pressed" from="SeedsButton/ShopPanel/MediumPot" to="." method="_on_medium_pot_pressed"]
-[connection signal="pressed" from="SeedsButton/ShopPanel/BonsaiPot2" to="." method="_on_bonsai_pot_2_pressed"]
+[connection signal="mouse_entered" from="OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="mouse_entered" from="RemovePlantButton" to="." method="_on_remove_plant_button_mouse_entered"]
+[connection signal="toggled" from="RemovePlantButton" to="." method="_on_remove_plant_button_toggled"]

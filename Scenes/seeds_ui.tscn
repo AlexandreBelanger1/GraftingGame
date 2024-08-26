@@ -6,94 +6,97 @@
 
 [node name="SeedsUI" type="Control"]
 layout_mode = 3
-anchors_preset = 15
+anchor_left = 0.32
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 0.599976
+offset_right = -652.0
+offset_bottom = -215.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_24tvx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 41.0
-offset_right = 640.0
-offset_bottom = 157.0
+offset_left = -463.0
+offset_top = 29.0
+offset_right = -375.0
+offset_bottom = 347.0
 color = Color(1, 1, 1, 0.392157)
 
 [node name="pansyButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 68.0
-offset_right = 90.0
-offset_bottom = 132.0
+offset_left = -458.0
+offset_top = 31.0
+offset_right = -380.0
+offset_bottom = 70.0
 theme_override_fonts/font = ExtResource("2_s85hb")
 text = "Pansy"
 
 [node name="cactusButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 94.0
-offset_top = 68.0
-offset_right = 161.0
-offset_bottom = 132.0
+offset_left = -459.0
+offset_top = 71.0
+offset_right = -379.0
+offset_bottom = 117.0
 theme_override_fonts/font = ExtResource("2_s85hb")
 text = "Cactus"
 
 [node name="HybridButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 177.0
-offset_top = 68.0
-offset_right = 253.0
-offset_bottom = 133.0
+offset_left = -459.0
+offset_top = 119.0
+offset_right = -379.0
+offset_bottom = 163.0
 theme_override_fonts/font = ExtResource("2_s85hb")
 text = "Hybrid"
 
 [node name="UnlockButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 256.0
-offset_top = 68.0
-offset_right = 334.0
-offset_bottom = 133.0
+offset_left = -460.0
+offset_top = 165.0
+offset_right = -380.0
+offset_bottom = 207.0
 theme_override_fonts/font = ExtResource("2_s85hb")
 text = "??"
 
 [node name="sunflowerButton" type="Button" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 256.0
-offset_top = 67.0
-offset_right = 386.0
-offset_bottom = 177.0
+offset_left = -458.0
+offset_top = 164.0
+offset_right = -328.0
+offset_bottom = 237.0
 scale = Vector2(0.6, 0.6)
 theme_override_fonts/font = ExtResource("2_s85hb")
 text = "Sunflower"
 
 [node name="UnlockButton2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 418.0
-offset_top = 68.0
-offset_right = 496.0
-offset_bottom = 133.0
+offset_left = -459.0
+offset_top = 254.0
+offset_right = -379.0
+offset_bottom = 297.0
 theme_override_fonts/font = ExtResource("2_s85hb")
 text = "??"
 
 [node name="BonsaiButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 337.0
-offset_top = 68.0
-offset_right = 415.0
-offset_bottom = 133.0
+offset_left = -459.0
+offset_top = 209.0
+offset_right = -379.0
+offset_bottom = 252.0
 theme_override_fonts/font = ExtResource("2_s85hb")
 text = "Bonsai"
 
 [node name="chiveButton" type="Button" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 418.0
-offset_top = 68.0
-offset_right = 496.0
-offset_bottom = 133.0
+offset_left = -459.0
+offset_top = 254.0
+offset_right = -379.0
+offset_bottom = 297.0
 theme_override_fonts/font = ExtResource("2_s85hb")
 text = "Chive"
 
@@ -110,20 +113,20 @@ text = "Pepper"
 
 [node name="CustomButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 499.0
-offset_top = 68.0
-offset_right = 577.0
-offset_bottom = 133.0
+offset_left = -461.0
+offset_top = 299.0
+offset_right = -377.0
+offset_bottom = 343.0
 theme_override_fonts/font = ExtResource("2_s85hb")
 text = "Custom"
 
 [node name="bonsaiButton" type="Button" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 499.0
-offset_top = 68.0
-offset_right = 577.0
-offset_bottom = 133.0
+offset_left = -458.0
+offset_top = 261.0
+offset_right = -378.0
+offset_bottom = 302.0
 theme_override_fonts/font = ExtResource("2_s85hb")
 text = "Bonsai"
 

@@ -14,6 +14,7 @@ func _on_growth_timer_timeout():
 	if sprite_2d.frame == stats.growthFrames:
 		growth_timer.stop()
 		currency_gen_timer.start()
+		get_parent().flowerComplete = true
 	else: 
 		sprite_2d.frame += 1
 
@@ -27,6 +28,12 @@ func setup(flowerName: String):
 		loadStats(statsDict[flowerName])
 		sprite_2d.play(flowerName)
 		growth_timer.start()
+
+func setComplete(flowerName: String):
+	loadStats(statsDict[flowerName])
+	sprite_2d.play(flowerName)
+	sprite_2d.frame = stats.growthFrames
+	currency_gen_timer.start()
 
 func loadStats(path: String):
 	stats = load(path)
