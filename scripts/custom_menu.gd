@@ -23,11 +23,11 @@ func _on_bonsai_roots_button_pressed():
 
 
 func _on_medium_roots_button_pressed():
-	Global.plantRoots = "pansyRoots"
+	Global.plantRoots = "mediumRoots"
 	nextStep(1)
 
 func _on_small_roots_button_pressed():
-	Global.plantRoots = "cactusRoots"
+	Global.plantRoots = "smallRoots"
 	nextStep(1)
 
 func _on_bonsai_stem_button_pressed():

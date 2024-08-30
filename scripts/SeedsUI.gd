@@ -21,19 +21,19 @@ var seed4Price = 500000
 
 func _on_pansy_button_pressed():
 	Global.plantFlower = "pansyFlower"
-	Global.plantRoots= "pansyRoots"
+	Global.plantRoots= "mediumRoots"
 	Global.plantStem= "pansyStem"
 
 
 func _on_cactus_button_pressed():
 	Global.plantFlower = "cactusFlower"
-	Global.plantRoots= "cactusRoots"
+	Global.plantRoots= "smallRoots"
 	Global.plantStem= "cactusStem"
 
 
 func _on_hybrid_button_pressed():
 	Global.plantFlower = "pansyFlower"
-	Global.plantRoots= "pansyRoots"
+	Global.plantRoots= "mediumRoots"
 	Global.plantStem= "cactusStem"
 
 
@@ -51,7 +51,7 @@ func _on_unlock_button_2_pressed():
 
 func _on_sunflower_button_pressed():
 	Global.plantFlower = "sunflowerFlower"
-	Global.plantRoots= "pansyRoots"
+	Global.plantRoots= "mediumRoots"
 	Global.plantStem= "sunflowerStem"
 
 
@@ -67,5 +67,5 @@ func _on_custom_button_pressed():
 
 func _on_chive_button_pressed():
 	Global.plantFlower = "chiveFlower"
-	Global.plantRoots= "pansyRoots"
+	Global.plantRoots= "mediumRoots"
 	Global.plantStem= "chiveStem"

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmdtlhme2cugu"]
+
+[ext_resource type="Script" path="res://scripts/Seed.gd" id="1_dq5fq"]
+[ext_resource type="Texture2D" uid="uid://okwmfb21x6xj" path="res://Assets/Sprites/SeedSprites/GenericSeed.png" id="2_4evt0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6clg2"]
+radius = 4.0
+
+[node name="Seed" type="CharacterBody2D"]
+collision_mask = 0
+input_pickable = true
+script = ExtResource("1_dq5fq")
+
+[node name="Seed" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("2_4evt0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_6clg2")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

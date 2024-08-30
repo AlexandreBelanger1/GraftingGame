@@ -6,15 +6,16 @@ extends Control
 @onready var shop_UI = $ShopUI
 @onready var place_pot_ui = $PlacePotUI
 @onready var currency_counter = $CurrencyCounter
-@onready var seeds_ui = $SeedsUI
 @onready var options_menu = $OptionsMenu
 @onready var button_hover = $ButtonHover
 @onready var button_clicked = $ButtonClicked
 @onready var spade_equip = $SpadeEquip
 @onready var confirm_selection_ui = $ConfirmSelectionUI
 @onready var mouse_tool_tip = $MouseToolTip
+@onready var seed_bag_ui = $SeedBagUI
 
 
+var UIhidden = false
 signal moveCameraLeft
 signal stopCamera
 signal moveCameraRight
@@ -22,12 +23,13 @@ signal moveCameraRight
 func _ready():
 	SignalBus.confirmUI.connect(enableConfirmUI)
 	SignalBus.mouseTooltip.connect(setMouseTooltip)
+	Global.seedPouch = shop_UI
 
 func _input(event):
 	if event.is_action_pressed("plantSeed"):
 		placePotUI(false)
 	if event.is_action_released("LMB"):
-		if Global.placingItem == false:
+		if Global.placingItem == false and !UIhidden:
 			placePotUI(false)
 	if event.is_action_pressed("options"):
 		options_menu.visible = !options_menu.visible
@@ -52,8 +54,9 @@ func _on_right_area_mouse_exited():
 
 
 func _on_shop_button_pressed():
+	Global.state = 1
 	button_clicked.play()
-	seeds_ui.visible = false
+	seed_bag_ui.visible = false
 	shop_UI.toggleVisible()
 
 
@@ -67,8 +70,13 @@ func updateCurrency():
 
 
 func _on_seeds_button_pressed():
+	seed_bag_ui.visible = !seed_bag_ui.visible
+	if seed_bag_ui.visible:
+		Global.state = 3
+	else:
+		Global.state = 1
 	button_clicked.play()
-	seeds_ui.visible = !seeds_ui.visible
+	
 	shop_UI.setVisible(false)
 
 func _on_options_button_pressed():
@@ -90,10 +98,18 @@ func _on_options_button_mouse_entered():
 
 func _on_remove_plant_button_toggled(toggled_on):
 	if toggled_on:
-		SignalBus.setState.emit(2)
+		UIhidden = true
+		Global.state = 2
 		spade_equip.play()
+		shop_UI.setVisible(false)
+		seed_bag_ui.visible = false
+		shop_button.visible = false
+		seeds_button.visible = false
 	else:
+		UIhidden = false
 		SignalBus.setState.emit(1)
+		shop_button.visible = true
+		seeds_button.visible = true
 
 func enableConfirmUI():
 	confirm_selection_ui.visible = true

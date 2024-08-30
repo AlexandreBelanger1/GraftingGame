@@ -2,9 +2,8 @@ extends Node2D
 @onready var sprite_2d = $Sprite2D
 @onready var growth_timer = $GrowthTimer
 
-var statsDict  = {"pansyRoots": "res://Scenes/Roots/pansyRoots.tres",
-"cactusRoots":"res://Scenes/Roots/cactusRoots.tres",
-"sunflowerRoots": "res://Scenes/Roots/cactusRoots.tres",
+var statsDict  = {"mediumRoots": "res://Scenes/Roots/pansyRoots.tres",
+"smallRoots":"res://Scenes/Roots/cactusRoots.tres",
 "bonsaiRoots":"res://Scenes/Roots/bonsaiRoots.tres"}
 var stats = rootStats.new()
 
@@ -18,8 +17,15 @@ func setup(rootName: String):
 		growth_timer.start()
 
 func loadRoots(data: potData):
-	loadStats(statsDict[data.plantRoots])
-	sprite_2d.play(data.plantRoots)
+	var roots = data.plantRoots
+	if roots == "pansyRoots":
+		roots = "mediumRoots"
+	if roots == "sunflowerRoots":
+		roots = "mediumRoots"
+	if roots == "cactusRoots":
+		roots = "smallRoots"
+	loadStats(statsDict[roots])
+	sprite_2d.play(roots)
 	sprite_2d.frame = stats.growthFrames
 
 func loadStats(path: String):

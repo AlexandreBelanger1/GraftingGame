@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwrs7gwxv55or"]
+[gd_scene load_steps=7 format=3 uid="uid://bwrs7gwxv55or"]
 
 [ext_resource type="Script" path="res://scripts/pot.gd" id="1_70vul"]
 [ext_resource type="Texture2D" uid="uid://ctpm6381wtd6k" path="res://Assets/Sprites/BonsaiPot.png" id="2_6mvev"]
+[ext_resource type="AudioStream" uid="uid://bl5fracburlcf" path="res://Assets/Audio/pickupPop.mp3" id="3_x2rqc"]
+[ext_resource type="AudioStream" uid="uid://db4snmllc4qor" path="res://Assets/Audio/setdownPop.mp3" id="4_a0lln"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bshxx"]
 size = Vector2(14, 7)
@@ -30,6 +32,12 @@ shape = SubResource("RectangleShape2D_bshxx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_ucbj5")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_x2rqc")
+
+[node name="PlaceSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_a0lln")
 
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]

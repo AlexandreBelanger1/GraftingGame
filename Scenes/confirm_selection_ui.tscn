@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://b6lvcvorg4s4"]
 
 [ext_resource type="Script" path="res://scripts/ConfirmSelectionUI.gd" id="1_nj7qx"]
-[ext_resource type="Texture2D" uid="uid://wf33l675pnex" path="res://Assets/Sprites/CancelButton.png" id="2_2like"]
-[ext_resource type="Texture2D" uid="uid://l72bwm6vi2wy" path="res://Assets/Sprites/CancelButtonHighlight.png" id="3_eqyg8"]
-[ext_resource type="Texture2D" uid="uid://gdhsc76d6o6a" path="res://Assets/Sprites/ConfirmButton.png" id="3_py1qd"]
+[ext_resource type="Texture2D" uid="uid://wf33l675pnex" path="res://Assets/Sprites/UISprites/CancelButton.png" id="2_uh7bb"]
+[ext_resource type="Texture2D" uid="uid://l72bwm6vi2wy" path="res://Assets/Sprites/UISprites/CancelButtonHighlight.png" id="3_bwfdr"]
+[ext_resource type="Texture2D" uid="uid://gdhsc76d6o6a" path="res://Assets/Sprites/UISprites/ConfirmButton.png" id="4_0rj60"]
 [ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="4_wojnw"]
-[ext_resource type="Texture2D" uid="uid://dhmg2jy4dolti" path="res://Assets/Sprites/ConfirmButtonHighlight.png" id="5_abia2"]
+[ext_resource type="Texture2D" uid="uid://dhmg2jy4dolti" path="res://Assets/Sprites/UISprites/ConfirmButtonHighlight.png" id="5_tuayj"]
 
 [node name="ConfirmSelectionUI" type="Control"]
 layout_mode = 3
@@ -18,9 +18,11 @@ script = ExtResource("1_nj7qx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 1918.0
-offset_bottom = 403.0
-color = Color(1, 1, 1, 0.0823529)
+offset_left = -37.0
+offset_top = -34.0
+offset_right = 1947.0
+offset_bottom = 420.0
+color = Color(0, 0, 0, 0.301961)
 
 [node name="CancelButton" type="TextureButton" parent="."]
 layout_mode = 0
@@ -28,9 +30,9 @@ offset_left = 997.0
 offset_top = 193.0
 offset_right = 1077.0
 offset_bottom = 273.0
-texture_normal = ExtResource("2_2like")
-texture_pressed = ExtResource("3_eqyg8")
-texture_hover = ExtResource("3_eqyg8")
+texture_normal = ExtResource("2_uh7bb")
+texture_pressed = ExtResource("3_bwfdr")
+texture_hover = ExtResource("3_bwfdr")
 
 [node name="ConfirmButton" type="TextureButton" parent="."]
 layout_mode = 0
@@ -38,9 +40,9 @@ offset_left = 775.0
 offset_top = 194.0
 offset_right = 855.0
 offset_bottom = 274.0
-texture_normal = ExtResource("3_py1qd")
-texture_pressed = ExtResource("5_abia2")
-texture_hover = ExtResource("5_abia2")
+texture_normal = ExtResource("4_0rj60")
+texture_pressed = ExtResource("5_tuayj")
+texture_hover = ExtResource("5_tuayj")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0

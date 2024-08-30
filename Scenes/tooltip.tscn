@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://y6isy4kjqnqv"]
 
 [ext_resource type="Script" path="res://scripts/Tooltip.gd" id="1_kll2j"]
-[ext_resource type="Texture2D" uid="uid://detietge1jxs8" path="res://Assets/Sprites/TooltipBackground.png" id="2_cqs68"]
+[ext_resource type="Texture2D" uid="uid://detietge1jxs8" path="res://Assets/Sprites/UISprites/TooltipBackground.png" id="2_bvccl"]
 [ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="3_1cco2"]
 
 [node name="Tooltip" type="Control"]
@@ -16,9 +16,10 @@ grow_vertical = 2
 script = ExtResource("1_kll2j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(128, 128)
 scale = Vector2(4, 4)
-texture = ExtResource("2_cqs68")
+texture = ExtResource("2_bvccl")
 
 [node name="NameLabel" type="Label" parent="Sprite2D"]
 offset_left = -27.0

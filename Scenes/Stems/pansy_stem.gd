@@ -19,7 +19,7 @@ func setup(stemName: String):
 	else:
 		loadStats(statsDict[stemName])
 		sprite_2d.play(stemName)
-		growth_timer.start()
+		startGrowing()
 
 func loadStem(data:potData):
 	loadStats(statsDict[data.plantStem])
@@ -27,7 +27,7 @@ func loadStem(data:potData):
 	if data.stemComplete:
 		sprite_2d.frame = stats.growthFrames
 	else:
-		growth_timer.start()
+		startGrowing()
 
 func loadStats(path: String):
 	stats = load(path)
@@ -45,3 +45,7 @@ func _on_growth_timer_timeout():
 
 func getGrowthFrame():
 	return sprite_2d.frame
+
+func startGrowing():
+	growth_timer.wait_time = stats.growthRate
+	growth_timer.start()

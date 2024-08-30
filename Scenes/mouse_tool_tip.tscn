@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/MouseToolTip.gd" id="1_wsmg6"]
 [ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="2_4gj1s"]
-[ext_resource type="Texture2D" uid="uid://2xeup8w6qebn" path="res://Assets/Sprites/MouseLMB.png" id="3_aqow1"]
+[ext_resource type="Texture2D" uid="uid://2xeup8w6qebn" path="res://Assets/Sprites/UISprites/MouseLMB.png" id="3_63eht"]
 
 [node name="MouseToolTip" type="Control"]
 layout_mode = 3
@@ -22,10 +22,12 @@ offset_left = 31.0
 offset_top = -2.0
 offset_right = 131.0
 offset_bottom = 24.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_4gj1s")
 theme_override_font_sizes/font_size = 32
 text = "Remove plant"
 
 [node name="MouseLmb" type="Sprite2D" parent="."]
 position = Vector2(16, 16)
-texture = ExtResource("3_aqow1")
+texture = ExtResource("3_63eht")

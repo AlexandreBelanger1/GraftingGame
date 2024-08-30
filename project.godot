@@ -33,7 +33,7 @@ window/size/viewport_height=400
 window/size/borderless=true
 window/size/always_on_top=true
 window/stretch/mode="viewport"
-mouse_cursor/custom_image="res://Assets/Sprites/GloveCursor.png"
+mouse_cursor/custom_image="res://Assets/Sprites/UISprites/GloveCursor.png"
 mouse_cursor/custom_image_hotspot=Vector2(5, 14)
 
 [input]

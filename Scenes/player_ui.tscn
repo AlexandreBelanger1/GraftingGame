@@ -1,27 +1,27 @@
 [gd_scene load_steps=28 format=3 uid="uid://33hfn4s0xca2"]
 
-[ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/LeftArrow.png" id="1_cmnag"]
+[ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/UISprites/LeftArrow.png" id="1_cmnag"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
-[ext_resource type="Texture2D" uid="uid://bty7uvdq5owoh" path="res://Assets/Sprites/RightArrow.png" id="2_kyxwa"]
+[ext_resource type="Texture2D" uid="uid://bty7uvdq5owoh" path="res://Assets/Sprites/UISprites/RightArrow.png" id="2_kyxwa"]
 [ext_resource type="FontFile" uid="uid://decbyrlmfeftw" path="res://Assets/Fonts/Kenney Pixel Square.ttf" id="4_6hr8t"]
-[ext_resource type="Texture2D" uid="uid://b7cfxe0haji4" path="res://Assets/Sprites/PotButton.png" id="4_dfctj"]
-[ext_resource type="Texture2D" uid="uid://dl5g0wk5m77em" path="res://Assets/Sprites/PotButtonHighlight.png" id="5_ghux7"]
+[ext_resource type="Texture2D" uid="uid://b7cfxe0haji4" path="res://Assets/Sprites/UISprites/PotButton.png" id="4_dfctj"]
+[ext_resource type="Texture2D" uid="uid://dl5g0wk5m77em" path="res://Assets/Sprites/UISprites/PotButtonHighlight.png" id="5_ghux7"]
 [ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="5_krgbh"]
-[ext_resource type="PackedScene" uid="uid://csma6nnn2h3ck" path="res://Scenes/seeds_ui.tscn" id="6_7edgo"]
 [ext_resource type="PackedScene" uid="uid://b0cgbfnl4vmte" path="res://Scenes/shop_panel.tscn" id="6_cbd4w"]
-[ext_resource type="Texture2D" uid="uid://okwd8lx0ovyx" path="res://Assets/Sprites/Options.png" id="7_5yl0y"]
-[ext_resource type="Texture2D" uid="uid://dl1xgp872h6fj" path="res://Assets/Sprites/SeedPouch.png" id="7_tyfg5"]
-[ext_resource type="Texture2D" uid="uid://bt1y7euw22xkp" path="res://Assets/Sprites/GardenSpade.png" id="8_bek6u"]
-[ext_resource type="Texture2D" uid="uid://j17thefc01wv" path="res://Assets/Sprites/SeedPouchHighlight.png" id="8_f0syd"]
+[ext_resource type="Texture2D" uid="uid://okwd8lx0ovyx" path="res://Assets/Sprites/UISprites/Options.png" id="7_5yl0y"]
+[ext_resource type="Texture2D" uid="uid://dl1xgp872h6fj" path="res://Assets/Sprites/UISprites/SeedPouch.png" id="7_tyfg5"]
+[ext_resource type="Texture2D" uid="uid://bt1y7euw22xkp" path="res://Assets/Sprites/UISprites/GardenSpade.png" id="8_bek6u"]
+[ext_resource type="Texture2D" uid="uid://j17thefc01wv" path="res://Assets/Sprites/UISprites/SeedPouchHighlight.png" id="8_f0syd"]
 [ext_resource type="PackedScene" uid="uid://brw2nd1ekpwdt" path="res://Scenes/options_menu.tscn" id="9_0pr4o"]
-[ext_resource type="Texture2D" uid="uid://bxspppyxcoyg2" path="res://Assets/Sprites/GardenSpadeToggled.png" id="9_r8qe3"]
+[ext_resource type="Texture2D" uid="uid://bxspppyxcoyg2" path="res://Assets/Sprites/UISprites/GardenSpadeToggled.png" id="9_r8qe3"]
+[ext_resource type="PackedScene" uid="uid://dxltbvsrf4kup" path="res://Scenes/seed_bag_ui.tscn" id="11_7xi0e"]
 [ext_resource type="AudioStream" uid="uid://dpc2gweqfe1um" path="res://Assets/Audio/ButtonHover.wav" id="11_emu7a"]
 [ext_resource type="Texture2D" uid="uid://d02us4volwjqq" path="res://Assets/Sprites/Flower Symbol.png" id="12_i4cvl"]
-[ext_resource type="Texture2D" uid="uid://dk7t00j1bybjd" path="res://Assets/Sprites/Vegetable Symbol.png" id="13_ea28y"]
+[ext_resource type="Texture2D" uid="uid://dk7t00j1bybjd" path="res://Assets/Sprites/UISprites/Vegetable Symbol.png" id="13_ea28y"]
 [ext_resource type="PackedScene" uid="uid://b6lvcvorg4s4" path="res://Scenes/confirm_selection_ui.tscn" id="13_v7vt8"]
-[ext_resource type="Texture2D" uid="uid://boh0h368vo5ha" path="res://Assets/Sprites/Tree Symbol.png" id="14_tilba"]
-[ext_resource type="Texture2D" uid="uid://c2hvmferoahf8" path="res://Assets/Sprites/Succulent Symbol.png" id="15_juwgp"]
-[ext_resource type="Texture2D" uid="uid://52ux1jdj28g" path="res://Assets/Sprites/GoldSymbol.png" id="16_pw1t5"]
+[ext_resource type="Texture2D" uid="uid://boh0h368vo5ha" path="res://Assets/Sprites/UISprites/Tree Symbol.png" id="14_tilba"]
+[ext_resource type="Texture2D" uid="uid://c2hvmferoahf8" path="res://Assets/Sprites/UISprites/Succulent Symbol.png" id="15_juwgp"]
+[ext_resource type="Texture2D" uid="uid://52ux1jdj28g" path="res://Assets/Sprites/UISprites/GoldSymbol.png" id="16_pw1t5"]
 [ext_resource type="PackedScene" uid="uid://y6isy4kjqnqv" path="res://Scenes/tooltip.tscn" id="19_yw2fp"]
 [ext_resource type="AudioStream" uid="uid://4y1gwmwjpvjj" path="res://Assets/Audio/spadeEquip.mp3" id="20_23ld8"]
 [ext_resource type="PackedScene" uid="uid://cgg1cbrhdkj8m" path="res://Scenes/mouse_tool_tip.tscn" id="25_qw6m8"]
@@ -38,38 +38,11 @@ anchors_preset = 0
 script = ExtResource("1_d7na4")
 metadata/_edit_use_anchors_ = true
 
-[node name="LeftArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArea"]
-position = Vector2(55.25, 199.75)
-shape = SubResource("RectangleShape2D_5dmpm")
-
-[node name="LeftArrow" type="Sprite2D" parent="LeftArea"]
-visible = false
-z_index = 10
-position = Vector2(75, 197)
-scale = Vector2(4, 4)
-texture = ExtResource("1_cmnag")
-
-[node name="RightArea" type="Area2D" parent="."]
-position = Vector2(-23, -4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
-position = Vector2(1881, 204)
-shape = SubResource("RectangleShape2D_ajftf")
-
-[node name="RightArrow" type="Sprite2D" parent="RightArea"]
-visible = false
-z_index = 10
-position = Vector2(1867, 193)
-scale = Vector2(4, 4)
-texture = ExtResource("2_kyxwa")
-
 [node name="ShopButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 205.0
+offset_left = 306.0
 offset_top = 352.0
-offset_right = 253.0
+offset_right = 354.0
 offset_bottom = 400.0
 texture_normal = ExtResource("4_dfctj")
 texture_pressed = ExtResource("5_ghux7")
@@ -93,10 +66,10 @@ text = "POTS"
 
 [node name="SeedsButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 137.0
+offset_left = 238.0
 offset_top = 346.0
-offset_right = 187.0
-offset_bottom = 394.0
+offset_right = 292.0
+offset_bottom = 400.0
 texture_normal = ExtResource("7_tyfg5")
 texture_pressed = ExtResource("8_f0syd")
 texture_hover = ExtResource("8_f0syd")
@@ -126,9 +99,9 @@ mouse_filter = 2
 
 [node name="CurrencyCounter" type="Label" parent="."]
 layout_mode = 0
-offset_left = 428.0
+offset_left = 529.0
 offset_top = 360.0
-offset_right = 494.0
+offset_right = 595.0
 offset_bottom = 393.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
@@ -139,9 +112,9 @@ text = "20
 
 [node name="OptionsButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 343.0
+offset_left = 444.0
 offset_top = 356.0
-offset_right = 360.0
+offset_right = 461.0
 offset_bottom = 373.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("7_5yl0y")
@@ -152,36 +125,35 @@ texture_focused = ExtResource("7_5yl0y")
 
 [node name="RemovePlantButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 275.0
+offset_left = 376.0
 offset_top = 349.0
-offset_right = 323.0
+offset_right = 424.0
 offset_bottom = 397.0
 toggle_mode = true
 texture_normal = ExtResource("8_bek6u")
 texture_pressed = ExtResource("9_r8qe3")
 texture_hover = ExtResource("9_r8qe3")
 
-[node name="SeedsUI" parent="." instance=ExtResource("6_7edgo")]
+[node name="SeedBagUI" parent="." instance=ExtResource("11_7xi0e")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_left = 0.0
-offset_left = 575.0
-offset_top = -24.0
-offset_right = 565.0
-offset_bottom = -31.0
+offset_left = 151.0
+offset_top = 4.0
+offset_right = 355.0
+offset_bottom = 316.0
 
 [node name="OptionsMenu" parent="." instance=ExtResource("9_0pr4o")]
 layout_mode = 1
-offset_left = 271.0
+offset_left = 365.0
 offset_top = 23.0
-offset_right = 271.0
+offset_right = 365.0
 offset_bottom = 23.0
 
 [node name="ShopUI" parent="." instance=ExtResource("6_cbd4w")]
 layout_mode = 1
+offset_left = 138.0
 offset_top = -1.0
-offset_right = 0.0
+offset_right = 139.0
 offset_bottom = -1.0
 
 [node name="ConfirmSelectionUI" parent="." instance=ExtResource("13_v7vt8")]
@@ -202,27 +174,27 @@ stream = ExtResource("11_emu7a")
 pitch_scale = 0.71
 
 [node name="FlowerSymbol" type="Sprite2D" parent="."]
-position = Vector2(527, 372)
+position = Vector2(628, 372)
 scale = Vector2(2, 2)
 texture = ExtResource("12_i4cvl")
 
 [node name="VegetableSymbol" type="Sprite2D" parent="."]
-position = Vector2(569, 368)
+position = Vector2(670, 368)
 scale = Vector2(2, 2)
 texture = ExtResource("13_ea28y")
 
 [node name="TreeSymbol" type="Sprite2D" parent="."]
-position = Vector2(616, 372)
+position = Vector2(717, 372)
 scale = Vector2(2, 2)
 texture = ExtResource("14_tilba")
 
 [node name="SucculentSymbol" type="Sprite2D" parent="."]
-position = Vector2(656, 372)
+position = Vector2(757, 372)
 scale = Vector2(2, 2)
 texture = ExtResource("15_juwgp")
 
 [node name="GoldSymbol" type="Sprite2D" parent="."]
-position = Vector2(405, 376)
+position = Vector2(506, 376)
 scale = Vector2(2, 2)
 texture = ExtResource("16_pw1t5")
 
@@ -243,10 +215,33 @@ offset_top = 1.0
 offset_right = 0.0
 offset_bottom = 1.0
 
-[connection signal="mouse_entered" from="LeftArea" to="." method="_on_left_area_mouse_entered"]
-[connection signal="mouse_exited" from="LeftArea" to="." method="_on_left_area_mouse_exited"]
-[connection signal="mouse_entered" from="RightArea" to="." method="_on_right_area_mouse_entered"]
-[connection signal="mouse_exited" from="RightArea" to="." method="_on_right_area_mouse_exited"]
+[node name="LeftArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArea"]
+position = Vector2(55.25, 199.75)
+shape = SubResource("RectangleShape2D_5dmpm")
+
+[node name="LeftArrow" type="Sprite2D" parent="LeftArea"]
+visible = false
+z_index = 10
+position = Vector2(75, 197)
+scale = Vector2(4, 4)
+texture = ExtResource("1_cmnag")
+
+[node name="RightArea" type="Area2D" parent="."]
+position = Vector2(-23, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
+position = Vector2(1881, 204)
+shape = SubResource("RectangleShape2D_ajftf")
+
+[node name="RightArrow" type="Sprite2D" parent="RightArea"]
+visible = false
+z_index = 10
+position = Vector2(1867, 193)
+scale = Vector2(4, 4)
+texture = ExtResource("2_kyxwa")
+
 [connection signal="mouse_entered" from="ShopButton" to="." method="_on_shop_button_mouse_entered"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="mouse_entered" from="SeedsButton" to="." method="_on_seeds_button_mouse_entered"]
@@ -255,3 +250,7 @@ offset_bottom = 1.0
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="mouse_entered" from="RemovePlantButton" to="." method="_on_remove_plant_button_mouse_entered"]
 [connection signal="toggled" from="RemovePlantButton" to="." method="_on_remove_plant_button_toggled"]
+[connection signal="mouse_entered" from="LeftArea" to="." method="_on_left_area_mouse_entered"]
+[connection signal="mouse_exited" from="LeftArea" to="." method="_on_left_area_mouse_exited"]
+[connection signal="mouse_entered" from="RightArea" to="." method="_on_right_area_mouse_entered"]
+[connection signal="mouse_exited" from="RightArea" to="." method="_on_right_area_mouse_exited"]

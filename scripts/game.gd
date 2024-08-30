@@ -71,9 +71,10 @@ func createPot(data:potData):
 	newPot.loadState(data)
 
 func windowSetup():
-	var width = DisplayServer.screen_get_size().x
-	var height = (400 * DisplayServer.screen_get_size().x) / 1920
+	var taskbarHeight = DisplayServer.screen_get_size().y - DisplayServer.screen_get_usable_rect().size.y
+	var width = DisplayServer.screen_get_usable_rect().size.x#DisplayServer.screen_get_size().x
+	var height = int((400.00/1920.00)* DisplayServer.screen_get_usable_rect().size.x)#DisplayServer.screen_get_size().x)
 	get_window().size = Vector2i(width, height)
+	print_debug(height)
 	get_window().position.x = DisplayServer.screen_get_position().x
-	get_window().position.y = DisplayServer.screen_get_size().y - (height - 40)
-#Vector2i(1920,DisplayServer.screen_get_size().y - height)
+	get_window().position.y = DisplayServer.screen_get_position().y + (DisplayServer.screen_get_size().y - (height+ taskbarHeight))

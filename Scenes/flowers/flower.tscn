@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://cr4iodft2gqew"]
+[gd_scene load_steps=37 format=3 uid="uid://cr4iodft2gqew"]
 
 [ext_resource type="Script" path="res://scripts/flower.gd" id="1_crkqh"]
-[ext_resource type="Texture2D" uid="uid://t6df4oxeqflk" path="res://Assets/Sprites/cactusFlower.png" id="2_j74i6"]
-[ext_resource type="Texture2D" uid="uid://ctsw11iphp5vm" path="res://Assets/Sprites/PansyFlower.png" id="3_06v63"]
-[ext_resource type="Texture2D" uid="uid://dn7kkavgf04ee" path="res://Assets/Sprites/chiveFlower.png" id="3_t4xj8"]
-[ext_resource type="Texture2D" uid="uid://dwxsxt44ldv5f" path="res://Assets/Sprites/SunflowerFlower.png" id="4_rqc15"]
+[ext_resource type="Texture2D" uid="uid://t6df4oxeqflk" path="res://Assets/Sprites/PlantSprites/cactusFlower.png" id="2_j74i6"]
+[ext_resource type="Texture2D" uid="uid://ctsw11iphp5vm" path="res://Assets/Sprites/PlantSprites/PansyFlower.png" id="3_06v63"]
+[ext_resource type="Texture2D" uid="uid://dn7kkavgf04ee" path="res://Assets/Sprites/PlantSprites/chiveFlower.png" id="3_t4xj8"]
+[ext_resource type="Texture2D" uid="uid://dwxsxt44ldv5f" path="res://Assets/Sprites/PlantSprites/SunflowerFlower.png" id="4_rqc15"]
+[ext_resource type="Texture2D" uid="uid://tslalao82ai6" path="res://Assets/Sprites/GrowthParticles.png" id="6_kkhir"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_88rag"]
 atlas = ExtResource("2_j74i6")
@@ -204,6 +205,29 @@ animations = [{
 "speed": 0.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b4dy8"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_grmmn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.054945), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hp5kn"]
+curve = SubResource("Curve_grmmn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4os68"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 35.0
+initial_velocity_min = 8.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 20, 0)
+scale_curve = SubResource("CurveTexture_hp5kn")
+
 [node name="Flower" type="Node2D"]
 script = ExtResource("1_crkqh")
 
@@ -215,6 +239,16 @@ sprite_frames = SubResource("SpriteFrames_dsx0u")
 animation = &"chiveFlower"
 
 [node name="CurrencyGenTimer" type="Timer" parent="."]
+
+[node name="SeedParticles" type="GPUParticles2D" parent="."]
+modulate = Color(0.916507, 0.916266, 0, 1)
+material = SubResource("CanvasItemMaterial_b4dy8")
+emitting = false
+amount = 1
+amount_ratio = 0.2767
+process_material = SubResource("ParticleProcessMaterial_4os68")
+texture = ExtResource("6_kkhir")
+randomness = 0.7
 
 [connection signal="timeout" from="GrowthTimer" to="." method="_on_growth_timer_timeout"]
 [connection signal="timeout" from="CurrencyGenTimer" to="." method="_on_currency_gen_timer_timeout"]

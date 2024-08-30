@@ -11,18 +11,30 @@ var stemType
 var stemComplete = false
 var flowerComplete = false
 func setup():
-	roots.setup(Global.plantRoots)
-	checkRootSize()
-	stem.setup(Global.plantStem)
-	flowerType = Global.plantFlower
-	rootType = Global.plantRoots
-	stemType = Global.plantStem
+	var seed = Global.selectedSeed
+	if seed != null:
+		roots.setup(seed.getSeed("roots"))
+		checkRootSize()
+		stem.setup(seed.getSeed("stem"))
+		flowerType = seed.getSeed("flower")
+		rootType = seed.getSeed("roots")
+		stemType = seed.getSeed("stem")
+		configureStats()
+		seed.queue_free()
+	else:
+		queue_free()
 
 func loadPlant(data:potData):
 	flowerComplete  = data.flowerComplete
 	stemComplete = data.stemComplete
 	flowerType = data.plantFlower
 	rootType = data.plantRoots
+	if rootType == "pansyRoots":
+		rootType = "mediumRoots"
+	if rootType == "sunflowerRoots":
+		rootType = "mediumRoots"
+	if rootType == "cactusRoots":
+		rootType = "smallRoots"
 	stemType = data.plantStem
 	roots.loadRoots(data)
 	stem.loadStem(data)
@@ -86,3 +98,10 @@ func getTooltip(index: int):
 		return flowerType + stemType + rootType
 	if index == 2:
 		return float(stem.getGrowthFrame()) / float(stem.stats.growthFrames)
+
+func configureStats():
+	stats
+
+func shake():
+	for flower in flowers:
+		flower.shakeFlower()
