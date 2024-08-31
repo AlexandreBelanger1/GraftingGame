@@ -4,7 +4,6 @@ extends Control
 @onready var shop_button = $ShopButton
 @onready var seeds_button = $SeedsButton
 @onready var shop_UI = $ShopUI
-@onready var place_pot_ui = $PlacePotUI
 @onready var currency_counter = $CurrencyCounter
 @onready var options_menu = $OptionsMenu
 @onready var button_hover = $ButtonHover
@@ -22,17 +21,11 @@ signal moveCameraRight
 
 func _ready():
 	SignalBus.confirmUI.connect(enableConfirmUI)
-	SignalBus.mouseTooltip.connect(setMouseTooltip)
-	Global.seedPouch = shop_UI
+	
+	
 
 func _input(event):
-	if event.is_action_pressed("plantSeed"):
-		placePotUI(false)
-	if event.is_action_released("LMB"):
-		if Global.placingItem == false and !UIhidden:
-			placePotUI(false)
-	if event.is_action_pressed("options"):
-		options_menu.visible = !options_menu.visible
+	pass
 
 func _on_left_area_mouse_entered():
 	emit_signal("moveCameraLeft")
@@ -60,10 +53,6 @@ func _on_shop_button_pressed():
 	shop_UI.toggleVisible()
 
 
-func placePotUI(enable: bool):
-	place_pot_ui.visible = enable
-	shop_button.visible = !enable
-	seeds_button.visible = !enable
 
 func updateCurrency():
 	currency_counter.text = str(Global.gold)
@@ -98,18 +87,14 @@ func _on_options_button_mouse_entered():
 
 func _on_remove_plant_button_toggled(toggled_on):
 	if toggled_on:
-		UIhidden = true
 		Global.state = 2
 		spade_equip.play()
 		shop_UI.setVisible(false)
 		seed_bag_ui.visible = false
-		shop_button.visible = false
-		seeds_button.visible = false
 	else:
-		UIhidden = false
 		SignalBus.setState.emit(1)
-		shop_button.visible = true
-		seeds_button.visible = true
+		Global.state = 1
+
 
 func enableConfirmUI():
 	confirm_selection_ui.visible = true
@@ -121,9 +106,4 @@ func enableConfirmUI():
 func _on_remove_plant_button_mouse_entered():
 	button_hover.play()
 
-func setMouseTooltip(value:String):
-	if value == "null":
-		mouse_tool_tip.visible = false
-	else:
-		mouse_tool_tip.visible = true
-		mouse_tool_tip.setText(value)
+

@@ -20,7 +20,6 @@ func setup():
 		rootType = seed.getSeed("roots")
 		stemType = seed.getSeed("stem")
 		configureStats()
-		seed.queue_free()
 	else:
 		queue_free()
 
@@ -65,11 +64,17 @@ func checkRootSize():
 	var potType = get_parent().stats.specialType
 	var rootType = roots.stats.specialType
 	if potSize < roots.stats.size:
+		SignalBus.mouseTooltip.emit("potRequirement")
 		queue_free()
 	# rootType 0 is for non-special pot requirements
 	if rootType != 0:
 		if rootType != potType:
+			SignalBus.mouseTooltip.emit("potRequirement")
 			queue_free()
+		else:
+			Global.selectedSeed.queue_free()
+	else:
+		Global.selectedSeed.queue_free()
 
 func _on_stem_stem_complete():
 	stemComplete = true

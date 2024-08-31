@@ -1,9 +1,11 @@
 class_name pot extends Node2D
 @onready var pickup_sound = $PickupSound
 @onready var place_sound = $PlaceSound
+@onready var player = $Player
 
 
 
+var processing
 var draggable = false
 var dragging = false
 var overlap = 0
@@ -22,8 +24,23 @@ func _ready():
 	#SignalBus.setState.connect(changeState)
 	SignalBus.confirmRemove.connect(remove)
 
+func _input(event):
+	if processing:
+		if event.is_action_released("LMB"):
+			print_debug("release LMB")
+			if Plant != null:
+				Plant.shake()
+			if overlap == 1:
+				place_sound.play()
+				SignalBus.mouseTooltip.emit("Pick Up")
+			if overlap != 1:
+				global_position = initialPosition
+			dragging = false
+			Global.is_dragging = false
+			_on_grab_area_mouse_exited()
+			player.play("RefreshCollision")
+
 func _process(_delta):
-	
 	if Global.state == 1:
 		#Mode 1: placing from shop
 		if Global.placingItem and dragging:
@@ -31,7 +48,7 @@ func _process(_delta):
 			global_position = initialPosition + offset2
 			if Input.is_action_just_pressed("LMB"):
 				if overlap == 1:
-					place_sound.play()
+					#place_sound.play()
 					dragging = false
 					Global.is_dragging = false
 					Global.placingItem = false
@@ -55,16 +72,16 @@ func _process(_delta):
 				offset2 = get_global_mouse_position() - offset1
 				global_position = initialPosition + offset2
 			
-			if Input.is_action_just_released("LMB"):
-				if Plant != null:
-					Plant.shake()
-				if overlap == 1:
-					place_sound.play()
-					SignalBus.mouseTooltip.emit("Pick Up")
-				if overlap != 1:
-					global_position = initialPosition
-				dragging = false
-				Global.is_dragging = false
+			#if Input.is_action_just_released("LMB"):
+				#if Plant != null:
+					#Plant.shake()
+				#if overlap == 1:
+					#place_sound.play()
+					#SignalBus.mouseTooltip.emit("Pick Up")
+				#if overlap != 1:
+					#global_position = initialPosition
+				#dragging = false
+				#Global.is_dragging = false
 	if Global.state == 2:
 		if Input.is_action_just_pressed("LMB") and draggable:
 				if Plant != null:
@@ -95,6 +112,7 @@ func _notification(what):
 
 func _on_grab_area_mouse_entered():
 	set_process(true)
+	processing = true
 	if not Global.is_dragging and !removePlant:
 		if Global.state == 1:
 			SignalBus.mouseTooltip.emit("Pick Up")
@@ -114,6 +132,7 @@ func _on_grab_area_mouse_entered():
 func _on_grab_area_mouse_exited():
 	if !dragging:
 		set_process(false)
+		processing = false
 	SignalBus.mouseTooltip.emit("null")
 	if not Global.is_dragging:
 		draggable = false

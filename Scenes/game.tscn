@@ -1,12 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://h66tp54xyqug"]
+[gd_scene load_steps=16 format=3 uid="uid://h66tp54xyqug"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7p2bg"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="3_tva00"]
 [ext_resource type="Texture2D" uid="uid://cvteidrsx2x1y" path="res://Assets/Sprites/GrassTile.png" id="3_yn4gv"]
+[ext_resource type="Script" path="res://scripts/SeedPouchMarker.gd" id="5_vmy6b"]
 [ext_resource type="Texture2D" uid="uid://b6w58xgeiygcd" path="res://Assets/Sprites/WoodenFenceTile.png" id="6_fkpli"]
 [ext_resource type="PackedScene" uid="uid://33hfn4s0xca2" path="res://Scenes/player_ui.tscn" id="6_wttbp"]
 [ext_resource type="Texture2D" uid="uid://202t8f65k1so" path="res://Assets/Sprites/GrassTuft.png" id="7_24fdy"]
 [ext_resource type="PackedScene" uid="uid://cmdtlhme2cugu" path="res://Scenes/seed.tscn" id="7_38ml1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hmvow"]
+radius = 2.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s7sj8"]
 distance = -62.0
@@ -63,6 +67,15 @@ position = Vector2(154, 54)
 position = Vector2(0, 12)
 zoom = Vector2(3, 3)
 script = ExtResource("3_tva00")
+
+[node name="SeedPouchMarker" type="Area2D" parent="Camera2D"]
+position = Vector2(-233, 56)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("5_vmy6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/SeedPouchMarker"]
+shape = SubResource("CircleShape2D_hmvow")
 
 [node name="DeskHitbox" type="StaticBody2D" parent="."]
 position = Vector2(-53, 3)
@@ -177,3 +190,5 @@ position = Vector2(-23, 15)
 [connection signal="moveCameraLeft" from="CanvasLayer/PlayerUI" to="Camera2D" method="_on_player_ui_move_camera_left"]
 [connection signal="moveCameraRight" from="CanvasLayer/PlayerUI" to="Camera2D" method="_on_player_ui_move_camera_right"]
 [connection signal="stopCamera" from="CanvasLayer/PlayerUI" to="Camera2D" method="_on_player_ui_stop_camera"]
+[connection signal="area_entered" from="Camera2D/SeedPouchMarker" to="Camera2D/SeedPouchMarker" method="_on_area_entered"]
+[connection signal="body_entered" from="Camera2D/SeedPouchMarker" to="Camera2D/SeedPouchMarker" method="_on_body_entered"]

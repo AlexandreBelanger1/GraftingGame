@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cexs3jaedttkh"]
+[gd_scene load_steps=10 format=3 uid="uid://cexs3jaedttkh"]
 
 [ext_resource type="Script" path="res://scripts/pot.gd" id="1_dyg85"]
 [ext_resource type="Texture2D" uid="uid://ceo8mmd6lpxfb" path="res://Assets/Sprites/MediumPot.png" id="2_b7y6s"]
@@ -10,6 +10,43 @@ size = Vector2(11, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucbj5"]
 size = Vector2(11, 7)
+
+[sub_resource type="Animation" id="Animation_3p5ci"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:input_pickable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_liulp"]
+resource_name = "RefreshCollision"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:input_pickable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8lf5n"]
+_data = {
+"RESET": SubResource("Animation_3p5ci"),
+"RefreshCollision": SubResource("Animation_liulp")
+}
 
 [node name="MediumPot" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -38,6 +75,12 @@ stream = ExtResource("3_rppwn")
 
 [node name="PlaceSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_816f1")
+
+[node name="Player" type="AnimationPlayer" parent="."]
+root_node = NodePath("../GrabArea")
+libraries = {
+"": SubResource("AnimationLibrary_8lf5n")
+}
 
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]

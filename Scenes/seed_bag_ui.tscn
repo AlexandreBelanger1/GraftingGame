@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxltbvsrf4kup"]
+[gd_scene load_steps=6 format=3 uid="uid://dxltbvsrf4kup"]
 
 [ext_resource type="Script" path="res://scripts/seed_bag_ui.gd" id="1_0kfkj"]
 [ext_resource type="Texture2D" uid="uid://dp343qahwf1ev" path="res://Assets/Sprites/UISprites/SeedUIBackground.png" id="1_kr4ah"]
 [ext_resource type="Texture2D" uid="uid://dwwx53ya6htph" path="res://Assets/Sprites/UISprites/SeedUIHeaderBackground.png" id="2_tfle7"]
 [ext_resource type="Texture2D" uid="uid://c8t6ycwj4lppp" path="res://Assets/Sprites/UISprites/SeedUIForeground.png" id="4_n56f0"]
+[ext_resource type="AudioStream" uid="uid://c2yjgwhamy4ig" path="res://Assets/Audio/seedPickup.wav" id="5_e1mvb"]
 
 [node name="SeedBagUI" type="Control"]
 layout_mode = 3
@@ -103,3 +104,6 @@ offset_bottom = -39.936
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_n56f0")
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_e1mvb")

@@ -13,6 +13,7 @@ offset_right = -1664.0
 offset_bottom = -144.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_kll2j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

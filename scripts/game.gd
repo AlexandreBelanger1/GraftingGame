@@ -3,8 +3,11 @@ extends Node2D
 const BONSAI_POT = preload("res://Scenes/Pots/BonsaiPot.tscn")
 const MEDIUM_POT = preload("res://Scenes/Pots/MediumPot.tscn")
 const SMALL_POT = preload("res://Scenes/Pots/SmallPot.tscn")
+@onready var seed_pouch_marker = $Camera2D/SeedPouchMarker
+
 func _ready():
 	windowSetup()
+	Global.seedPouch = seed_pouch_marker
 	SignalBus.addGold.connect(addCurrency)
 	SignalBus.removeGold.connect(removeCurrency)
 	SignalBus.loadGame.connect(load_game)
@@ -78,3 +81,5 @@ func windowSetup():
 	print_debug(height)
 	get_window().position.x = DisplayServer.screen_get_position().x
 	get_window().position.y = DisplayServer.screen_get_position().y + (DisplayServer.screen_get_size().y - (height+ taskbarHeight))
+
+

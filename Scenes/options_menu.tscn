@@ -6,7 +6,6 @@
 [ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="4_ckvc2"]
 
 [node name="OptionsMenu" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +16,7 @@ script = ExtResource("1_783ex")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 187.0
+offset_right = 327.0
 offset_bottom = 291.0
 color = Color(0.340339, 0.340339, 0.340339, 0.564706)
 
@@ -73,8 +72,18 @@ theme_override_fonts/font = ExtResource("4_ckvc2")
 theme_override_font_sizes/font_size = 32
 text = "Mobile Controls"
 
+[node name="SwitchWindowButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 12.0
+offset_right = 295.0
+offset_bottom = 55.0
+text = "Switch Screen
+"
+
 [connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="NewSaveButton" to="." method="_on_new_save_button_pressed"]
 [connection signal="pressed" from="LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="MobileControlsButton" to="." method="_on_mobile_controls_button_pressed"]
+[connection signal="pressed" from="SwitchWindowButton" to="." method="_on_switch_window_button_pressed"]

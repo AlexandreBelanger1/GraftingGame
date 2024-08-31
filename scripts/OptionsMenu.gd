@@ -20,3 +20,14 @@ func _on_mobile_controls_button_pressed():
 
 func _on_quit_button_pressed():
 	get_tree().quit()
+
+
+func _on_switch_window_button_pressed():
+	if DisplayServer.get_screen_count() > 1:
+		if DisplayServer.get_primary_screen() < DisplayServer.get_screen_count() - 1:
+			swapWindow(DisplayServer.get_primary_screen()+1)
+	print_debug(DisplayServer.get_screen_count())
+	SignalBus.windowSetup.emit()
+
+func swapWindow(value:int):
+	pass
