@@ -2,6 +2,7 @@ extends Node
 
 var mobileControls = false
 
+
 var is_planting = false
 var is_dragging = false
 var placingItem = false
@@ -15,3 +16,5 @@ var plantFlower = "null"
 var plantRoots = "null"
 
 var state = 1
+var gameSpeed = 1.00
+

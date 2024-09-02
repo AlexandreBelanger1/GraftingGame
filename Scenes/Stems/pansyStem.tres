@@ -4,10 +4,11 @@
 
 [resource]
 script = ExtResource("1_y5a4p")
-growthRate = 1
+growthRate = 15
 productionRate = 1
 growthFrames = 31
 type = 1
 typeDominance = 1
+sellValue = 5
 flowerCount = 6
 flowerPositions = [Vector2(9, -12), Vector2(-9, -9), Vector2(-9, -17), Vector2(8, -20), Vector2(-7, -24), Vector2(4, -24), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]

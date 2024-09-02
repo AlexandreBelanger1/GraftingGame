@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="stemStats" load_steps=2 format=3 uid="uid://cmncfetdynb4p"]
+
+[ext_resource type="Script" path="res://Scenes/Stems/stemStats.gd" id="1_u3peh"]
+
+[resource]
+script = ExtResource("1_u3peh")
+growthRate = 14
+productionRate = 1
+growthFrames = 36
+type = 1
+typeDominance = 1
+sellValue = 20
+flowerCount = 8
+flowerPositions = [Vector2(-3, -3), Vector2(-8, -15), Vector2(-8, -22), Vector2(-3, -28), Vector2(6, -26), Vector2(10, -19), Vector2(8, -11), Vector2(6, -7), Vector2(0, 0), Vector2(0, 0)]

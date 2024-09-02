@@ -22,10 +22,10 @@ color = Color(0.340339, 0.340339, 0.340339, 0.564706)
 
 [node name="SaveButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 12.0
-offset_right = 147.0
-offset_bottom = 55.0
+offset_left = 179.0
+offset_top = 134.0
+offset_right = 294.0
+offset_bottom = 177.0
 text = "SAVE"
 
 [node name="QuitButton" type="Button" parent="."]
@@ -46,10 +46,10 @@ text = "NEW SAVE"
 
 [node name="LoadButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 58.0
-offset_right = 147.0
-offset_bottom = 101.0
+offset_left = 179.0
+offset_top = 180.0
+offset_right = 294.0
+offset_bottom = 223.0
 text = "LOAD"
 
 [node name="MobileControlsButton" type="TextureButton" parent="."]
@@ -72,6 +72,36 @@ theme_override_fonts/font = ExtResource("4_ckvc2")
 theme_override_font_sizes/font_size = 32
 text = "Mobile Controls"
 
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 72.0
+offset_right = 208.0
+offset_bottom = 98.0
+theme_override_fonts/font = ExtResource("4_ckvc2")
+theme_override_font_sizes/font_size = 32
+text = "Game Speed"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 73.0
+offset_right = 118.0
+offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("4_ckvc2")
+theme_override_font_sizes/font_size = 32
+text = "Faster"
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 72.0
+offset_right = 344.0
+offset_bottom = 98.0
+theme_override_fonts/font = ExtResource("4_ckvc2")
+theme_override_font_sizes/font_size = 32
+text = "Slower"
+
 [node name="SwitchWindowButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 181.0
@@ -81,9 +111,23 @@ offset_bottom = 55.0
 text = "Switch Screen
 "
 
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 107.0
+offset_right = 294.0
+offset_bottom = 123.0
+min_value = 1.0
+max_value = 101.0
+step = 10.0
+value = 1.0
+scrollable = false
+ticks_on_borders = true
+
 [connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="NewSaveButton" to="." method="_on_new_save_button_pressed"]
 [connection signal="pressed" from="LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="MobileControlsButton" to="." method="_on_mobile_controls_button_pressed"]
 [connection signal="pressed" from="SwitchWindowButton" to="." method="_on_switch_window_button_pressed"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

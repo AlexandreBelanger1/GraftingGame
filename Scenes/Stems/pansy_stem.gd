@@ -9,9 +9,12 @@ var statsDict  = {"pansyStem": "res://Scenes/Stems/pansyStem.tres",
 "cactusStem": "res://Scenes/Stems/cactusStem.tres",
 "sunflowerStem": "res://Scenes/Stems/sunflowerStem.tres",
 "bonsaiStem": "res://Scenes/Stems/bonsaiStem.tres",
-"chiveStem": "res://Scenes/Stems/chiveStem.tres"}
+"chiveStem": "res://Scenes/Stems/chiveStem.tres",
+"tomatoStem": "res://Scenes/Stems/tomatoStem.tres"}
 var stats = stemStats.new()
 
+func _ready():
+	SignalBus.changeGameSpeed.connect(setGrowthRate)
 
 func setup(stemName: String):
 	if stemName == "null":
@@ -42,10 +45,26 @@ func _on_growth_timer_timeout():
 		particleEffect.setColour(0,1,0)
 	else:
 		sprite_2d.frame += 1
-
 func getGrowthFrame():
 	return sprite_2d.frame
 
 func startGrowing():
-	growth_timer.wait_time = stats.growthRate
+	setGrowthRate()
 	growth_timer.start()
+
+func setGrowthRate():
+	growth_timer.wait_time = Global.gameSpeed * float(1/float(stats.growthRate))
+
+func getStat(value: int):
+	if value == 1:
+		return stats.growthRate
+	elif value == 2:
+		return stats.productionRate
+	elif value == 3:
+		return stats.type
+	elif value == 4:
+		return stats.typeDominance
+	elif value == 5:
+		return stats.flowerCount
+	elif value == 6:
+		return stats.sellValue

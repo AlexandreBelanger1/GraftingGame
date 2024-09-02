@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://33hfn4s0xca2"]
+[gd_scene load_steps=31 format=3 uid="uid://33hfn4s0xca2"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/UISprites/LeftArrow.png" id="1_cmnag"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
@@ -33,6 +33,14 @@ size = Vector2(107.5, 402.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajftf"]
 size = Vector2(123.5, 401)
 
+[sub_resource type="Animation" id="Animation_6r07w"]
+resource_name = "SeedLabel"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o4cah"]
+_data = {
+"SeedLabel": SubResource("Animation_6r07w")
+}
+
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -49,22 +57,6 @@ texture_normal = ExtResource("4_dfctj")
 texture_pressed = ExtResource("5_ghux7")
 texture_hover = ExtResource("5_ghux7")
 
-[node name="Label" type="Label" parent="ShopButton"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = -42.0
-offset_right = 50.0
-offset_bottom = -4.0
-theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_outline_size = 2
-theme_override_fonts/font = ExtResource("5_krgbh")
-theme_override_font_sizes/font_size = 48
-text = "POTS"
-
 [node name="SeedsButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 238.0
@@ -75,12 +67,28 @@ texture_normal = ExtResource("7_tyfg5")
 texture_pressed = ExtResource("8_f0syd")
 texture_hover = ExtResource("8_f0syd")
 
-[node name="Label" type="Label" parent="SeedsButton"]
+[node name="PotsLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = -5.0
-offset_top = -40.0
-offset_right = 55.0
-offset_bottom = -2.0
+offset_left = 308.0
+offset_top = 310.0
+offset_right = 356.0
+offset_bottom = 348.0
+theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_krgbh")
+theme_override_font_sizes/font_size = 48
+text = "POTS"
+
+[node name="SeedsLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 306.0
+offset_right = 293.0
+offset_bottom = 344.0
 theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -233,6 +241,11 @@ z_index = 10
 position = Vector2(1867, 193)
 scale = Vector2(4, 4)
 texture = ExtResource("2_kyxwa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o4cah")
+}
 
 [connection signal="mouse_entered" from="ShopButton" to="." method="_on_shop_button_mouse_entered"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]

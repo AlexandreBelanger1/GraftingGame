@@ -25,20 +25,21 @@ func _ready():
 	SignalBus.confirmRemove.connect(remove)
 
 func _input(event):
-	if processing:
-		if event.is_action_released("LMB"):
-			print_debug("release LMB")
-			if Plant != null:
-				Plant.shake()
-			if overlap == 1:
-				place_sound.play()
-				SignalBus.mouseTooltip.emit("Pick Up")
-			if overlap != 1:
-				global_position = initialPosition
-			dragging = false
-			Global.is_dragging = false
-			_on_grab_area_mouse_exited()
-			player.play("RefreshCollision")
+	if !(Global.placingItem and dragging):
+		if processing:
+			if event.is_action_released("LMB"):
+				print_debug(Global.placingItem)
+				if Plant != null:
+					Plant.shake()
+				if overlap == 1:
+					place_sound.play()
+					SignalBus.mouseTooltip.emit("Pick Up")
+				if overlap != 1 and dragging:
+					global_position = initialPosition
+				dragging = false
+				Global.is_dragging = false
+				_on_grab_area_mouse_exited()
+				player.play("RefreshCollision")
 
 func _process(_delta):
 	if Global.state == 1:
@@ -108,6 +109,8 @@ func _notification(what):
 				Plant.revealRoots(false)
 				SignalBus.setTooltip.emit("null",0)
 				SignalBus.mouseTooltip.emit("null")
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		set_process(false)
 
 
 func _on_grab_area_mouse_entered():
@@ -125,7 +128,7 @@ func _on_grab_area_mouse_entered():
 				SignalBus.mouseTooltip.emit("Remove Plant")
 			scale = Vector2(1.05,1.05)
 			Plant.revealRoots(true)
-			SignalBus.setTooltip.emit(Plant.getTooltip(1),Plant.getTooltip(2))
+			SignalBus.setTooltip.emit(Plant.getTooltip(1),Plant.getTooltip(2),Plant.getTooltip(3),Plant.getTooltip(4),Plant.getTooltip(5),Plant.getTooltip(6), Plant.getTooltip(7))
 			
 
 
@@ -140,7 +143,7 @@ func _on_grab_area_mouse_exited():
 		z_index = 0
 		if Plant != null:
 			Plant.revealRoots(false)
-			SignalBus.setTooltip.emit("null",0)
+			SignalBus.setTooltip.emit("null",0,0,0,0,0,0)
 
 func _on_grab_area_body_entered(body):
 	overlap += 1

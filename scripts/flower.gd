@@ -9,10 +9,14 @@ const SEED = preload("res://Scenes/seed.tscn")
 var statsDict  = {"pansyFlower": "res://Scenes/flowers/pansyFlower.tres",
 "cactusFlower": "res://Scenes/flowers/cactusFlower.tres",
 "sunflowerFlower":"res://Scenes/flowers/sunflowerFlower.tres",
-"chiveFlower": "res://Scenes/flowers/chiveFlower.tres"}
+"chiveFlower": "res://Scenes/flowers/chiveFlower.tres",
+"tomatoFlower": "res://Scenes/flowers/tomatoFlower.tres"}
 var stats = flowerStats.new()
 var RNG = RandomNumberGenerator.new()
 var seed = null
+
+func _ready():
+	SignalBus.changeGameSpeed.connect(setGrowthRate)
 
 func _on_growth_timer_timeout():
 	if sprite_2d.frame == stats.growthFrames:
@@ -27,16 +31,19 @@ func setup(flowerName: String):
 	if flowerName == "null":
 		loadStats("pansyFlower")
 		sprite_2d.play(flowerName)
+		setGrowthRate()
 		growth_timer.start()
 	else:
 		loadStats(statsDict[flowerName])
 		sprite_2d.play(flowerName)
+		setGrowthRate()
 		growth_timer.start()
 
 func setComplete(flowerName: String):
 	loadStats(statsDict[flowerName])
 	sprite_2d.play(flowerName)
 	sprite_2d.frame = stats.growthFrames
+	setGrowthRate()
 	currency_gen_timer.start()
 
 func loadStats(path: String):
@@ -53,8 +60,8 @@ func _on_currency_gen_timer_timeout():
 
 func generateRandomSeed():
 	var randRoot = RNG.randf_range(0,3)
-	var randStem = RNG.randf_range(0,5)
-	var randFlower = RNG.randf_range(0,4)
+	var randStem = RNG.randf_range(0,6)
+	var randFlower = RNG.randf_range(0,5)
 	var seedRoot
 	var seedStem
 	var seedFlower
@@ -74,6 +81,8 @@ func generateRandomSeed():
 		seedStem = "sunflowerStem"
 	elif randStem > 3 and randStem <= 4:
 		seedStem = "chiveStem"
+	elif randStem > 4 and randStem <= 5:
+		seedStem = "tomatoStem"
 	else:
 		seedStem = "bonsaiStem"
 	if randFlower <=1:
@@ -82,6 +91,8 @@ func generateRandomSeed():
 		seedFlower = "cactusFlower"
 	elif randFlower >2 and randFlower <= 3:
 		seedFlower = "sunflowerFlower"
+	elif randFlower >3 and randFlower <= 4:
+		seedFlower = "tomatoFlower"
 	else:
 		seedFlower = "chiveFlower"
 	seed.generateSeed(seedRoot,seedStem,seedFlower)
@@ -96,3 +107,20 @@ func shakeFlower():
 		seed.global_position.y = get_parent().get_parent().global_position.y + 10
 		seed.global_position.x = global_position.x
 		seed = null
+
+func setGrowthRate():
+	growth_timer.wait_time = Global.gameSpeed * (1/stats.growthRate)
+	currency_gen_timer.wait_time = Global.gameSpeed * (1/stats.productionRate)
+
+func getGrowthPercent():
+	return float(float(sprite_2d.frame) / float(stats.growthFrames))
+
+func getStat(value: int):
+	if value == 1:
+		return stats.growthRate
+	elif value == 2:
+		return stats.productionRate
+	elif value == 3:
+		return stats.type
+	elif value == 4:
+		return stats.typeDominance

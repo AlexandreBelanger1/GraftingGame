@@ -32,5 +32,4 @@ func collectSeed():
 	queue_free()
 
 func _on_mouse_entered():
-	print_debug("mouseOver")
 	flyToPouch()

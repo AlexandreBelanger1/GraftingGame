@@ -1,8 +1,98 @@
-[gd_scene load_steps=4 format=3 uid="uid://y6isy4kjqnqv"]
+[gd_scene load_steps=20 format=3 uid="uid://y6isy4kjqnqv"]
 
 [ext_resource type="Script" path="res://scripts/Tooltip.gd" id="1_kll2j"]
 [ext_resource type="Texture2D" uid="uid://detietge1jxs8" path="res://Assets/Sprites/UISprites/TooltipBackground.png" id="2_bvccl"]
 [ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="3_1cco2"]
+[ext_resource type="Texture2D" uid="uid://day03fikk6a0v" path="res://Assets/Sprites/PlantSprites/PlantUnlockSpeedSymbol.png" id="3_oed87"]
+[ext_resource type="Texture2D" uid="uid://dwdhg0k6eomub" path="res://Assets/Sprites/UISprites/PlantValueSymbol.png" id="4_bga25"]
+[ext_resource type="Texture2D" uid="uid://c2df1dwea8q26" path="res://Assets/Sprites/UISprites/PlantProgressBackground.png" id="4_f2pme"]
+[ext_resource type="Texture2D" uid="uid://dtr28rev2luw8" path="res://Assets/Sprites/UISprites/PlantProgressFill.png" id="5_idweg"]
+[ext_resource type="Texture2D" uid="uid://dlanmejglmuyc" path="res://Assets/Sprites/UISprites/StemGrowthSymbol.png" id="8_3hw6d"]
+[ext_resource type="Texture2D" uid="uid://r7t38dscw7vw" path="res://Assets/Sprites/UISprites/FlowerProgressFill.png" id="8_fcgna"]
+[ext_resource type="Texture2D" uid="uid://bn4mccym4hiwx" path="res://Assets/Sprites/UISprites/FlowerGrowthSymbol.png" id="9_p8kuw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkt01"]
+bg_color = Color(0.821789, 0.821789, 0.821788, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing_size = 0.22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dekii"]
+bg_color = Color(0.157449, 0.825217, 0.348712, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+anti_aliasing_size = 0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwfnu"]
+bg_color = Color(0.821789, 0.821789, 0.821788, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing_size = 0.22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0w5mo"]
+bg_color = Color(0.996443, 0.529784, 0.578916, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+anti_aliasing_size = 0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nu34"]
+bg_color = Color(0.821789, 0.821789, 0.821788, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing_size = 0.22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1m6q"]
+bg_color = Color(0.212124, 0.612857, 0.687687, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+anti_aliasing_size = 0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8j61"]
+bg_color = Color(0.821789, 0.821789, 0.821788, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing_size = 0.22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r32am"]
+bg_color = Color(0.980315, 0.738827, 0.240326, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+anti_aliasing_size = 0.01
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7ednv"]
+load_path = "res://.godot/imported/PlantProgressBackground.png-db8081f80aa846d5f0c19da71dcecb24.ctex"
 
 [node name="Tooltip" type="Control"]
 layout_mode = 3
@@ -17,16 +107,71 @@ mouse_filter = 2
 script = ExtResource("1_kll2j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
+self_modulate = Color(1, 1, 1, 0.686275)
 position = Vector2(128, 128)
 scale = Vector2(4, 4)
 texture = ExtResource("2_bvccl")
 
+[node name="StemGrowthStat" type="ProgressBar" parent="Sprite2D"]
+offset_left = -16.0
+offset_top = -2.0
+offset_right = 24.0
+offset_bottom = 1.0
+theme_override_styles/background = SubResource("StyleBoxFlat_xkt01")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dekii")
+min_value = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="FlowerGrowthStat" type="ProgressBar" parent="Sprite2D"]
+offset_left = -16.25
+offset_top = 7.0
+offset_right = 23.75
+offset_bottom = 10.0
+theme_override_styles/background = SubResource("StyleBoxFlat_pwfnu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0w5mo")
+min_value = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="UnlockRateStat" type="ProgressBar" parent="Sprite2D"]
+offset_left = -16.25
+offset_top = 16.0
+offset_right = 23.75
+offset_bottom = 19.0
+theme_override_styles/background = SubResource("StyleBoxFlat_0nu34")
+theme_override_styles/fill = SubResource("StyleBoxFlat_y1m6q")
+min_value = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="SellValueStat" type="ProgressBar" parent="Sprite2D"]
+offset_left = -16.25
+offset_top = 24.75
+offset_right = 23.75
+offset_bottom = 27.75
+theme_override_styles/background = SubResource("StyleBoxFlat_n8j61")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r32am")
+min_value = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="PlantUnlockSpeedSymbol" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-23, 16.75)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_oed87")
+
+[node name="PlantValueSymbol" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-23.25, 26.25)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_bga25")
+
 [node name="NameLabel" type="Label" parent="Sprite2D"]
-offset_left = -27.0
-offset_top = -32.0
-offset_right = 30.0
-offset_bottom = -19.0
+offset_left = -26.0
+offset_top = -30.5
+offset_right = 78.0
+offset_bottom = -17.5
+scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("3_1cco2")
 text = "NAME"
 autowrap_mode = 1
@@ -34,18 +179,50 @@ justification_flags = 107
 clip_text = true
 text_overrun_behavior = 3
 
+[node name="StemProgress" type="TextureProgressBar" parent="Sprite2D"]
+offset_left = -27.0
+offset_top = -24.25
+offset_right = 27.0
+offset_bottom = -16.25
+texture_under = ExtResource("4_f2pme")
+texture_progress = ExtResource("5_idweg")
+
+[node name="FlowerProgress" type="TextureProgressBar" parent="Sprite2D"]
+offset_left = -26.5
+offset_top = -14.75
+offset_right = 27.5
+offset_bottom = -6.75
+texture_under = SubResource("CompressedTexture2D_7ednv")
+texture_progress = ExtResource("8_fcgna")
+
+[node name="GrowthLabel2" type="Label" parent="Sprite2D"]
+offset_left = -27.0
+offset_top = -15.25
+offset_right = 81.0
+offset_bottom = -2.25
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_1cco2")
+text = "Flower Growth"
+horizontal_alignment = 1
+
 [node name="GrowthLabel" type="Label" parent="Sprite2D"]
 offset_left = -27.0
-offset_top = -21.5
-offset_right = 29.0
-offset_bottom = -8.5
+offset_top = -24.25
+offset_right = 81.0
+offset_bottom = -11.25
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_1cco2")
-text = "Growth:"
+text = "Stem Growth"
+horizontal_alignment = 1
 
-[node name="NameLabel3" type="Label" parent="Sprite2D"]
-offset_left = -28.0
-offset_top = -8.0
-offset_right = 13.0
-offset_bottom = 5.0
-theme_override_fonts/font = ExtResource("3_1cco2")
-text = "Stats:"
+[node name="StemGrowthSymbol" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-22.5, -1.5)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_3hw6d")
+
+[node name="FlowerGrowthSymbol" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-22.5, 7.75)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("9_p8kuw")

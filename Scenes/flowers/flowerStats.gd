@@ -1,7 +1,8 @@
 class_name flowerStats extends Resource
 
-@export var growthRate = 1
-@export var productionRate = 1
-@export var type = 1
-@export var typeDominance = 1
-@export var growthFrames = 3
+@export var growthRate :float
+@export var productionRate :float
+@export var type :int
+@export var typeDominance :float
+@export var growthFrames :int
+@export var sellValue :int

@@ -31,3 +31,8 @@ func _on_switch_window_button_pressed():
 
 func swapWindow(value:int):
 	pass
+
+
+func _on_h_slider_value_changed(value):
+	Global.gameSpeed = value
+	SignalBus.changeGameSpeed.emit()

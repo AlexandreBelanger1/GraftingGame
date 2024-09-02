@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_x63dh")
-growthRate = 1
-productionRate = 1
+growthRate = 10.0
+productionRate = 35.0
 type = 1
-typeDominance = 1
+typeDominance = 1.0
 growthFrames = 8
+sellValue = 5

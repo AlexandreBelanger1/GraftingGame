@@ -7,12 +7,9 @@
 [node name="plant" type="Node2D"]
 script = ExtResource("1_y75h5")
 
-[node name="CurrencyGen" type="Timer" parent="."]
-
 [node name="Roots" parent="." instance=ExtResource("3_a5yw7")]
 position = Vector2(0, 16)
 
 [node name="stem" parent="." instance=ExtResource("2_q32vt")]
 
-[connection signal="timeout" from="CurrencyGen" to="." method="_on_currency_gen_timeout"]
 [connection signal="stemComplete" from="stem" to="." method="_on_stem_stem_complete"]
