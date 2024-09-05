@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ceo8mmd6lpxfb" path="res://Assets/Sprites/MediumPot.png" id="3_bfbkx"]
 [ext_resource type="Texture2D" uid="uid://ctpm6381wtd6k" path="res://Assets/Sprites/BonsaiPot.png" id="4_d01m8"]
 
-[node name="ShopUI" type="Control"]
+[node name="PotsUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -1.0

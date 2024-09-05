@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdlfi5e3mkjnx"]
+
+[ext_resource type="Texture2D" uid="uid://bvhkiaxt4v8wx" path="res://Assets/Sprites/UISprites/ShopUIBackground.png" id="1_rhtue"]
+[ext_resource type="Script" path="res://scripts/shop.gd" id="1_yltsc"]
+[ext_resource type="Texture2D" uid="uid://pg53qwtoqpea" path="res://Assets/Sprites/UISprites/ShopUIForeground.png" id="2_seh2q"]
+[ext_resource type="Texture2D" uid="uid://07i2gv2xuy5e" path="res://Assets/Sprites/UISprites/SmallPotFrame.png" id="3_oo1r2"]
+[ext_resource type="Texture2D" uid="uid://dyp86x8151dcw" path="res://Assets/Sprites/UISprites/SmallPotFrameHighlight.png" id="4_oas80"]
+[ext_resource type="Texture2D" uid="uid://tl8dokn4iq6k" path="res://Assets/Sprites/UISprites/MediumPotFrame.png" id="5_ja68u"]
+[ext_resource type="Texture2D" uid="uid://cmthpq7f0erf2" path="res://Assets/Sprites/UISprites/MediumPotFrameHighlight.png" id="6_b8wmh"]
+[ext_resource type="Texture2D" uid="uid://dhhnekih3nxyk" path="res://Assets/Sprites/UISprites/BonsaiPotFrame.png" id="7_0rr13"]
+[ext_resource type="Texture2D" uid="uid://b38h3ab1f572u" path="res://Assets/Sprites/UISprites/BonsaiPotFrameHighlight.png" id="8_0ensl"]
+
+[node name="ShopUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_right = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yltsc")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 256.0
+texture = ExtResource("1_rhtue")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 257.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+
+[node name="Tooltip" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/Tooltip"]
+custom_minimum_size = Vector2(184, 0)
+layout_mode = 2
+text = "Name
+Cost
+INFO
+
+"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+follow_focus = true
+scroll_horizontal_custom_step = 1031.31
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+
+[node name="HFlowContainer" type="VFlowContainer" parent="Background/MarginContainer/VBoxContainer/ScrollContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 78)
+layout_mode = 2
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 10
+
+[node name="smallPot" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("3_oo1r2")
+texture_pressed = ExtResource("4_oas80")
+texture_hover = ExtResource("4_oas80")
+
+[node name="mediumPot" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_ja68u")
+texture_pressed = ExtResource("6_b8wmh")
+texture_hover = ExtResource("6_b8wmh")
+
+[node name="bonsaiPot" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_0rr13")
+texture_pressed = ExtResource("8_0ensl")
+texture_hover = ExtResource("8_0ensl")
+
+[node name="ColorRect" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect7" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect11" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Foreground" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 256.0
+texture = ExtResource("2_seh2q")
+
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/smallPot" to="." method="_on_small_pot_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mediumPot" to="." method="_on_medium_pot_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/bonsaiPot" to="." method="_on_bonsai_pot_pressed"]

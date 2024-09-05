@@ -55,20 +55,23 @@ collision_mask = 0
 script = ExtResource("1_70vul")
 
 [node name="SmallPot" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(7, -8)
 texture = ExtResource("2_6mvev")
 
 [node name="GrabArea" type="Area2D" parent="."]
+position = Vector2(7, 0)
 collision_layer = 2
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_bshxx")
+debug_color = Color(0, 0.6, 0.701961, 0.117647)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3.5)
+position = Vector2(7, -3.5)
 shape = SubResource("RectangleShape2D_ucbj5")
+debug_color = Color(0, 0.6, 0.701961, 0.207843)
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_x2rqc")
@@ -81,6 +84,9 @@ root_node = NodePath("../GrabArea")
 libraries = {
 "": SubResource("AnimationLibrary_8lf5n")
 }
+
+[node name="PlantMarker" type="Marker2D" parent="."]
+position = Vector2(7, 0)
 
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]

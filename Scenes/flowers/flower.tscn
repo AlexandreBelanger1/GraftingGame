@@ -1,12 +1,30 @@
-[gd_scene load_steps=48 format=3 uid="uid://cr4iodft2gqew"]
+[gd_scene load_steps=59 format=3 uid="uid://cr4iodft2gqew"]
 
 [ext_resource type="Script" path="res://scripts/flower.gd" id="1_crkqh"]
+[ext_resource type="Texture2D" uid="uid://btx5kx8n5enui" path="res://Assets/Sprites/PlantSprites/bleedingheartFlower.png" id="2_gh8t6"]
 [ext_resource type="Texture2D" uid="uid://t6df4oxeqflk" path="res://Assets/Sprites/PlantSprites/cactusFlower.png" id="2_j74i6"]
 [ext_resource type="Texture2D" uid="uid://ctsw11iphp5vm" path="res://Assets/Sprites/PlantSprites/PansyFlower.png" id="3_06v63"]
 [ext_resource type="Texture2D" uid="uid://dn7kkavgf04ee" path="res://Assets/Sprites/PlantSprites/chiveFlower.png" id="3_t4xj8"]
 [ext_resource type="Texture2D" uid="uid://dwxsxt44ldv5f" path="res://Assets/Sprites/PlantSprites/SunflowerFlower.png" id="4_rqc15"]
+[ext_resource type="Texture2D" uid="uid://cigas1skx6ls4" path="res://Assets/Sprites/PlantSprites/poppyFlower.png" id="5_euon5"]
 [ext_resource type="Texture2D" uid="uid://tslalao82ai6" path="res://Assets/Sprites/GrowthParticles.png" id="6_kkhir"]
 [ext_resource type="Texture2D" uid="uid://cyx8132a3xwul" path="res://Assets/Sprites/PlantSprites/Tomato.png" id="6_ktttx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mscj"]
+atlas = ExtResource("2_gh8t6")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8arsu"]
+atlas = ExtResource("2_gh8t6")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmf0c"]
+atlas = ExtResource("2_gh8t6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibrob"]
+atlas = ExtResource("2_gh8t6")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_88rag"]
 atlas = ExtResource("2_j74i6")
@@ -71,6 +89,26 @@ region = Rect2(32, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_mo0t4"]
 atlas = ExtResource("3_06v63")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frwa5"]
+atlas = ExtResource("5_euon5")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33pki"]
+atlas = ExtResource("5_euon5")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x67s"]
+atlas = ExtResource("5_euon5")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qkk7"]
+atlas = ExtResource("5_euon5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5e318"]
+atlas = ExtResource("5_euon5")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4geri"]
 atlas = ExtResource("4_rqc15")
@@ -152,6 +190,23 @@ region = Rect2(0, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8mscj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8arsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmf0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibrob")
+}],
+"loop": false,
+"name": &"bleedingheartFlower",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_88rag")
 }, {
 "duration": 1.0,
@@ -211,6 +266,26 @@ animations = [{
 }],
 "loop": false,
 "name": &"pansyFlower",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frwa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33pki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x67s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qkk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5e318")
+}],
+"loop": true,
+"name": &"poppyFlower",
 "speed": 0.0
 }, {
 "frames": [{
@@ -312,7 +387,7 @@ autostart = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dsx0u")
-animation = &"tomatoFlower"
+animation = &"bleedingheartFlower"
 
 [node name="CurrencyGenTimer" type="Timer" parent="."]
 

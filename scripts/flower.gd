@@ -10,7 +10,9 @@ var statsDict  = {"pansyFlower": "res://Scenes/flowers/pansyFlower.tres",
 "cactusFlower": "res://Scenes/flowers/cactusFlower.tres",
 "sunflowerFlower":"res://Scenes/flowers/sunflowerFlower.tres",
 "chiveFlower": "res://Scenes/flowers/chiveFlower.tres",
-"tomatoFlower": "res://Scenes/flowers/tomatoFlower.tres"}
+"tomatoFlower": "res://Scenes/flowers/tomatoFlower.tres",
+"poppyFlower": "res://Scenes/flowers/poppyFlower.tres",
+"bleedingheartFlower": "res://Scenes/flowers/bleedingheartFlower.tres"}
 var stats = flowerStats.new()
 var RNG = RandomNumberGenerator.new()
 var seed = null
@@ -60,8 +62,8 @@ func _on_currency_gen_timer_timeout():
 
 func generateRandomSeed():
 	var randRoot = RNG.randf_range(0,3)
-	var randStem = RNG.randf_range(0,6)
-	var randFlower = RNG.randf_range(0,5)
+	var randStem = RNG.randf_range(0,8)
+	var randFlower = RNG.randf_range(0,7)
 	var seedRoot
 	var seedStem
 	var seedFlower
@@ -83,6 +85,10 @@ func generateRandomSeed():
 		seedStem = "chiveStem"
 	elif randStem > 4 and randStem <= 5:
 		seedStem = "tomatoStem"
+	elif randStem > 5 and randStem <= 6:
+		seedStem = "poppyStem"
+	elif randStem > 6 and randStem <= 7:
+		seedStem = "bleedingheartStem"
 	else:
 		seedStem = "bonsaiStem"
 	if randFlower <=1:
@@ -93,6 +99,10 @@ func generateRandomSeed():
 		seedFlower = "sunflowerFlower"
 	elif randFlower >3 and randFlower <= 4:
 		seedFlower = "tomatoFlower"
+	elif randFlower >4 and randFlower <= 5:
+		seedFlower = "poppyFlower"
+	elif randFlower >5 and randFlower <= 6:
+		seedFlower = "bleedingheartFlower"
 	else:
 		seedFlower = "chiveFlower"
 	seed.generateSeed(seedRoot,seedStem,seedFlower)

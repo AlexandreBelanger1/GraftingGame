@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_37j2k")
-growthRate = 1
-productionRate = 1
+growthRate = 40.0
+productionRate = 5.0
 type = 1
 typeDominance = 1
 growthFrames = 7
+sellValue = 2

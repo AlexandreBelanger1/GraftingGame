@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="flowerStats" load_steps=2 format=3 uid="uid://c1xv8fk2ddmp8"]
+
+[ext_resource type="Script" path="res://Scenes/flowers/flowerStats.gd" id="1_377ko"]
+
+[resource]
+script = ExtResource("1_377ko")
+growthRate = 45.0
+productionRate = 3.0
+type = 1
+typeDominance = 1.0
+growthFrames = 4
+sellValue = 4

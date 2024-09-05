@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_b7aen")
-growthRate = 0.2
-productionRate = 0.1
+growthRate = 5.0
+productionRate = 5.0
 type = 1
 typeDominance = 1.0
 growthFrames = 9

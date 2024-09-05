@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_hy5gc")
-growthRate = 1
-productionRate = 1
+growthRate = 5.0
+productionRate = 10.0
 type = 2
 typeDominance = 4
 growthFrames = 3
+sellValue = 4

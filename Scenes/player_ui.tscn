@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://33hfn4s0xca2"]
+[gd_scene load_steps=34 format=3 uid="uid://33hfn4s0xca2"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/UISprites/LeftArrow.png" id="1_cmnag"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dl5g0wk5m77em" path="res://Assets/Sprites/UISprites/PotButtonHighlight.png" id="5_ghux7"]
 [ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="5_krgbh"]
 [ext_resource type="PackedScene" uid="uid://b0cgbfnl4vmte" path="res://Scenes/shop_panel.tscn" id="6_cbd4w"]
+[ext_resource type="Texture2D" uid="uid://og6mwaxdt3t1" path="res://Assets/Sprites/UISprites/ShopIcon.png" id="6_obkwq"]
+[ext_resource type="Texture2D" uid="uid://2kkcctrh7sgj" path="res://Assets/Sprites/UISprites/ShopIconHighlight.png" id="7_1r3w8"]
 [ext_resource type="Texture2D" uid="uid://okwd8lx0ovyx" path="res://Assets/Sprites/UISprites/Options.png" id="7_5yl0y"]
 [ext_resource type="Texture2D" uid="uid://dl1xgp872h6fj" path="res://Assets/Sprites/UISprites/SeedPouch.png" id="7_tyfg5"]
 [ext_resource type="Texture2D" uid="uid://bt1y7euw22xkp" path="res://Assets/Sprites/UISprites/GardenSpade.png" id="8_bek6u"]
@@ -26,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://y6isy4kjqnqv" path="res://Scenes/tooltip.tscn" id="19_yw2fp"]
 [ext_resource type="AudioStream" uid="uid://4y1gwmwjpvjj" path="res://Assets/Audio/spadeEquip.mp3" id="20_23ld8"]
 [ext_resource type="PackedScene" uid="uid://cgg1cbrhdkj8m" path="res://Scenes/mouse_tool_tip.tscn" id="25_qw6m8"]
+[ext_resource type="PackedScene" uid="uid://cdlfi5e3mkjnx" path="res://Scenes/shop_ui.tscn" id="27_sxlbi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dmpm"]
 size = Vector2(107.5, 402.5)
@@ -47,7 +50,7 @@ anchors_preset = 0
 script = ExtResource("1_d7na4")
 metadata/_edit_use_anchors_ = true
 
-[node name="ShopButton" type="TextureButton" parent="."]
+[node name="PotsButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 306.0
 offset_top = 352.0
@@ -67,6 +70,16 @@ texture_normal = ExtResource("7_tyfg5")
 texture_pressed = ExtResource("8_f0syd")
 texture_hover = ExtResource("8_f0syd")
 
+[node name="ShopButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 348.0
+offset_right = 417.0
+offset_bottom = 396.0
+texture_normal = ExtResource("6_obkwq")
+texture_pressed = ExtResource("6_obkwq")
+texture_hover = ExtResource("7_1r3w8")
+
 [node name="PotsLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 308.0
@@ -82,6 +95,23 @@ theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("5_krgbh")
 theme_override_font_sizes/font_size = 48
 text = "POTS"
+
+[node name="ShopLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 306.0
+offset_right = 419.0
+offset_bottom = 344.0
+theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_krgbh")
+theme_override_font_sizes/font_size = 48
+text = "SHOP
+"
 
 [node name="SeedsLabel" type="Label" parent="."]
 layout_mode = 0
@@ -126,10 +156,10 @@ texture_focused = ExtResource("7_5yl0y")
 
 [node name="RemovePlantButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 368.0
-offset_top = 350.0
-offset_right = 416.0
-offset_bottom = 398.0
+offset_left = 604.0
+offset_top = 345.0
+offset_right = 652.0
+offset_bottom = 393.0
 toggle_mode = true
 texture_normal = ExtResource("8_bek6u")
 texture_pressed = ExtResource("9_r8qe3")
@@ -146,17 +176,10 @@ offset_bottom = 316.0
 [node name="OptionsMenu" parent="." instance=ExtResource("9_0pr4o")]
 visible = false
 layout_mode = 1
-offset_left = 365.0
+offset_left = 779.0
 offset_top = 23.0
-offset_right = 365.0
+offset_right = 779.0
 offset_bottom = 23.0
-
-[node name="ShopUI" parent="." instance=ExtResource("6_cbd4w")]
-layout_mode = 1
-offset_left = 138.0
-offset_top = -1.0
-offset_right = 139.0
-offset_bottom = -1.0
 
 [node name="ConfirmSelectionUI" parent="." instance=ExtResource("13_v7vt8")]
 visible = false
@@ -165,6 +188,20 @@ offset_left = -2.0
 offset_top = -5.0
 offset_right = -2.0
 offset_bottom = -5.0
+
+[node name="ShopUI" parent="." instance=ExtResource("27_sxlbi")]
+visible = false
+layout_mode = 1
+offset_left = 301.0
+offset_top = 46.0
+offset_right = 301.0
+offset_bottom = 46.0
+
+[node name="PotsUI" parent="." instance=ExtResource("6_cbd4w")]
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 1921.0
+offset_bottom = 403.0
 
 [node name="ButtonHover" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_emu7a")
@@ -247,10 +284,12 @@ libraries = {
 "": SubResource("AnimationLibrary_o4cah")
 }
 
-[connection signal="mouse_entered" from="ShopButton" to="." method="_on_shop_button_mouse_entered"]
-[connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="mouse_entered" from="PotsButton" to="." method="_on_shop_button_mouse_entered"]
+[connection signal="pressed" from="PotsButton" to="." method="_on_pots_button_pressed"]
 [connection signal="mouse_entered" from="SeedsButton" to="." method="_on_seeds_button_mouse_entered"]
 [connection signal="pressed" from="SeedsButton" to="." method="_on_seeds_button_pressed"]
+[connection signal="mouse_entered" from="ShopButton" to="." method="_on_shop_button_mouse_entered"]
+[connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="mouse_entered" from="OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="mouse_entered" from="RemovePlantButton" to="." method="_on_remove_plant_button_mouse_entered"]

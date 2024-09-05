@@ -16,5 +16,5 @@ var plantFlower = "null"
 var plantRoots = "null"
 
 var state = 1
-var gameSpeed = 1.00
+var gameSpeed = 11.00
 

@@ -6,7 +6,9 @@ var flowerStatsDict  = {"pansyFlower": "res://Scenes/flowers/pansyFlower.tres",
 "cactusFlower": "res://Scenes/flowers/cactusFlower.tres",
 "sunflowerFlower":"res://Scenes/flowers/sunflowerFlower.tres",
 "chiveFlower": "res://Scenes/flowers/chiveFlower.tres",
-"tomatoFlower": "res://Scenes/flowers/tomatoFlower.tres"}
+"tomatoFlower": "res://Scenes/flowers/tomatoFlower.tres",
+"poppyFlower": "res://Scenes/flowers/poppyFlower.tres",
+"bleedingheartFlower": "res://Scenes/flowers/bleedingheartFlower.tres"}
 
 const FLOWER = preload("res://Scenes/flowers/flower.tscn")
 var flowers = []

@@ -10,7 +10,9 @@ var statsDict  = {"pansyStem": "res://Scenes/Stems/pansyStem.tres",
 "sunflowerStem": "res://Scenes/Stems/sunflowerStem.tres",
 "bonsaiStem": "res://Scenes/Stems/bonsaiStem.tres",
 "chiveStem": "res://Scenes/Stems/chiveStem.tres",
-"tomatoStem": "res://Scenes/Stems/tomatoStem.tres"}
+"tomatoStem": "res://Scenes/Stems/tomatoStem.tres",
+"poppyStem": "res://Scenes/Stems/poppyStem.tres",
+"bleedingheartStem": "res://Scenes/Stems/bleedingheartStem.tres"}
 var stats = stemStats.new()
 
 func _ready():

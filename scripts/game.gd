@@ -4,6 +4,7 @@ const BONSAI_POT = preload("res://Scenes/Pots/BonsaiPot.tscn")
 const MEDIUM_POT = preload("res://Scenes/Pots/MediumPot.tscn")
 const SMALL_POT = preload("res://Scenes/Pots/SmallPot.tscn")
 @onready var seed_pouch_marker = $Camera2D/SeedPouchMarker
+@onready var grid = $Grid
 
 func _ready():
 	windowSetup()
@@ -13,6 +14,7 @@ func _ready():
 	SignalBus.loadGame.connect(load_game)
 	SignalBus.saveGame.connect(save_game)
 	SignalBus.newSaveGame.connect(new_save_game)
+	SignalBus.gridToggle.connect(toggleGrid)
 	if not FileAccess.file_exists("user://savegame.tres"):
 		save_game()
 	else:
@@ -83,3 +85,5 @@ func windowSetup():
 	get_window().position.y = DisplayServer.screen_get_position().y + (DisplayServer.screen_get_size().y - (height+ taskbarHeight))
 
 
+func toggleGrid(value:bool):
+	grid.visible = value

@@ -2,6 +2,7 @@ class_name pot extends Node2D
 @onready var pickup_sound = $PickupSound
 @onready var place_sound = $PlaceSound
 @onready var player = $Player
+@onready var plant_marker = $PlantMarker
 
 
 
@@ -28,7 +29,7 @@ func _input(event):
 	if !(Global.placingItem and dragging):
 		if processing:
 			if event.is_action_released("LMB"):
-				print_debug(Global.placingItem)
+				SignalBus.gridToggle.emit(false)
 				if Plant != null:
 					Plant.shake()
 				if overlap == 1:
@@ -45,22 +46,26 @@ func _process(_delta):
 	if Global.state == 1:
 		#Mode 1: placing from shop
 		if Global.placingItem and dragging:
-			offset2 = get_global_mouse_position() - offset1
-			global_position = initialPosition + offset2
+			SignalBus.gridToggle.emit(true)
+			offset2 = (get_global_mouse_position()/10)*10- offset1
+			global_position.x = int(initialPosition.x/3)*3 + int(offset2.x/3)*3
+			global_position.y = int(initialPosition.y/3)*3 + int(offset2.y/3)*3
 			if Input.is_action_just_pressed("LMB"):
 				if overlap == 1:
-					#place_sound.play()
+					SignalBus.gridToggle.emit(false)
 					dragging = false
 					Global.is_dragging = false
 					Global.placingItem = false
 			if Input.is_action_just_pressed("plantSeed"):
+				SignalBus.gridToggle.emit(false)
 				Global.is_dragging = false
 				Global.placingItem = false
 				SignalBus.addGold.emit(Global.itemCost)
 				queue_free()
 		#Mode 2: sitting on desk	
-		if draggable:
+		if draggable and !Global.placingItem:
 			if Input.is_action_just_pressed("LMB"):
+				SignalBus.gridToggle.emit(true)
 				pickup_sound.play()
 				dragging = true
 				offset1 = get_global_mouse_position()
@@ -68,22 +73,13 @@ func _process(_delta):
 				Global.is_dragging = true
 		#Mode 3: moving existing pot
 		if dragging and !Global.placingItem:
+			SignalBus.gridToggle.emit(true)
 			SignalBus.mouseTooltip.emit("null")
 			if Input.is_action_pressed("LMB"):
 				offset2 = get_global_mouse_position() - offset1
-				global_position = initialPosition + offset2
-			
-			#if Input.is_action_just_released("LMB"):
-				#if Plant != null:
-					#Plant.shake()
-				#if overlap == 1:
-					#place_sound.play()
-					#SignalBus.mouseTooltip.emit("Pick Up")
-				#if overlap != 1:
-					#global_position = initialPosition
-				#dragging = false
-				#Global.is_dragging = false
-	if Global.state == 2:
+				global_position.x = int(initialPosition.x/3)*3 + int(offset2.x/3)*3
+				global_position.y = int(initialPosition.y/3)*3 + int(offset2.y/3)*3
+	if Global.state == 4:
 		if Input.is_action_just_pressed("LMB") and draggable:
 				if Plant != null:
 					removePlant = true
@@ -99,6 +95,7 @@ func _process(_delta):
 func _notification(what):
 	if what == NOTIFICATION_WM_MOUSE_EXIT:
 		if dragging:
+			SignalBus.gridToggle.emit(false)
 			global_position = initialPosition
 			dragging = false
 			Global.is_dragging = false
@@ -110,6 +107,7 @@ func _notification(what):
 				SignalBus.setTooltip.emit("null",0)
 				SignalBus.mouseTooltip.emit("null")
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		SignalBus.gridToggle.emit(false)
 		set_process(false)
 
 
@@ -124,7 +122,7 @@ func _on_grab_area_mouse_entered():
 		draggable = true
 		z_index = 1
 		if Plant != null:
-			if Global.state == 2:
+			if Global.state == 4:
 				SignalBus.mouseTooltip.emit("Remove Plant")
 			scale = Vector2(1.05,1.05)
 			Plant.revealRoots(true)
@@ -157,7 +155,7 @@ const PLANT = preload("res://Scenes/plant.tscn")
 func newPlant():
 	Plant = PLANT.instantiate()
 	add_child(Plant)
-	Plant.global_position.x = global_position.x
+	Plant.global_position.x = plant_marker.global_position.x
 	Plant.global_position.y = global_position.y + stats.plantOffset
 	Plant.setup()
 
@@ -191,7 +189,7 @@ func loadState(data:potData):
 	if data.containsPlant:
 		Plant = PLANT.instantiate()
 		add_child(Plant)
-		Plant.global_position.x = global_position.x
+		Plant.global_position.x = plant_marker.global_position.x
 		Plant.global_position.y = global_position.y + stats.plantOffset
 		Plant.loadPlant(data)
 

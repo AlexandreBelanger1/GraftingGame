@@ -82,6 +82,8 @@ libraries = {
 "": SubResource("AnimationLibrary_8lf5n")
 }
 
+[node name="PlantMarker" type="Marker2D" parent="."]
+
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]
 [connection signal="mouse_entered" from="GrabArea" to="." method="_on_grab_area_mouse_entered"]

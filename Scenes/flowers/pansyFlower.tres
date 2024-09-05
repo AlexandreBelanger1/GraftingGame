@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_uycwb")
-growthRate = 1
-productionRate = 1
+growthRate = 60.0
+productionRate = 4.0
 type = 1
 typeDominance = 2
 growthFrames = 3
+sellValue = 3
