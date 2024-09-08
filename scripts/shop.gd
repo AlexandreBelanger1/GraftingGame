@@ -1,6 +1,6 @@
 extends Control
 
-var shopPrices ={"medium_pot": 10,"small_pot": 5, "bonsai_pot": 10}
+var shopPrices ={"medium_pot": 10,"small_pot": 5, "bonsai_pot": 10, "mystery_seed_tier_1": 25}
 
 const SMALL_POT = preload("res://Scenes/Pots/SmallPot.tscn")
 func _on_small_pot_pressed():
@@ -37,3 +37,9 @@ func _on_bonsai_pot_pressed():
 		SignalBus.removeGold.emit(shopPrices["bonsai_pot"])
 		Global.itemCost = shopPrices["bonsai_pot"]
 
+
+
+func _on_mystery_seed_tier_1_button_pressed():
+	if Global.gold >= shopPrices["mystery_seed_tier_1"]:
+		SignalBus.removeGold.emit(shopPrices["mystery_seed_tier_1"])
+		SignalBus.generateMysterySeed.emit(1)

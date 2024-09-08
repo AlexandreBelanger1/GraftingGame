@@ -13,6 +13,7 @@ extends Control
 @onready var mouse_tool_tip = $MouseToolTip
 @onready var seed_bag_ui = $SeedBagUI
 @onready var pots_ui = $PotsUI
+@onready var sell_ui = $SellUI
 
 
 
@@ -54,6 +55,7 @@ func _on_pots_button_pressed():
 	seed_bag_ui.visible = false
 	shop_UI.visible = false
 	pots_ui.toggleVisible()
+	sell_ui.visible = false
 
 
 
@@ -70,6 +72,7 @@ func _on_seeds_button_pressed():
 	button_clicked.play()
 	shop_UI.visible = false
 	pots_ui.setVisible(false)
+	sell_ui.visible = false
 
 func _on_options_button_pressed():
 	button_clicked.play()
@@ -95,6 +98,7 @@ func _on_remove_plant_button_toggled(toggled_on):
 		pots_ui.setVisible(false)
 		seed_bag_ui.visible = false
 		shop_UI.visible = false
+		sell_ui.visible = false
 	else:
 		SignalBus.setState.emit(1)
 		Global.state = 1
@@ -102,7 +106,7 @@ func _on_remove_plant_button_toggled(toggled_on):
 
 func enableConfirmUI():
 	confirm_selection_ui.visible = true
-	SignalBus.setTooltip.emit("null",0)
+	SignalBus.setTooltip.emit("null",0,0,0,0,0,0)
 	SignalBus.mouseTooltip.emit("null")
 	
 
@@ -115,7 +119,20 @@ func _on_remove_plant_button_mouse_entered():
 
 func _on_shop_button_pressed():
 	shop_UI.visible = !shop_UI.visible
+	sell_ui.visible = false
 	pots_ui.setVisible(false)
 	seed_bag_ui.visible = false
 	button_clicked.play()
 	Global.state = 1
+
+
+func _on_sell_button_pressed():
+	shop_UI.visible = false
+	pots_ui.setVisible(false)
+	seed_bag_ui.visible = false
+	sell_ui.visible = !sell_ui.visible
+	button_clicked.play()
+	if sell_ui.visible:
+		Global.state = 5
+	else:
+		Global.state = 1

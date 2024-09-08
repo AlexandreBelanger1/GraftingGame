@@ -5,14 +5,7 @@ const PARTICLES = preload("res://Scenes/particles.tscn")
 
 signal stemComplete
 
-var statsDict  = {"pansyStem": "res://Scenes/Stems/pansyStem.tres",
-"cactusStem": "res://Scenes/Stems/cactusStem.tres",
-"sunflowerStem": "res://Scenes/Stems/sunflowerStem.tres",
-"bonsaiStem": "res://Scenes/Stems/bonsaiStem.tres",
-"chiveStem": "res://Scenes/Stems/chiveStem.tres",
-"tomatoStem": "res://Scenes/Stems/tomatoStem.tres",
-"poppyStem": "res://Scenes/Stems/poppyStem.tres",
-"bleedingheartStem": "res://Scenes/Stems/bleedingheartStem.tres"}
+
 var stats = stemStats.new()
 
 func _ready():
@@ -22,12 +15,12 @@ func setup(stemName: String):
 	if stemName == "null":
 		get_parent().queue_free()
 	else:
-		loadStats(statsDict[stemName])
+		loadStats(Global.stemStatsDict[stemName])
 		sprite_2d.play(stemName)
 		startGrowing()
 
 func loadStem(data:potData):
-	loadStats(statsDict[data.plantStem])
+	loadStats(Global.stemStatsDict[data.plantStem])
 	sprite_2d.play(data.plantStem)
 	if data.stemComplete:
 		sprite_2d.frame = stats.growthFrames

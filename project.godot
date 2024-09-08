@@ -62,6 +62,7 @@ options={
 2d_physics/layer_1="Map"
 2d_physics/layer_2="Plant"
 2d_physics/layer_4="seed"
+2d_physics/layer_5="Plant2"
 
 [rendering]
 

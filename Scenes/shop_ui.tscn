@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdlfi5e3mkjnx"]
+[gd_scene load_steps=12 format=3 uid="uid://cdlfi5e3mkjnx"]
 
 [ext_resource type="Texture2D" uid="uid://bvhkiaxt4v8wx" path="res://Assets/Sprites/UISprites/ShopUIBackground.png" id="1_rhtue"]
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_yltsc"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cmthpq7f0erf2" path="res://Assets/Sprites/UISprites/MediumPotFrameHighlight.png" id="6_b8wmh"]
 [ext_resource type="Texture2D" uid="uid://dhhnekih3nxyk" path="res://Assets/Sprites/UISprites/BonsaiPotFrame.png" id="7_0rr13"]
 [ext_resource type="Texture2D" uid="uid://b38h3ab1f572u" path="res://Assets/Sprites/UISprites/BonsaiPotFrameHighlight.png" id="8_0ensl"]
+[ext_resource type="Texture2D" uid="uid://dx8vy3bauf7i3" path="res://Assets/Sprites/UISprites/MysterySeedFrame.png" id="9_5tn3o"]
+[ext_resource type="Texture2D" uid="uid://8s20cfceskxd" path="res://Assets/Sprites/UISprites/MysterySeedFrameHighlight.png" id="10_nqvsb"]
 
 [node name="ShopUI" type="Control"]
 layout_mode = 3
@@ -88,6 +90,12 @@ texture_normal = ExtResource("7_0rr13")
 texture_pressed = ExtResource("8_0ensl")
 texture_hover = ExtResource("8_0ensl")
 
+[node name="mysterySeedTier1Button" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_5tn3o")
+texture_pressed = ExtResource("10_nqvsb")
+texture_hover = ExtResource("10_nqvsb")
+
 [node name="ColorRect" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
@@ -129,3 +137,4 @@ texture = ExtResource("2_seh2q")
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/smallPot" to="." method="_on_small_pot_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mediumPot" to="." method="_on_medium_pot_pressed"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/bonsaiPot" to="." method="_on_bonsai_pot_pressed"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mysterySeedTier1Button" to="." method="_on_mystery_seed_tier_1_button_pressed"]

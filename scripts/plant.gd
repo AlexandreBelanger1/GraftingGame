@@ -1,14 +1,7 @@
-class_name plant extends Node2D
+class_name plant extends StaticBody2D
 @onready var roots = $Roots
 @onready var stem = $stem
 
-var flowerStatsDict  = {"pansyFlower": "res://Scenes/flowers/pansyFlower.tres",
-"cactusFlower": "res://Scenes/flowers/cactusFlower.tres",
-"sunflowerFlower":"res://Scenes/flowers/sunflowerFlower.tres",
-"chiveFlower": "res://Scenes/flowers/chiveFlower.tres",
-"tomatoFlower": "res://Scenes/flowers/tomatoFlower.tres",
-"poppyFlower": "res://Scenes/flowers/poppyFlower.tres",
-"bleedingheartFlower": "res://Scenes/flowers/bleedingheartFlower.tres"}
 
 const FLOWER = preload("res://Scenes/flowers/flower.tscn")
 var flowers = []
@@ -85,7 +78,6 @@ func checkRootSize():
 		Global.selectedSeed.queue_free()
 
 func _on_stem_stem_complete():
-	stemComplete = true
 	for i in stem.stats.flowerCount:
 		var flower = FLOWER.instantiate()
 		add_child(flower)
@@ -93,6 +85,9 @@ func _on_stem_stem_complete():
 		flower.global_position.x = global_position.x + stem.stats.flowerPositions[i].x
 		flower.global_position.y = global_position.y + stem.stats.flowerPositions[i].y
 		flower.setup(flowerType)
+	if stem.stats.flowerCount == 0:
+		flowerComplete = true
+	stemComplete = true
 
 func save(index:int):
 	if index == 1:
@@ -112,7 +107,7 @@ func getTooltip(index: int):
 	elif index == 2:
 		return float(stem.getGrowthFrame()) / float(stem.stats.growthFrames)
 	elif index == 3:
-		if flowerComplete:
+		if stemComplete and stem.stats.flowerCount != 0:
 			return flowers[0].getGrowthPercent()
 		else:
 			return 0
@@ -124,12 +119,22 @@ func getTooltip(index: int):
 		return productionRate
 	elif index == 7:
 		return sellValue
+	elif index == 8:
+		return flowerComplete
 
 func configureStats():
-	fStats = load(flowerStatsDict[flowerType])
+	fStats = load(Global.flowerStatsDict[flowerType])
 	productionRate = stem.getStat(2) + (stem.getStat(5) * fStats.productionRate)
 	sellValue = stem.getStat(6) + (stem.getStat(5) * fStats.sellValue)
 
 func shake():
 	for flower in flowers:
 		flower.shakeFlower()
+
+func getComponent(value:int):
+	if value == 1:
+		return rootType
+	elif value == 2:
+		return stemType
+	elif value == 3:
+		return flowerType

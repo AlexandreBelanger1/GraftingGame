@@ -19,6 +19,7 @@ var stats = potStats.new()
 var potType
 #var state = 1
 var removePlant = false
+var sellPlant = false
 
 func _ready():
 	SignalBus.saveGame.connect(save)
@@ -89,6 +90,11 @@ func _process(_delta):
 			if Input.is_action_just_pressed("LMB"):
 				if Plant == null:
 					newPlant()
+	if Global.state == 5:
+		if draggable and Input.is_action_just_pressed("LMB"):
+			if Plant != null:
+				sellPlant = true
+				SignalBus.confirmUI.emit()
 
 
 
@@ -197,9 +203,16 @@ func loadState(data:potData):
 #	state = value
 
 func remove(value:bool):
-	if removePlant:
+	if sellPlant:
+		if value == true:
+			if Plant.getTooltip(8):
+				SignalBus.addGold.emit(Plant.getTooltip(7))
+				Plant.queue_free()
+				SignalBus.setTooltip.emit("null",0,0,0,0,0,0)
+		sellPlant = false
+	elif removePlant:
 		if value == true:
 			Plant.queue_free()
-			SignalBus.setTooltip.emit("null",0)
+			SignalBus.setTooltip.emit("null",0,0,0,0,0,0)
 		removePlant = false
 		

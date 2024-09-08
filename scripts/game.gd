@@ -15,6 +15,7 @@ func _ready():
 	SignalBus.saveGame.connect(save_game)
 	SignalBus.newSaveGame.connect(new_save_game)
 	SignalBus.gridToggle.connect(toggleGrid)
+	SignalBus.windowSetup.connect(windowSetup)
 	if not FileAccess.file_exists("user://savegame.tres"):
 		save_game()
 	else:

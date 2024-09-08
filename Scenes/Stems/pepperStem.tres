@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="stemStats" load_steps=2 format=3 uid="uid://dqui04onfk750"]
+
+[ext_resource type="Script" path="res://Scenes/Stems/stemStats.gd" id="1_q02pe"]
+
+[resource]
+script = ExtResource("1_q02pe")
+growthRate = 2
+productionRate = 2
+growthFrames = 31
+type = 1
+typeDominance = 1
+sellValue = 10
+flowerCount = 5
+flowerPositions = [Vector2(-4, -6), Vector2(-10, -19), Vector2(4, -28), Vector2(11, -18), Vector2(8, -9), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]

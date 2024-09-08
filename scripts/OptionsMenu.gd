@@ -1,5 +1,6 @@
 extends Control
 
+@onready var borderless_button = $BorderlessButton
 
 
 func _on_save_button_pressed():
@@ -26,7 +27,6 @@ func _on_switch_window_button_pressed():
 	if DisplayServer.get_screen_count() > 1:
 		if DisplayServer.get_primary_screen() < DisplayServer.get_screen_count() - 1:
 			swapWindow(DisplayServer.get_primary_screen()+1)
-	print_debug(DisplayServer.get_screen_count())
 	SignalBus.windowSetup.emit()
 
 func swapWindow(value:int):
@@ -36,3 +36,13 @@ func swapWindow(value:int):
 func _on_h_slider_value_changed(value):
 	Global.gameSpeed = value
 	SignalBus.changeGameSpeed.emit()
+
+
+func _on_borderless_button_pressed():
+	if borderless_button.button_pressed:
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+	else:
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+
+func _on_fit_window_button_pressed():
+	SignalBus.windowSetup.emit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cr4iodft2gqew"]
+[gd_scene load_steps=86 format=3 uid="uid://cr4iodft2gqew"]
 
 [ext_resource type="Script" path="res://scripts/flower.gd" id="1_crkqh"]
 [ext_resource type="Texture2D" uid="uid://btx5kx8n5enui" path="res://Assets/Sprites/PlantSprites/bleedingheartFlower.png" id="2_gh8t6"]
@@ -7,8 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dn7kkavgf04ee" path="res://Assets/Sprites/PlantSprites/chiveFlower.png" id="3_t4xj8"]
 [ext_resource type="Texture2D" uid="uid://dwxsxt44ldv5f" path="res://Assets/Sprites/PlantSprites/SunflowerFlower.png" id="4_rqc15"]
 [ext_resource type="Texture2D" uid="uid://cigas1skx6ls4" path="res://Assets/Sprites/PlantSprites/poppyFlower.png" id="5_euon5"]
+[ext_resource type="Texture2D" uid="uid://bp0pa4ol5t1ok" path="res://Assets/Sprites/PlantSprites/pepperFlower.png" id="6_eox36"]
 [ext_resource type="Texture2D" uid="uid://tslalao82ai6" path="res://Assets/Sprites/GrowthParticles.png" id="6_kkhir"]
 [ext_resource type="Texture2D" uid="uid://cyx8132a3xwul" path="res://Assets/Sprites/PlantSprites/Tomato.png" id="6_ktttx"]
+[ext_resource type="Texture2D" uid="uid://dxtcflb0ew6wm" path="res://Assets/Sprites/PlantSprites/whiteTulipFlower.png" id="10_yr77y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8mscj"]
 atlas = ExtResource("2_gh8t6")
@@ -89,6 +91,74 @@ region = Rect2(32, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_mo0t4"]
 atlas = ExtResource("3_06v63")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkkrs"]
+atlas = ExtResource("6_eox36")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vwjt"]
+atlas = ExtResource("6_eox36")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfawm"]
+atlas = ExtResource("6_eox36")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxxjy"]
+atlas = ExtResource("6_eox36")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd8wm"]
+atlas = ExtResource("6_eox36")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krshv"]
+atlas = ExtResource("6_eox36")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb2u5"]
+atlas = ExtResource("6_eox36")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgml1"]
+atlas = ExtResource("6_eox36")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijb2i"]
+atlas = ExtResource("6_eox36")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sepgn"]
+atlas = ExtResource("6_eox36")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stw11"]
+atlas = ExtResource("6_eox36")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vt3s"]
+atlas = ExtResource("6_eox36")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sx5ae"]
+atlas = ExtResource("6_eox36")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w032p"]
+atlas = ExtResource("6_eox36")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg3mu"]
+atlas = ExtResource("6_eox36")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv5pf"]
+atlas = ExtResource("6_eox36")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltrds"]
+atlas = ExtResource("6_eox36")
+region = Rect2(0, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_frwa5"]
 atlas = ExtResource("5_euon5")
@@ -186,6 +256,34 @@ region = Rect2(16, 0, 16, 16)
 atlas = ExtResource("6_ktttx")
 region = Rect2(0, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_21sba"]
+atlas = ExtResource("10_yr77y")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyb6w"]
+atlas = ExtResource("10_yr77y")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cidut"]
+atlas = ExtResource("10_yr77y")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_773cc"]
+atlas = ExtResource("10_yr77y")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b118"]
+atlas = ExtResource("10_yr77y")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17p61"]
+atlas = ExtResource("10_yr77y")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhali"]
+atlas = ExtResource("10_yr77y")
+region = Rect2(0, 32, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_dsx0u"]
 animations = [{
 "frames": [{
@@ -266,6 +364,62 @@ animations = [{
 }],
 "loop": false,
 "name": &"pansyFlower",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkkrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vwjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfawm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxxjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd8wm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krshv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb2u5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgml1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijb2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sepgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stw11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vt3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sx5ae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w032p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg3mu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv5pf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltrds")
+}],
+"loop": false,
+"name": &"pepperFlower",
 "speed": 0.0
 }, {
 "frames": [{
@@ -354,6 +508,32 @@ animations = [{
 "loop": false,
 "name": &"tomatoFlower",
 "speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21sba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyb6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cidut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_773cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2b118")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17p61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhali")
+}],
+"loop": false,
+"name": &"tulipFlower",
+"speed": 0.0
 }]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b4dy8"]
@@ -379,6 +559,9 @@ initial_velocity_max = 15.0
 gravity = Vector3(0, 20, 0)
 scale_curve = SubResource("CurveTexture_hp5kn")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_m7t7t"]
+radius = 62.0
+
 [node name="Flower" type="Node2D"]
 script = ExtResource("1_crkqh")
 
@@ -387,9 +570,9 @@ autostart = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dsx0u")
-animation = &"bleedingheartFlower"
+animation = &"tulipFlower"
 
-[node name="CurrencyGenTimer" type="Timer" parent="."]
+[node name="SeedGenTimer" type="Timer" parent="."]
 
 [node name="SeedParticles" type="GPUParticles2D" parent="."]
 modulate = Color(0.916507, 0.916266, 0, 1)
@@ -401,5 +584,14 @@ process_material = SubResource("ParticleProcessMaterial_4os68")
 texture = ExtResource("6_kkhir")
 randomness = 0.7
 
+[node name="PlantDetect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlantDetect"]
+shape = SubResource("CircleShape2D_m7t7t")
+
 [connection signal="timeout" from="GrowthTimer" to="." method="_on_growth_timer_timeout"]
-[connection signal="timeout" from="CurrencyGenTimer" to="." method="_on_currency_gen_timer_timeout"]
+[connection signal="timeout" from="SeedGenTimer" to="." method="_on_seed_gen_timer_timeout"]
+[connection signal="body_entered" from="PlantDetect" to="." method="_on_plant_detect_body_entered"]
+[connection signal="body_exited" from="PlantDetect" to="." method="_on_plant_detect_body_exited"]

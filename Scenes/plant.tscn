@@ -1,15 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1tym43230g2v"]
+[gd_scene load_steps=5 format=3 uid="uid://d1tym43230g2v"]
 
 [ext_resource type="Script" path="res://scripts/plant.gd" id="1_y75h5"]
 [ext_resource type="PackedScene" uid="uid://bldewhsovcwm2" path="res://Scenes/Stems/stem.tscn" id="2_q32vt"]
 [ext_resource type="PackedScene" uid="uid://b2xtu5tmkv7iu" path="res://Scenes/Roots/roots.tscn" id="3_a5yw7"]
 
-[node name="plant" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ewsxi"]
+radius = 4.0
+
+[node name="plant" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_y75h5")
 
 [node name="Roots" parent="." instance=ExtResource("3_a5yw7")]
 position = Vector2(0, 16)
 
 [node name="stem" parent="." instance=ExtResource("2_q32vt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ewsxi")
 
 [connection signal="stemComplete" from="stem" to="." method="_on_stem_stem_complete"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://33hfn4s0xca2"]
+[gd_scene load_steps=37 format=3 uid="uid://33hfn4s0xca2"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/UISprites/LeftArrow.png" id="1_cmnag"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
@@ -29,6 +29,9 @@
 [ext_resource type="AudioStream" uid="uid://4y1gwmwjpvjj" path="res://Assets/Audio/spadeEquip.mp3" id="20_23ld8"]
 [ext_resource type="PackedScene" uid="uid://cgg1cbrhdkj8m" path="res://Scenes/mouse_tool_tip.tscn" id="25_qw6m8"]
 [ext_resource type="PackedScene" uid="uid://cdlfi5e3mkjnx" path="res://Scenes/shop_ui.tscn" id="27_sxlbi"]
+[ext_resource type="Texture2D" uid="uid://cmws0rldc37oj" path="res://Assets/Sprites/UISprites/SellIcon.png" id="30_dfa4m"]
+[ext_resource type="Texture2D" uid="uid://sa2igpdaxx1n" path="res://Assets/Sprites/UISprites/SellIconHighlight.png" id="31_jmjl0"]
+[ext_resource type="PackedScene" uid="uid://ba8ypojgo8as2" path="res://Scenes/sell_ui.tscn" id="32_mo70n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dmpm"]
 size = Vector2(107.5, 402.5)
@@ -52,10 +55,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PotsButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 306.0
-offset_top = 352.0
-offset_right = 354.0
-offset_bottom = 400.0
+offset_left = 311.0
+offset_top = 474.0
+offset_right = 359.0
+offset_bottom = 522.0
 texture_normal = ExtResource("4_dfctj")
 texture_pressed = ExtResource("5_ghux7")
 texture_hover = ExtResource("5_ghux7")
@@ -72,20 +75,20 @@ texture_hover = ExtResource("8_f0syd")
 
 [node name="ShopButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 369.0
-offset_top = 348.0
-offset_right = 417.0
-offset_bottom = 396.0
+offset_left = 370.0
+offset_top = 352.0
+offset_right = 418.0
+offset_bottom = 400.0
 texture_normal = ExtResource("6_obkwq")
 texture_pressed = ExtResource("6_obkwq")
 texture_hover = ExtResource("7_1r3w8")
 
 [node name="PotsLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 308.0
-offset_top = 310.0
-offset_right = 356.0
-offset_bottom = 348.0
+offset_left = 305.0
+offset_top = 305.0
+offset_right = 353.0
+offset_bottom = 343.0
 theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -94,7 +97,7 @@ theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("5_krgbh")
 theme_override_font_sizes/font_size = 48
-text = "POTS"
+text = "SELL"
 
 [node name="ShopLabel" type="Label" parent="."]
 layout_mode = 0
@@ -164,6 +167,16 @@ toggle_mode = true
 texture_normal = ExtResource("8_bek6u")
 texture_pressed = ExtResource("9_r8qe3")
 texture_hover = ExtResource("9_r8qe3")
+
+[node name="SellButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 352.0
+offset_right = 353.0
+offset_bottom = 400.0
+texture_normal = ExtResource("30_dfa4m")
+texture_pressed = ExtResource("31_jmjl0")
+texture_hover = ExtResource("31_jmjl0")
 
 [node name="SeedBagUI" parent="." instance=ExtResource("11_7xi0e")]
 visible = false
@@ -284,6 +297,19 @@ libraries = {
 "": SubResource("AnimationLibrary_o4cah")
 }
 
+[node name="SellUI" parent="." instance=ExtResource("32_mo70n")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 926.0
+offset_top = 4.0
+offset_right = 926.0
+offset_bottom = 4.0
+
 [connection signal="mouse_entered" from="PotsButton" to="." method="_on_shop_button_mouse_entered"]
 [connection signal="pressed" from="PotsButton" to="." method="_on_pots_button_pressed"]
 [connection signal="mouse_entered" from="SeedsButton" to="." method="_on_seeds_button_mouse_entered"]
@@ -294,6 +320,7 @@ libraries = {
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="mouse_entered" from="RemovePlantButton" to="." method="_on_remove_plant_button_mouse_entered"]
 [connection signal="toggled" from="RemovePlantButton" to="." method="_on_remove_plant_button_toggled"]
+[connection signal="pressed" from="SellButton" to="." method="_on_sell_button_pressed"]
 [connection signal="mouse_entered" from="LeftArea" to="." method="_on_left_area_mouse_entered"]
 [connection signal="mouse_exited" from="LeftArea" to="." method="_on_left_area_mouse_exited"]
 [connection signal="mouse_entered" from="RightArea" to="." method="_on_right_area_mouse_entered"]
