@@ -24,6 +24,21 @@ initial_velocity_max = 20.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_l3j6i")
 
+[sub_resource type="Animation" id="Animation_7qivn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_otl0m"]
 resource_name = "emitParticles"
 tracks/0/type = "value"
@@ -53,21 +68,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_7qivn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles2D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bs74g"]
 _data = {
 "RESET": SubResource("Animation_7qivn"),
@@ -80,6 +80,7 @@ script = ExtResource("1_dqv31")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_j34up")
 emitting = false
+amount = 2
 process_material = SubResource("ParticleProcessMaterial_5e5wg")
 texture = ExtResource("2_up4ci")
 one_shot = true

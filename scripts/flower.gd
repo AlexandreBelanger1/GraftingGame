@@ -50,7 +50,7 @@ func loadStats(path: String):
 
 func _on_seed_gen_timer_timeout():
 	var rand = RNG.randf_range(0,10)
-	if rand > 9.8 and seed == null:
+	if rand > 9 and seed == null:
 		generateProximitySeed()
 		seed_particles.emitting = true
 
@@ -173,4 +173,5 @@ func generateProximitySeed():
 			seedFlower = proximityPlants[rand].getComponent(3)
 		seed.generateSeed(seedRoot,seedStem,seedFlower)
 		seed.visible = false
+		seed_gen_timer.stop()
 

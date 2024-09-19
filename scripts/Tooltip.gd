@@ -27,6 +27,7 @@ func _process(_delta):
 		global_position.x = get_global_mouse_position().x +64
 
 func setContents(name:String, stemGrowth: float, flowerGrowth: float, stat1: float, stat2: float, stat3: float, stat4: float):
+	set_process(true)
 	if name == "null":
 		hideTooltip()
 	else:
@@ -41,3 +42,9 @@ func setContents(name:String, stemGrowth: float, flowerGrowth: float, stat1: flo
 
 func hideTooltip():
 	sprite_2d.visible = false
+
+func _notification(what):
+	if what == NOTIFICATION_WM_MOUSE_EXIT:
+		set_process(false)
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		set_process(false)

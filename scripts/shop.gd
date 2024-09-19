@@ -43,3 +43,32 @@ func _on_mystery_seed_tier_1_button_pressed():
 	if Global.gold >= shopPrices["mystery_seed_tier_1"]:
 		SignalBus.removeGold.emit(shopPrices["mystery_seed_tier_1"])
 		SignalBus.generateMysterySeed.emit(1)
+
+
+func _on_small_pot_mouse_entered():
+	SignalBus.shopDescription.emit("Small Pot", "Grows plants with small roots", 5)
+
+
+func _on_medium_pot_mouse_entered():
+	SignalBus.shopDescription.emit("Medium Pot", "Grows plants with medium/small roots", 10)
+
+
+func _on_bonsai_pot_mouse_entered():
+	SignalBus.shopDescription.emit("Bonsai Pot", "Grows plants with bonsai/small roots", 10)
+
+
+func _on_mystery_seed_tier_1_button_mouse_entered():
+	SignalBus.shopDescription.emit("Mystery Seed Lv.1", "Get a random tier 1 seed", 25)
+
+
+func _on_small_pot_mouse_exited():
+	SignalBus.hideShopDesciption.emit()
+
+func _on_medium_pot_mouse_exited():
+	SignalBus.hideShopDesciption.emit()
+
+func _on_bonsai_pot_mouse_exited():
+	SignalBus.hideShopDesciption.emit()
+
+func _on_mystery_seed_tier_1_button_mouse_exited():
+	SignalBus.hideShopDesciption.emit()

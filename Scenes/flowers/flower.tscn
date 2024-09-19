@@ -573,6 +573,7 @@ sprite_frames = SubResource("SpriteFrames_dsx0u")
 animation = &"tulipFlower"
 
 [node name="SeedGenTimer" type="Timer" parent="."]
+wait_time = 30.0
 
 [node name="SeedParticles" type="GPUParticles2D" parent="."]
 modulate = Color(0.916507, 0.916266, 0, 1)
