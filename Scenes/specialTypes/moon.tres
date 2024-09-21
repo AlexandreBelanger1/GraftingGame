@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="specialType" load_steps=2 format=3 uid="uid://dngcpqmulavsq"]
+
+[ext_resource type="Script" path="res://Scenes/specialTypes/specialType.gd" id="1_3bta5"]
+
+[resource]
+script = ExtResource("1_3bta5")
+colourPalette = [Color(0.960632, 0.769905, 0.926016, 1), Color(0.985509, 0.734103, 0.88543, 1), Color(0.982009, 0.515795, 0.757746, 1), Color(0.970445, 0.326975, 0.741528, 1)]
+changeTime = 2.0

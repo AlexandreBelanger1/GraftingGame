@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="specialType" load_steps=2 format=3 uid="uid://uwl853ehqq0l"]
+
+[ext_resource type="Script" path="res://Scenes/specialTypes/specialType.gd" id="1_i56qu"]
+
+[resource]
+script = ExtResource("1_i56qu")
+colourPalette = [Color(0.915, 0.717011, 0, 1), Color(0.784508, 0.776562, 7.70092e-07, 1), Color(0.574323, 0.842081, 0, 1), Color(5.77569e-06, 0.896766, 0.320499, 1), Color(0, 0.87822, 0.617977, 1), Color(0, 0.864978, 0.746756, 1), Color(0, 0.85077, 0.856202, 1), Color(0, 0.83687, 0.945873, 1), Color(0.359342, 0.802733, 1, 1), Color(0.568513, 0.759695, 1, 1), Color(0.710983, 0.712712, 1, 1), Color(0.773654, 0.686166, 1, 1), Color(0.850855, 0.647276, 1, 1), Color(1, 0.547165, 0.994664, 1), Color(1, 0.598737, 0.795938, 1), Color(1, 0.627742, 0.631104, 1), Color(1, 0.64421, 0.497872, 1), Color(1, 0.660313, 0.284424, 1), Color(0.939368, 0.703752, 0, 1)]
+changeTime = 0.1

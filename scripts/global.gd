@@ -64,3 +64,5 @@ var seedColourDict = {"pansyFlower": Color(0.541, 0.403, 0.997),
 }
 
 var tier1Seeds = {0: "cactus", 1: "sunflower", 2: "chive", 3: "poppy", 4: "tomato", 5: "bleedingheart", 6: "pepper", 7: "tulip"}
+
+var specialTypeDict = {"moon": "res://Scenes/specialTypes/moon.tres", "emerald": "res://Scenes/specialTypes/emerald.tres", "rainbow": "res://Scenes/specialTypes/rainbow.tres"}

@@ -108,9 +108,13 @@ func shakeFlower():
 		seed.visible = true
 		remove_child(seed)
 		get_parent().get_parent().get_parent().add_child(seed)
-		seed.global_position.y = get_parent().get_parent().global_position.y + 10
-		seed.global_position.x = global_position.x
+		seed.global_position = global_position
+		var targetFallLocation = get_parent().get_parent().global_position.y + 10
+		seed.fall(targetFallLocation)
+		#seed.global_position.y = get_parent().get_parent().global_position.y + 10
+		#seed.global_position.x = global_position.x
 		seed = null
+		seed_gen_timer.start()
 
 func setGrowthRate():
 	growth_timer.wait_time = Global.gameSpeed * (1/stats.growthRate)

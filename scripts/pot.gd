@@ -20,6 +20,7 @@ var potType
 #var state = 1
 var removePlant = false
 var sellPlant = false
+var releaseFlag = false
 
 func _ready():
 	SignalBus.saveGame.connect(save)
@@ -30,20 +31,25 @@ func _input(event):
 	if !(Global.placingItem and dragging):
 		if processing:
 			if event.is_action_released("LMB"):
-				SignalBus.gridToggle.emit(false)
-				if Plant != null:
-					Plant.shake()
-				if overlap == 1:
-					place_sound.play()
-					SignalBus.mouseTooltip.emit("Pick Up")
-				if overlap != 1 and dragging:
-					global_position = initialPosition
-				dragging = false
-				Global.is_dragging = false
-				_on_grab_area_mouse_exited()
-				player.play("RefreshCollision")
+				releaseFlag = true
+				#potRelease.call_deferred()
+				#SignalBus.gridToggle.emit(false)
+				#if Plant != null:
+					#Plant.shake()
+				#if overlap == 1:
+					#place_sound.play()
+					#SignalBus.mouseTooltip.emit("Pick Up")
+				#if overlap != 1 and dragging:
+					#global_position = initialPosition
+				#dragging = false
+				#Global.is_dragging = false
+				#_on_grab_area_mouse_exited()
+				#player.play("RefreshCollision")
 
-func _process(_delta):
+func _physics_process(_delta):
+	if releaseFlag:
+		potRelease()
+		releaseFlag = false
 	if Global.state == 1:
 		#Mode 1: placing from shop
 		if Global.placingItem and dragging:
@@ -114,11 +120,11 @@ func _notification(what):
 				SignalBus.mouseTooltip.emit("null")
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
 		SignalBus.gridToggle.emit(false)
-		set_process(false)
+		set_physics_process(false)
 
 
 func _on_grab_area_mouse_entered():
-	set_process(true)
+	set_physics_process(true)
 	processing = true
 	if not Global.is_dragging and !removePlant:
 		if Global.state == 1:
@@ -138,7 +144,7 @@ func _on_grab_area_mouse_entered():
 
 func _on_grab_area_mouse_exited():
 	if !dragging:
-		set_process(false)
+		set_physics_process(false)
 		processing = false
 	SignalBus.mouseTooltip.emit("null")
 	if not Global.is_dragging:
@@ -149,11 +155,11 @@ func _on_grab_area_mouse_exited():
 			Plant.revealRoots(false)
 			SignalBus.setTooltip.emit("null",0,0,0,0,0,0)
 
-func _on_grab_area_body_entered(body):
+func _on_grab_area_body_entered(_body):
 	overlap += 1
 
 
-func _on_grab_area_body_exited(body):
+func _on_grab_area_body_exited(_body):
 	overlap -= 1
 
 
@@ -216,3 +222,16 @@ func remove(value:bool):
 			SignalBus.setTooltip.emit("null",0,0,0,0,0,0)
 		removePlant = false
 		
+func potRelease():
+	SignalBus.gridToggle.emit(false)
+	if Plant != null:
+		Plant.shake()
+	if overlap == 1:
+		place_sound.play()
+		SignalBus.mouseTooltip.emit("Pick Up")
+	if overlap != 1 and dragging:
+		global_position = initialPosition
+	dragging = false
+	Global.is_dragging = false
+	_on_grab_area_mouse_exited()
+	player.play("RefreshCollision")

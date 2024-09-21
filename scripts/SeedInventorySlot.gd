@@ -7,12 +7,13 @@ extends Control
 var rootType
 var stemType
 var flowerType
+var plantSpecialType
 
-func setSeed(roots:String,stem:String,flower:String):
+func setSeed(roots:String,stem:String,flower:String, pSpecialType:String):
 	rootType = roots
 	stemType = stem
 	flowerType = flower
-	
+	plantSpecialType = pSpecialType
 	seed_shape.texture  = load("res://Assets/Sprites/SeedSprites/" + Global.seedImageDict[stemType] + "Shape.png")
 	seed_colour_1.texture  = load("res://Assets/Sprites/SeedSprites/" + Global.seedImageDict[stemType] + "Colour1.png")
 	seed_colour_2.texture  = load("res://Assets/Sprites/SeedSprites/" + Global.seedImageDict[stemType] + "Colour2.png")
@@ -28,6 +29,8 @@ func getSeed(value:String):
 		return stemType
 	elif value == "flower":
 		return flowerType
+	elif value == "specialType":
+		return plantSpecialType
 
 
 func _on_pressed():

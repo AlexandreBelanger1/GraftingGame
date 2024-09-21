@@ -136,3 +136,16 @@ func _on_sell_button_pressed():
 		Global.state = 5
 	else:
 		Global.state = 1
+
+
+func _on_sell_button_mouse_entered():
+	button_hover.play()
+
+
+func _on_harvestbutton_pressed():
+	shop_UI.visible = false
+	sell_ui.visible = false
+	pots_ui.setVisible(false)
+	seed_bag_ui.visible = false
+	button_clicked.play()
+	Global.state = 6

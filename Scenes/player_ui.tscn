@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://33hfn4s0xca2"]
+[gd_scene load_steps=35 format=3 uid="uid://33hfn4s0xca2"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/UISprites/LeftArrow.png" id="1_cmnag"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
@@ -19,17 +19,15 @@
 [ext_resource type="Texture2D" uid="uid://bxspppyxcoyg2" path="res://Assets/Sprites/UISprites/GardenSpadeToggled.png" id="9_r8qe3"]
 [ext_resource type="PackedScene" uid="uid://dxltbvsrf4kup" path="res://Scenes/seed_bag_ui.tscn" id="11_7xi0e"]
 [ext_resource type="AudioStream" uid="uid://dpc2gweqfe1um" path="res://Assets/Audio/ButtonHover.wav" id="11_emu7a"]
-[ext_resource type="Texture2D" uid="uid://d02us4volwjqq" path="res://Assets/Sprites/Flower Symbol.png" id="12_i4cvl"]
-[ext_resource type="Texture2D" uid="uid://dk7t00j1bybjd" path="res://Assets/Sprites/UISprites/Vegetable Symbol.png" id="13_ea28y"]
 [ext_resource type="PackedScene" uid="uid://b6lvcvorg4s4" path="res://Scenes/confirm_selection_ui.tscn" id="13_v7vt8"]
-[ext_resource type="Texture2D" uid="uid://boh0h368vo5ha" path="res://Assets/Sprites/UISprites/Tree Symbol.png" id="14_tilba"]
-[ext_resource type="Texture2D" uid="uid://c2hvmferoahf8" path="res://Assets/Sprites/UISprites/Succulent Symbol.png" id="15_juwgp"]
 [ext_resource type="Texture2D" uid="uid://52ux1jdj28g" path="res://Assets/Sprites/UISprites/GoldSymbol.png" id="16_pw1t5"]
 [ext_resource type="PackedScene" uid="uid://y6isy4kjqnqv" path="res://Scenes/tooltip.tscn" id="19_yw2fp"]
 [ext_resource type="AudioStream" uid="uid://4y1gwmwjpvjj" path="res://Assets/Audio/spadeEquip.mp3" id="20_23ld8"]
 [ext_resource type="PackedScene" uid="uid://cgg1cbrhdkj8m" path="res://Scenes/mouse_tool_tip.tscn" id="25_qw6m8"]
 [ext_resource type="PackedScene" uid="uid://cdlfi5e3mkjnx" path="res://Scenes/shop_ui.tscn" id="27_sxlbi"]
+[ext_resource type="Texture2D" uid="uid://8bjk4thy4xnu" path="res://Assets/Sprites/BasketIcons.png" id="29_j48w5"]
 [ext_resource type="Texture2D" uid="uid://cmws0rldc37oj" path="res://Assets/Sprites/UISprites/SellIcon.png" id="30_dfa4m"]
+[ext_resource type="Texture2D" uid="uid://6lcspc7o7r4o" path="res://Assets/Sprites/BasketIconHover.png" id="30_hreoa"]
 [ext_resource type="Texture2D" uid="uid://sa2igpdaxx1n" path="res://Assets/Sprites/UISprites/SellIconHighlight.png" id="31_jmjl0"]
 [ext_resource type="PackedScene" uid="uid://ba8ypojgo8as2" path="res://Scenes/sell_ui.tscn" id="32_mo70n"]
 
@@ -83,12 +81,22 @@ texture_normal = ExtResource("6_obkwq")
 texture_pressed = ExtResource("6_obkwq")
 texture_hover = ExtResource("7_1r3w8")
 
-[node name="PotsLabel" type="Label" parent="."]
+[node name="Harvestbutton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 305.0
-offset_top = 305.0
-offset_right = 353.0
-offset_bottom = 343.0
+offset_left = 576.0
+offset_top = 344.0
+offset_right = 624.0
+offset_bottom = 398.0
+texture_normal = ExtResource("29_j48w5")
+texture_pressed = ExtResource("30_hreoa")
+texture_hover = ExtResource("30_hreoa")
+
+[node name="SellLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 304.0
+offset_right = 704.0
+offset_bottom = 342.0
 theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -98,6 +106,22 @@ theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("5_krgbh")
 theme_override_font_sizes/font_size = 48
 text = "SELL"
+
+[node name="SellLabel2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 304.0
+offset_right = 644.0
+offset_bottom = 342.0
+theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_krgbh")
+theme_override_font_sizes/font_size = 48
+text = "HARVEST"
 
 [node name="ShopLabel" type="Label" parent="."]
 layout_mode = 0
@@ -159,10 +183,10 @@ texture_focused = ExtResource("7_5yl0y")
 
 [node name="RemovePlantButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 604.0
-offset_top = 345.0
-offset_right = 652.0
-offset_bottom = 393.0
+offset_left = 1576.0
+offset_top = 352.0
+offset_right = 1624.0
+offset_bottom = 400.0
 toggle_mode = true
 texture_normal = ExtResource("8_bek6u")
 texture_pressed = ExtResource("9_r8qe3")
@@ -170,10 +194,10 @@ texture_hover = ExtResource("9_r8qe3")
 
 [node name="SellButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 305.0
-offset_top = 352.0
-offset_right = 353.0
-offset_bottom = 400.0
+offset_left = 656.0
+offset_top = 351.0
+offset_right = 704.0
+offset_bottom = 399.0
 texture_normal = ExtResource("30_dfa4m")
 texture_pressed = ExtResource("31_jmjl0")
 texture_hover = ExtResource("31_jmjl0")
@@ -224,26 +248,6 @@ pitch_scale = 2.01
 [node name="ButtonClicked" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_emu7a")
 pitch_scale = 0.71
-
-[node name="FlowerSymbol" type="Sprite2D" parent="."]
-position = Vector2(592, 374)
-scale = Vector2(2, 2)
-texture = ExtResource("12_i4cvl")
-
-[node name="VegetableSymbol" type="Sprite2D" parent="."]
-position = Vector2(681, 374)
-scale = Vector2(2, 2)
-texture = ExtResource("13_ea28y")
-
-[node name="TreeSymbol" type="Sprite2D" parent="."]
-position = Vector2(792, 375)
-scale = Vector2(2, 2)
-texture = ExtResource("14_tilba")
-
-[node name="SucculentSymbol" type="Sprite2D" parent="."]
-position = Vector2(936, 376)
-scale = Vector2(2, 2)
-texture = ExtResource("15_juwgp")
 
 [node name="GoldSymbol" type="Sprite2D" parent="."]
 position = Vector2(1655, 375)
@@ -316,10 +320,12 @@ offset_bottom = 4.0
 [connection signal="pressed" from="SeedsButton" to="." method="_on_seeds_button_pressed"]
 [connection signal="mouse_entered" from="ShopButton" to="." method="_on_shop_button_mouse_entered"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="Harvestbutton" to="." method="_on_harvestbutton_pressed"]
 [connection signal="mouse_entered" from="OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="mouse_entered" from="RemovePlantButton" to="." method="_on_remove_plant_button_mouse_entered"]
 [connection signal="toggled" from="RemovePlantButton" to="." method="_on_remove_plant_button_toggled"]
+[connection signal="mouse_entered" from="SellButton" to="." method="_on_sell_button_mouse_entered"]
 [connection signal="pressed" from="SellButton" to="." method="_on_sell_button_pressed"]
 [connection signal="mouse_entered" from="LeftArea" to="." method="_on_left_area_mouse_entered"]
 [connection signal="mouse_exited" from="LeftArea" to="." method="_on_left_area_mouse_exited"]

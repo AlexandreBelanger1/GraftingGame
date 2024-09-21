@@ -4,6 +4,7 @@ class_name plant extends StaticBody2D
 
 
 const FLOWER = preload("res://Scenes/flowers/flower.tscn")
+var plantSpecialType = "none"
 var flowers = []
 var productionRate
 var sellValue
@@ -22,6 +23,7 @@ func setup():
 		flowerType = seed.getSeed("flower")
 		rootType = seed.getSeed("roots")
 		stemType = seed.getSeed("stem")
+		plantSpecialType = seed.getSeed("specialType")
 		configureStats()
 	else:
 		queue_free()
@@ -126,6 +128,7 @@ func configureStats():
 	fStats = load(Global.flowerStatsDict[flowerType])
 	productionRate = stem.getStat(2) + (stem.getStat(5) * fStats.productionRate)
 	sellValue = stem.getStat(6) + (stem.getStat(5) * fStats.sellValue)
+	specialTypeSetup()
 
 func shake():
 	for flower in flowers:
@@ -138,3 +141,11 @@ func getComponent(value:int):
 		return stemType
 	elif value == 3:
 		return flowerType
+
+const SPECIAL_TYPE_EFFECTS = preload("res://Scenes/specialTypes/special_type_effects.tscn")
+func specialTypeSetup():
+	if plantSpecialType != "none":
+		print_debug(plantSpecialType)
+		var specialEffects = SPECIAL_TYPE_EFFECTS.instantiate()
+		add_child(specialEffects)
+		specialEffects.start(plantSpecialType)

@@ -9,11 +9,11 @@ func _ready():
 	SignalBus.collectSeed.connect(addSeed)
 	SignalBus.generateMysterySeed.connect(generateMysterySeed)
 
-func addSeed(roots:String,stem:String,flower:String):
+func addSeed(roots:String,stem:String,flower:String, plantSpecialType:String):
 	pickup.play()
 	var slot = SEED_INVENTORY_SLOT.instantiate()
 	grid_container.add_child(slot)
-	slot.setSeed(roots,stem,flower)
+	slot.setSeed(roots,stem,flower,plantSpecialType)
 
 func generateMysterySeed(tier: int):
 	var rand 
@@ -22,4 +22,4 @@ func generateMysterySeed(tier: int):
 	rootSize = potSizes[rand]
 	if tier == 1:
 		rand = int(RNG.randf_range(0, Global.tier1Seeds.size()-0.01))
-		addSeed(rootSize, Global.tier1Seeds[rand]+"Stem",Global.tier1Seeds[rand]+"Flower")
+		addSeed(rootSize, Global.tier1Seeds[rand]+"Stem",Global.tier1Seeds[rand]+"Flower", "none")
