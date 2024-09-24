@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdlfi5e3mkjnx"]
+[gd_scene load_steps=20 format=3 uid="uid://cdlfi5e3mkjnx"]
 
 [ext_resource type="Texture2D" uid="uid://bvhkiaxt4v8wx" path="res://Assets/Sprites/UISprites/ShopUIBackground.png" id="1_rhtue"]
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_yltsc"]
@@ -12,6 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://b38h3ab1f572u" path="res://Assets/Sprites/UISprites/BonsaiPotFrameHighlight.png" id="8_0ensl"]
 [ext_resource type="Texture2D" uid="uid://dx8vy3bauf7i3" path="res://Assets/Sprites/UISprites/MysterySeedFrame.png" id="9_5tn3o"]
 [ext_resource type="Texture2D" uid="uid://8s20cfceskxd" path="res://Assets/Sprites/UISprites/MysterySeedFrameHighlight.png" id="10_nqvsb"]
+[ext_resource type="Texture2D" uid="uid://d3wg1p3y7f3r5" path="res://Assets/Sprites/UISprites/mutationRod.png" id="12_p8h2a"]
+[ext_resource type="Texture2D" uid="uid://cfknkl5wtq8yb" path="res://Assets/Sprites/UISprites/MutationRodHighlight.png" id="13_aqrsr"]
+[ext_resource type="Texture2D" uid="uid://r4otqk3p0v3p" path="res://Assets/Sprites/UISprites/ApiaryIcon.png" id="14_ksecv"]
+[ext_resource type="Texture2D" uid="uid://bx05mbgi4wcms" path="res://Assets/Sprites/UISprites/ApiaryIconHighlight.png" id="15_lxctk"]
+[ext_resource type="Texture2D" uid="uid://oc1fibems8mx" path="res://Assets/Sprites/UISprites/GreenhouseIcon.png" id="16_fe43p"]
+[ext_resource type="AudioStream" uid="uid://dpc2gweqfe1um" path="res://Assets/Audio/ButtonHover.wav" id="17_8ncwh"]
+[ext_resource type="Texture2D" uid="uid://dbaosd502135h" path="res://Assets/Sprites/UISprites/GreenhouseIconHighlight.png" id="17_aldhk"]
 
 [node name="ShopUI" type="Control"]
 layout_mode = 3
@@ -90,17 +97,26 @@ texture_normal = ExtResource("9_5tn3o")
 texture_pressed = ExtResource("10_nqvsb")
 texture_hover = ExtResource("10_nqvsb")
 
-[node name="ColorRect" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
-custom_minimum_size = Vector2(40, 40)
+[node name="mutationRod" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+texture_normal = ExtResource("12_p8h2a")
+texture_pressed = ExtResource("13_aqrsr")
+texture_hover = ExtResource("13_aqrsr")
 
-[node name="ColorRect2" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
-custom_minimum_size = Vector2(20, 20)
+[node name="Apiary" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+texture_normal = ExtResource("14_ksecv")
+texture_pressed = ExtResource("15_lxctk")
+texture_hover = ExtResource("15_lxctk")
 
-[node name="ColorRect3" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
-custom_minimum_size = Vector2(20, 20)
+[node name="Greenhouse" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+texture_normal = ExtResource("16_fe43p")
+texture_pressed = ExtResource("17_aldhk")
+texture_hover = ExtResource("17_aldhk")
 
 [node name="ColorRect4" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -128,6 +144,10 @@ offset_right = 192.0
 offset_bottom = 256.0
 texture = ExtResource("2_seh2q")
 
+[node name="ButtonHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_8ncwh")
+volume_db = -11.971
+
 [connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/smallPot" to="." method="_on_small_pot_mouse_entered"]
 [connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/smallPot" to="." method="_on_small_pot_mouse_exited"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/smallPot" to="." method="_on_small_pot_pressed"]
@@ -140,3 +160,12 @@ texture = ExtResource("2_seh2q")
 [connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mysterySeedTier1Button" to="." method="_on_mystery_seed_tier_1_button_mouse_entered"]
 [connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mysterySeedTier1Button" to="." method="_on_mystery_seed_tier_1_button_mouse_exited"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mysterySeedTier1Button" to="." method="_on_mystery_seed_tier_1_button_pressed"]
+[connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mutationRod" to="." method="_on_mutation_rod_mouse_entered"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mutationRod" to="." method="_on_mutation_rod_mouse_exited"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mutationRod" to="." method="_on_mutation_rod_pressed"]
+[connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/Apiary" to="." method="_on_apiary_mouse_entered"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/Apiary" to="." method="_on_apiary_mouse_exited"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/Apiary" to="." method="_on_apiary_pressed"]
+[connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/Greenhouse" to="." method="_on_greenhouse_mouse_entered"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/Greenhouse" to="." method="_on_greenhouse_mouse_exited"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/Greenhouse" to="." method="_on_greenhouse_pressed"]

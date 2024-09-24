@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://chvfx02q5en8n"]
+[gd_scene load_steps=20 format=3 uid="uid://chvfx02q5en8n"]
 
 [ext_resource type="Script" path="res://scripts/shop_item_info_panel.gd" id="1_1fs6e"]
 [ext_resource type="Texture2D" uid="uid://07i2gv2xuy5e" path="res://Assets/Sprites/UISprites/SmallPotFrame.png" id="1_itg2h"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dx8vy3bauf7i3" path="res://Assets/Sprites/UISprites/MysterySeedFrame.png" id="4_eh4es"]
 [ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="5_1bl3c"]
 [ext_resource type="Texture2D" uid="uid://52ux1jdj28g" path="res://Assets/Sprites/UISprites/GoldSymbol.png" id="5_ft6g3"]
+[ext_resource type="Texture2D" uid="uid://d3wg1p3y7f3r5" path="res://Assets/Sprites/UISprites/mutationRod.png" id="6_ipkvw"]
 [ext_resource type="FontFile" uid="uid://k6go1cdoy2dc" path="res://Assets/Fonts/Kenney Mini.ttf" id="6_remen"]
+[ext_resource type="Texture2D" uid="uid://r4otqk3p0v3p" path="res://Assets/Sprites/UISprites/ApiaryIcon.png" id="7_7qxjb"]
+[ext_resource type="Texture2D" uid="uid://oc1fibems8mx" path="res://Assets/Sprites/UISprites/GreenhouseIcon.png" id="8_pb8o7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jekbe"]
 atlas = ExtResource("1_itg2h")
@@ -25,6 +28,18 @@ region = Rect2(0, 0, 48, 27)
 atlas = ExtResource("4_eh4es")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw4oq"]
+atlas = ExtResource("6_ipkvw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hji4b"]
+atlas = ExtResource("7_7qxjb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5iku"]
+atlas = ExtResource("8_pb8o7")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ckpdq"]
 animations = [{
 "frames": [{
@@ -39,6 +54,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3jmoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pw4oq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hji4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5iku")
 }],
 "loop": false,
 "name": &"ShopItems",

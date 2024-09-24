@@ -1,43 +1,68 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgg1cbrhdkj8m"]
+[gd_scene load_steps=13 format=3 uid="uid://cgg1cbrhdkj8m"]
 
 [ext_resource type="Script" path="res://scripts/MouseToolTip.gd" id="1_wsmg6"]
 [ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="2_4gj1s"]
-[ext_resource type="Texture2D" uid="uid://2xeup8w6qebn" path="res://Assets/Sprites/UISprites/MouseLMB.png" id="3_63eht"]
+[ext_resource type="Texture2D" uid="uid://c3p7fpdwmicvr" path="res://Assets/Sprites/UISprites/MouseAnimations.png" id="3_77elv"]
 
-[sub_resource type="Animation" id="Animation_chb54"]
-resource_name = "PotRequirement"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PotRequirementLabel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-35, -29), Vector2(-35, -82)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PotRequirementLabel:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_flmph"]
+atlas = ExtResource("3_77elv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2dld"]
+atlas = ExtResource("3_77elv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcenl"]
+atlas = ExtResource("3_77elv")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhpus"]
+atlas = ExtResource("3_77elv")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6oxt"]
+atlas = ExtResource("3_77elv")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_663e1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flmph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2dld")
+}],
+"loop": true,
+"name": &"LMB",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcenl")
+}],
+"loop": true,
+"name": &"None",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhpus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6oxt")
+}],
+"loop": true,
+"name": &"RMB",
+"speed": 1.0
+}]
 
 [sub_resource type="Animation" id="Animation_l87qw"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PotRequirementLabel:position")
+tracks/0/path = NodePath("RequirementLabel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -49,7 +74,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PotRequirementLabel:modulate")
+tracks/1/path = NodePath("RequirementLabel:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -59,10 +84,38 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_chb54"]
+resource_name = "Requirement"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RequirementLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-35, -29), Vector2(-35, -82)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RequirementLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r7fmy"]
 _data = {
-"PotRequirement": SubResource("Animation_chb54"),
-"RESET": SubResource("Animation_l87qw")
+"RESET": SubResource("Animation_l87qw"),
+"Requirement": SubResource("Animation_chb54")
 }
 
 [node name="MouseToolTip" type="Control"]
@@ -77,8 +130,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_wsmg6")
 
-[node name="Label" type="Label" parent="."]
-visible = false
+[node name="Text1" type="Label" parent="."]
 layout_mode = 0
 offset_left = 31.0
 offset_top = -2.0
@@ -88,14 +140,31 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_4gj1s")
 theme_override_font_sizes/font_size = 32
-text = "Remove plant"
 
-[node name="MouseLmb" type="Sprite2D" parent="."]
-visible = false
+[node name="Text2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 18.0
+offset_right = 131.0
+offset_bottom = 44.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_4gj1s")
+theme_override_font_sizes/font_size = 32
+
+[node name="MouseAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(16, 16)
-texture = ExtResource("3_63eht")
+sprite_frames = SubResource("SpriteFrames_663e1")
+animation = &"None"
+autoplay = "None"
 
-[node name="PotRequirementLabel" type="Label" parent="."]
+[node name="MouseAnimation2" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 35)
+sprite_frames = SubResource("SpriteFrames_663e1")
+animation = &"None"
+autoplay = "None"
+
+[node name="RequirementLabel" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -35.0

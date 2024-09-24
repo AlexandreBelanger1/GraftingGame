@@ -14,6 +14,10 @@ extends Control
 @onready var seed_bag_ui = $SeedBagUI
 @onready var pots_ui = $PotsUI
 @onready var sell_ui = $SellUI
+@onready var sell_label = $SellLabel
+@onready var harvest_label = $HarvestLabel
+@onready var shop_label = $ShopLabel
+@onready var seeds_label = $SeedsLabel
 
 
 
@@ -81,10 +85,12 @@ func _on_options_button_pressed():
 
 func _on_shop_button_mouse_entered():
 	button_hover.play()
+	shop_label.visible = true
 
 
 func _on_seeds_button_mouse_entered():
 	button_hover.play()
+	seeds_label.visible = true
 
 
 func _on_options_button_mouse_entered():
@@ -107,7 +113,7 @@ func _on_remove_plant_button_toggled(toggled_on):
 func enableConfirmUI():
 	confirm_selection_ui.visible = true
 	SignalBus.setTooltip.emit("null",0,0,0,0,0,0)
-	SignalBus.mouseTooltip.emit("null")
+	SignalBus.mouseTooltip.emit("","","None","None","",false,false)
 	
 
 
@@ -140,6 +146,7 @@ func _on_sell_button_pressed():
 
 func _on_sell_button_mouse_entered():
 	button_hover.play()
+	sell_label.visible = true
 
 
 func _on_harvestbutton_pressed():
@@ -149,3 +156,24 @@ func _on_harvestbutton_pressed():
 	seed_bag_ui.visible = false
 	button_clicked.play()
 	Global.state = 6
+
+
+func _on_harvestbutton_mouse_entered():
+	button_hover.play()
+	harvest_label.visible = true
+
+
+func _on_harvestbutton_mouse_exited():
+	harvest_label.visible = false
+
+
+func _on_seeds_button_mouse_exited():
+	seeds_label.visible = false
+
+
+func _on_shop_button_mouse_exited():
+	shop_label.visible = false
+
+
+func _on_sell_button_mouse_exited():
+	sell_label.visible = false

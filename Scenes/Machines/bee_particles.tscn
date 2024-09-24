@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://bptkytla0t4mg"]
+
+[ext_resource type="Texture2D" uid="uid://dkjicavvsfteo" path="res://Assets/Sprites/UISprites/BeeParticle.png" id="1_8f0dt"]
+
+[sub_resource type="Curve" id="Curve_i044f"]
+min_value = -18.79
+max_value = 19.79
+_data = [Vector2(0, 0.5), 0.0, 108.236, 0, 1, Vector2(0.0724638, 8.34319), 0.0, 0.0, 0, 0, Vector2(0.183575, -9.03901), 0.0, 0.0, 0, 0, Vector2(0.31401, 9.61506), 0.0, 0.0, 0, 0, Vector2(0.449275, -9.03901), 0.0, 0.0, 0, 0, Vector2(0.618357, 8.76714), 0.0, 0.0, 0, 0, Vector2(0.758454, -9.46297), 0.0, 0.0, 0, 0, Vector2(0.927536, 13.0067), 0.0, 0.0, 0, 0, Vector2(1, -8.1911), -292.53, 0.0, 1, 0]
+point_count = 9
+
+[sub_resource type="CurveTexture" id="CurveTexture_e4cmr"]
+curve = SubResource("Curve_i044f")
+
+[sub_resource type="Curve" id="Curve_sfryd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.768116, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0659341), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dgx43"]
+curve = SubResource("Curve_sfryd")
+
+[sub_resource type="Curve" id="Curve_468lo"]
+_data = [Vector2(0, 0.5), 0.0, 3.67058, 0, 1, Vector2(0.10628, 0.89011), 0.0, 0.0, 0, 0, Vector2(0.256039, 0.010989), 0.0, 0.0, 0, 0, Vector2(0.492754, 0.923077), 0.0, 0.0, 0, 0, Vector2(0.695652, 0.054945), 0.0, 0.0, 0, 0, Vector2(0.850242, 1), 0.0, 0.0, 0, 0, Vector2(0.985507, 0.098901), -6.6617, 0.0, 1, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_sp70n"]
+curve = SubResource("Curve_468lo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6gaiu"]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+angle_min = -61.5
+angle_max = 418.5
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 8.55
+initial_velocity_max = 42.74
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 1.71
+linear_accel_max = 6.84
+linear_accel_curve = SubResource("CurveTexture_e4cmr")
+tangential_accel_min = -100.0
+tangential_accel_max = 87.18
+tangential_accel_curve = SubResource("CurveTexture_sp70n")
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_dgx43")
+turbulence_enabled = true
+
+[node name="BeeParticles" type="GPUParticles2D"]
+z_index = 2
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_6gaiu")
+texture = ExtResource("1_8f0dt")
+lifetime = 8.0

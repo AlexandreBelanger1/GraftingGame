@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://v6njn0d2ya4j"]
+
+[ext_resource type="Script" path="res://scripts/MovableObject.gd" id="1_htnqk"]
+[ext_resource type="Texture2D" uid="uid://crupnhoxnt0wt" path="res://Assets/Sprites/MachineSprites/128x128Circle.png" id="2_mdxhk"]
+[ext_resource type="Texture2D" uid="uid://bmwxi0xp26bs1" path="res://Assets/Sprites/UISprites/Apiary.png" id="3_j46vd"]
+[ext_resource type="AudioStream" uid="uid://bl5fracburlcf" path="res://Assets/Audio/pickupPop.mp3" id="4_q7jt1"]
+[ext_resource type="AudioStream" uid="uid://db4snmllc4qor" path="res://Assets/Audio/setdownPop.mp3" id="5_67qql"]
+[ext_resource type="PackedScene" uid="uid://bptkytla0t4mg" path="res://Scenes/Machines/bee_particles.tscn" id="6_gdytq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnka3"]
+size = Vector2(22, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xq27r"]
+size = Vector2(24, 21)
+
+[sub_resource type="Animation" id="Animation_nsuf1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GrabArea:input_pickable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_t2553"]
+resource_name = "RefreshCollision"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GrabArea:input_pickable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6sae8"]
+_data = {
+"RESET": SubResource("Animation_nsuf1"),
+"RefreshCollision": SubResource("Animation_t2553")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4cqcn"]
+radius = 64.4981
+
+[node name="Apiary" type="StaticBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_htnqk")
+
+[node name="RangeIndicator" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.184314)
+texture = ExtResource("2_mdxhk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_j46vd")
+offset = Vector2(0, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_lnka3")
+
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_xq27r")
+
+[node name="Player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6sae8")
+}
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_q7jt1")
+
+[node name="PlaceSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_67qql")
+
+[node name="EffectRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EffectRange"]
+shape = SubResource("CircleShape2D_4cqcn")
+
+[node name="BeeParticles" parent="." instance=ExtResource("6_gdytq")]
+y_sort_enabled = true
+position = Vector2(0, -1)
+
+[connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
+[connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]
+[connection signal="mouse_entered" from="GrabArea" to="." method="_on_grab_area_mouse_entered"]
+[connection signal="mouse_exited" from="GrabArea" to="." method="_on_grab_area_mouse_exited"]

@@ -5,7 +5,7 @@ extends Control
 @onready var description_label = $DescriptionLabel
 @onready var cost_label = $CostLabel
 
-var itemSpriteDict = {"Small Pot": 0, "Medium Pot": 1, "Bonsai Pot": 2, "Mystery Seed Lv.1": 3}
+var itemSpriteDict = {"Small Pot": 0, "Medium Pot": 1, "Bonsai Pot": 2, "Mystery Seed Lv.1": 3, "Mutation Machine": 4, "Apiary": 5, "Greenhouse": 6}
 var defaultSize = 32
 
 

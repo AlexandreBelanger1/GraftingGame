@@ -24,10 +24,6 @@ boot_splash/minimum_display_time=5000
 Global="*res://scripts/global.gd"
 SignalBus="*res://Scenes/signal_bus.tscn"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [display]
 
 window/size/viewport_width=1920
@@ -38,8 +34,8 @@ window/size/borderless=true
 window/size/always_on_top=true
 window/size/no_focus=true
 window/stretch/mode="viewport"
-mouse_cursor/custom_image="res://Assets/Sprites/UISprites/GloveCursor.png"
-mouse_cursor/custom_image_hotspot=Vector2(5, 14)
+mouse_cursor/custom_image="res://Assets/Sprites/UISprites/Cursor4.png"
+mouse_cursor/custom_image_hotspot=Vector2(0, 10)
 
 [input]
 
@@ -62,7 +58,7 @@ options={
 [layer_names]
 
 2d_physics/layer_1="Map"
-2d_physics/layer_2="Plant"
+2d_physics/layer_2="GrabbableObject"
 2d_physics/layer_4="seed"
 2d_physics/layer_5="Plant2"
 

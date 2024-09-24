@@ -1739,9 +1739,11 @@ animations = [{
 }]
 
 [node name="stem" type="Node2D"]
+use_parent_material = true
 script = ExtResource("1_0ol84")
 
 [node name="Sprite2d" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_s5kl6")
 animation = &"tulipStem"

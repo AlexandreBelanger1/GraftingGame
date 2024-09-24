@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://da5tlsg7j8q6o"]
+
+[ext_resource type="Script" path="res://scripts/MovableObject.gd" id="1_2f0wm"]
+[ext_resource type="Texture2D" uid="uid://crupnhoxnt0wt" path="res://Assets/Sprites/MachineSprites/128x128Circle.png" id="2_moqum"]
+[ext_resource type="Texture2D" uid="uid://cyyhfyss12y75" path="res://Assets/Sprites/UISprites/GreenHouse.png" id="3_2w1h6"]
+[ext_resource type="AudioStream" uid="uid://bl5fracburlcf" path="res://Assets/Audio/pickupPop.mp3" id="4_af6tw"]
+[ext_resource type="AudioStream" uid="uid://db4snmllc4qor" path="res://Assets/Audio/setdownPop.mp3" id="5_pmdn6"]
+
+[sub_resource type="Animation" id="Animation_nsuf1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GrabArea:input_pickable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_t2553"]
+resource_name = "RefreshCollision"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GrabArea:input_pickable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6sae8"]
+_data = {
+"RESET": SubResource("Animation_nsuf1"),
+"RefreshCollision": SubResource("Animation_t2553")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4e6sk"]
+size = Vector2(39, 20)
+
+[node name="Greenhouse" type="StaticBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_2f0wm")
+
+[node name="RangeIndicator" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.184314)
+texture = ExtResource("2_moqum")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1, -1)
+texture = ExtResource("3_2w1h6")
+offset = Vector2(0, -35)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -11.5)
+polygon = PackedVector2Array(-19, -10.5, -25, 11.5, -24, 11.5, -18, -9.5, 18, -9.5, 24, 11.5, 25, 11.5, 19, -10.5)
+
+[node name="GrabArea" type="Area2D" parent="."]
+position = Vector2(0, -23)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="GrabArea"]
+position = Vector2(-40, 11)
+polygon = PackedVector2Array(14, 12, 16, 12, 22, -9, 58, -8, 64, 12, 66, 12, 60, -11, 20, -11)
+
+[node name="Player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6sae8")
+}
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -23)
+stream = ExtResource("4_af6tw")
+
+[node name="PlaceSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -23)
+stream = ExtResource("5_pmdn6")
+
+[node name="EffectRange" type="Area2D" parent="."]
+position = Vector2(0, -23)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EffectRange"]
+position = Vector2(0.5, 12)
+shape = SubResource("RectangleShape2D_4e6sk")
+
+[connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
+[connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]
+[connection signal="mouse_entered" from="GrabArea" to="." method="_on_grab_area_mouse_entered"]
+[connection signal="mouse_exited" from="GrabArea" to="." method="_on_grab_area_mouse_exited"]

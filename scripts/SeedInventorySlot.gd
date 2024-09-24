@@ -35,4 +35,12 @@ func getSeed(value:String):
 
 func _on_pressed():
 	Global.selectedSeed = self
-	print_debug(Global.selectedSeed)
+	Input.set_custom_mouse_cursor(Global.seedCursor)
+
+
+func _on_mouse_entered():
+	SignalBus.mouseTooltip.emit("Select","Sell", "LMB", "RMB", "", false, true)
+
+
+func _on_mouse_exited():
+	SignalBus.mouseTooltip.emit("","", "None", "None", "", false, false)

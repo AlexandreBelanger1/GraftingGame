@@ -563,12 +563,14 @@ scale_curve = SubResource("CurveTexture_hp5kn")
 radius = 62.0
 
 [node name="Flower" type="Node2D"]
+use_parent_material = true
 script = ExtResource("1_crkqh")
 
 [node name="GrowthTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_dsx0u")
 animation = &"tulipFlower"
 

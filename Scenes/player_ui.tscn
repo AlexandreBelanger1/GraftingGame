@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://33hfn4s0xca2"]
+[gd_scene load_steps=36 format=3 uid="uid://33hfn4s0xca2"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/UISprites/LeftArrow.png" id="1_cmnag"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://cmws0rldc37oj" path="res://Assets/Sprites/UISprites/SellIcon.png" id="30_dfa4m"]
 [ext_resource type="Texture2D" uid="uid://6lcspc7o7r4o" path="res://Assets/Sprites/BasketIconHover.png" id="30_hreoa"]
 [ext_resource type="Texture2D" uid="uid://sa2igpdaxx1n" path="res://Assets/Sprites/UISprites/SellIconHighlight.png" id="31_jmjl0"]
+[ext_resource type="AudioStream" uid="uid://b5et7411tfgp6" path="res://Assets/Audio/IdleGarden.wav" id="31_ovy1k"]
 [ext_resource type="PackedScene" uid="uid://ba8ypojgo8as2" path="res://Scenes/sell_ui.tscn" id="32_mo70n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dmpm"]
@@ -53,10 +54,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PotsButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 311.0
-offset_top = 474.0
-offset_right = 359.0
-offset_bottom = 522.0
+offset_left = 1630.0
+offset_top = 450.0
+offset_right = 1678.0
+offset_bottom = 498.0
 texture_normal = ExtResource("4_dfctj")
 texture_pressed = ExtResource("5_ghux7")
 texture_hover = ExtResource("5_ghux7")
@@ -73,9 +74,9 @@ texture_hover = ExtResource("8_f0syd")
 
 [node name="ShopButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 370.0
+offset_left = 320.0
 offset_top = 352.0
-offset_right = 418.0
+offset_right = 368.0
 offset_bottom = 400.0
 texture_normal = ExtResource("6_obkwq")
 texture_pressed = ExtResource("6_obkwq")
@@ -83,20 +84,21 @@ texture_hover = ExtResource("7_1r3w8")
 
 [node name="Harvestbutton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 576.0
-offset_top = 344.0
-offset_right = 624.0
-offset_bottom = 398.0
+offset_left = 399.0
+offset_top = 346.0
+offset_right = 447.0
+offset_bottom = 400.0
 texture_normal = ExtResource("29_j48w5")
 texture_pressed = ExtResource("30_hreoa")
 texture_hover = ExtResource("30_hreoa")
 
 [node name="SellLabel" type="Label" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 656.0
-offset_top = 304.0
-offset_right = 704.0
-offset_bottom = 342.0
+offset_left = 479.0
+offset_top = 306.0
+offset_right = 527.0
+offset_bottom = 344.0
 theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -107,12 +109,13 @@ theme_override_fonts/font = ExtResource("5_krgbh")
 theme_override_font_sizes/font_size = 48
 text = "SELL"
 
-[node name="SellLabel2" type="Label" parent="."]
+[node name="HarvestLabel" type="Label" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 560.0
-offset_top = 304.0
-offset_right = 644.0
-offset_bottom = 342.0
+offset_left = 384.0
+offset_top = 306.0
+offset_right = 468.0
+offset_bottom = 344.0
 theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -124,10 +127,11 @@ theme_override_font_sizes/font_size = 48
 text = "HARVEST"
 
 [node name="ShopLabel" type="Label" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 371.0
+offset_left = 321.0
 offset_top = 306.0
-offset_right = 419.0
+offset_right = 369.0
 offset_bottom = 344.0
 theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
@@ -141,6 +145,7 @@ text = "SHOP
 "
 
 [node name="SeedsLabel" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 233.0
 offset_top = 306.0
@@ -171,10 +176,10 @@ text = "20
 
 [node name="OptionsButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 348.0
-offset_right = 480.0
-offset_bottom = 396.0
+offset_left = 1580.0
+offset_top = 351.0
+offset_right = 1628.0
+offset_bottom = 399.0
 texture_normal = ExtResource("7_5yl0y")
 texture_pressed = ExtResource("9_f8o4n")
 texture_hover = ExtResource("9_f8o4n")
@@ -184,9 +189,9 @@ texture_focused = ExtResource("7_5yl0y")
 [node name="RemovePlantButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 1576.0
-offset_top = 352.0
+offset_top = 448.0
 offset_right = 1624.0
-offset_bottom = 400.0
+offset_bottom = 496.0
 toggle_mode = true
 texture_normal = ExtResource("8_bek6u")
 texture_pressed = ExtResource("9_r8qe3")
@@ -194,10 +199,10 @@ texture_hover = ExtResource("9_r8qe3")
 
 [node name="SellButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 656.0
-offset_top = 351.0
-offset_right = 704.0
-offset_bottom = 399.0
+offset_left = 478.0
+offset_top = 352.0
+offset_right = 526.0
+offset_bottom = 400.0
 texture_normal = ExtResource("30_dfa4m")
 texture_pressed = ExtResource("31_jmjl0")
 texture_hover = ExtResource("31_jmjl0")
@@ -235,17 +240,17 @@ offset_right = 301.0
 offset_bottom = 46.0
 
 [node name="PotsUI" parent="." instance=ExtResource("6_cbd4w")]
-offset_left = 1.0
+offset_left = -15.0
 offset_top = 3.0
-offset_right = 1921.0
+offset_right = 1905.0
 offset_bottom = 403.0
 
-[node name="ButtonHover" type="AudioStreamPlayer2D" parent="."]
+[node name="ButtonHover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_emu7a")
 volume_db = -11.063
 pitch_scale = 2.01
 
-[node name="ButtonClicked" type="AudioStreamPlayer2D" parent="."]
+[node name="ButtonClicked" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_emu7a")
 pitch_scale = 0.71
 
@@ -260,7 +265,7 @@ offset_top = 114.5
 offset_right = -439.0
 offset_bottom = 114.5
 
-[node name="SpadeEquip" type="AudioStreamPlayer2D" parent="."]
+[node name="SpadeEquip" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_23ld8")
 
 [node name="MouseToolTip" parent="." instance=ExtResource("25_qw6m8")]
@@ -314,18 +319,28 @@ offset_top = 4.0
 offset_right = 926.0
 offset_bottom = 4.0
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_ovy1k")
+autoplay = true
+bus = &"Music"
+
 [connection signal="mouse_entered" from="PotsButton" to="." method="_on_shop_button_mouse_entered"]
 [connection signal="pressed" from="PotsButton" to="." method="_on_pots_button_pressed"]
 [connection signal="mouse_entered" from="SeedsButton" to="." method="_on_seeds_button_mouse_entered"]
+[connection signal="mouse_exited" from="SeedsButton" to="." method="_on_seeds_button_mouse_exited"]
 [connection signal="pressed" from="SeedsButton" to="." method="_on_seeds_button_pressed"]
 [connection signal="mouse_entered" from="ShopButton" to="." method="_on_shop_button_mouse_entered"]
+[connection signal="mouse_exited" from="ShopButton" to="." method="_on_shop_button_mouse_exited"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="mouse_entered" from="Harvestbutton" to="." method="_on_harvestbutton_mouse_entered"]
+[connection signal="mouse_exited" from="Harvestbutton" to="." method="_on_harvestbutton_mouse_exited"]
 [connection signal="pressed" from="Harvestbutton" to="." method="_on_harvestbutton_pressed"]
 [connection signal="mouse_entered" from="OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="mouse_entered" from="RemovePlantButton" to="." method="_on_remove_plant_button_mouse_entered"]
 [connection signal="toggled" from="RemovePlantButton" to="." method="_on_remove_plant_button_toggled"]
 [connection signal="mouse_entered" from="SellButton" to="." method="_on_sell_button_mouse_entered"]
+[connection signal="mouse_exited" from="SellButton" to="." method="_on_sell_button_mouse_exited"]
 [connection signal="pressed" from="SellButton" to="." method="_on_sell_button_pressed"]
 [connection signal="mouse_entered" from="LeftArea" to="." method="_on_left_area_mouse_entered"]
 [connection signal="mouse_exited" from="LeftArea" to="." method="_on_left_area_mouse_exited"]

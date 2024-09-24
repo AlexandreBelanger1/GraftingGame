@@ -67,12 +67,12 @@ func checkRootSize():
 	var potType = get_parent().stats.specialType
 	var rootType = roots.stats.specialType
 	if potSize < roots.stats.size:
-		SignalBus.mouseTooltip.emit("potRequirement")
+		SignalBus.mouseTooltip.emit("","", "None", "None", "A different pot is required!", true, true)
 		queue_free()
 	# rootType 0 is for non-special pot requirements
 	elif rootType != 0:
 		if rootType != potType:
-			SignalBus.mouseTooltip.emit("potRequirement")
+			SignalBus.mouseTooltip.emit("","", "None", "None", "A different pot is required!", true, true)
 			queue_free()
 		else:
 			Global.selectedSeed.queue_free()
@@ -145,7 +145,6 @@ func getComponent(value:int):
 const SPECIAL_TYPE_EFFECTS = preload("res://Scenes/specialTypes/special_type_effects.tscn")
 func specialTypeSetup():
 	if plantSpecialType != "none":
-		print_debug(plantSpecialType)
 		var specialEffects = SPECIAL_TYPE_EFFECTS.instantiate()
 		add_child(specialEffects)
 		specialEffects.start(plantSpecialType)

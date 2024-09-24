@@ -66,3 +66,8 @@ var seedColourDict = {"pansyFlower": Color(0.541, 0.403, 0.997),
 var tier1Seeds = {0: "cactus", 1: "sunflower", 2: "chive", 3: "poppy", 4: "tomato", 5: "bleedingheart", 6: "pepper", 7: "tulip"}
 
 var specialTypeDict = {"moon": "res://Scenes/specialTypes/moon.tres", "emerald": "res://Scenes/specialTypes/emerald.tres", "rainbow": "res://Scenes/specialTypes/rainbow.tres"}
+
+var pickupCursor = load("res://Assets/Sprites/UISprites/Cursor1.png")
+var grabCursor = load("res://Assets/Sprites/UISprites/Cursor2.png")
+var seedCursor = load("res://Assets/Sprites/UISprites/Cursor3.png")
+var defaultCursor = load("res://Assets/Sprites/UISprites/Cursor4.png")

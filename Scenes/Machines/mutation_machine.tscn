@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://dpxbmwowsmoiu"]
+
+[ext_resource type="Script" path="res://scripts/MovableObject.gd" id="1_aw64k"]
+[ext_resource type="Texture2D" uid="uid://crupnhoxnt0wt" path="res://Assets/Sprites/MachineSprites/128x128Circle.png" id="2_5t8ko"]
+[ext_resource type="Texture2D" uid="uid://3rmhc377n5e5" path="res://Assets/Sprites/UISprites/mutationMachine.png" id="2_ma03l"]
+[ext_resource type="AudioStream" uid="uid://bl5fracburlcf" path="res://Assets/Audio/pickupPop.mp3" id="3_yceyq"]
+[ext_resource type="AudioStream" uid="uid://db4snmllc4qor" path="res://Assets/Audio/setdownPop.mp3" id="4_x6ns2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnka3"]
+size = Vector2(12, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xq27r"]
+size = Vector2(12, 8)
+
+[sub_resource type="Animation" id="Animation_nsuf1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GrabArea:input_pickable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_t2553"]
+resource_name = "RefreshCollision"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GrabArea:input_pickable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6sae8"]
+_data = {
+"RESET": SubResource("Animation_nsuf1"),
+"RefreshCollision": SubResource("Animation_t2553")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4cqcn"]
+radius = 64.4981
+
+[node name="MutationMachine" type="StaticBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_aw64k")
+
+[node name="RangeIndicator" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.184314)
+texture = ExtResource("2_5t8ko")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ma03l")
+offset = Vector2(0, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_lnka3")
+
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_xq27r")
+
+[node name="Player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6sae8")
+}
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yceyq")
+
+[node name="PlaceSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_x6ns2")
+
+[node name="EffectRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EffectRange"]
+shape = SubResource("CircleShape2D_4cqcn")
+
+[connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
+[connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]
+[connection signal="mouse_entered" from="GrabArea" to="." method="_on_grab_area_mouse_entered"]
+[connection signal="mouse_exited" from="GrabArea" to="." method="_on_grab_area_mouse_exited"]
