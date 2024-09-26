@@ -83,10 +83,12 @@ libraries = {
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -23)
 stream = ExtResource("4_af6tw")
+bus = &"SFX"
 
 [node name="PlaceSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -23)
 stream = ExtResource("5_pmdn6")
+bus = &"SFX"
 
 [node name="EffectRange" type="Area2D" parent="."]
 position = Vector2(0, -23)

@@ -13,10 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://okwd8lx0ovyx" path="res://Assets/Sprites/UISprites/Options.png" id="7_5yl0y"]
 [ext_resource type="Texture2D" uid="uid://dl1xgp872h6fj" path="res://Assets/Sprites/UISprites/SeedPouch.png" id="7_tyfg5"]
 [ext_resource type="Texture2D" uid="uid://bt1y7euw22xkp" path="res://Assets/Sprites/UISprites/GardenSpade.png" id="8_bek6u"]
+[ext_resource type="Texture2D" uid="uid://b2qgh440kjo1r" path="res://Assets/Sprites/UISprites/BasketIcons.png" id="8_beu1g"]
 [ext_resource type="Texture2D" uid="uid://j17thefc01wv" path="res://Assets/Sprites/UISprites/SeedPouchHighlight.png" id="8_f0syd"]
 [ext_resource type="PackedScene" uid="uid://brw2nd1ekpwdt" path="res://Scenes/options_menu.tscn" id="9_0pr4o"]
 [ext_resource type="Texture2D" uid="uid://dcgpi07n5uhbk" path="res://Assets/Sprites/UISprites/OptionsHighlighted.png" id="9_f8o4n"]
 [ext_resource type="Texture2D" uid="uid://bxspppyxcoyg2" path="res://Assets/Sprites/UISprites/GardenSpadeToggled.png" id="9_r8qe3"]
+[ext_resource type="Texture2D" uid="uid://055w1ppmnc8i" path="res://Assets/Sprites/UISprites/BasketIconHover.png" id="9_wl6mv"]
 [ext_resource type="PackedScene" uid="uid://dxltbvsrf4kup" path="res://Scenes/seed_bag_ui.tscn" id="11_7xi0e"]
 [ext_resource type="AudioStream" uid="uid://dpc2gweqfe1um" path="res://Assets/Audio/ButtonHover.wav" id="11_emu7a"]
 [ext_resource type="PackedScene" uid="uid://b6lvcvorg4s4" path="res://Scenes/confirm_selection_ui.tscn" id="13_v7vt8"]
@@ -25,9 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://4y1gwmwjpvjj" path="res://Assets/Audio/spadeEquip.mp3" id="20_23ld8"]
 [ext_resource type="PackedScene" uid="uid://cgg1cbrhdkj8m" path="res://Scenes/mouse_tool_tip.tscn" id="25_qw6m8"]
 [ext_resource type="PackedScene" uid="uid://cdlfi5e3mkjnx" path="res://Scenes/shop_ui.tscn" id="27_sxlbi"]
-[ext_resource type="Texture2D" uid="uid://8bjk4thy4xnu" path="res://Assets/Sprites/BasketIcons.png" id="29_j48w5"]
 [ext_resource type="Texture2D" uid="uid://cmws0rldc37oj" path="res://Assets/Sprites/UISprites/SellIcon.png" id="30_dfa4m"]
-[ext_resource type="Texture2D" uid="uid://6lcspc7o7r4o" path="res://Assets/Sprites/BasketIconHover.png" id="30_hreoa"]
 [ext_resource type="Texture2D" uid="uid://sa2igpdaxx1n" path="res://Assets/Sprites/UISprites/SellIconHighlight.png" id="31_jmjl0"]
 [ext_resource type="AudioStream" uid="uid://b5et7411tfgp6" path="res://Assets/Audio/IdleGarden.wav" id="31_ovy1k"]
 [ext_resource type="PackedScene" uid="uid://ba8ypojgo8as2" path="res://Scenes/sell_ui.tscn" id="32_mo70n"]
@@ -88,9 +88,9 @@ offset_left = 399.0
 offset_top = 346.0
 offset_right = 447.0
 offset_bottom = 400.0
-texture_normal = ExtResource("29_j48w5")
-texture_pressed = ExtResource("30_hreoa")
-texture_hover = ExtResource("30_hreoa")
+texture_normal = ExtResource("8_beu1g")
+texture_pressed = ExtResource("9_wl6mv")
+texture_hover = ExtResource("9_wl6mv")
 
 [node name="SellLabel" type="Label" parent="."]
 visible = false
@@ -249,10 +249,12 @@ offset_bottom = 403.0
 stream = ExtResource("11_emu7a")
 volume_db = -11.063
 pitch_scale = 2.01
+bus = &"SFX"
 
 [node name="ButtonClicked" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_emu7a")
 pitch_scale = 0.71
+bus = &"SFX"
 
 [node name="GoldSymbol" type="Sprite2D" parent="."]
 position = Vector2(1655, 375)
@@ -267,6 +269,7 @@ offset_bottom = 114.5
 
 [node name="SpadeEquip" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_23ld8")
+bus = &"SFX"
 
 [node name="MouseToolTip" parent="." instance=ExtResource("25_qw6m8")]
 layout_mode = 1

@@ -75,9 +75,11 @@ debug_color = Color(0, 0.6, 0.701961, 0.207843)
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_x2rqc")
+bus = &"SFX"
 
 [node name="PlaceSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_a0lln")
+bus = &"SFX"
 
 [node name="Player" type="AnimationPlayer" parent="."]
 root_node = NodePath("../GrabArea")

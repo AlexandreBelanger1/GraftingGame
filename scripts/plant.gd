@@ -33,6 +33,7 @@ func loadPlant(data:potData):
 	stemComplete = data.stemComplete
 	flowerType = data.plantFlower
 	rootType = data.plantRoots
+	plantSpecialType = data.plantSpecialType
 	if rootType == "pansyRoots":
 		rootType = "mediumRoots"
 	if rootType == "sunflowerRoots":
@@ -102,6 +103,8 @@ func save(index:int):
 		return stemType
 	elif index == 5:
 		return flowerType
+	elif index == 6:
+		return plantSpecialType
 
 func getTooltip(index: int):
 	if index == 1:
@@ -109,10 +112,13 @@ func getTooltip(index: int):
 	elif index == 2:
 		return float(stem.getGrowthFrame()) / float(stem.stats.growthFrames)
 	elif index == 3:
-		if stemComplete and stem.stats.flowerCount != 0:
-			return flowers[0].getGrowthPercent()
-		else:
-			return 0
+		return 5.00
+		#if stemComplete and stem.stats.flowerCount != 0:
+			#if flowers[0] != null:
+				#return 5.00
+				##return flowers[0].getGrowthPercent()
+		#else:
+			#return 0.00
 	elif index == 4:
 		return stem.getStat(1)
 	elif index == 5:
@@ -148,3 +154,23 @@ func specialTypeSetup():
 		var specialEffects = SPECIAL_TYPE_EFFECTS.instantiate()
 		add_child(specialEffects)
 		specialEffects.start(plantSpecialType)
+
+
+func sellFlowers():
+	for i in flowers:
+		if flowerComplete:
+			SignalBus.addGold.emit(load(Global.flowerStatsDict[flowerType]).sellValue)
+		i.queue_free()
+	restartFlowerGrowth()
+	flowerComplete = false
+
+func restartFlowerGrowth():
+	var index = 0
+	for i in stem.stats.flowerCount:
+		var flower = FLOWER.instantiate()
+		add_child(flower)
+		flowers[index]= flower
+		flower.global_position.x = global_position.x + stem.stats.flowerPositions[i].x
+		flower.global_position.y = global_position.y + stem.stats.flowerPositions[i].y
+		flower.setup(flowerType)
+		index += 1

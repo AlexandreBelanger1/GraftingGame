@@ -23,16 +23,6 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 
-func _on_switch_window_button_pressed():
-	if DisplayServer.get_screen_count() > 1:
-		if DisplayServer.get_primary_screen() < DisplayServer.get_screen_count() - 1:
-			swapWindow(DisplayServer.get_primary_screen()+1)
-	SignalBus.windowSetup.emit()
-
-func swapWindow(value:int):
-	pass
-
-
 func _on_h_slider_value_changed(value):
 	Global.gameSpeed = value
 	SignalBus.changeGameSpeed.emit()
@@ -46,3 +36,13 @@ func _on_borderless_button_pressed():
 
 func _on_fit_window_button_pressed():
 	SignalBus.windowSetup.emit()
+
+
+func _on_sfx_slider_value_changed(value):
+	var sfx_index= AudioServer.get_bus_index("SFX")
+	AudioServer.set_bus_volume_db(sfx_index, linear_to_db(value))
+
+
+func _on_music_slider_value_changed(value):
+	var music_index= AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(music_index, linear_to_db(value))

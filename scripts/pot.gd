@@ -94,6 +94,11 @@ func _physics_process(_delta):
 			if Plant != null:
 				sellPlant = true
 				SignalBus.confirmUI.emit()
+	if Global.state == 6:
+		if draggable and Input.is_action_just_pressed("LMB"):
+			if Plant != null:
+				if Plant.getTooltip(8):
+					Plant.sellFlowers()
 
 
 
@@ -182,6 +187,9 @@ func potSetup(potName: String):
 	dragging = true
 	loadStats(statsDict[potName])
 
+func setPotType(potName:String):
+	potType = potName
+
 func loadStats(path: String):
 	stats = load(path)
 
@@ -196,6 +204,7 @@ func save():
 		data.plantRoots = Plant.save(3)
 		data.plantStem = Plant.save(4)
 		data.plantFlower = Plant.save(5)
+		data.plantSpecialType = Plant.save(6)
 	return data
 
 func loadState(data:potData):
@@ -208,6 +217,7 @@ func loadState(data:potData):
 		Plant.global_position.x = plant_marker.global_position.x
 		Plant.global_position.y = global_position.y + stats.plantOffset
 		Plant.loadPlant(data)
+
 
 #func changeState(value:int):
 #	state = value
@@ -228,7 +238,7 @@ func remove(value:bool):
 		
 func potRelease():
 	SignalBus.gridToggle.emit(false)
-	if Plant != null:
+	if Plant != null and Global.state != 6:
 		Plant.shake()
 	if overlap == 1:
 		place_sound.play()

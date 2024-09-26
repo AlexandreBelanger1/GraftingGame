@@ -9,6 +9,8 @@ var stemType
 var flowerType
 var plantSpecialType
 
+
+
 func setSeed(roots:String,stem:String,flower:String, pSpecialType:String):
 	rootType = roots
 	stemType = stem
@@ -44,3 +46,12 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	SignalBus.mouseTooltip.emit("","", "None", "None", "", false, false)
+
+
+func saveSeed():
+	var data = seedData.new()
+	data.flowerType = flowerType
+	data.plantSpecialType = plantSpecialType
+	data.rootType = rootType
+	data.stemType = stemType
+	return data

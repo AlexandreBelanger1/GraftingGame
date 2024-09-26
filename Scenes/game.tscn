@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://h66tp54xyqug"]
+[gd_scene load_steps=29 format=3 uid="uid://h66tp54xyqug"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7p2bg"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="3_tva00"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://b6w58xgeiygcd" path="res://Assets/Sprites/WoodenFenceTile.png" id="6_fkpli"]
 [ext_resource type="PackedScene" uid="uid://33hfn4s0xca2" path="res://Scenes/player_ui.tscn" id="6_wttbp"]
 [ext_resource type="Texture2D" uid="uid://202t8f65k1so" path="res://Assets/Sprites/GrassTuft.png" id="7_24fdy"]
-[ext_resource type="PackedScene" uid="uid://cmdtlhme2cugu" path="res://Scenes/seed.tscn" id="7_38ml1"]
 [ext_resource type="Texture2D" uid="uid://dcfknreca117g" path="res://Assets/Sprites/UISprites/StoneWall.png" id="8_gjpsb"]
 [ext_resource type="Shader" path="res://Scenes/Shaders/Watershader.gdshader" id="8_krf8q"]
 [ext_resource type="Texture2D" uid="uid://dicybfnmbsvev" path="res://Assets/Sprites/UISprites/Coastline.png" id="10_072lh"]
@@ -244,12 +243,6 @@ texture = ExtResource("7_24fdy")
 
 [node name="Decorations" type="Node2D" parent="."]
 position = Vector2(-1, -73)
-
-[node name="Seed2" parent="." instance=ExtResource("7_38ml1")]
-position = Vector2(268, 13)
-
-[node name="Seed3" parent="." instance=ExtResource("7_38ml1")]
-position = Vector2(-23, 15)
 
 [connection signal="moveCameraLeft" from="CanvasLayer/PlayerUI" to="Camera2D" method="_on_player_ui_move_camera_left"]
 [connection signal="moveCameraRight" from="CanvasLayer/PlayerUI" to="Camera2D" method="_on_player_ui_move_camera_right"]

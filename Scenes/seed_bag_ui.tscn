@@ -107,3 +107,4 @@ texture = ExtResource("4_n56f0")
 
 [node name="Pickup" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_e1mvb")
+bus = &"SFX"

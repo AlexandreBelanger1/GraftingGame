@@ -147,6 +147,7 @@ texture = ExtResource("2_seh2q")
 [node name="ButtonHover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_8ncwh")
 volume_db = -11.971
+bus = &"SFX"
 
 [connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/smallPot" to="." method="_on_small_pot_mouse_entered"]
 [connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/smallPot" to="." method="_on_small_pot_mouse_exited"]
