@@ -1,6 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://h66tp54xyqug"]
+[gd_scene load_steps=30 format=3 uid="uid://h66tp54xyqug"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7p2bg"]
+[ext_resource type="PackedScene" uid="uid://b2cqern60mt1m" path="res://Scenes/music_player.tscn" id="2_ospun"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="3_tva00"]
 [ext_resource type="Texture2D" uid="uid://cvteidrsx2x1y" path="res://Assets/Sprites/GrassTile.png" id="3_yn4gv"]
 [ext_resource type="Script" path="res://scripts/SeedPouchMarker.gd" id="5_vmy6b"]
@@ -98,6 +99,9 @@ sources/2 = SubResource("TileSetAtlasSource_fo1qg")
 [node name="game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_7p2bg")
+
+[node name="MusicPlayer" parent="." instance=ExtResource("2_ospun")]
+position = Vector2(11, -10)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

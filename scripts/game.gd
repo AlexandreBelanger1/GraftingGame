@@ -5,6 +5,8 @@ const MEDIUM_POT = preload("res://Scenes/Pots/MediumPot.tscn")
 const SMALL_POT = preload("res://Scenes/Pots/SmallPot.tscn")
 @onready var seed_pouch_marker = $Camera2D/SeedPouchMarker
 @onready var grid = $Grid
+
+
 var savePath = "user://savegame.tres"
 func _ready():
 	windowSetup()

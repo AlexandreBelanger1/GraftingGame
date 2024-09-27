@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2cqern60mt1m"]
+
+[ext_resource type="Script" path="res://scripts/MusicPlayer.gd" id="1_klrni"]
+[ext_resource type="AudioStream" uid="uid://b5et7411tfgp6" path="res://Assets/Audio/IdleGarden.wav" id="2_ghw25"]
+[ext_resource type="AudioStream" uid="uid://cykc1xtwfk20s" path="res://Assets/Audio/IdleGarden2.wav" id="3_fhr56"]
+
+[node name="MusicPlayer" type="Node2D"]
+script = ExtResource("1_klrni")
+
+[node name="Song1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ghw25")
+bus = &"Music"
+
+[node name="Song2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fhr56")
+bus = &"Music"
+
+[node name="Song3" type="AudioStreamPlayer" parent="."]
+
+[node name="Song4" type="AudioStreamPlayer" parent="."]
+
+[node name="Song5" type="AudioStreamPlayer" parent="."]
+
+[node name="Song6" type="AudioStreamPlayer" parent="."]
+
+[node name="BlendTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="BlendTimer" to="." method="_on_blend_timer_timeout"]

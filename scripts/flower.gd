@@ -46,7 +46,8 @@ func setComplete(flowerName: String):
 func loadStats(path: String):
 	stats = load(path)
   
-
+func setFrame(frame:int):
+	sprite_2d.frame = frame
 
 func _on_seed_gen_timer_timeout():
 	var rand = RNG.randf_range(0,10)
@@ -132,6 +133,8 @@ func getStat(value: int):
 		return stats.type
 	elif value == 4:
 		return stats.typeDominance
+	elif value == 5:
+		return sprite_2d.frame
 
 
 func _on_plant_detect_body_entered(body):

@@ -43,16 +43,19 @@ func loadPlant(data:potData):
 	stemType = data.plantStem
 	roots.loadRoots(data)
 	stem.loadStem(data)
-	if data.flowerComplete:
+	if data.stemComplete:
 		for i in stem.stats.flowerCount:
 			var flower = FLOWER.instantiate()
 			add_child(flower)
 			flowers.append(flower)
 			flower.global_position.x = global_position.x + stem.stats.flowerPositions[i].x
 			flower.global_position.y = global_position.y + stem.stats.flowerPositions[i].y
-			flower.setComplete(data.plantFlower)
-	elif data.stemComplete and !data.flowerComplete:
-		_on_stem_stem_complete()
+			if data.flowerComplete:
+				flower.setComplete(data.plantFlower)
+			else:
+				flower.setup(flowerType)
+				flower.setFrame(data.flowerFrame)
+		
 	configureStats()
 	
 
@@ -105,6 +108,13 @@ func save(index:int):
 		return flowerType
 	elif index == 6:
 		return plantSpecialType
+	elif index == 7:
+		return stem.getStat(7)
+	elif index == 8:
+		if stemComplete:
+			return flowers[0].getStat(5)
+		else: 
+			return 0
 
 func getTooltip(index: int):
 	if index == 1:

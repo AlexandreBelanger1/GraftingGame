@@ -9,3 +9,5 @@ class_name potData extends Resource
 @export var stemComplete:bool
 @export var flowerComplete:bool
 @export var plantSpecialType:String = "none"
+@export var stemFrame:int = 1
+@export var flowerFrame:int = 1

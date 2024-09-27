@@ -25,6 +25,7 @@ func loadStem(data:potData):
 	if data.stemComplete:
 		sprite_2d.frame = stats.growthFrames
 	else:
+		sprite_2d.frame = data.stemFrame
 		startGrowing()
 
 func loadStats(path: String):
@@ -63,3 +64,5 @@ func getStat(value: int):
 		return stats.flowerCount
 	elif value == 6:
 		return stats.sellValue
+	elif value == 7: 
+		return sprite_2d.frame

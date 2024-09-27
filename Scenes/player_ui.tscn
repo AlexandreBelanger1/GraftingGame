@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://33hfn4s0xca2"]
+[gd_scene load_steps=35 format=3 uid="uid://33hfn4s0xca2"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/UISprites/LeftArrow.png" id="1_cmnag"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
@@ -29,7 +29,6 @@
 [ext_resource type="PackedScene" uid="uid://cdlfi5e3mkjnx" path="res://Scenes/shop_ui.tscn" id="27_sxlbi"]
 [ext_resource type="Texture2D" uid="uid://cmws0rldc37oj" path="res://Assets/Sprites/UISprites/SellIcon.png" id="30_dfa4m"]
 [ext_resource type="Texture2D" uid="uid://sa2igpdaxx1n" path="res://Assets/Sprites/UISprites/SellIconHighlight.png" id="31_jmjl0"]
-[ext_resource type="AudioStream" uid="uid://b5et7411tfgp6" path="res://Assets/Audio/IdleGarden.wav" id="31_ovy1k"]
 [ext_resource type="PackedScene" uid="uid://ba8ypojgo8as2" path="res://Scenes/sell_ui.tscn" id="32_mo70n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dmpm"]
@@ -321,11 +320,6 @@ offset_left = 926.0
 offset_top = 4.0
 offset_right = 926.0
 offset_bottom = 4.0
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("31_ovy1k")
-autoplay = true
-bus = &"Music"
 
 [connection signal="mouse_entered" from="PotsButton" to="." method="_on_shop_button_mouse_entered"]
 [connection signal="pressed" from="PotsButton" to="." method="_on_pots_button_pressed"]

@@ -205,6 +205,8 @@ func save():
 		data.plantStem = Plant.save(4)
 		data.plantFlower = Plant.save(5)
 		data.plantSpecialType = Plant.save(6)
+		data.stemFrame = Plant.save(7)
+		data.flowerFrame = Plant.save(8)
 	return data
 
 func loadState(data:potData):
