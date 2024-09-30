@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsovbdr3nkavq"]
+
+[ext_resource type="Texture2D" uid="uid://61pu3yu0fmvu" path="res://Assets/Sprites/UISprites/WaterTap.png" id="1_a4ou6"]
+[ext_resource type="Script" path="res://scripts/water_tap.gd" id="1_rj87x"]
+[ext_resource type="Texture2D" uid="uid://xg7lpaf11e8w" path="res://Assets/Sprites/UISprites/WaterTapBlinkIndicator.png" id="3_82k1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvy36"]
+size = Vector2(30.303, 56.5758)
+
+[node name="WaterTap" type="StaticBody2D"]
+scale = Vector2(0.33, 0.33)
+collision_layer = 64
+collision_mask = 32
+script = ExtResource("1_rj87x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -29.2879)
+shape = SubResource("RectangleShape2D_uvy36")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+texture = ExtResource("1_a4ou6")
+
+[node name="LowWaterIndicator" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -30.303)
+texture = ExtResource("3_82k1d")
+
+[node name="BlinkTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://da5tlsg7j8q6o"]
+[gd_scene load_steps=11 format=3 uid="uid://da5tlsg7j8q6o"]
 
 [ext_resource type="Script" path="res://scripts/MovableObject.gd" id="1_2f0wm"]
 [ext_resource type="Texture2D" uid="uid://crupnhoxnt0wt" path="res://Assets/Sprites/MachineSprites/128x128Circle.png" id="2_moqum"]
 [ext_resource type="Texture2D" uid="uid://cyyhfyss12y75" path="res://Assets/Sprites/UISprites/GreenHouse.png" id="3_2w1h6"]
 [ext_resource type="AudioStream" uid="uid://bl5fracburlcf" path="res://Assets/Audio/pickupPop.mp3" id="4_af6tw"]
 [ext_resource type="AudioStream" uid="uid://db4snmllc4qor" path="res://Assets/Audio/setdownPop.mp3" id="5_pmdn6"]
+[ext_resource type="Script" path="res://scripts/GreenhouseData.gd" id="6_ipsqy"]
 
 [sub_resource type="Animation" id="Animation_nsuf1"]
 length = 0.001
@@ -98,6 +99,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EffectRange"]
 position = Vector2(0.5, 12)
 shape = SubResource("RectangleShape2D_4e6sk")
+
+[node name="MachineSpecificHandler" type="Node2D" parent="."]
+script = ExtResource("6_ipsqy")
 
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]

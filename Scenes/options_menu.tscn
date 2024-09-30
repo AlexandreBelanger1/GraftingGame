@@ -30,6 +30,16 @@ theme_override_fonts/font = ExtResource("4_ckvc2")
 theme_override_font_sizes/font_size = 32
 text = "SAVE"
 
+[node name="CreditsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 243.0
+offset_right = 128.0
+offset_bottom = 277.0
+theme_override_fonts/font = ExtResource("4_ckvc2")
+theme_override_font_sizes/font_size = 32
+text = "CREDITS"
+
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 33.0
@@ -67,16 +77,7 @@ offset_top = 187.0
 offset_right = 107.0
 offset_bottom = 219.0
 toggle_mode = true
-texture_normal = ExtResource("2_vodqk")
-texture_pressed = ExtResource("3_sae68")
-
-[node name="BorderlessButton2" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 75.0
-offset_top = 250.0
-offset_right = 107.0
-offset_bottom = 282.0
-toggle_mode = true
+button_pressed = true
 texture_normal = ExtResource("2_vodqk")
 texture_pressed = ExtResource("3_sae68")
 
@@ -183,12 +184,44 @@ max_value = 1.0
 step = 0.01
 value = 0.5
 
+[node name="Credits" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -378.0
+offset_top = 45.0
+offset_right = -3.0
+offset_bottom = 289.0
+color = Color(0.133333, 0.133333, 0.133333, 0.760784)
+
+[node name="Label" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 368.0
+offset_bottom = 235.0
+theme_override_fonts/font = ExtResource("4_ckvc2")
+text = "Song: August Rain, Snoozy Beats, source: Free Music Archive, license type: CC BY
+Song: Blissful Morning, Snoozy Beats, source: Free Music Archive, license type: CC BY
+Song: Butterfly Weekend, Snoozy Beats, source:  Free Music Archive, license type: CC BY
+Song: Cherry Blossom, Snoozy Beats, source:  Free Music Archive, license type: CC BY
+Song: Drifting, Snoozy Beats, source:  Free Music Archive, license type: CC BY
+Song: Night Vision, Snoozy Beats, source:  Free Music Archive, license type: CC BY
+Song: Peaches, Snoozy Beats, source:  Free Music Archive, license type: CC BY
+Song: Starry Night, Snoozy Beats, source:  Free Music Archive, license type: CC BY
+Song: Waking Up Easy, Snoozy Beats, source:  Free Music Archive, license type: CC BY
+Song: IdleGarden, source: Me
+Song: IdleGarden2, source: Me
+All programming, art and game design by Alex Belanger
+Font: m3x6 by Daniel Linssen"
+autowrap_mode = 2
+clip_text = true
+
 [connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="NewSaveButton" to="." method="_on_new_save_button_pressed"]
 [connection signal="pressed" from="LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="BorderlessButton" to="." method="_on_borderless_button_pressed"]
-[connection signal="pressed" from="BorderlessButton2" to="." method="_on_borderless_button_pressed"]
 [connection signal="pressed" from="FitWindowButton" to="." method="_on_fit_window_button_pressed"]
 [connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="MusicSlider" to="." method="_on_music_slider_value_changed"]

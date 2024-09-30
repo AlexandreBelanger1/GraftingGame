@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2cqern60mt1m"]
+[gd_scene load_steps=13 format=3 uid="uid://b2cqern60mt1m"]
 
 [ext_resource type="Script" path="res://scripts/MusicPlayer.gd" id="1_klrni"]
-[ext_resource type="AudioStream" uid="uid://b5et7411tfgp6" path="res://Assets/Audio/IdleGarden.wav" id="2_ghw25"]
-[ext_resource type="AudioStream" uid="uid://cykc1xtwfk20s" path="res://Assets/Audio/IdleGarden2.wav" id="3_fhr56"]
+[ext_resource type="AudioStream" uid="uid://b5et7411tfgp6" path="res://Assets/Audio/Music/IdleGarden.wav" id="2_ghw25"]
+[ext_resource type="AudioStream" uid="uid://cykc1xtwfk20s" path="res://Assets/Audio/Music/IdleGarden2.wav" id="3_fhr56"]
+[ext_resource type="AudioStream" uid="uid://cchxql2ucl41a" path="res://Assets/Audio/Music/snoozy beats - august rain.mp3" id="4_jgxr7"]
+[ext_resource type="AudioStream" uid="uid://bpcoadrbuh3g6" path="res://Assets/Audio/Music/snoozy beats - blissful morning.mp3" id="5_imhoi"]
+[ext_resource type="AudioStream" uid="uid://0kyyueg3dq08" path="res://Assets/Audio/Music/snoozy beats - butterfly weekend.mp3" id="6_bbo3e"]
+[ext_resource type="AudioStream" uid="uid://da8k1b2qr1hvx" path="res://Assets/Audio/Music/snoozy beats - cherry blossom.mp3" id="7_q3exq"]
+[ext_resource type="AudioStream" uid="uid://sr0riwbjcrjv" path="res://Assets/Audio/Music/snoozy beats - drifting.mp3" id="8_3rklm"]
+[ext_resource type="AudioStream" uid="uid://cytuwm5ctctp3" path="res://Assets/Audio/Music/snoozy beats - nighvision.mp3" id="9_b138i"]
+[ext_resource type="AudioStream" uid="uid://b10w6krbmukry" path="res://Assets/Audio/Music/snoozy beats - peaches.mp3" id="10_v0cae"]
+[ext_resource type="AudioStream" uid="uid://cmtyjeysdirrk" path="res://Assets/Audio/Music/snoozy beats - starry night.mp3" id="11_xrdqh"]
+[ext_resource type="AudioStream" uid="uid://dxesbu7hfoym0" path="res://Assets/Audio/Music/snoozy beats - waking up easy.mp3" id="12_13jgl"]
 
 [node name="MusicPlayer" type="Node2D"]
 script = ExtResource("1_klrni")
@@ -16,12 +25,40 @@ stream = ExtResource("3_fhr56")
 bus = &"Music"
 
 [node name="Song3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jgxr7")
+bus = &"Music"
 
 [node name="Song4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_imhoi")
+bus = &"Music"
 
 [node name="Song5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_bbo3e")
+bus = &"Music"
 
 [node name="Song6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_q3exq")
+bus = &"Music"
+
+[node name="Song7" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_3rklm")
+bus = &"Music"
+
+[node name="Song8" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_b138i")
+bus = &"Music"
+
+[node name="Song9" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_v0cae")
+bus = &"Music"
+
+[node name="Song10" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_xrdqh")
+bus = &"Music"
+
+[node name="Song11" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_13jgl")
+bus = &"Music"
 
 [node name="BlendTimer" type="Timer" parent="."]
 

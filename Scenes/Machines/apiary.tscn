@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://v6njn0d2ya4j"]
+[gd_scene load_steps=14 format=3 uid="uid://v6njn0d2ya4j"]
 
 [ext_resource type="Script" path="res://scripts/MovableObject.gd" id="1_htnqk"]
 [ext_resource type="Texture2D" uid="uid://crupnhoxnt0wt" path="res://Assets/Sprites/MachineSprites/128x128Circle.png" id="2_mdxhk"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bl5fracburlcf" path="res://Assets/Audio/pickupPop.mp3" id="4_q7jt1"]
 [ext_resource type="AudioStream" uid="uid://db4snmllc4qor" path="res://Assets/Audio/setdownPop.mp3" id="5_67qql"]
 [ext_resource type="PackedScene" uid="uid://bptkytla0t4mg" path="res://Scenes/Machines/bee_particles.tscn" id="6_gdytq"]
+[ext_resource type="Script" path="res://scripts/ApiaryData.gd" id="7_xfdyy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnka3"]
 size = Vector2(22, 20)
@@ -102,6 +103,9 @@ shape = SubResource("CircleShape2D_4cqcn")
 [node name="BeeParticles" parent="." instance=ExtResource("6_gdytq")]
 y_sort_enabled = true
 position = Vector2(0, -1)
+
+[node name="MachineSpecificHandler" type="Node2D" parent="."]
+script = ExtResource("7_xfdyy")
 
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]

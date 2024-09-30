@@ -39,6 +39,7 @@ func new_save_game():
 	savedGame.gold = 20
 	ResourceSaver.save(savedGame, savePath)
 	load_game()
+	createWateringCan(Vector2(180,0))
 	createPot(Vector2(0,0))
 	createPot(Vector2(100,0))
 	createSeed(Vector2(0,50))
@@ -49,6 +50,10 @@ func save_game():
 	for child in get_children():
 		if child is pot:
 			savedGame.potsArray.append(child.save())
+		if child is machine:
+			savedGame.machineArray.append(child.save())
+		if child is waterCan:
+			savedGame.wateringCan = child.save()
 	savedGame.gold = Global.gold
 	ResourceSaver.save(savedGame, savePath)
 	print_debug(savedGame.potsArray)
@@ -62,8 +67,16 @@ func load_game():
 	for child in get_children():
 		if child is pot:
 			child.queue_free()
+		if child is machine:
+			child.queue_free()
+		if child is waterCan:
+			child.queue_free()
 	for x in savedGame.potsArray:
 		loadPot(x)
+	for x in savedGame.machineArray:
+		loadMachine(x)
+	if savedGame.wateringCan != null:
+		loadWaterCan(savedGame.wateringCan)
 	Global.gold = savedGame.gold
 	if savedGame.gold == null:
 		Global.gold = 20
@@ -80,6 +93,22 @@ func loadPot(data:potData):
 	add_child(newPot)
 	newPot.loadState(data)
 
+const APIARY = preload("res://Scenes/Machines/apiary.tscn")
+const GREENHOUSE = preload("res://Scenes/Machines/greenhouse.tscn")
+const MUTATION_MACHINE = preload("res://Scenes/Machines/mutation_machine.tscn")
+func loadMachine(data:machineData):
+	var newMachine
+	print_debug(data.machineType)
+	if data.machineType == "Greenhouse":
+		newMachine = GREENHOUSE.instantiate()
+	elif data.machineType == "Apiary":
+		newMachine = APIARY.instantiate()
+	elif data.machineType == "MutationMachine":
+		newMachine = MUTATION_MACHINE.instantiate()
+	if newMachine != null:
+		add_child(newMachine)
+		newMachine.global_position = data.position
+
 func createPot(pos:Vector2):
 	var newPot = MEDIUM_POT.instantiate()
 	newPot.loadStats("res://Scenes/Pots/MediumPot.tres")
@@ -92,6 +121,18 @@ func createSeed(pos:Vector2):
 	var newSeed = SEED.instantiate()
 	add_child(newSeed)
 	newSeed.global_position = global_position+pos
+
+
+const WATERING_CAN = preload("res://Scenes/Machines/wateringCan.tscn")
+func createWateringCan(pos:Vector2):
+	var wateringCan = WATERING_CAN.instantiate()
+	wateringCan.global_position = pos
+	add_child(wateringCan)
+
+func loadWaterCan(data:waterCanData):
+	var wateringCan = WATERING_CAN.instantiate()
+	add_child(wateringCan)
+	wateringCan.loadState(data)
 
 func windowSetup():
 	var taskbarHeight = DisplayServer.screen_get_size().y - DisplayServer.screen_get_usable_rect().size.y

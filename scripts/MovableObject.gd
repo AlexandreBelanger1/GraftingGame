@@ -1,8 +1,9 @@
-extends Node2D
+class_name machine extends Node2D
 @onready var pickup_sound = $PickupSound
 @onready var place_sound = $PlaceSound
 @onready var player = $Player
 @onready var range_indicator = $RangeIndicator
+@onready var machine_specific_handler = $MachineSpecificHandler
 
 
 
@@ -21,7 +22,6 @@ var sellPlant = false
 var releaseFlag = false
 
 func _ready():
-	SignalBus.saveGame.connect(save)
 	SignalBus.confirmRemove.connect(remove)
 
 func _input(event):
@@ -153,8 +153,9 @@ func setup():
 
 
 func save():
-	var data = potData.new()
+	var data = machineData.new()
 	data.position = global_position
+	data.machineType = machine_specific_handler.save(1)
 	return data
 
 func loadState(data:potData):
@@ -183,6 +184,5 @@ func potRelease():
 	Global.is_dragging = false
 	_on_grab_area_mouse_exited()
 	player.play("RefreshCollision")
-
 
 

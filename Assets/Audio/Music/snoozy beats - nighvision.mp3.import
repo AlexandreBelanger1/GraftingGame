@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cytuwm5ctctp3"
+path="res://.godot/imported/snoozy beats - nighvision.mp3-17cf48bf4aeab04c291eca07827b6afd.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/snoozy beats - nighvision.mp3"
+dest_files=["res://.godot/imported/snoozy beats - nighvision.mp3-17cf48bf4aeab04c291eca07827b6afd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

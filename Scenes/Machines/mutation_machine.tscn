@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dpxbmwowsmoiu"]
+[gd_scene load_steps=13 format=3 uid="uid://dpxbmwowsmoiu"]
 
 [ext_resource type="Script" path="res://scripts/MovableObject.gd" id="1_aw64k"]
 [ext_resource type="Texture2D" uid="uid://crupnhoxnt0wt" path="res://Assets/Sprites/MachineSprites/128x128Circle.png" id="2_5t8ko"]
 [ext_resource type="Texture2D" uid="uid://3rmhc377n5e5" path="res://Assets/Sprites/UISprites/mutationMachine.png" id="2_ma03l"]
 [ext_resource type="AudioStream" uid="uid://bl5fracburlcf" path="res://Assets/Audio/pickupPop.mp3" id="3_yceyq"]
 [ext_resource type="AudioStream" uid="uid://db4snmllc4qor" path="res://Assets/Audio/setdownPop.mp3" id="4_x6ns2"]
+[ext_resource type="Script" path="res://scripts/MutationMachineData.gd" id="6_7ml8d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnka3"]
 size = Vector2(12, 10)
@@ -97,6 +98,9 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EffectRange"]
 shape = SubResource("CircleShape2D_4cqcn")
+
+[node name="MachineSpecificHandler" type="Node2D" parent="."]
+script = ExtResource("6_7ml8d")
 
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]

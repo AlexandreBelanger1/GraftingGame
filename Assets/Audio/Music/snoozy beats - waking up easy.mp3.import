@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxesbu7hfoym0"
+path="res://.godot/imported/snoozy beats - waking up easy.mp3-99ee561130441331e8b4575e8b31a71e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/snoozy beats - waking up easy.mp3"
+dest_files=["res://.godot/imported/snoozy beats - waking up easy.mp3-99ee561130441331e8b4575e8b31a71e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://sr0riwbjcrjv"
+path="res://.godot/imported/snoozy beats - drifting.mp3-222176bbdc19fea086d94aae2d5b0c3b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/snoozy beats - drifting.mp3"
+dest_files=["res://.godot/imported/snoozy beats - drifting.mp3-222176bbdc19fea086d94aae2d5b0c3b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
