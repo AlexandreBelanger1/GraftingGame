@@ -38,10 +38,10 @@ texture = ExtResource("5_c22xy")
 visible = false
 z_index = 2
 layout_mode = 1
-offset_left = 39.0
-offset_top = -20.0
-offset_right = 39.0
-offset_bottom = -20.0
+offset_left = 34.0
+offset_top = 1.0
+offset_right = 34.0
+offset_bottom = 1.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

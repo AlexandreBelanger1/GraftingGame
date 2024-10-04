@@ -22,6 +22,7 @@ color = Color(0.294118, 0.294118, 0.294118, 0.596078)
 
 [node name="Harvestbutton" type="TextureButton" parent="Background"]
 z_index = 1
+layout_mode = 0
 offset_left = 4.0
 offset_top = 27.0
 offset_right = 20.0
@@ -32,6 +33,7 @@ texture_hover = ExtResource("4_bll75")
 
 [node name="HarvestLabel" type="Label" parent="Background"]
 visible = false
+layout_mode = 0
 offset_left = 22.0
 offset_top = 28.0
 offset_right = 54.0
@@ -44,6 +46,7 @@ text = "HARVEST"
 
 [node name="SellLabel" type="Label" parent="Background"]
 visible = false
+layout_mode = 0
 offset_left = 22.0
 offset_top = 5.0
 offset_right = 54.0
@@ -55,6 +58,7 @@ theme_override_fonts/font = ExtResource("2_nr702")
 text = "SELL"
 
 [node name="SellButton" type="TextureButton" parent="Background"]
+layout_mode = 0
 offset_left = 4.0
 offset_top = 5.0
 offset_right = 20.0

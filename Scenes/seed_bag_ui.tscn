@@ -19,12 +19,13 @@ grow_vertical = 2
 script = ExtResource("1_0kfkj")
 
 [node name="Background" type="NinePatchRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.756863)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 9.402
 anchor_bottom = 1.274
 offset_left = -3.0
-offset_right = -1714.01
+offset_right = -1609.01
 offset_bottom = -85.488
 grow_horizontal = 2
 grow_vertical = 2
@@ -86,6 +87,7 @@ size_flags_horizontal = 3
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+follow_focus = true
 
 [node name="GridContainer" type="GridContainer" parent="Background/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
@@ -102,7 +104,7 @@ anchor_right = 9.07
 anchor_bottom = 1.128
 offset_left = 52.284
 offset_top = 43.368
-offset_right = -1646.28
+offset_right = -1541.28
 offset_bottom = -39.936
 grow_horizontal = 2
 grow_vertical = 2
