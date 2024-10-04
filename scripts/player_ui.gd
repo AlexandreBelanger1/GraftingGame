@@ -8,16 +8,14 @@ extends Control
 @onready var options_menu = $OptionsMenu
 @onready var button_hover = $ButtonHover
 @onready var button_clicked = $ButtonClicked
-@onready var spade_equip = $SpadeEquip
 @onready var confirm_selection_ui = $ConfirmSelectionUI
 @onready var mouse_tool_tip = $MouseToolTip
 @onready var seed_bag_ui = $SeedBagUI
-@onready var pots_ui = $PotsUI
 @onready var sell_ui = $SellUI
-@onready var sell_label = $SellLabel
-@onready var harvest_label = $HarvestLabel
+@onready var options_label = $OptionsLabel
 @onready var shop_label = $ShopLabel
 @onready var seeds_label = $SeedsLabel
+
 
 
 
@@ -28,21 +26,16 @@ signal moveCameraRight
 
 func _ready():
 	SignalBus.confirmUI.connect(enableConfirmUI)
-	
-	
 
-func _input(event):
-	pass
 
+#CAMERA CONROLS
 func _on_left_area_mouse_entered():
 	emit_signal("moveCameraLeft")
 	left_arrow.visible = true
 
-
 func _on_left_area_mouse_exited():
 	emit_signal("stopCamera")
 	left_arrow.visible = false
-
 
 func _on_right_area_mouse_entered():
 	emit_signal("moveCameraRight")
@@ -53,127 +46,52 @@ func _on_right_area_mouse_exited():
 	right_arrow.visible = false
 
 
-func _on_pots_button_pressed():
-	Global.state = 1
-	button_clicked.play()
+#UI BUTTON PRESSED
+func _on_shop_button_pressed():
+	shop_UI.visible = !shop_UI.visible
 	seed_bag_ui.visible = false
-	shop_UI.visible = false
-	pots_ui.toggleVisible()
-	sell_ui.visible = false
-
-
-
-func updateCurrency():
-	currency_counter.text = str(Global.gold)
-
+	button_clicked.play()
 
 func _on_seeds_button_pressed():
 	seed_bag_ui.visible = !seed_bag_ui.visible
-	if seed_bag_ui.visible:
-		Global.state = 3
-	else:
-		Global.state = 1
-	button_clicked.play()
 	shop_UI.visible = false
-	pots_ui.setVisible(false)
-	sell_ui.visible = false
+	button_clicked.play()
 
 func _on_options_button_pressed():
 	button_clicked.play()
 	options_menu.visible = !options_menu.visible
 
 
+#UI BUTTON ENTERED
 func _on_shop_button_mouse_entered():
 	button_hover.play()
 	shop_label.visible = true
-
 
 func _on_seeds_button_mouse_entered():
 	button_hover.play()
 	seeds_label.visible = true
 
-
 func _on_options_button_mouse_entered():
 	button_hover.play()
+	options_label.visible = true
 
 
-func _on_remove_plant_button_toggled(toggled_on):
-	if toggled_on:
-		Global.state = 4
-		spade_equip.play()
-		pots_ui.setVisible(false)
-		seed_bag_ui.visible = false
-		shop_UI.visible = false
-		sell_ui.visible = false
-	else:
-		SignalBus.setState.emit(1)
-		Global.state = 1
+#UI BUTTON EXITED
+func _on_seeds_button_mouse_exited():
+	seeds_label.visible = false
 
+func _on_shop_button_mouse_exited():
+	shop_label.visible = false
+
+func _on_options_button_mouse_exited():
+	options_label.visible = false
+
+
+#OTHER FUNCTIONS
+func updateCurrency():
+	currency_counter.text = str(Global.gold)
 
 func enableConfirmUI():
 	confirm_selection_ui.visible = true
 	SignalBus.setTooltip.emit("null",0,0,0,0,0,0)
 	SignalBus.mouseTooltip.emit("","","None","None","",false,false)
-	
-
-
-func _on_remove_plant_button_mouse_entered():
-	button_hover.play()
-
-
-
-
-func _on_shop_button_pressed():
-	shop_UI.visible = !shop_UI.visible
-	sell_ui.visible = false
-	pots_ui.setVisible(false)
-	seed_bag_ui.visible = false
-	button_clicked.play()
-	Global.state = 1
-
-
-func _on_sell_button_pressed():
-	shop_UI.visible = false
-	pots_ui.setVisible(false)
-	seed_bag_ui.visible = false
-	sell_ui.visible = !sell_ui.visible
-	button_clicked.play()
-	if sell_ui.visible:
-		Global.state = 5
-	else:
-		Global.state = 1
-
-
-func _on_sell_button_mouse_entered():
-	button_hover.play()
-	sell_label.visible = true
-
-
-func _on_harvestbutton_pressed():
-	shop_UI.visible = false
-	sell_ui.visible = false
-	pots_ui.setVisible(false)
-	seed_bag_ui.visible = false
-	button_clicked.play()
-	Global.state = 6
-
-
-func _on_harvestbutton_mouse_entered():
-	button_hover.play()
-	harvest_label.visible = true
-
-
-func _on_harvestbutton_mouse_exited():
-	harvest_label.visible = false
-
-
-func _on_seeds_button_mouse_exited():
-	seeds_label.visible = false
-
-
-func _on_shop_button_mouse_exited():
-	shop_label.visible = false
-
-
-func _on_sell_button_mouse_exited():
-	sell_label.visible = false

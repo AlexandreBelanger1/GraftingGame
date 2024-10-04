@@ -65,6 +65,8 @@ RMB={
 2d_physics/layer_5="Plant2"
 2d_physics/layer_6="WateringCan"
 2d_physics/layer_7="WaterTap"
+2d_physics/layer_8="pots"
+2d_physics/layer_9="plantedPot"
 
 [rendering]
 

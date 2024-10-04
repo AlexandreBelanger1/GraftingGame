@@ -11,20 +11,24 @@ var stats = flowerStats.new()
 var RNG = RandomNumberGenerator.new()
 var seed = null
 var proximityPlants = []
+var growthWaitTime
+var growthRateModifier = 1
 
 func _ready():
 	SignalBus.changeGameSpeed.connect(setGrowthRate)
 
 func _on_growth_timer_timeout():
+	var water = get_parent().getWaterLevel()
 	if sprite_2d.frame == stats.growthFrames:
 		growth_timer.stop()
 		seed_gen_timer.start()
 		get_parent().flowerComplete = true
-	else: 
+	elif water > 0: 
 		sprite_2d.frame += 1
 
 
-func setup(flowerName: String):
+
+func setup(flowerName: String,modifiers):
 	if flowerName == "null":
 		loadStats("pansyFlower")
 		sprite_2d.play(flowerName)
@@ -32,12 +36,14 @@ func setup(flowerName: String):
 		growth_timer.start()
 	else:
 		loadStats(Global.flowerStatsDict[flowerName])
+		growthRateModifier = modifiers["FlowerGrowthRate"]
 		sprite_2d.play(flowerName)
 		setGrowthRate()
 		growth_timer.start()
 
-func setComplete(flowerName: String):
+func setComplete(flowerName: String, modifiers):
 	loadStats(Global.flowerStatsDict[flowerName])
+	growthRateModifier = modifiers["FlowerGrowthRate"]
 	sprite_2d.play(flowerName)
 	sprite_2d.frame = stats.growthFrames
 	setGrowthRate()
@@ -118,7 +124,9 @@ func shakeFlower():
 		seed_gen_timer.start()
 
 func setGrowthRate():
-	growth_timer.wait_time = Global.gameSpeed * (1/stats.growthRate)
+	growthWaitTime = 100.00 * (Global.gameSpeed) * (1.00/(float(stats.growthRate)*growthRateModifier))
+	#growthWaitTime = Global.gameSpeed * (100.00/(float(stats.growthRate)*growthRateModifier))
+	growth_timer.wait_time = growthWaitTime
 	seed_gen_timer.wait_time = Global.gameSpeed * (1/stats.productionRate)
 
 func getGrowthPercent():
@@ -182,3 +190,20 @@ func generateProximitySeed():
 		seed.visible = false
 		seed_gen_timer.stop()
 
+func growWhileAway(waterSeconds:float,deltaTime:float):
+	while deltaTime > 0 and sprite_2d.frame < stats.growthFrames and waterSeconds > 0:
+		if deltaTime >= growthWaitTime:
+			sprite_2d.frame += 1
+			deltaTime -= growthWaitTime
+			waterSeconds -= 2800
+		else:
+			deltaTime = 0
+	if sprite_2d.frame == stats.growthFrames:
+		_on_growth_timer_timeout()
+	if waterSeconds < 0.00:
+		waterSeconds = 0.00
+	get_parent().setWaterLevel(waterSeconds)
+
+func refreshModifiers(modifiers):
+	growthRateModifier = modifiers["FlowerGrowthRate"]
+	setGrowthRate()

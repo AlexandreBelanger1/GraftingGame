@@ -4,50 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://crupnhoxnt0wt" path="res://Assets/Sprites/MachineSprites/128x128Circle.png" id="2_3kdxm"]
 [ext_resource type="Texture2D" uid="uid://ci1mqi86kxd7u" path="res://Assets/Sprites/UISprites/WateringCan.png" id="3_46mbj"]
 [ext_resource type="AudioStream" uid="uid://bl5fracburlcf" path="res://Assets/Audio/pickupPop.mp3" id="4_k4ilg"]
+[ext_resource type="PackedScene" uid="uid://dat8adofe71mq" path="res://Scenes/water_particles.tscn" id="4_wsqc2"]
+[ext_resource type="Script" path="res://scripts/GrabArea.gd" id="5_7e1uu"]
 [ext_resource type="AudioStream" uid="uid://db4snmllc4qor" path="res://Assets/Audio/setdownPop.mp3" id="5_158yq"]
 [ext_resource type="AudioStream" uid="uid://d21mfhywmy0o7" path="res://Assets/Audio/WateringCanFill.wav" id="6_4n1vt"]
+[ext_resource type="AudioStream" uid="uid://dmdeqmoo1s2bm" path="res://Assets/Audio/wateringSound.mp3" id="8_wgn7p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnka3"]
 size = Vector2(19, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xq27r"]
 size = Vector2(18, 19)
-
-[sub_resource type="Animation" id="Animation_nsuf1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GrabArea:input_pickable")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_t2553"]
-resource_name = "RefreshCollision"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GrabArea:input_pickable")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6sae8"]
-_data = {
-"RESET": SubResource("Animation_nsuf1"),
-"RefreshCollision": SubResource("Animation_t2553")
-}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4cqcn"]
 radius = 8.06226
@@ -76,6 +43,10 @@ texture = ExtResource("2_3kdxm")
 texture = ExtResource("3_46mbj")
 offset = Vector2(0, -12)
 
+[node name="WaterParticles" parent="Sprite2D" instance=ExtResource("4_wsqc2")]
+z_index = 1
+position = Vector2(-12, -17)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6.5, -6.5)
 shape = SubResource("RectangleShape2D_lnka3")
@@ -83,15 +54,11 @@ shape = SubResource("RectangleShape2D_lnka3")
 [node name="GrabArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 3
+script = ExtResource("5_7e1uu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
 position = Vector2(7, -6.5)
 shape = SubResource("RectangleShape2D_xq27r")
-
-[node name="Player" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_6sae8")
-}
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_k4ilg")
@@ -104,7 +71,7 @@ bus = &"SFX"
 [node name="EffectRange" type="Area2D" parent="."]
 position = Vector2(-4, 8)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EffectRange"]
 position = Vector2(-29.68, 10.32)
@@ -112,6 +79,7 @@ shape = SubResource("CircleShape2D_4cqcn")
 
 [node name="WaterFill" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_4n1vt")
+volume_db = -11.223
 pitch_scale = 1.2
 bus = &"SFX"
 
@@ -135,9 +103,15 @@ collision_mask = 64
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RefillDetect"]
 shape = SubResource("RectangleShape2D_vf6gf")
 
+[node name="WateringSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_wgn7p")
+bus = &"SFX"
+
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]
 [connection signal="mouse_entered" from="GrabArea" to="." method="_on_grab_area_mouse_entered"]
 [connection signal="mouse_exited" from="GrabArea" to="." method="_on_grab_area_mouse_exited"]
+[connection signal="body_entered" from="EffectRange" to="." method="_on_effect_range_body_entered"]
+[connection signal="body_exited" from="EffectRange" to="." method="_on_effect_range_body_exited"]
 [connection signal="body_entered" from="RefillDetect" to="." method="_on_refill_detect_body_entered"]
 [connection signal="body_exited" from="RefillDetect" to="." method="_on_refill_detect_body_exited"]

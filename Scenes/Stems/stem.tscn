@@ -1746,8 +1746,7 @@ script = ExtResource("1_0ol84")
 use_parent_material = true
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_s5kl6")
-animation = &"tulipStem"
-frame_progress = 1.0
+animation = &"cactusStem"
 
 [node name="GrowthTimer" type="Timer" parent="."]
 

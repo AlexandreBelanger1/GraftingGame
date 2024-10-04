@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://lmirigpj6fpy"]
+
+[ext_resource type="Script" path="res://scripts/PlantOptions.gd" id="1_o7728"]
+[ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="2_nr702"]
+[ext_resource type="Texture2D" uid="uid://k2whjwk3legq" path="res://Assets/Sprites/UISprites/BasketIcon1.png" id="3_ui736"]
+[ext_resource type="Texture2D" uid="uid://dotkte1x7wvp6" path="res://Assets/Sprites/UISprites/BasketIcon1Highlight.png" id="4_bll75"]
+[ext_resource type="AudioStream" uid="uid://dpc2gweqfe1um" path="res://Assets/Audio/ButtonHover.wav" id="5_sddld"]
+[ext_resource type="Texture2D" uid="uid://dww08ivvb1x6s" path="res://Assets/Sprites/UISprites/SellIcon1.png" id="5_xopfx"]
+[ext_resource type="Texture2D" uid="uid://d3qpugpakp8mh" path="res://Assets/Sprites/UISprites/SellIcon1Highlight.png" id="6_dbre3"]
+
+[node name="PlantOptions" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_o7728")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = 2
+layout_mode = 0
+offset_right = 51.0
+offset_bottom = 47.0
+color = Color(0.294118, 0.294118, 0.294118, 0.596078)
+
+[node name="Harvestbutton" type="TextureButton" parent="Background"]
+z_index = 1
+offset_left = 4.0
+offset_top = 27.0
+offset_right = 20.0
+offset_bottom = 43.0
+texture_normal = ExtResource("3_ui736")
+texture_pressed = ExtResource("4_bll75")
+texture_hover = ExtResource("4_bll75")
+
+[node name="HarvestLabel" type="Label" parent="Background"]
+visible = false
+offset_left = 22.0
+offset_top = 28.0
+offset_right = 54.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_nr702")
+text = "HARVEST"
+
+[node name="SellLabel" type="Label" parent="Background"]
+visible = false
+offset_left = 22.0
+offset_top = 5.0
+offset_right = 54.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_nr702")
+text = "SELL"
+
+[node name="SellButton" type="TextureButton" parent="Background"]
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 20.0
+offset_bottom = 21.0
+texture_normal = ExtResource("5_xopfx")
+texture_pressed = ExtResource("6_dbre3")
+texture_hover = ExtResource("6_dbre3")
+
+[node name="ButtonHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_sddld")
+volume_db = -5.986
+pitch_scale = 2.61
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="Background/Harvestbutton" to="." method="_on_harvestbutton_mouse_entered"]
+[connection signal="mouse_exited" from="Background/Harvestbutton" to="." method="_on_harvestbutton_mouse_exited"]
+[connection signal="pressed" from="Background/Harvestbutton" to="." method="_on_harvestbutton_pressed"]
+[connection signal="mouse_entered" from="Background/SellButton" to="." method="_on_sell_button_mouse_entered"]
+[connection signal="mouse_exited" from="Background/SellButton" to="." method="_on_sell_button_mouse_exited"]

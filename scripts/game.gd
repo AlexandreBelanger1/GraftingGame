@@ -39,11 +39,12 @@ func new_save_game():
 	savedGame.gold = 20
 	ResourceSaver.save(savedGame, savePath)
 	load_game()
-	createWateringCan(Vector2(180,0))
+	#createWateringCan(Vector2(180,0))
 	createPot(Vector2(0,0))
 	createPot(Vector2(100,0))
 	createSeed(Vector2(0,50))
 	createSeed(Vector2(100,50))
+	save_game()
 
 func save_game():
 	var savedGame = saveFile.new()
@@ -55,12 +56,14 @@ func save_game():
 		if child is waterCan:
 			savedGame.wateringCan = child.save()
 	savedGame.gold = Global.gold
+	savedGame.timeOfSave = str(Time.get_unix_time_from_system())
 	ResourceSaver.save(savedGame, savePath)
 	print_debug(savedGame.potsArray)
 
 func load_game():
 	if not FileAccess.file_exists(savePath):
 		print_debug("No save file/ file is corrupted!")
+		new_save_game()
 		return
 	print_debug("loading save")
 	var savedGame:saveFile = load(savePath) as saveFile
@@ -71,16 +74,18 @@ func load_game():
 			child.queue_free()
 		if child is waterCan:
 			child.queue_free()
-	for x in savedGame.potsArray:
-		loadPot(x)
+	Global.lastSaveTime = float(savedGame.timeOfSave)
 	for x in savedGame.machineArray:
 		loadMachine(x)
+	for x in savedGame.potsArray:
+		loadPot(x)
 	if savedGame.wateringCan != null:
 		loadWaterCan(savedGame.wateringCan)
+	else:
+		createWateringCan(Vector2(-38,78))
 	Global.gold = savedGame.gold
-	if savedGame.gold == null:
-		Global.gold = 20
 	player_ui.updateCurrency()
+
 
 func loadPot(data:potData):
 	var newPot 

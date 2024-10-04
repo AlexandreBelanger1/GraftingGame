@@ -14,5 +14,7 @@ func start(effectName:String):
 
 
 func _on_effects_timer_timeout():
-	get_parent().modulate = colourList[index]
+	get_parent().find_child("stem").modulate = colourList[index]
+	for flower in get_parent().getFlowers():
+		flower.modulate = colourList[index]
 	index = (index + 1) % numColours

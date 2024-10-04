@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://da5tlsg7j8q6o"]
+[gd_scene load_steps=11 format=3 uid="uid://dqfdtinl61c13"]
 
-[ext_resource type="Script" path="res://scripts/MovableObject.gd" id="1_2f0wm"]
-[ext_resource type="Texture2D" uid="uid://crupnhoxnt0wt" path="res://Assets/Sprites/MachineSprites/128x128Circle.png" id="2_moqum"]
-[ext_resource type="Texture2D" uid="uid://cyyhfyss12y75" path="res://Assets/Sprites/UISprites/GreenHouse.png" id="3_2w1h6"]
-[ext_resource type="AudioStream" uid="uid://bl5fracburlcf" path="res://Assets/Audio/pickupPop.mp3" id="4_af6tw"]
-[ext_resource type="AudioStream" uid="uid://db4snmllc4qor" path="res://Assets/Audio/setdownPop.mp3" id="5_pmdn6"]
-[ext_resource type="Script" path="res://scripts/GreenhouseData.gd" id="6_ipsqy"]
+[ext_resource type="Script" path="res://scripts/MovableObject.gd" id="1_w0f5v"]
+[ext_resource type="Texture2D" uid="uid://crupnhoxnt0wt" path="res://Assets/Sprites/MachineSprites/128x128Circle.png" id="2_8y7e7"]
+[ext_resource type="Texture2D" uid="uid://yxnfcdd3mtcp" path="res://Assets/Sprites/UISprites/WaterFertilizerIcon.png" id="3_527j4"]
+[ext_resource type="AudioStream" uid="uid://bl5fracburlcf" path="res://Assets/Audio/pickupPop.mp3" id="4_m2ewf"]
+[ext_resource type="AudioStream" uid="uid://db4snmllc4qor" path="res://Assets/Audio/setdownPop.mp3" id="5_c3np1"]
+[ext_resource type="Script" path="res://scripts/GreenhouseData.gd" id="6_70yi1"]
 
 [sub_resource type="Animation" id="Animation_nsuf1"]
 length = 0.001
@@ -46,21 +46,21 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4e6sk"]
 size = Vector2(39, 20)
 
-[node name="Greenhouse" type="StaticBody2D"]
+[node name="Fertilizer(Water)" type="StaticBody2D"]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_2f0wm")
+script = ExtResource("1_w0f5v")
 
 [node name="RangeIndicator" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.184314)
-texture = ExtResource("2_moqum")
+texture = ExtResource("2_8y7e7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(1, -1)
-texture = ExtResource("3_2w1h6")
+position = Vector2(0, 19)
+texture = ExtResource("3_527j4")
 offset = Vector2(0, -35)
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
@@ -83,12 +83,12 @@ libraries = {
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -23)
-stream = ExtResource("4_af6tw")
+stream = ExtResource("4_m2ewf")
 bus = &"SFX"
 
 [node name="PlaceSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -23)
-stream = ExtResource("5_pmdn6")
+stream = ExtResource("5_c3np1")
 bus = &"SFX"
 
 [node name="EffectRange" type="Area2D" parent="."]
@@ -101,7 +101,7 @@ position = Vector2(0.5, 12)
 shape = SubResource("RectangleShape2D_4e6sk")
 
 [node name="MachineSpecificHandler" type="Node2D" parent="."]
-script = ExtResource("6_ipsqy")
+script = ExtResource("6_70yi1")
 
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]

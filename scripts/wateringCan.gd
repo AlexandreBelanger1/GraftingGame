@@ -1,14 +1,17 @@
 class_name waterCan extends Node2D
 @onready var pickup_sound = $PickupSound
 @onready var place_sound = $PlaceSound
-@onready var player = $Player
 @onready var range_indicator = $RangeIndicator
 @onready var sprite_2d = $Sprite2D
 @onready var water_fill = $WaterFill
 @onready var water_bar = $WaterBar
+@onready var water_particles = $Sprite2D/WaterParticles
+@onready var watering_sound = $WateringSound
+@onready var effect_range = $EffectRange
+@onready var grab_area = $GrabArea
 
 
-
+var affectedPlants = []
 
 var processing
 var draggable = false
@@ -52,53 +55,70 @@ func _physics_process(delta):
 	if releaseFlag:
 		potRelease()
 		releaseFlag = false
-	if Global.state == 1:
-		#sitting on garden
-		if draggable and !Global.placingItem:
-			if Input.is_action_just_pressed("LMB"):
-				SignalBus.mouseTooltip.emit("Hold: Water","", "RMB", "None", "", false, true)
-				SignalBus.gridToggle.emit(true)
-				pickup_sound.play()
-				dragging = true
-				offset1 = get_global_mouse_position()
-				initialPosition = global_position
-				Global.is_dragging = true
-		#Holding Watering Can
-		if dragging and !Global.placingItem:
-			if Input.is_action_pressed("LMB"):
-				if waterLevel <= 0 and !outOfWaterFlag:
-					SignalBus.outOfWater.emit(true)
-					outOfWaterFlag = true
-				offset2 = get_global_mouse_position() - offset1
-				global_position.x = int(initialPosition.x/3)*3 + int(offset2.x/3)*3
-				global_position.y = int(initialPosition.y/3)*3 + int(offset2.y/3)*3
-			if Input.is_action_pressed("RMB") and !filling:
-				if resetPosition:
-					resetPosition = false
-				if sprite_2d.rotation_degrees > -57:
-					sprite_2d.rotation_degrees = lerp(sprite_2d.rotation_degrees,-57.00,delta)
-					if sprite_2d.rotation_degrees < -40 and !watering:
-						watering = true
-			if Input.is_action_just_released("RMB"):
-				resetPosition = true
+
+	#sitting on garden
+	if draggable and !Global.placingItem:
+		if Input.is_action_just_pressed("LMB"):
+			SignalBus.waterBarEnable.emit(true)
+			SignalBus.mouseTooltip.emit("Hold: Water","", "RMB", "None", "", false, true)
+			SignalBus.gridToggle.emit(true)
+			pickup_sound.play()
+			dragging = true
+			offset1 = get_global_mouse_position()
+			initialPosition = global_position
+			Global.is_dragging = true
+	#Holding Watering Can
+	if dragging and !Global.placingItem:
+		if Input.is_action_pressed("LMB"):
+			if waterLevel <= 0 and !outOfWaterFlag:
+				SignalBus.outOfWater.emit(true)
+				watering_sound.stop()
+				water_particles.water(false)
+				outOfWaterFlag = true
+			offset2 = get_global_mouse_position() - offset1
+			global_position.x = int(initialPosition.x/3)*3 + int(offset2.x/3)*3
+			global_position.y = int(initialPosition.y/3)*3 + int(offset2.y/3)*3
+		if Input.is_action_pressed("RMB") and !filling:
 			if resetPosition:
-				sprite_2d.rotation_degrees = lerp(sprite_2d.rotation_degrees,0.00,delta*2)
-				if sprite_2d.rotation_degrees > -40 and watering:
-					watering = false
-				if is_equal_approx(sprite_2d.rotation_degrees,0.00):
-					resetPosition = false
-			if watering and waterLevel > 0:
-				pourWater(delta)
+				resetPosition = false
+			if sprite_2d.rotation_degrees > -57:
+				sprite_2d.rotation_degrees = lerp(sprite_2d.rotation_degrees,-57.00,delta)
+				water_particles.setLifetime(lerp(water_particles.getLifetime(),0.4,delta))
+				if sprite_2d.rotation_degrees < -40 and !watering:
+					watering = true
+					if waterLevel >0:
+						water_particles.water(true)
+						watering_sound.play()
+					else:
+						water_particles.water(false)
+						watering_sound.stop()
+		if Input.is_action_just_released("RMB"):
+			resetPosition = true
+		if resetPosition:
+			sprite_2d.rotation_degrees = lerp(sprite_2d.rotation_degrees,0.00,delta*2)
+			water_particles.setLifetime(lerp(water_particles.getLifetime(),0.6,delta))
+			if sprite_2d.rotation_degrees > -40 and watering:
+				watering_sound.stop()
+				water_particles.water(false)
+				watering = false
+			if is_equal_approx(sprite_2d.rotation_degrees,0.00):
+				resetPosition = false
+		if watering and waterLevel > 0:
+			pourWater(delta)
 
 
 func pourWater(delta):
 	waterLevel-= delta*20
 	water_bar.value = waterLevel
+	for x in affectedPlants:
+		x.addWater()
 
 func refill(enabled:bool):
 	if enabled:
 		sprite_2d.rotation_degrees = 0
 		watering = false
+		watering_sound.stop()
+		water_particles.water(false)
 		if waterLevel != waterCapacity:
 			filling = true
 			water_fill.play()
@@ -109,7 +129,10 @@ func refill(enabled:bool):
 func _notification(what):
 	if what == NOTIFICATION_WM_MOUSE_EXIT:
 		if dragging:
+			watering_sound.stop()
+			SignalBus.waterBarEnable.emit(false)
 			sprite_2d.rotation_degrees = 0
+			water_particles.water(false)
 			outOfWaterFlag = false
 			SignalBus.outOfWater.emit(false)
 			SignalBus.gridToggle.emit(false)
@@ -127,6 +150,8 @@ func _notification(what):
 				queue_free()
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
 		sprite_2d.rotation_degrees = 0
+		SignalBus.waterBarEnable.emit(false)
+		water_particles.water(false)
 		outOfWaterFlag = false
 		SignalBus.outOfWater.emit(false)
 		SignalBus.gridToggle.emit(false)
@@ -137,8 +162,7 @@ func _on_grab_area_mouse_entered():
 	set_physics_process(true)
 	processing = true
 	if not Global.is_dragging:
-		if Global.state == 1:
-			SignalBus.mouseTooltip.emit("Pick Up","", "LMB", "None", "", false, true)
+		SignalBus.mouseTooltip.emit("Pick Up","", "LMB", "None", "", false, true)
 		water_bar.visible = true
 		water_bar.value = waterLevel
 		draggable = true
@@ -186,8 +210,12 @@ func loadState(data:waterCanData):
 	waterLevel = data.water
 
 func potRelease():
+	watering = false
+	watering_sound.stop()
 	outOfWaterFlag = false
+	SignalBus.waterBarEnable.emit(false)
 	sprite_2d.rotation_degrees = 0
+	water_particles.water(false)
 	SignalBus.outOfWater.emit(false)
 	SignalBus.gridToggle.emit(false)
 	if overlap == 1:
@@ -198,7 +226,7 @@ func potRelease():
 	dragging = false
 	Global.is_dragging = false
 	_on_grab_area_mouse_exited()
-	player.play("RefreshCollision")
+	grab_area.refesh()
 
 
 func _on_refill_detect_body_entered(_body):
@@ -207,3 +235,11 @@ func _on_refill_detect_body_entered(_body):
 
 func _on_refill_detect_body_exited(_body):
 	refill(false)
+
+
+func _on_effect_range_body_entered(body):
+	affectedPlants.append(body)
+
+
+func _on_effect_range_body_exited(body):
+	affectedPlants.pop_at(affectedPlants.find(body))

@@ -2,6 +2,7 @@ extends Control
 @onready var grid_container = $Background/MarginContainer/VBoxContainer/ScrollContainer/GridContainer
 @onready var pickup = $Pickup
 
+
 const SEED_INVENTORY_SLOT = preload("res://Scenes/seed_inventory_slot.tscn")
 var potSizes = {0: "smallRoots", 1: "mediumRoots", 2: "bonsaiRoots"}
 var RNG = RandomNumberGenerator.new()
@@ -52,3 +53,9 @@ func newSave():
 	var savedGame = saveFile.new()
 	ResourceSaver.save(savedGame, savePath)
 	loadSave()
+
+
+func _on_texture_rect_pressed():
+	for child in grid_container.get_children():
+		child.queue_free()
+		SignalBus.addGold.emit(1)

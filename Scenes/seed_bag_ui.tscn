@@ -54,11 +54,14 @@ theme_override_constants/separation = 20
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/VBoxContainer/Header"]
+[node name="TextureRect" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/Header"]
 custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("2_tfle7")
+texture_normal = ExtResource("2_tfle7")
+texture_pressed = ExtResource("2_tfle7")
+texture_hover = ExtResource("2_tfle7")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/Header/TextureRect"]
 layout_mode = 1
@@ -74,7 +77,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Seed Inventory"
+text = "SELL ALL"
 
 [node name="Control2" type="Control" parent="Background/MarginContainer/VBoxContainer/Header"]
 layout_mode = 2
@@ -108,3 +111,5 @@ texture = ExtResource("4_n56f0")
 [node name="Pickup" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_e1mvb")
 bus = &"SFX"
+
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/Header/TextureRect" to="." method="_on_texture_rect_pressed"]

@@ -1,6 +1,14 @@
 class_name plant extends StaticBody2D
 @onready var roots = $Roots
 @onready var stem = $stem
+@onready var water_bar = $WaterBar
+@onready var water_consumption = $WaterConsumption
+@onready var plant_options = $PlantOptions
+
+
+var waterLevel = 0.00
+var waterCapacity = 43200
+var waterConsumptionRate = 2000
 
 
 const FLOWER = preload("res://Scenes/flowers/flower.tscn")
@@ -14,7 +22,16 @@ var stemType
 var stemComplete = false
 var flowerComplete = false
 var fStats = flowerStats.new()
+var flowerModifiers = {"FlowerGrowthRate": 1}
+var stemModifiers = {"StemGrowthRate": 1}
+
+func _ready():
+	SignalBus.waterBarEnable.connect(waterBarEnable)
+	SignalBus.changeGameSpeed.connect(setWaterConsumptionRate)
+	SignalBus.plantOptions.connect(enablePlantOptions)
+
 func setup():
+	setWaterConsumptionRate()
 	var seed = Global.selectedSeed
 	if seed != null:
 		roots.setup(seed.getSeed("roots"))
@@ -43,6 +60,10 @@ func loadPlant(data:potData):
 	stemType = data.plantStem
 	roots.loadRoots(data)
 	stem.loadStem(data)
+	setWaterConsumptionRate()
+	waterLevel = data.waterSeconds
+	if waterLevel > 0:
+		water_consumption.start()
 	if data.stemComplete:
 		for i in stem.stats.flowerCount:
 			var flower = FLOWER.instantiate()
@@ -51,17 +72,16 @@ func loadPlant(data:potData):
 			flower.global_position.x = global_position.x + stem.stats.flowerPositions[i].x
 			flower.global_position.y = global_position.y + stem.stats.flowerPositions[i].y
 			if data.flowerComplete:
-				flower.setComplete(data.plantFlower)
+				flower.setComplete(data.plantFlower,flowerModifiers)
+				waterLevel = data.waterSeconds
+				water_bar.value = waterLevel
 			else:
-				flower.setup(flowerType)
+				flower.setup(flowerType,flowerModifiers)
 				flower.setFrame(data.flowerFrame)
+				flower.growWhileAway(data.waterSeconds, Time.get_unix_time_from_system() - Global.lastSaveTime)
 		
 	configureStats()
 	
-
-
-func _on_currency_gen_timeout():
-	SignalBus.addGold.emit(1)
 
 func revealRoots(value: bool):
 	roots.revealRoots(value)
@@ -90,7 +110,7 @@ func _on_stem_stem_complete():
 		flowers.append(flower)
 		flower.global_position.x = global_position.x + stem.stats.flowerPositions[i].x
 		flower.global_position.y = global_position.y + stem.stats.flowerPositions[i].y
-		flower.setup(flowerType)
+		flower.setup(flowerType,flowerModifiers)
 	if stem.stats.flowerCount == 0:
 		flowerComplete = true
 	stemComplete = true
@@ -115,6 +135,8 @@ func save(index:int):
 			return flowers[0].getStat(5)
 		else: 
 			return 0
+	elif index == 9:
+		return waterLevel
 
 func getTooltip(index: int):
 	if index == 1:
@@ -182,5 +204,96 @@ func restartFlowerGrowth():
 		flowers[index]= flower
 		flower.global_position.x = global_position.x + stem.stats.flowerPositions[i].x
 		flower.global_position.y = global_position.y + stem.stats.flowerPositions[i].y
-		flower.setup(flowerType)
+		flower.setup(flowerType,flowerModifiers)
 		index += 1
+
+func waterBarEnable(enabled:bool):
+	water_bar.visible = enabled
+	water_bar.value = waterLevel
+
+func addWater():
+	water_consumption.start()
+	if waterLevel < waterCapacity:
+		waterLevel += 500
+		if waterLevel > waterCapacity:
+			waterLevel = waterCapacity
+		water_bar.value = waterLevel
+
+
+
+func _on_stem_grow_flowers_while_away(waterSeconds, deltaTime):
+	for i in stem.stats.flowerCount:
+			var flower = FLOWER.instantiate()
+			add_child(flower)
+			flowers.append(flower)
+			flower.global_position.x = global_position.x + stem.stats.flowerPositions[i].x
+			flower.global_position.y = global_position.y + stem.stats.flowerPositions[i].y
+			flower.setup(flowerType,flowerModifiers)
+			flower.growWhileAway(waterSeconds,deltaTime)
+
+
+
+
+func _on_stem_set_water_level(waterLevelValue):
+	waterLevel = waterLevelValue
+	water_bar.value = waterLevel
+
+func setWaterLevel(waterLevelValue):
+	waterLevel = waterLevelValue
+	water_bar.value = waterLevel
+
+func getWaterLevel():
+	return waterLevel
+
+func loseWater(waterLost):
+	waterLevel -= waterLost
+	if waterLevel < 0.00:
+		waterLevel = 0.00
+	water_bar.value = waterLevel
+
+func _on_stem_get_water_level():
+	return waterLevel
+
+func addModifier(type:String,magnitude:float):
+	if type == "StemGrowthRate":
+		stemModifiers["StemGrowthRate"] *= magnitude
+		stem.refreshModifiers(stemModifiers)
+	elif type == "FlowerGrowthRate":
+		flowerModifiers["FlowerGrowthRate"] *= magnitude
+		for i in flowers:
+			i.refreshModifiers(flowerModifiers)
+
+
+func removeModifier(type:String,magnitude:float):
+	if type == "StemGrowthRate":
+		stemModifiers["StemGrowthRate"] /= magnitude
+		stem.refreshModifiers(stemModifiers)
+	elif type == "FlowerGrowthRate":
+		flowerModifiers["FlowerGrowthRate"] /= magnitude
+		for i in flowers:
+			i.refreshModifiers(flowerModifiers)
+
+
+
+func setWaterConsumptionRate():
+	#waterConsumptionRate = (1/Global.gameSpeed) *1000
+	water_consumption.wait_time = Global.gameSpeed * 10
+
+func _on_water_consumption_timeout():
+	if waterLevel > 0:
+		waterLevel -= waterConsumptionRate
+		water_bar.value = waterLevel
+	else:
+		water_consumption.stop()
+
+func enablePlantOptions(enabled:bool):
+	if enabled:
+		plant_options.visible = true
+	else:
+		plant_options.visible = false
+
+func getPlantOptions():
+	return plant_options.visible
+
+func getFlowers():
+	return flowers

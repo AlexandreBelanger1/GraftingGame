@@ -1,34 +1,26 @@
-[gd_scene load_steps=35 format=3 uid="uid://33hfn4s0xca2"]
+[gd_scene load_steps=27 format=3 uid="uid://33hfn4s0xca2"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/UISprites/LeftArrow.png" id="1_cmnag"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
 [ext_resource type="Texture2D" uid="uid://bty7uvdq5owoh" path="res://Assets/Sprites/UISprites/RightArrow.png" id="2_kyxwa"]
 [ext_resource type="FontFile" uid="uid://decbyrlmfeftw" path="res://Assets/Fonts/Kenney Pixel Square.ttf" id="4_6hr8t"]
-[ext_resource type="Texture2D" uid="uid://b7cfxe0haji4" path="res://Assets/Sprites/UISprites/PotButton.png" id="4_dfctj"]
-[ext_resource type="Texture2D" uid="uid://dl5g0wk5m77em" path="res://Assets/Sprites/UISprites/PotButtonHighlight.png" id="5_ghux7"]
 [ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="5_krgbh"]
 [ext_resource type="PackedScene" uid="uid://b0cgbfnl4vmte" path="res://Scenes/shop_panel.tscn" id="6_cbd4w"]
 [ext_resource type="Texture2D" uid="uid://og6mwaxdt3t1" path="res://Assets/Sprites/UISprites/ShopIcon.png" id="6_obkwq"]
 [ext_resource type="Texture2D" uid="uid://2kkcctrh7sgj" path="res://Assets/Sprites/UISprites/ShopIconHighlight.png" id="7_1r3w8"]
 [ext_resource type="Texture2D" uid="uid://okwd8lx0ovyx" path="res://Assets/Sprites/UISprites/Options.png" id="7_5yl0y"]
 [ext_resource type="Texture2D" uid="uid://dl1xgp872h6fj" path="res://Assets/Sprites/UISprites/SeedPouch.png" id="7_tyfg5"]
-[ext_resource type="Texture2D" uid="uid://bt1y7euw22xkp" path="res://Assets/Sprites/UISprites/GardenSpade.png" id="8_bek6u"]
-[ext_resource type="Texture2D" uid="uid://b2qgh440kjo1r" path="res://Assets/Sprites/UISprites/BasketIcons.png" id="8_beu1g"]
 [ext_resource type="Texture2D" uid="uid://j17thefc01wv" path="res://Assets/Sprites/UISprites/SeedPouchHighlight.png" id="8_f0syd"]
 [ext_resource type="PackedScene" uid="uid://brw2nd1ekpwdt" path="res://Scenes/options_menu.tscn" id="9_0pr4o"]
 [ext_resource type="Texture2D" uid="uid://dcgpi07n5uhbk" path="res://Assets/Sprites/UISprites/OptionsHighlighted.png" id="9_f8o4n"]
-[ext_resource type="Texture2D" uid="uid://bxspppyxcoyg2" path="res://Assets/Sprites/UISprites/GardenSpadeToggled.png" id="9_r8qe3"]
-[ext_resource type="Texture2D" uid="uid://055w1ppmnc8i" path="res://Assets/Sprites/UISprites/BasketIconHover.png" id="9_wl6mv"]
 [ext_resource type="PackedScene" uid="uid://dxltbvsrf4kup" path="res://Scenes/seed_bag_ui.tscn" id="11_7xi0e"]
 [ext_resource type="AudioStream" uid="uid://dpc2gweqfe1um" path="res://Assets/Audio/ButtonHover.wav" id="11_emu7a"]
 [ext_resource type="PackedScene" uid="uid://b6lvcvorg4s4" path="res://Scenes/confirm_selection_ui.tscn" id="13_v7vt8"]
 [ext_resource type="Texture2D" uid="uid://52ux1jdj28g" path="res://Assets/Sprites/UISprites/GoldSymbol.png" id="16_pw1t5"]
 [ext_resource type="PackedScene" uid="uid://y6isy4kjqnqv" path="res://Scenes/tooltip.tscn" id="19_yw2fp"]
-[ext_resource type="AudioStream" uid="uid://4y1gwmwjpvjj" path="res://Assets/Audio/spadeEquip.mp3" id="20_23ld8"]
 [ext_resource type="PackedScene" uid="uid://cgg1cbrhdkj8m" path="res://Scenes/mouse_tool_tip.tscn" id="25_qw6m8"]
 [ext_resource type="PackedScene" uid="uid://cdlfi5e3mkjnx" path="res://Scenes/shop_ui.tscn" id="27_sxlbi"]
-[ext_resource type="Texture2D" uid="uid://cmws0rldc37oj" path="res://Assets/Sprites/UISprites/SellIcon.png" id="30_dfa4m"]
-[ext_resource type="Texture2D" uid="uid://sa2igpdaxx1n" path="res://Assets/Sprites/UISprites/SellIconHighlight.png" id="31_jmjl0"]
+[ext_resource type="PackedScene" uid="uid://bd8xwn5fgq18m" path="res://Scenes/harvest_ui.tscn" id="31_csspk"]
 [ext_resource type="PackedScene" uid="uid://ba8ypojgo8as2" path="res://Scenes/sell_ui.tscn" id="32_mo70n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dmpm"]
@@ -51,16 +43,6 @@ anchors_preset = 0
 script = ExtResource("1_d7na4")
 metadata/_edit_use_anchors_ = true
 
-[node name="PotsButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 1630.0
-offset_top = 450.0
-offset_right = 1678.0
-offset_bottom = 498.0
-texture_normal = ExtResource("4_dfctj")
-texture_pressed = ExtResource("5_ghux7")
-texture_hover = ExtResource("5_ghux7")
-
 [node name="SeedsButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 238.0
@@ -81,52 +63,7 @@ texture_normal = ExtResource("6_obkwq")
 texture_pressed = ExtResource("6_obkwq")
 texture_hover = ExtResource("7_1r3w8")
 
-[node name="Harvestbutton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 399.0
-offset_top = 346.0
-offset_right = 447.0
-offset_bottom = 400.0
-texture_normal = ExtResource("8_beu1g")
-texture_pressed = ExtResource("9_wl6mv")
-texture_hover = ExtResource("9_wl6mv")
-
-[node name="SellLabel" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 479.0
-offset_top = 306.0
-offset_right = 527.0
-offset_bottom = 344.0
-theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_outline_size = 2
-theme_override_fonts/font = ExtResource("5_krgbh")
-theme_override_font_sizes/font_size = 48
-text = "SELL"
-
-[node name="HarvestLabel" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 384.0
-offset_top = 306.0
-offset_right = 468.0
-offset_bottom = 344.0
-theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_outline_size = 2
-theme_override_fonts/font = ExtResource("5_krgbh")
-theme_override_font_sizes/font_size = 48
-text = "HARVEST"
-
 [node name="ShopLabel" type="Label" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 321.0
 offset_top = 306.0
@@ -144,7 +81,6 @@ text = "SHOP
 "
 
 [node name="SeedsLabel" type="Label" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 233.0
 offset_top = 306.0
@@ -159,6 +95,23 @@ theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("5_krgbh")
 theme_override_font_sizes/font_size = 48
 text = "SEEDS"
+
+[node name="OptionsLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1563.0
+offset_top = 309.0
+offset_right = 1647.0
+offset_bottom = 347.0
+theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_krgbh")
+theme_override_font_sizes/font_size = 48
+text = "OPTIONS"
 
 [node name="CurrencyCounter" type="Label" parent="."]
 layout_mode = 0
@@ -185,27 +138,6 @@ texture_hover = ExtResource("9_f8o4n")
 texture_disabled = ExtResource("7_5yl0y")
 texture_focused = ExtResource("7_5yl0y")
 
-[node name="RemovePlantButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 1576.0
-offset_top = 448.0
-offset_right = 1624.0
-offset_bottom = 496.0
-toggle_mode = true
-texture_normal = ExtResource("8_bek6u")
-texture_pressed = ExtResource("9_r8qe3")
-texture_hover = ExtResource("9_r8qe3")
-
-[node name="SellButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 478.0
-offset_top = 352.0
-offset_right = 526.0
-offset_bottom = 400.0
-texture_normal = ExtResource("30_dfa4m")
-texture_pressed = ExtResource("31_jmjl0")
-texture_hover = ExtResource("31_jmjl0")
-
 [node name="SeedBagUI" parent="." instance=ExtResource("11_7xi0e")]
 visible = false
 layout_mode = 1
@@ -217,9 +149,9 @@ offset_bottom = 316.0
 [node name="OptionsMenu" parent="." instance=ExtResource("9_0pr4o")]
 visible = false
 layout_mode = 1
-offset_left = 779.0
+offset_left = 1430.0
 offset_top = 23.0
-offset_right = 779.0
+offset_right = 1430.0
 offset_bottom = 23.0
 
 [node name="ConfirmSelectionUI" parent="." instance=ExtResource("13_v7vt8")]
@@ -265,10 +197,6 @@ offset_left = -439.0
 offset_top = 114.5
 offset_right = -439.0
 offset_bottom = 114.5
-
-[node name="SpadeEquip" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("20_23ld8")
-bus = &"SFX"
 
 [node name="MouseToolTip" parent="." instance=ExtResource("25_qw6m8")]
 layout_mode = 1
@@ -321,24 +249,23 @@ offset_top = 4.0
 offset_right = 926.0
 offset_bottom = 4.0
 
-[connection signal="mouse_entered" from="PotsButton" to="." method="_on_shop_button_mouse_entered"]
-[connection signal="pressed" from="PotsButton" to="." method="_on_pots_button_pressed"]
+[node name="HarvestUI" parent="." instance=ExtResource("31_csspk")]
+visible = false
+layout_mode = 1
+offset_left = 922.0
+offset_top = 2.0
+offset_right = 922.0
+offset_bottom = 2.0
+
 [connection signal="mouse_entered" from="SeedsButton" to="." method="_on_seeds_button_mouse_entered"]
 [connection signal="mouse_exited" from="SeedsButton" to="." method="_on_seeds_button_mouse_exited"]
 [connection signal="pressed" from="SeedsButton" to="." method="_on_seeds_button_pressed"]
 [connection signal="mouse_entered" from="ShopButton" to="." method="_on_shop_button_mouse_entered"]
 [connection signal="mouse_exited" from="ShopButton" to="." method="_on_shop_button_mouse_exited"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
-[connection signal="mouse_entered" from="Harvestbutton" to="." method="_on_harvestbutton_mouse_entered"]
-[connection signal="mouse_exited" from="Harvestbutton" to="." method="_on_harvestbutton_mouse_exited"]
-[connection signal="pressed" from="Harvestbutton" to="." method="_on_harvestbutton_pressed"]
 [connection signal="mouse_entered" from="OptionsButton" to="." method="_on_options_button_mouse_entered"]
+[connection signal="mouse_exited" from="OptionsButton" to="." method="_on_options_button_mouse_exited"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="mouse_entered" from="RemovePlantButton" to="." method="_on_remove_plant_button_mouse_entered"]
-[connection signal="toggled" from="RemovePlantButton" to="." method="_on_remove_plant_button_toggled"]
-[connection signal="mouse_entered" from="SellButton" to="." method="_on_sell_button_mouse_entered"]
-[connection signal="mouse_exited" from="SellButton" to="." method="_on_sell_button_mouse_exited"]
-[connection signal="pressed" from="SellButton" to="." method="_on_sell_button_pressed"]
 [connection signal="mouse_entered" from="LeftArea" to="." method="_on_left_area_mouse_entered"]
 [connection signal="mouse_exited" from="LeftArea" to="." method="_on_left_area_mouse_exited"]
 [connection signal="mouse_entered" from="RightArea" to="." method="_on_right_area_mouse_entered"]

@@ -1,9 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://cexs3jaedttkh"]
 
-[ext_resource type="Script" path="res://scripts/pot.gd" id="1_dyg85"]
+[ext_resource type="Script" path="res://scripts/newPot.gd" id="1_5tolw"]
 [ext_resource type="Texture2D" uid="uid://ceo8mmd6lpxfb" path="res://Assets/Sprites/MediumPot.png" id="2_b7y6s"]
+[ext_resource type="Script" path="res://scripts/GrabArea.gd" id="3_ewk78"]
 [ext_resource type="AudioStream" uid="uid://bl5fracburlcf" path="res://Assets/Audio/pickupPop.mp3" id="3_rppwn"]
 [ext_resource type="AudioStream" uid="uid://db4snmllc4qor" path="res://Assets/Audio/setdownPop.mp3" id="4_816f1"]
+[ext_resource type="AudioStream" uid="uid://bd881n01gxm8c" path="res://Assets/Audio/OpenPlantMenu.wav" id="6_vtmwl"]
+[ext_resource type="AudioStream" uid="uid://d2vgttkv4qvxb" path="res://Assets/Audio/ClosePlantMenu.wav" id="7_1hit0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bshxx"]
 size = Vector2(11, 7)
@@ -11,48 +14,11 @@ size = Vector2(11, 7)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucbj5"]
 size = Vector2(11, 7)
 
-[sub_resource type="Animation" id="Animation_3p5ci"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:input_pickable")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_liulp"]
-resource_name = "RefreshCollision"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:input_pickable")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8lf5n"]
-_data = {
-"RESET": SubResource("Animation_3p5ci"),
-"RefreshCollision": SubResource("Animation_liulp")
-}
-
 [node name="MediumPot" type="CharacterBody2D"]
 y_sort_enabled = true
-collision_layer = 2
+collision_layer = 130
 collision_mask = 0
-script = ExtResource("1_dyg85")
+script = ExtResource("1_5tolw")
 
 [node name="MediumPot" type="Sprite2D" parent="."]
 position = Vector2(6, -16)
@@ -62,6 +28,7 @@ texture = ExtResource("2_b7y6s")
 position = Vector2(6, 0)
 collision_layer = 2
 collision_mask = 3
+script = ExtResource("3_ewk78")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
 position = Vector2(-0.5, -3.5)
@@ -81,14 +48,16 @@ bus = &"SFX"
 stream = ExtResource("4_816f1")
 bus = &"SFX"
 
-[node name="Player" type="AnimationPlayer" parent="."]
-root_node = NodePath("../GrabArea")
-libraries = {
-"": SubResource("AnimationLibrary_8lf5n")
-}
-
 [node name="PlantMarker" type="Marker2D" parent="."]
 position = Vector2(6, 0)
+
+[node name="OptionsOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vtmwl")
+bus = &"SFX"
+
+[node name="OptionsClose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_1hit0")
+bus = &"SFX"
 
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]

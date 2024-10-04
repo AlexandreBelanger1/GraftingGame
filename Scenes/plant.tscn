@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1tym43230g2v"]
+[gd_scene load_steps=10 format=3 uid="uid://d1tym43230g2v"]
 
 [ext_resource type="Shader" path="res://Scenes/Stems/stem.gdshader" id="1_5h1sd"]
 [ext_resource type="Script" path="res://scripts/plant.gd" id="1_y75h5"]
 [ext_resource type="PackedScene" uid="uid://bldewhsovcwm2" path="res://Scenes/Stems/stem.tscn" id="2_q32vt"]
 [ext_resource type="PackedScene" uid="uid://b2xtu5tmkv7iu" path="res://Scenes/Roots/roots.tscn" id="3_a5yw7"]
+[ext_resource type="PackedScene" uid="uid://lmirigpj6fpy" path="res://Scenes/plant_options.tscn" id="5_ilqoi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yvp47"]
 shader = ExtResource("1_5h1sd")
@@ -20,6 +21,15 @@ shader_parameter/offset = 0.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ewsxi"]
 radius = 4.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r80qu"]
+bg_color = Color(0.362699, 0.15796, 0.0939716, 1)
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(1, 1, 1, 0.815686)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b43la"]
+bg_color = Color(0.252722, 0.565006, 0.819078, 1)
+
 [node name="plant" type="StaticBody2D"]
 material = SubResource("ShaderMaterial_yvp47")
 collision_layer = 16
@@ -34,4 +44,31 @@ position = Vector2(0, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ewsxi")
 
+[node name="WaterBar" type="ProgressBar" parent="."]
+visible = false
+z_index = 4
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 21.0
+offset_bottom = 10.0
+rotation = -1.5708
+theme_override_styles/background = SubResource("StyleBoxFlat_r80qu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b43la")
+max_value = 43200.0
+step = 1.0
+show_percentage = false
+
+[node name="WaterConsumption" type="Timer" parent="."]
+
+[node name="PlantOptions" parent="." instance=ExtResource("5_ilqoi")]
+visible = false
+offset_left = 8.0
+offset_top = -36.0
+offset_right = 8.0
+offset_bottom = -36.0
+
+[connection signal="getWaterLevel" from="stem" to="." method="_on_stem_get_water_level"]
+[connection signal="growFlowersWhileAway" from="stem" to="." method="_on_stem_grow_flowers_while_away"]
+[connection signal="setWaterLevel" from="stem" to="." method="_on_stem_set_water_level"]
 [connection signal="stemComplete" from="stem" to="." method="_on_stem_stem_complete"]
+[connection signal="timeout" from="WaterConsumption" to="." method="_on_water_consumption_timeout"]

@@ -16,7 +16,8 @@ var plantFlower = "null"
 var plantRoots = "null"
 
 var state = 1
-var gameSpeed = 11.00
+var gameSpeed = 10.00
+var lastSaveTime
 
 var stemStatsDict  = {"pansyStem": "res://Scenes/Stems/pansyStem.tres",
 "cactusStem": "res://Scenes/Stems/cactusStem.tres",

@@ -137,6 +137,7 @@ script = ExtResource("5_vmy6b")
 shape = SubResource("CircleShape2D_hmvow")
 
 [node name="WaterTap" parent="Camera2D" instance=ExtResource("6_3f86x")]
+z_index = 4
 position = Vector2(-38, 67)
 
 [node name="DeskHitbox" type="StaticBody2D" parent="."]

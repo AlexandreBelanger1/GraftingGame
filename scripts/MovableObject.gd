@@ -184,5 +184,3 @@ func potRelease():
 	Global.is_dragging = false
 	_on_grab_area_mouse_exited()
 	player.play("RefreshCollision")
-
-

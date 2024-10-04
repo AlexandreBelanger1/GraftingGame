@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dat8adofe71mq"]
+
+[ext_resource type="Texture2D" uid="uid://tslalao82ai6" path="res://Assets/Sprites/GrowthParticles.png" id="1_16a6b"]
+[ext_resource type="Script" path="res://scripts/water_particles.gd" id="2_ifqe4"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dukw7"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xfnql"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 28.077
+initial_velocity_min = 42.73
+initial_velocity_max = 42.73
+gravity = Vector3(0, 98, 0)
+anim_offset_max = 1.0
+
+[node name="WaterParticles" type="GPUParticles2D"]
+modulate = Color(0.128946, 0.480047, 0.7575, 1)
+material = SubResource("CanvasItemMaterial_dukw7")
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_xfnql")
+texture = ExtResource("1_16a6b")
+lifetime = 0.6
+script = ExtResource("2_ifqe4")

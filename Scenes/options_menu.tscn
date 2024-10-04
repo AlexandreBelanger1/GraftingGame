@@ -109,7 +109,7 @@ offset_right = 118.0
 offset_bottom = 34.0
 theme_override_fonts/font = ExtResource("4_ckvc2")
 theme_override_font_sizes/font_size = 32
-text = "Faster"
+text = "Seconds"
 
 [node name="Label5" type="Label" parent="."]
 layout_mode = 0
@@ -139,7 +139,7 @@ offset_right = 344.0
 offset_bottom = 33.0
 theme_override_fonts/font = ExtResource("4_ckvc2")
 theme_override_font_sizes/font_size = 32
-text = "Slower"
+text = "Week"
 
 [node name="FitWindowButton" type="Button" parent="."]
 layout_mode = 0
@@ -158,7 +158,7 @@ offset_top = 42.0
 offset_right = 294.0
 offset_bottom = 58.0
 min_value = 1.0
-max_value = 101.0
+max_value = 20000.0
 step = 10.0
 value = 11.0
 scrollable = false
@@ -216,6 +216,45 @@ Font: m3x6 by Daniel Linssen"
 autowrap_mode = 2
 clip_text = true
 
+[node name="ConfirmNewSave" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 327.0
+offset_bottom = 291.0
+color = Color(0.359069, 0.359069, 0.359069, 1)
+
+[node name="ConfirmYes" type="Button" parent="ConfirmNewSave"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 175.0
+offset_right = 144.0
+offset_bottom = 218.0
+theme_override_fonts/font = ExtResource("4_ckvc2")
+theme_override_font_sizes/font_size = 32
+text = "Yes"
+
+[node name="ConfirmNo" type="Button" parent="ConfirmNewSave"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 175.0
+offset_right = 298.0
+offset_bottom = 218.0
+theme_override_fonts/font = ExtResource("4_ckvc2")
+theme_override_font_sizes/font_size = 32
+text = "No"
+
+[node name="Label7" type="Label" parent="ConfirmNewSave"]
+layout_mode = 0
+offset_top = 21.0
+offset_right = 327.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("4_ckvc2")
+theme_override_font_sizes/font_size = 32
+text = "Are you sure?
+This action will overwrite the current save file"
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
@@ -226,3 +265,5 @@ clip_text = true
 [connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="ConfirmNewSave/ConfirmYes" to="." method="_on_confirm_yes_pressed"]
+[connection signal="pressed" from="ConfirmNewSave/ConfirmNo" to="." method="_on_confirm_no_pressed"]

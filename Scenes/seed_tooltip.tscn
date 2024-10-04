@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwpivssvcjqni"]
+
+[ext_resource type="Script" path="res://scripts/SeedTooltip.gd" id="1_gsdds"]
+[ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="2_4781a"]
+
+[node name="SeedTooltip" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gsdds")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 92.0
+offset_bottom = 36.0
+color = Color(1, 1, 1, 0.658824)
+
+[node name="TooltipLabel" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 92.0
+offset_bottom = 14.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_4781a")
+text = "qwe"
+horizontal_alignment = 1
+
+[node name="RootsLabel" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 18.0
+offset_right = 92.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_4781a")
+text = "aro"
+horizontal_alignment = 1

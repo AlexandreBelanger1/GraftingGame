@@ -2,6 +2,7 @@ extends Control
 
 @onready var borderless_button = $BorderlessButton
 @onready var credits = $Credits
+@onready var confirm_new_save = $ConfirmNewSave
 
 
 func _on_save_button_pressed():
@@ -13,7 +14,7 @@ func _on_load_button_pressed():
 
 
 func _on_new_save_button_pressed():
-	SignalBus.newSaveGame.emit()
+	confirm_new_save.visible = true
 
 
 func _on_mobile_controls_button_pressed():
@@ -51,3 +52,12 @@ func _on_music_slider_value_changed(value):
 
 func _on_credits_button_pressed():
 	credits.visible = !credits.visible
+
+
+func _on_confirm_no_pressed():
+	confirm_new_save.visible = false
+
+
+func _on_confirm_yes_pressed():
+	confirm_new_save.visible = false
+	SignalBus.newSaveGame.emit()
