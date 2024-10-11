@@ -1,0 +1,192 @@
+[gd_scene load_steps=28 format=3 uid="uid://didrtahbn8df0"]
+
+[ext_resource type="Script" path="res://scripts/WateringCanUpgradeUI.gd" id="1_8vjtx"]
+[ext_resource type="Texture2D" uid="uid://cwk20plohhxhi" path="res://Assets/Sprites/UISprites/WateringCan/UpgradeFrame.png" id="2_38q0b"]
+[ext_resource type="Texture2D" uid="uid://bk16ra4w05m26" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-1.png" id="3_tptrq"]
+[ext_resource type="Texture2D" uid="uid://2djjgs1sle8q" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-3.png" id="4_5bvgy"]
+[ext_resource type="Texture2D" uid="uid://bfl4eucejvef1" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-2.png" id="5_5rws2"]
+[ext_resource type="Texture2D" uid="uid://b7lkfllieg1i2" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-4.png" id="6_qqy3w"]
+[ext_resource type="Texture2D" uid="uid://c4ya8imr6x71f" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-5.png" id="7_i04lx"]
+[ext_resource type="Texture2D" uid="uid://br0ypmhs0x6mu" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-7.png" id="8_ipmnc"]
+[ext_resource type="Texture2D" uid="uid://bem3hlvec4enl" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-6.png" id="9_dkpr1"]
+[ext_resource type="Texture2D" uid="uid://e51nsnfdudib" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-8.png" id="10_0w7q1"]
+[ext_resource type="Texture2D" uid="uid://e7tvjeuifrlb" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-9.png" id="11_umaj1"]
+[ext_resource type="Texture2D" uid="uid://wsdhfungk8r6" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-11.png" id="12_5k2r2"]
+[ext_resource type="Texture2D" uid="uid://dghfto3w4becf" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-10.png" id="13_lvo2h"]
+[ext_resource type="Texture2D" uid="uid://bh6w4q2b1i054" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-12.png" id="14_spc3p"]
+[ext_resource type="Texture2D" uid="uid://6c67l1isn2ui" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-13.png" id="15_qddry"]
+[ext_resource type="Texture2D" uid="uid://dd03dbmqntp20" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-15.png" id="16_jxmuc"]
+[ext_resource type="Texture2D" uid="uid://dqt3k4i3p5guu" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-14.png" id="17_qeejr"]
+[ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="18_o3e2u"]
+[ext_resource type="Texture2D" uid="uid://cjuahf3c1vw06" path="res://Assets/Sprites/UISprites/SmallGoldIcon.png" id="19_dlrft"]
+[ext_resource type="AudioStream" uid="uid://dpc2gweqfe1um" path="res://Assets/Audio/ButtonHover.wav" id="20_yayge"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6itie"]
+atlas = ExtResource("2_38q0b")
+region = Rect2(0, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iappy"]
+atlas = ExtResource("2_38q0b")
+region = Rect2(20, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8otfi"]
+atlas = ExtResource("2_38q0b")
+region = Rect2(40, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17cno"]
+atlas = ExtResource("2_38q0b")
+region = Rect2(0, 23, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l01rd"]
+atlas = ExtResource("2_38q0b")
+region = Rect2(20, 23, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4gwm"]
+atlas = ExtResource("2_38q0b")
+region = Rect2(40, 23, 20, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m2hg3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6itie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iappy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8otfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17cno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l01rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4gwm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="WateringCanUpgradeUI" type="Control"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8vjtx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 53.0
+offset_bottom = 66.0
+color = Color(0.0980392, 0.0980392, 0.0980392, 0.858824)
+
+[node name="AreaFrame" type="AnimatedSprite2D" parent="ColorRect"]
+position = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_m2hg3")
+autoplay = "default"
+centered = false
+
+[node name="AreaButton" type="TextureButton" parent="ColorRect/AreaFrame"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 19.0
+texture_normal = ExtResource("3_tptrq")
+texture_pressed = ExtResource("4_5bvgy")
+texture_hover = ExtResource("5_5rws2")
+texture_disabled = ExtResource("6_qqy3w")
+
+[node name="LevelFrame" type="AnimatedSprite2D" parent="ColorRect"]
+position = Vector2(31, 2)
+sprite_frames = SubResource("SpriteFrames_m2hg3")
+autoplay = "default"
+centered = false
+
+[node name="LevelButton" type="TextureButton" parent="ColorRect/LevelFrame"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 19.0
+texture_normal = ExtResource("7_i04lx")
+texture_pressed = ExtResource("8_ipmnc")
+texture_hover = ExtResource("9_dkpr1")
+texture_disabled = ExtResource("10_0w7q1")
+
+[node name="SpeedFrame" type="AnimatedSprite2D" parent="ColorRect"]
+position = Vector2(2, 41)
+sprite_frames = SubResource("SpriteFrames_m2hg3")
+autoplay = "default"
+centered = false
+
+[node name="SpeedButton" type="TextureButton" parent="ColorRect/SpeedFrame"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 19.0
+texture_normal = ExtResource("11_umaj1")
+texture_pressed = ExtResource("12_5k2r2")
+texture_hover = ExtResource("13_lvo2h")
+texture_disabled = ExtResource("14_spc3p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect"]
+z_index = 10
+position = Vector2(31, 41)
+sprite_frames = SubResource("SpriteFrames_m2hg3")
+autoplay = "default"
+centered = false
+
+[node name="ColourButton" type="TextureButton" parent="ColorRect/AnimatedSprite2D"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 19.0
+texture_normal = ExtResource("15_qddry")
+texture_pressed = ExtResource("16_jxmuc")
+texture_hover = ExtResource("17_qeejr")
+
+[node name="PriceLabel" type="Label" parent="ColorRect"]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 26.0
+offset_right = 31.0
+offset_bottom = 39.0
+theme_override_fonts/font = ExtResource("18_o3e2u")
+text = "10"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="SmallGoldIcon" type="Sprite2D" parent="ColorRect/PriceLabel"]
+position = Vector2(31, 5)
+texture = ExtResource("19_dlrft")
+centered = false
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_yayge")
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="PressSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_yayge")
+pitch_scale = 0.7
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="ColorRect/AreaFrame/AreaButton" to="." method="_on_area_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/AreaFrame/AreaButton" to="." method="_on_area_button_mouse_exited"]
+[connection signal="pressed" from="ColorRect/AreaFrame/AreaButton" to="." method="_on_area_button_pressed"]
+[connection signal="mouse_entered" from="ColorRect/LevelFrame/LevelButton" to="." method="_on_level_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/LevelFrame/LevelButton" to="." method="_on_level_button_mouse_exited"]
+[connection signal="pressed" from="ColorRect/LevelFrame/LevelButton" to="." method="_on_level_button_pressed"]
+[connection signal="mouse_entered" from="ColorRect/SpeedFrame/SpeedButton" to="." method="_on_speed_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/SpeedFrame/SpeedButton" to="." method="_on_speed_button_mouse_exited"]
+[connection signal="pressed" from="ColorRect/SpeedFrame/SpeedButton" to="." method="_on_speed_button_pressed"]
+[connection signal="mouse_entered" from="ColorRect/AnimatedSprite2D/ColourButton" to="." method="_on_colour_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/AnimatedSprite2D/ColourButton" to="." method="_on_colour_button_mouse_exited"]
+[connection signal="pressed" from="ColorRect/AnimatedSprite2D/ColourButton" to="." method="_on_colour_button_pressed"]

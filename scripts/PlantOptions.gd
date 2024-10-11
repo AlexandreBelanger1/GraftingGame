@@ -28,3 +28,7 @@ func _on_sell_button_mouse_entered():
 
 func _on_sell_button_mouse_exited():
 	sell_label.visible = false
+
+func _unhandled_input(event):
+	if event.is_action_pressed("LMB"):
+		visible = false

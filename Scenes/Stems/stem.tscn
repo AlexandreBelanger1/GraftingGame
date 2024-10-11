@@ -1749,5 +1749,6 @@ sprite_frames = SubResource("SpriteFrames_s5kl6")
 animation = &"cactusStem"
 
 [node name="GrowthTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="timeout" from="GrowthTimer" to="." method="_on_growth_timer_timeout"]

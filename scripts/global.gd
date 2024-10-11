@@ -64,6 +64,8 @@ var seedColourDict = {"pansyFlower": Color(0.541, 0.403, 0.997),
 "tulipFlower": Color(1, 1, 1)
 }
 
+var WateringCanUpgradePrices = {0:"100",1:"200",2:"300",3:"400",4:"500",5:"100",6:"200",7:"300",8:"400",9:"500",10:"100",11:"200",12:"300",13:"400",14:"500",15:"100"}
+
 var tier1Seeds = {0: "cactus", 1: "sunflower", 2: "chive", 3: "poppy", 4: "tomato", 5: "bleedingheart", 6: "pepper", 7: "tulip"}
 
 var specialTypeDict = {"moon": "res://Scenes/specialTypes/moon.tres", "emerald": "res://Scenes/specialTypes/emerald.tres", "rainbow": "res://Scenes/specialTypes/rainbow.tres"}

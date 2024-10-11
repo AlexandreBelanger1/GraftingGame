@@ -567,6 +567,7 @@ use_parent_material = true
 script = ExtResource("1_crkqh")
 
 [node name="GrowthTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]

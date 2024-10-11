@@ -18,6 +18,11 @@ func _ready():
 	SignalBus.changeGameSpeed.connect(setGrowthRate)
 
 func _on_growth_timer_timeout():
+	growthWaitTime -= 1.00
+	if growthWaitTime <= 0:
+		growthCalculate()
+
+func growthCalculate():
 	var water = get_parent().getWaterLevel()
 	if sprite_2d.frame == stats.growthFrames:
 		growth_timer.stop()
@@ -25,8 +30,11 @@ func _on_growth_timer_timeout():
 		get_parent().flowerComplete = true
 	elif water > 0: 
 		sprite_2d.frame += 1
+	setGrowthRate()
 
-
+func setGrowthRate():
+	growthWaitTime =(Global.gameSpeed) * (1.00/(float(stats.growthRate)*growthRateModifier))
+	seed_gen_timer.wait_time = Global.gameSpeed * (1/stats.productionRate)
 
 func setup(flowerName: String,modifiers):
 	if flowerName == "null":
@@ -123,11 +131,7 @@ func shakeFlower():
 		seed = null
 		seed_gen_timer.start()
 
-func setGrowthRate():
-	growthWaitTime = 100.00 * (Global.gameSpeed) * (1.00/(float(stats.growthRate)*growthRateModifier))
-	#growthWaitTime = Global.gameSpeed * (100.00/(float(stats.growthRate)*growthRateModifier))
-	growth_timer.wait_time = growthWaitTime
-	seed_gen_timer.wait_time = Global.gameSpeed * (1/stats.productionRate)
+
 
 func getGrowthPercent():
 	return float(float(sprite_2d.frame) / float(stats.growthFrames))

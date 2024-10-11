@@ -37,6 +37,11 @@ func loadStats(path: String):
 	stats = load(path)
   
 func _on_growth_timer_timeout():
+	growthWaitTime -= 1.00
+	if growthWaitTime <= 0:
+		growthCalculate()
+
+func growthCalculate():
 	var water = get_parent().getWaterLevel()
 	if sprite_2d.frame == stats.growthFrames:
 		growth_timer.stop()
@@ -47,6 +52,8 @@ func _on_growth_timer_timeout():
 		particleEffect.setColour(0,1,0)
 	elif water > 0.00:
 		sprite_2d.frame += 1
+	setGrowthRate()
+
 
 func getGrowthFrame():
 	return sprite_2d.frame
@@ -57,9 +64,9 @@ func startGrowing():
 	
 
 func setGrowthRate():
-	growthWaitTime = 100.00 * (Global.gameSpeed) * (1.00/(float(stats.growthRate)*growthRateModifier))
+	growthWaitTime = (Global.gameSpeed) * (1.00/(float(stats.growthRate)*growthRateModifier))
 	#growthWaitTime = Global.gameSpeed * float(100.00/(float(stats.growthRate)* growthRateModifier))
-	growth_timer.wait_time = growthWaitTime
+	#growth_timer.wait_time = growthWaitTime
 
 func getStat(value: int):
 	if value == 1:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://djyikek7d0sho"]
+[gd_scene load_steps=17 format=3 uid="uid://djyikek7d0sho"]
 
 [ext_resource type="Script" path="res://scripts/wateringCan.gd" id="1_o8faw"]
 [ext_resource type="Texture2D" uid="uid://crupnhoxnt0wt" path="res://Assets/Sprites/MachineSprites/128x128Circle.png" id="2_3kdxm"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://db4snmllc4qor" path="res://Assets/Audio/setdownPop.mp3" id="5_158yq"]
 [ext_resource type="AudioStream" uid="uid://d21mfhywmy0o7" path="res://Assets/Audio/WateringCanFill.wav" id="6_4n1vt"]
 [ext_resource type="AudioStream" uid="uid://dmdeqmoo1s2bm" path="res://Assets/Audio/wateringSound.mp3" id="8_wgn7p"]
+[ext_resource type="PackedScene" uid="uid://didrtahbn8df0" path="res://Scenes/watering_can_upgrade_ui.tscn" id="10_mmdl6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnka3"]
 size = Vector2(19, 19)
@@ -106,6 +107,12 @@ shape = SubResource("RectangleShape2D_vf6gf")
 [node name="WateringSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_wgn7p")
 bus = &"SFX"
+
+[node name="WateringCanUpgradeUI" parent="." instance=ExtResource("10_mmdl6")]
+offset_left = 19.0
+offset_top = -58.0
+offset_right = 19.0
+offset_bottom = -58.0
 
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]

@@ -9,7 +9,17 @@ class_name waterCan extends Node2D
 @onready var watering_sound = $WateringSound
 @onready var effect_range = $EffectRange
 @onready var grab_area = $GrabArea
+@onready var watering_can_upgrade_ui = $WateringCanUpgradeUI
 
+
+var areaTiers = {1:1, 2:1.5, 3:2, 4:3, 5:4}
+var speedTiers = {1:0.30, 2:0.50, 3:0.80, 4:1.00, 5:1.50}
+#Watering area upgrade tier
+var area = 1
+#Water fill rate upgrade tier
+var speed = 1
+#Max water capacity upgrade tier
+var level = 1
 
 var affectedPlants = []
 
@@ -47,7 +57,7 @@ func _physics_process(delta):
 			SignalBus.outOfWater.emit(false)
 			outOfWaterFlag = false
 		water_fill.pitch_scale = 1 +((waterLevel/waterCapacity)*0.2)
-		waterLevel = waterLevel + delta* 20
+		waterLevel = waterLevel + ((speedTiers[speed]/100.00)*waterCapacity)
 		if waterLevel > waterCapacity:
 			waterLevel = waterCapacity
 			water_fill.stop()
@@ -57,7 +67,7 @@ func _physics_process(delta):
 		releaseFlag = false
 
 	#sitting on garden
-	if draggable and !Global.placingItem:
+	if draggable and !Global.placingItem and !dragging:
 		if Input.is_action_just_pressed("LMB"):
 			SignalBus.waterBarEnable.emit(true)
 			SignalBus.mouseTooltip.emit("Hold: Water","", "RMB", "None", "", false, true)
@@ -67,6 +77,8 @@ func _physics_process(delta):
 			offset1 = get_global_mouse_position()
 			initialPosition = global_position
 			Global.is_dragging = true
+		if Input.is_action_just_pressed("RMB"):
+			watering_can_upgrade_ui.visible = !watering_can_upgrade_ui.visible
 	#Holding Watering Can
 	if dragging and !Global.placingItem:
 		if Input.is_action_pressed("LMB"):
@@ -227,6 +239,12 @@ func potRelease():
 	Global.is_dragging = false
 	_on_grab_area_mouse_exited()
 	grab_area.refesh()
+
+
+func setSpeedLevel(value:int):
+	speed = value
+
+
 
 
 func _on_refill_detect_body_entered(_body):
