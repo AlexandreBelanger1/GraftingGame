@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://didrtahbn8df0"]
+[gd_scene load_steps=30 format=3 uid="uid://didrtahbn8df0"]
 
 [ext_resource type="Script" path="res://scripts/WateringCanUpgradeUI.gd" id="1_8vjtx"]
 [ext_resource type="Texture2D" uid="uid://cwk20plohhxhi" path="res://Assets/Sprites/UISprites/WateringCan/UpgradeFrame.png" id="2_38q0b"]
+[ext_resource type="Texture2D" uid="uid://dq4iudsyxs43o" path="res://Assets/Sprites/UISprites/WaterCanBackgroundUI.png" id="2_aeo48"]
 [ext_resource type="Texture2D" uid="uid://bk16ra4w05m26" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-1.png" id="3_tptrq"]
 [ext_resource type="Texture2D" uid="uid://2djjgs1sle8q" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-3.png" id="4_5bvgy"]
 [ext_resource type="Texture2D" uid="uid://bfl4eucejvef1" path="res://Assets/Sprites/UISprites/WateringCan/WateringCanUI-2.png" id="5_5rws2"]
@@ -20,6 +21,7 @@
 [ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="18_o3e2u"]
 [ext_resource type="Texture2D" uid="uid://cjuahf3c1vw06" path="res://Assets/Sprites/UISprites/SmallGoldIcon.png" id="19_dlrft"]
 [ext_resource type="AudioStream" uid="uid://dpc2gweqfe1um" path="res://Assets/Audio/ButtonHover.wav" id="20_yayge"]
+[ext_resource type="PackedScene" uid="uid://dxnar21vog2tv" path="res://Scenes/colour_selector.tscn" id="22_0i78j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6itie"]
 atlas = ExtResource("2_38q0b")
@@ -81,11 +83,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8vjtx")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.768627)
 layout_mode = 0
-offset_right = 53.0
-offset_bottom = 66.0
-color = Color(0.0980392, 0.0980392, 0.0980392, 0.858824)
+texture = ExtResource("2_aeo48")
+stretch_mode = 2
 
 [node name="AreaFrame" type="AnimatedSprite2D" parent="ColorRect"]
 position = Vector2(2, 2)
@@ -135,18 +137,12 @@ texture_pressed = ExtResource("12_5k2r2")
 texture_hover = ExtResource("13_lvo2h")
 texture_disabled = ExtResource("14_spc3p")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect"]
-z_index = 10
-position = Vector2(31, 41)
-sprite_frames = SubResource("SpriteFrames_m2hg3")
-autoplay = "default"
-centered = false
-
-[node name="ColourButton" type="TextureButton" parent="ColorRect/AnimatedSprite2D"]
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 19.0
-offset_bottom = 19.0
+[node name="ColourButton" type="TextureButton" parent="ColorRect"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 42.0
+offset_right = 50.0
+offset_bottom = 60.0
 texture_normal = ExtResource("15_qddry")
 texture_pressed = ExtResource("16_jxmuc")
 texture_hover = ExtResource("17_qeejr")
@@ -178,6 +174,12 @@ stream = ExtResource("20_yayge")
 pitch_scale = 0.7
 bus = &"SFX"
 
+[node name="ColourSelector" parent="." instance=ExtResource("22_0i78j")]
+visible = false
+layout_mode = 1
+offset_left = 80.0
+offset_right = 80.0
+
 [connection signal="mouse_entered" from="ColorRect/AreaFrame/AreaButton" to="." method="_on_area_button_mouse_entered"]
 [connection signal="mouse_exited" from="ColorRect/AreaFrame/AreaButton" to="." method="_on_area_button_mouse_exited"]
 [connection signal="pressed" from="ColorRect/AreaFrame/AreaButton" to="." method="_on_area_button_pressed"]
@@ -187,6 +189,6 @@ bus = &"SFX"
 [connection signal="mouse_entered" from="ColorRect/SpeedFrame/SpeedButton" to="." method="_on_speed_button_mouse_entered"]
 [connection signal="mouse_exited" from="ColorRect/SpeedFrame/SpeedButton" to="." method="_on_speed_button_mouse_exited"]
 [connection signal="pressed" from="ColorRect/SpeedFrame/SpeedButton" to="." method="_on_speed_button_pressed"]
-[connection signal="mouse_entered" from="ColorRect/AnimatedSprite2D/ColourButton" to="." method="_on_colour_button_mouse_entered"]
-[connection signal="mouse_exited" from="ColorRect/AnimatedSprite2D/ColourButton" to="." method="_on_colour_button_mouse_exited"]
-[connection signal="pressed" from="ColorRect/AnimatedSprite2D/ColourButton" to="." method="_on_colour_button_pressed"]
+[connection signal="mouse_entered" from="ColorRect/ColourButton" to="." method="_on_colour_button_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/ColourButton" to="." method="_on_colour_button_mouse_exited"]
+[connection signal="pressed" from="ColorRect/ColourButton" to="." method="_on_colour_button_pressed"]

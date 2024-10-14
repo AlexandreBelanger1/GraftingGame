@@ -1,12 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://djyikek7d0sho"]
+[gd_scene load_steps=18 format=3 uid="uid://djyikek7d0sho"]
 
 [ext_resource type="Script" path="res://scripts/wateringCan.gd" id="1_o8faw"]
-[ext_resource type="Texture2D" uid="uid://crupnhoxnt0wt" path="res://Assets/Sprites/MachineSprites/128x128Circle.png" id="2_3kdxm"]
-[ext_resource type="Texture2D" uid="uid://ci1mqi86kxd7u" path="res://Assets/Sprites/UISprites/WateringCan.png" id="3_46mbj"]
+[ext_resource type="Texture2D" uid="uid://dyml07vhnnw21" path="res://Assets/Sprites/UISprites/Circle16.png" id="2_sw3gw"]
+[ext_resource type="Texture2D" uid="uid://coinheyjx6osg" path="res://Assets/Sprites/UISprites/Watering CanWhite.png" id="3_fe421"]
 [ext_resource type="AudioStream" uid="uid://bl5fracburlcf" path="res://Assets/Audio/pickupPop.mp3" id="4_k4ilg"]
 [ext_resource type="PackedScene" uid="uid://dat8adofe71mq" path="res://Scenes/water_particles.tscn" id="4_wsqc2"]
 [ext_resource type="Script" path="res://scripts/GrabArea.gd" id="5_7e1uu"]
 [ext_resource type="AudioStream" uid="uid://db4snmllc4qor" path="res://Assets/Audio/setdownPop.mp3" id="5_158yq"]
+[ext_resource type="Texture2D" uid="uid://cv8ydw6e6d7sb" path="res://Assets/Sprites/UISprites/Watering CanSpout.png" id="5_hiptx"]
 [ext_resource type="AudioStream" uid="uid://d21mfhywmy0o7" path="res://Assets/Audio/WateringCanFill.wav" id="6_4n1vt"]
 [ext_resource type="AudioStream" uid="uid://dmdeqmoo1s2bm" path="res://Assets/Audio/wateringSound.mp3" id="8_wgn7p"]
 [ext_resource type="PackedScene" uid="uid://didrtahbn8df0" path="res://Scenes/watering_can_upgrade_ui.tscn" id="10_mmdl6"]
@@ -26,6 +27,7 @@ radius = 8.06226
 bg_color = Color(0.272613, 0.659585, 0.929293, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vf6gf"]
+size = Vector2(13, 13)
 
 [node name="WateringCan" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -37,16 +39,19 @@ script = ExtResource("1_o8faw")
 visible = false
 modulate = Color(1, 1, 1, 0.184314)
 position = Vector2(-33.68, 18.32)
-scale = Vector2(0.13, 0.13)
-texture = ExtResource("2_3kdxm")
+texture = ExtResource("2_sw3gw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_46mbj")
+texture = ExtResource("3_fe421")
 offset = Vector2(0, -12)
 
 [node name="WaterParticles" parent="Sprite2D" instance=ExtResource("4_wsqc2")]
 z_index = 1
 position = Vector2(-12, -17)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(0, -12)
+texture = ExtResource("5_hiptx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6.5, -6.5)
@@ -74,7 +79,7 @@ position = Vector2(-4, 8)
 collision_layer = 0
 collision_mask = 128
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EffectRange"]
+[node name="EffectCollider" type="CollisionShape2D" parent="EffectRange"]
 position = Vector2(-29.68, 10.32)
 shape = SubResource("CircleShape2D_4cqcn")
 
@@ -102,6 +107,7 @@ collision_layer = 0
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RefillDetect"]
+position = Vector2(4.5, -3.5)
 shape = SubResource("RectangleShape2D_vf6gf")
 
 [node name="WateringSound" type="AudioStreamPlayer" parent="."]
@@ -109,6 +115,7 @@ stream = ExtResource("8_wgn7p")
 bus = &"SFX"
 
 [node name="WateringCanUpgradeUI" parent="." instance=ExtResource("10_mmdl6")]
+visible = false
 offset_left = 19.0
 offset_top = -58.0
 offset_right = 19.0

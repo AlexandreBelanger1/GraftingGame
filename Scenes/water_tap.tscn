@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://xg7lpaf11e8w" path="res://Assets/Sprites/UISprites/WaterTapBlinkIndicator.png" id="3_82k1d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvy36"]
-size = Vector2(30.303, 56.5758)
+size = Vector2(30.303, 8.09091)
 
 [node name="WaterTap" type="StaticBody2D"]
 scale = Vector2(0.33, 0.33)
@@ -14,7 +14,8 @@ collision_mask = 32
 script = ExtResource("1_rj87x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -29.2879)
+position = Vector2(0, -5.04545)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_uvy36")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

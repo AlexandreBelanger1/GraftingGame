@@ -10,10 +10,17 @@ class_name waterCan extends Node2D
 @onready var effect_range = $EffectRange
 @onready var grab_area = $GrabArea
 @onready var watering_can_upgrade_ui = $WateringCanUpgradeUI
+@onready var effect_collider = $EffectRange/EffectCollider
 
+#RGB Profile
+var red = 1
+var green = 1
+var blue = 1
 
-var areaTiers = {1:1, 2:1.5, 3:2, 4:3, 5:4}
-var speedTiers = {1:0.30, 2:0.50, 3:0.80, 4:1.00, 5:1.50}
+#Upgrade values per tier
+var areaTiers = [1, 1.5, 2, 3, 4,5.5]
+var speedTiers = [0.30, 0.50, 0.80, 1.00, 1.50, 2.00]
+var capacityTiers = [100,150,275,400,600, 1000]
 #Watering area upgrade tier
 var area = 1
 #Water fill rate upgrade tier
@@ -78,7 +85,7 @@ func _physics_process(delta):
 			initialPosition = global_position
 			Global.is_dragging = true
 		if Input.is_action_just_pressed("RMB"):
-			watering_can_upgrade_ui.visible = !watering_can_upgrade_ui.visible
+			UIEnable()
 	#Holding Watering Can
 	if dragging and !Global.placingItem:
 		if Input.is_action_pressed("LMB"):
@@ -215,11 +222,22 @@ func save():
 	var data = waterCanData.new()
 	data.position = global_position
 	data.water = waterLevel
+	data.areaUpgrade = area
+	data.capacityUpgrade = level
+	data.fillUpgrade = speed
+	data.r = red
+	data.g = green
+	data.b = blue
 	return data
 
 func loadState(data:waterCanData):
 	global_position = data.position
 	waterLevel = data.water
+	setCapacity(data.capacityUpgrade)
+	setEffectArea(data.areaUpgrade)
+	setSpeedLevel(data.fillUpgrade)
+	changeColour(data.r,data.g,data.b)
+	watering_can_upgrade_ui.loadState(data)
 
 func potRelease():
 	watering = false
@@ -245,7 +263,24 @@ func setSpeedLevel(value:int):
 	speed = value
 
 
+func setCapacity(value:int):
+	level = value
+	waterCapacity = capacityTiers[level]
+	water_bar.max_value = waterCapacity
 
+func setEffectArea(value:int):
+	area = value
+	range_indicator.scale = Vector2(areaTiers[area],areaTiers[area])
+	effect_collider.scale = Vector2(areaTiers[area],areaTiers[area])
+	#water_particles.process_material.spawn.velocity.spread = areaTiers[value] * 28
+
+func changeColour(r:float,g:float,b:float):
+	red = r
+	green = g
+	blue = b
+	sprite_2d.self_modulate.r = red
+	sprite_2d.self_modulate.g = green
+	sprite_2d.self_modulate.b = blue
 
 func _on_refill_detect_body_entered(_body):
 	refill(true)
@@ -261,3 +296,12 @@ func _on_effect_range_body_entered(body):
 
 func _on_effect_range_body_exited(body):
 	affectedPlants.pop_at(affectedPlants.find(body))
+
+func UIEnable():
+	print_debug(global_position.y)
+	watering_can_upgrade_ui.visible = !watering_can_upgrade_ui.visible
+	watering_can_upgrade_ui.position.y = -64
+	if global_position.y < 10:
+		watering_can_upgrade_ui.global_position.y = -53
+	#elif watering_can_upgrade_ui.global_position.y >= get_viewport_rect().size.y - 66:
+	#	watering_can_upgrade_ui.global_position.y = get_viewport_rect().size.y - 67

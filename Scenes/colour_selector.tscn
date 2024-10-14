@@ -1,0 +1,144 @@
+[gd_scene load_steps=12 format=3 uid="uid://dxnar21vog2tv"]
+
+[ext_resource type="Texture2D" uid="uid://dq4iudsyxs43o" path="res://Assets/Sprites/UISprites/WaterCanBackgroundUI.png" id="1_tavql"]
+[ext_resource type="Script" path="res://scripts/ColourSelector.gd" id="2_080os"]
+[ext_resource type="Texture2D" uid="uid://dyml07vhnnw21" path="res://Assets/Sprites/UISprites/Circle16.png" id="3_a6emp"]
+[ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="4_ko3ut"]
+[ext_resource type="Texture2D" uid="uid://coinheyjx6osg" path="res://Assets/Sprites/UISprites/Watering CanWhite.png" id="5_kwc05"]
+[ext_resource type="Texture2D" uid="uid://cv8ydw6e6d7sb" path="res://Assets/Sprites/UISprites/Watering CanSpout.png" id="6_kw7ub"]
+[ext_resource type="Texture2D" uid="uid://c1hlj1wp4n5ti" path="res://Assets/Sprites/UISprites/WateringCan/buyButton.png" id="7_psii0"]
+[ext_resource type="Texture2D" uid="uid://cjuahf3c1vw06" path="res://Assets/Sprites/UISprites/SmallGoldIcon.png" id="8_s4q5e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csq12"]
+bg_color = Color(0.963452, 0.36487, 0.462581, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7028"]
+bg_color = Color(0.322091, 0.69032, 0.428065, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwdu6"]
+bg_color = Color(0.171999, 0.635073, 0.924432, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_080os")
+
+[node name="ColourSelector" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.325
+anchor_bottom = 1.65
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("1_tavql")
+stretch_mode = 2
+
+[node name="RedSlider" type="HSlider" parent="ColourSelector"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 43.0
+offset_right = 186.0
+offset_bottom = 59.0
+scale = Vector2(0.25, 0.25)
+theme_override_icons/grabber = ExtResource("3_a6emp")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_csq12")
+max_value = 1.0
+step = 0.01
+value = 1.0
+scrollable = false
+
+[node name="GreenSlider" type="HSlider" parent="ColourSelector"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 51.0
+offset_right = 186.0
+offset_bottom = 67.0
+scale = Vector2(0.25, 0.25)
+theme_override_icons/grabber = ExtResource("3_a6emp")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_b7028")
+max_value = 1.0
+step = 0.01
+value = 1.0
+scrollable = false
+
+[node name="BlueSlider" type="HSlider" parent="ColourSelector"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 59.0
+offset_right = 186.0
+offset_bottom = 75.0
+scale = Vector2(0.25, 0.25)
+theme_override_icons/grabber = ExtResource("3_a6emp")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_bwdu6")
+max_value = 1.0
+step = 0.01
+value = 1.0
+scrollable = false
+
+[node name="Label" type="Label" parent="ColourSelector"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 36.0
+offset_right = 6.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(0.833975, 0, 0.220447, 1)
+theme_override_fonts/font = ExtResource("4_ko3ut")
+text = "R"
+
+[node name="Label2" type="Label" parent="ColourSelector"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 44.0
+offset_right = 6.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0.214516, 0.573615, 1.92523e-07, 1)
+theme_override_fonts/font = ExtResource("4_ko3ut")
+text = "G"
+
+[node name="Label3" type="Label" parent="ColourSelector"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 52.0
+offset_right = 6.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(0.0894547, 0.288456, 1, 1)
+theme_override_fonts/font = ExtResource("4_ko3ut")
+text = "B"
+
+[node name="WateringCanWhite" type="Sprite2D" parent="ColourSelector"]
+position = Vector2(25, 24)
+texture = ExtResource("5_kwc05")
+
+[node name="WateringCanSpout" type="Sprite2D" parent="ColourSelector"]
+position = Vector2(25, 24)
+texture = ExtResource("6_kw7ub")
+
+[node name="Button" type="TextureButton" parent="ColourSelector"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 2.0
+offset_right = 38.0
+offset_bottom = 10.0
+texture_normal = ExtResource("7_psii0")
+
+[node name="Label" type="Label" parent="ColourSelector/Button"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = -3.0
+offset_right = 15.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ko3ut")
+text = "100"
+
+[node name="SmallGoldIcon" type="Sprite2D" parent="ColourSelector"]
+position = Vector2(33, 7)
+texture = ExtResource("8_s4q5e")
+
+[connection signal="value_changed" from="ColourSelector/RedSlider" to="." method="_on_red_slider_value_changed"]
+[connection signal="value_changed" from="ColourSelector/GreenSlider" to="." method="_on_green_slider_value_changed"]
+[connection signal="value_changed" from="ColourSelector/BlueSlider" to="." method="_on_blue_slider_value_changed"]
+[connection signal="pressed" from="ColourSelector/Button" to="." method="_on_button_pressed"]
