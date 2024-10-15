@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://33hfn4s0xca2"]
+[gd_scene load_steps=28 format=3 uid="uid://33hfn4s0xca2"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/UISprites/LeftArrow.png" id="1_cmnag"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://b6lvcvorg4s4" path="res://Scenes/confirm_selection_ui.tscn" id="13_v7vt8"]
 [ext_resource type="Texture2D" uid="uid://52ux1jdj28g" path="res://Assets/Sprites/UISprites/GoldSymbol.png" id="16_pw1t5"]
 [ext_resource type="PackedScene" uid="uid://y6isy4kjqnqv" path="res://Scenes/tooltip.tscn" id="19_yw2fp"]
+[ext_resource type="PackedScene" uid="uid://3kb5k1aavtp5" path="res://Scenes/cosmetics.tscn" id="23_ogpao"]
 [ext_resource type="PackedScene" uid="uid://cgg1cbrhdkj8m" path="res://Scenes/mouse_tool_tip.tscn" id="25_qw6m8"]
 [ext_resource type="PackedScene" uid="uid://cdlfi5e3mkjnx" path="res://Scenes/shop_ui.tscn" id="27_sxlbi"]
 [ext_resource type="PackedScene" uid="uid://bd8xwn5fgq18m" path="res://Scenes/harvest_ui.tscn" id="31_csspk"]
@@ -257,6 +258,22 @@ offset_top = 2.0
 offset_right = 922.0
 offset_bottom = 2.0
 
+[node name="CosmeticsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 359.0
+offset_right = 496.0
+offset_bottom = 390.0
+text = "Cosmetics"
+
+[node name="Cosmetics" parent="." instance=ExtResource("23_ogpao")]
+visible = false
+layout_mode = 1
+offset_left = 177.0
+offset_top = 8.0
+offset_right = 177.0
+offset_bottom = 8.0
+
 [connection signal="mouse_entered" from="SeedsButton" to="." method="_on_seeds_button_mouse_entered"]
 [connection signal="mouse_exited" from="SeedsButton" to="." method="_on_seeds_button_mouse_exited"]
 [connection signal="pressed" from="SeedsButton" to="." method="_on_seeds_button_pressed"]
@@ -270,3 +287,4 @@ offset_bottom = 2.0
 [connection signal="mouse_exited" from="LeftArea" to="." method="_on_left_area_mouse_exited"]
 [connection signal="mouse_entered" from="RightArea" to="." method="_on_right_area_mouse_entered"]
 [connection signal="mouse_exited" from="RightArea" to="." method="_on_right_area_mouse_exited"]
+[connection signal="pressed" from="CosmeticsButton" to="." method="_on_cosmetics_button_pressed"]

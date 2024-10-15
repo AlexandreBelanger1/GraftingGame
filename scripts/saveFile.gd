@@ -6,3 +6,4 @@ class_name saveFile extends Resource
 @export var machineArray:Array[machineData]
 @export var wateringCan: waterCanData
 @export var timeOfSave:String
+@export var themeName = "Simple"

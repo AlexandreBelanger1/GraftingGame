@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cqh4e41syn33i" path="res://Scenes/MapThemes/Beach.tscn" id="9_c35hq"]
 [ext_resource type="PackedScene" uid="uid://cowc03phhw5ol" path="res://Scenes/MapThemes/void.tscn" id="10_88woi"]
 [ext_resource type="Texture2D" uid="uid://dulmqwqhci4ir" path="res://Assets/Sprites/UISprites/GridTileMap3x3.png" id="11_bphdl"]
-[ext_resource type="PackedScene" uid="uid://6xi5li0qd1ju" path="res://Scenes/MapThemes/FloatingFarm/floating_farm_area.tscn" id="13_wgd25"]
+[ext_resource type="PackedScene" uid="uid://6xi5li0qd1ju" path="res://Scenes/MapThemes/floating_farm_area.tscn" id="13_wgd25"]
 [ext_resource type="PackedScene" uid="uid://no02omwqsrkf" path="res://Scenes/MapThemes/japanese_house.tscn" id="14_snt4a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hmvow"]
@@ -107,12 +107,15 @@ z_index = -1
 position = Vector2(-188, -32)
 
 [node name="JapaneseHouse" parent="MapStyle" instance=ExtResource("14_snt4a")]
+visible = false
 position = Vector2(-487, -2)
 
 [node name="Beach" parent="MapStyle" instance=ExtResource("9_c35hq")]
+visible = false
 position = Vector2(122, 0)
 
 [node name="Void" parent="MapStyle" instance=ExtResource("10_88woi")]
+visible = false
 position = Vector2(154, -30)
 
 [node name="Grid" type="TileMap" parent="."]

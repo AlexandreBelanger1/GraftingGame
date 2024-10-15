@@ -15,6 +15,7 @@ extends Control
 @onready var options_label = $OptionsLabel
 @onready var shop_label = $ShopLabel
 @onready var seeds_label = $SeedsLabel
+@onready var cosmetics = $Cosmetics
 
 
 
@@ -95,3 +96,7 @@ func enableConfirmUI():
 	confirm_selection_ui.visible = true
 	SignalBus.setTooltip.emit("null",0,0,0,0,0,0)
 	SignalBus.mouseTooltip.emit("","","None","None","",false,false)
+
+
+func _on_cosmetics_button_pressed():
+	cosmetics.visible = !cosmetics.visible

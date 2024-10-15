@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://3kb5k1aavtp5"]
+
+[ext_resource type="Script" path="res://scripts/Cosmetics.gd" id="1_q3gwh"]
+
+[node name="Cosmetics" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q3gwh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 23.0
+offset_right = 517.0
+offset_bottom = 308.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect"]
+layout_mode = 2
+offset_right = 288.0
+offset_bottom = 88.0
+horizontal_scroll_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/ScrollContainer"]
+layout_mode = 2
+
+[node name="JapaneseStyle" type="Button" parent="ColorRect/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+text = "Japanese"
+
+[node name="FloatingFarmStyle" type="Button" parent="ColorRect/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+text = "FloatingFarm"
+
+[node name="VoidStyle" type="Button" parent="ColorRect/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+text = "Void"
+
+[node name="BeachStyle" type="Button" parent="ColorRect/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+text = "Beach"
+
+[node name="SimpleStyle" type="Button" parent="ColorRect/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+text = "Simple
+"
+
+[connection signal="pressed" from="ColorRect/ScrollContainer/HBoxContainer/JapaneseStyle" to="." method="_on_japanese_style_pressed"]
+[connection signal="pressed" from="ColorRect/ScrollContainer/HBoxContainer/FloatingFarmStyle" to="." method="_on_floating_farm_style_pressed"]
+[connection signal="pressed" from="ColorRect/ScrollContainer/HBoxContainer/VoidStyle" to="." method="_on_void_style_pressed"]
+[connection signal="pressed" from="ColorRect/ScrollContainer/HBoxContainer/BeachStyle" to="." method="_on_beach_style_pressed"]
+[connection signal="pressed" from="ColorRect/ScrollContainer/HBoxContainer/SimpleStyle" to="." method="_on_simple_style_pressed"]

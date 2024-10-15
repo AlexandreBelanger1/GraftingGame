@@ -5,9 +5,16 @@ const MEDIUM_POT = preload("res://Scenes/Pots/MediumPot.tscn")
 const SMALL_POT = preload("res://Scenes/Pots/SmallPot.tscn")
 @onready var seed_pouch_marker = $Camera2D/SeedPouchMarker
 @onready var grid = $Grid
-
+@onready var map_style = $MapStyle
+#MAP STYLES
+const BEACH = preload("res://Scenes/MapThemes/Beach.tscn")
+const FLOATING_FARM = preload("res://Scenes/MapThemes/floating_farm_area.tscn")
+const JAPANESE_HOUSE = preload("res://Scenes/MapThemes/japanese_house.tscn")
+const VOID = preload("res://Scenes/MapThemes/void.tscn")
+const SIMPLE = preload("res://Scenes/MapThemes/simple.tscn")
 
 var savePath = "user://savegame.tres"
+var themeName = "Simple"
 func _ready():
 	windowSetup()
 	Global.seedPouch = seed_pouch_marker
@@ -18,6 +25,7 @@ func _ready():
 	SignalBus.newSaveGame.connect(new_save_game)
 	SignalBus.gridToggle.connect(toggleGrid)
 	SignalBus.windowSetup.connect(windowSetup)
+	SignalBus.changeBackground.connect(setBackground)
 	if not FileAccess.file_exists(savePath):
 		SignalBus.saveGame.emit()
 	else:
@@ -56,6 +64,7 @@ func save_game():
 		if child is waterCan:
 			savedGame.wateringCan = child.save()
 	savedGame.gold = Global.gold
+	savedGame.themeName = themeName
 	savedGame.timeOfSave = str(Time.get_unix_time_from_system())
 	ResourceSaver.save(savedGame, savePath)
 	print_debug(savedGame.potsArray)
@@ -84,6 +93,7 @@ func load_game():
 	else:
 		createWateringCan(Vector2(-38,78))
 	Global.gold = savedGame.gold
+	setBackground(savedGame.themeName)
 	player_ui.updateCurrency()
 
 
@@ -149,3 +159,21 @@ func windowSetup():
 
 func toggleGrid(value:bool):
 	grid.visible = value
+
+func setBackground(value:String):
+	themeName = value
+	var background
+	for child in map_style.get_children():
+		child.queue_free()
+	if value == "Beach":
+		background = BEACH.instantiate()
+	elif value  == "Void":
+		background = VOID.instantiate()
+	elif value  == "FloatingFarm":
+		background = FLOATING_FARM.instantiate()
+	elif value  == "Japanese":
+		background = JAPANESE_HOUSE.instantiate()
+	elif value  == "Simple":
+		background = SIMPLE.instantiate()
+	map_style.add_child(background)
+	background.global_position = Vector2(0,0)
