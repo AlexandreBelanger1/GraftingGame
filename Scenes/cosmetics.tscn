@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://3kb5k1aavtp5"]
+[gd_scene load_steps=16 format=3 uid="uid://3kb5k1aavtp5"]
 
 [ext_resource type="Script" path="res://scripts/Cosmetics.gd" id="1_q3gwh"]
+[ext_resource type="Texture2D" uid="uid://8764jcrihfse" path="res://Assets/Sprites/UISprites/ThemeIcons/sprite_02.png" id="2_cw7d5"]
+[ext_resource type="Texture2D" uid="uid://cw4cymfcwd8pk" path="res://Assets/Sprites/UISprites/ThemeIcons/sprite_03.png" id="3_addof"]
+[ext_resource type="Texture2D" uid="uid://rluev42bkk2k" path="res://Assets/Sprites/UISprites/ThemeIcons/sprite_00.png" id="4_blvfr"]
+[ext_resource type="Texture2D" uid="uid://da2yw6pswwvw6" path="res://Assets/Sprites/UISprites/ThemeIcons/sprite_01.png" id="5_yuvhx"]
+[ext_resource type="Texture2D" uid="uid://demanj7dotxvc" path="res://Assets/Sprites/UISprites/ThemeIcons/sprite_04.png" id="6_hjmgu"]
+[ext_resource type="Texture2D" uid="uid://dp1kwxopuasrn" path="res://Assets/Sprites/UISprites/ThemeIcons/sprite_05.png" id="7_e81cp"]
+[ext_resource type="Texture2D" uid="uid://b8n7cylwtic00" path="res://Assets/Sprites/UISprites/ThemeIcons/sprite_08.png" id="8_u6vfl"]
+[ext_resource type="Texture2D" uid="uid://upewd46ui4c2" path="res://Assets/Sprites/UISprites/ThemeIcons/sprite_09.png" id="9_wkyac"]
+[ext_resource type="Texture2D" uid="uid://cjueolyswmlq8" path="res://Assets/Sprites/UISprites/ThemeIcons/sprite_06.png" id="10_qxuj1"]
+[ext_resource type="Texture2D" uid="uid://ci33h1c63gcsw" path="res://Assets/Sprites/UISprites/ThemeIcons/sprite_07.png" id="11_rvwvh"]
+[ext_resource type="Texture2D" uid="uid://urnqbv34j5b3" path="res://Assets/Sprites/Decorative/DecorationIcons-1.png" id="12_1j7xj"]
+[ext_resource type="Texture2D" uid="uid://k368oyl2j1j" path="res://Assets/Sprites/Decorative/DecorationIcons-2.png" id="13_h8yl4"]
+[ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="14_tlflr"]
+[ext_resource type="Texture2D" uid="uid://cjuahf3c1vw06" path="res://Assets/Sprites/UISprites/SmallGoldIcon.png" id="15_3r2mv"]
 
 [node name="Cosmetics" type="Control"]
 layout_mode = 3
@@ -18,38 +32,123 @@ offset_top = 23.0
 offset_right = 517.0
 offset_bottom = 308.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect"]
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 layout_mode = 2
 offset_right = 288.0
-offset_bottom = 88.0
+offset_bottom = 286.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Theme Header" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/Theme Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Theme"
+
+[node name="Themes" type="ScrollContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
 horizontal_scroll_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer/Themes"]
 layout_mode = 2
 
-[node name="JapaneseStyle" type="Button" parent="ColorRect/ScrollContainer/HBoxContainer"]
+[node name="JapaneseStyle" type="TextureButton" parent="ColorRect/MarginContainer/VBoxContainer/Themes/HBoxContainer"]
+custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
-text = "Japanese"
+texture_normal = ExtResource("2_cw7d5")
+texture_hover = ExtResource("3_addof")
+stretch_mode = 0
 
-[node name="FloatingFarmStyle" type="Button" parent="ColorRect/ScrollContainer/HBoxContainer"]
+[node name="FloatingFarmStyle" type="TextureButton" parent="ColorRect/MarginContainer/VBoxContainer/Themes/HBoxContainer"]
+custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
-text = "FloatingFarm"
+texture_normal = ExtResource("4_blvfr")
+texture_pressed = ExtResource("5_yuvhx")
+texture_hover = ExtResource("5_yuvhx")
+stretch_mode = 0
 
-[node name="VoidStyle" type="Button" parent="ColorRect/ScrollContainer/HBoxContainer"]
+[node name="VoidStyle" type="TextureButton" parent="ColorRect/MarginContainer/VBoxContainer/Themes/HBoxContainer"]
+custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
-text = "Void"
+texture_normal = ExtResource("6_hjmgu")
+texture_pressed = ExtResource("7_e81cp")
+texture_hover = ExtResource("7_e81cp")
+stretch_mode = 0
 
-[node name="BeachStyle" type="Button" parent="ColorRect/ScrollContainer/HBoxContainer"]
+[node name="BeachStyle" type="TextureButton" parent="ColorRect/MarginContainer/VBoxContainer/Themes/HBoxContainer"]
+custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
-text = "Beach"
+texture_normal = ExtResource("8_u6vfl")
+texture_pressed = ExtResource("9_wkyac")
+texture_hover = ExtResource("9_wkyac")
+stretch_mode = 0
 
-[node name="SimpleStyle" type="Button" parent="ColorRect/ScrollContainer/HBoxContainer"]
+[node name="SimpleStyle" type="TextureButton" parent="ColorRect/MarginContainer/VBoxContainer/Themes/HBoxContainer"]
+custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
-text = "Simple
-"
+texture_normal = ExtResource("10_qxuj1")
+texture_pressed = ExtResource("11_rvwvh")
+texture_hover = ExtResource("11_rvwvh")
+stretch_mode = 0
 
-[connection signal="pressed" from="ColorRect/ScrollContainer/HBoxContainer/JapaneseStyle" to="." method="_on_japanese_style_pressed"]
-[connection signal="pressed" from="ColorRect/ScrollContainer/HBoxContainer/FloatingFarmStyle" to="." method="_on_floating_farm_style_pressed"]
-[connection signal="pressed" from="ColorRect/ScrollContainer/HBoxContainer/VoidStyle" to="." method="_on_void_style_pressed"]
-[connection signal="pressed" from="ColorRect/ScrollContainer/HBoxContainer/BeachStyle" to="." method="_on_beach_style_pressed"]
-[connection signal="pressed" from="ColorRect/ScrollContainer/HBoxContainer/SimpleStyle" to="." method="_on_simple_style_pressed"]
+[node name="Decorations Header" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/Decorations Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Decorations"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+horizontal_scroll_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="GodotPlushie" type="TextureButton" parent="ColorRect/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+texture_normal = ExtResource("12_1j7xj")
+texture_pressed = ExtResource("13_h8yl4")
+texture_hover = ExtResource("13_h8yl4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/GodotPlushie"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 29.0
+offset_right = 27.0
+offset_bottom = 55.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("14_tlflr")
+theme_override_font_sizes/font_size = 32
+text = "40"
+
+[node name="SmallGoldIcon" type="Sprite2D" parent="."]
+position = Vector2(265, 218)
+scale = Vector2(2, 2)
+texture = ExtResource("15_3r2mv")
+
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Themes/HBoxContainer/JapaneseStyle" to="." method="_on_japanese_style_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Themes/HBoxContainer/FloatingFarmStyle" to="." method="_on_floating_farm_style_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Themes/HBoxContainer/VoidStyle" to="." method="_on_void_style_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Themes/HBoxContainer/BeachStyle" to="." method="_on_beach_style_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Themes/HBoxContainer/SimpleStyle" to="." method="_on_simple_style_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/ScrollContainer/HBoxContainer/GodotPlushie" to="." method="_on_godot_plushie_pressed"]

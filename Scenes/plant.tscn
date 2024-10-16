@@ -67,8 +67,12 @@ offset_top = -36.0
 offset_right = 8.0
 offset_bottom = -36.0
 
+[node name="xpTimer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="getWaterLevel" from="stem" to="." method="_on_stem_get_water_level"]
 [connection signal="growFlowersWhileAway" from="stem" to="." method="_on_stem_grow_flowers_while_away"]
 [connection signal="setWaterLevel" from="stem" to="." method="_on_stem_set_water_level"]
 [connection signal="stemComplete" from="stem" to="." method="_on_stem_stem_complete"]
 [connection signal="timeout" from="WaterConsumption" to="." method="_on_water_consumption_timeout"]
+[connection signal="timeout" from="xpTimer" to="." method="_on_xp_timer_timeout"]

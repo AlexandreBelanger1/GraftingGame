@@ -1,5 +1,7 @@
 extends Node2D
 @onready var player_ui = $CanvasLayer/PlayerUI
+@onready var get_gold = $GetGold
+
 const BONSAI_POT = preload("res://Scenes/Pots/BonsaiPot.tscn")
 const MEDIUM_POT = preload("res://Scenes/Pots/MediumPot.tscn")
 const SMALL_POT = preload("res://Scenes/Pots/SmallPot.tscn")
@@ -34,6 +36,7 @@ func _ready():
 func addCurrency(value: int):
 	Global.gold += value
 	player_ui.updateCurrency()
+	get_gold.play()
 
 func removeCurrency(value: int):
 	Global.gold -= value
@@ -61,6 +64,8 @@ func save_game():
 			savedGame.potsArray.append(child.save())
 		if child is machine:
 			savedGame.machineArray.append(child.save())
+		if child is decoration:
+			savedGame.decorationArray.append(child.save())
 		if child is waterCan:
 			savedGame.wateringCan = child.save()
 	savedGame.gold = Global.gold
@@ -81,9 +86,13 @@ func load_game():
 			child.queue_free()
 		if child is machine:
 			child.queue_free()
+		if child is decoration:
+			child.queue_free()
 		if child is waterCan:
 			child.queue_free()
 	Global.lastSaveTime = float(savedGame.timeOfSave)
+	for x in savedGame.decorationArray:
+		loadDecoration(x)
 	for x in savedGame.machineArray:
 		loadMachine(x)
 	for x in savedGame.potsArray:
@@ -113,7 +122,6 @@ const GREENHOUSE = preload("res://Scenes/Machines/greenhouse.tscn")
 const MUTATION_MACHINE = preload("res://Scenes/Machines/mutation_machine.tscn")
 func loadMachine(data:machineData):
 	var newMachine
-	print_debug(data.machineType)
 	if data.machineType == "Greenhouse":
 		newMachine = GREENHOUSE.instantiate()
 	elif data.machineType == "Apiary":
@@ -123,6 +131,16 @@ func loadMachine(data:machineData):
 	if newMachine != null:
 		add_child(newMachine)
 		newMachine.global_position = data.position
+
+const GODOT_PLUSHIE = preload("res://Scenes/Decorations/GodotPlushie.tscn")
+func loadDecoration(data:decorationData):
+	var newDecoration
+	if data.decorationType == "GodotPlushie":
+		newDecoration = GODOT_PLUSHIE.instantiate()
+		newDecoration.setType("GodotPlushie")
+	if newDecoration != null:
+		add_child(newDecoration)
+		newDecoration.global_position = data.position
 
 func createPot(pos:Vector2):
 	var newPot = MEDIUM_POT.instantiate()

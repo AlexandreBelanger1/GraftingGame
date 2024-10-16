@@ -74,3 +74,5 @@ var pickupCursor = preload("res://Assets/Sprites/UISprites/Cursor1.png")
 var grabCursor = preload("res://Assets/Sprites/UISprites/Cursor2.png")
 var seedCursor = preload("res://Assets/Sprites/UISprites/Cursor3.png")
 var defaultCursor = preload("res://Assets/Sprites/UISprites/Cursor4.png")
+
+var decorationPrices = {"GodotPlushie": 40}

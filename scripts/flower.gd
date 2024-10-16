@@ -27,7 +27,7 @@ func growthCalculate():
 	if sprite_2d.frame == stats.growthFrames:
 		growth_timer.stop()
 		seed_gen_timer.start()
-		get_parent().flowerComplete = true
+		get_parent().setFlowersComplete()
 	elif water > 0: 
 		sprite_2d.frame += 1
 	setGrowthRate()
@@ -203,7 +203,7 @@ func growWhileAway(waterSeconds:float,deltaTime:float):
 		else:
 			deltaTime = 0
 	if sprite_2d.frame == stats.growthFrames:
-		_on_growth_timer_timeout()
+		get_parent().setFlowersComplete()
 	if waterSeconds < 0.00:
 		waterSeconds = 0.00
 	get_parent().setWaterLevel(waterSeconds)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://33hfn4s0xca2"]
+[gd_scene load_steps=29 format=3 uid="uid://33hfn4s0xca2"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/UISprites/LeftArrow.png" id="1_cmnag"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
@@ -17,8 +17,11 @@
 [ext_resource type="AudioStream" uid="uid://dpc2gweqfe1um" path="res://Assets/Audio/ButtonHover.wav" id="11_emu7a"]
 [ext_resource type="PackedScene" uid="uid://b6lvcvorg4s4" path="res://Scenes/confirm_selection_ui.tscn" id="13_v7vt8"]
 [ext_resource type="Texture2D" uid="uid://52ux1jdj28g" path="res://Assets/Sprites/UISprites/GoldSymbol.png" id="16_pw1t5"]
+[ext_resource type="PackedScene" uid="uid://1qd8kob7xq4n" path="res://Scenes/garden_level.tscn" id="17_rxtwv"]
 [ext_resource type="PackedScene" uid="uid://y6isy4kjqnqv" path="res://Scenes/tooltip.tscn" id="19_yw2fp"]
+[ext_resource type="Texture2D" uid="uid://c8jkjp0nva5qn" path="res://Assets/Sprites/UISprites/Cosmetics-1.png" id="23_lus81"]
 [ext_resource type="PackedScene" uid="uid://3kb5k1aavtp5" path="res://Scenes/cosmetics.tscn" id="23_ogpao"]
+[ext_resource type="Texture2D" uid="uid://cdidfrf1bgqb" path="res://Assets/Sprites/UISprites/Cosmetics-2.png" id="24_36ihj"]
 [ext_resource type="PackedScene" uid="uid://cgg1cbrhdkj8m" path="res://Scenes/mouse_tool_tip.tscn" id="25_qw6m8"]
 [ext_resource type="PackedScene" uid="uid://cdlfi5e3mkjnx" path="res://Scenes/shop_ui.tscn" id="27_sxlbi"]
 [ext_resource type="PackedScene" uid="uid://bd8xwn5fgq18m" path="res://Scenes/harvest_ui.tscn" id="31_csspk"]
@@ -30,14 +33,6 @@ size = Vector2(107.5, 402.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajftf"]
 size = Vector2(123.5, 401)
 
-[sub_resource type="Animation" id="Animation_6r07w"]
-resource_name = "SeedLabel"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_o4cah"]
-_data = {
-"SeedLabel": SubResource("Animation_6r07w")
-}
-
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -46,30 +41,44 @@ metadata/_edit_use_anchors_ = true
 
 [node name="SeedsButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 238.0
-offset_top = 346.0
-offset_right = 292.0
-offset_bottom = 400.0
+offset_left = 241.0
+offset_top = 349.0
+offset_right = 257.0
+offset_bottom = 365.0
+scale = Vector2(3, 3)
 texture_normal = ExtResource("7_tyfg5")
 texture_pressed = ExtResource("8_f0syd")
 texture_hover = ExtResource("8_f0syd")
 
 [node name="ShopButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 320.0
-offset_top = 352.0
-offset_right = 368.0
-offset_bottom = 400.0
+offset_left = 301.0
+offset_top = 349.0
+offset_right = 317.0
+offset_bottom = 365.0
+scale = Vector2(3, 3)
 texture_normal = ExtResource("6_obkwq")
 texture_pressed = ExtResource("6_obkwq")
 texture_hover = ExtResource("7_1r3w8")
 
-[node name="ShopLabel" type="Label" parent="."]
+[node name="CosmeticsButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 321.0
-offset_top = 306.0
-offset_right = 369.0
-offset_bottom = 344.0
+offset_left = 360.0
+offset_top = 349.0
+offset_right = 376.0
+offset_bottom = 365.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("23_lus81")
+texture_pressed = ExtResource("24_36ihj")
+texture_hover = ExtResource("24_36ihj")
+
+[node name="ShopLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 303.0
+offset_top = 308.0
+offset_right = 351.0
+offset_bottom = 346.0
 theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -82,11 +91,12 @@ text = "SHOP
 "
 
 [node name="SeedsLabel" type="Label" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 233.0
-offset_top = 306.0
-offset_right = 293.0
-offset_bottom = 344.0
+offset_left = 239.0
+offset_top = 308.0
+offset_right = 299.0
+offset_bottom = 346.0
 theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -96,6 +106,24 @@ theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("5_krgbh")
 theme_override_font_sizes/font_size = 48
 text = "SEEDS"
+
+[node name="CosmeticsLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 328.0
+offset_top = 308.0
+offset_right = 436.0
+offset_bottom = 346.0
+theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_krgbh")
+theme_override_font_sizes/font_size = 48
+text = "Cosmetics
+"
 
 [node name="OptionsLabel" type="Label" parent="."]
 visible = false
@@ -177,6 +205,13 @@ offset_top = 3.0
 offset_right = 1905.0
 offset_bottom = 403.0
 
+[node name="GardenLevel" parent="." instance=ExtResource("17_rxtwv")]
+layout_mode = 1
+offset_left = 933.0
+offset_top = 369.0
+offset_right = 933.0
+offset_bottom = 369.0
+
 [node name="ButtonHover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_emu7a")
 volume_db = -11.063
@@ -232,11 +267,6 @@ position = Vector2(1867, 193)
 scale = Vector2(4, 4)
 texture = ExtResource("2_kyxwa")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_o4cah")
-}
-
 [node name="SellUI" parent="." instance=ExtResource("32_mo70n")]
 visible = false
 layout_mode = 1
@@ -258,14 +288,6 @@ offset_top = 2.0
 offset_right = 922.0
 offset_bottom = 2.0
 
-[node name="CosmeticsButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 409.0
-offset_top = 359.0
-offset_right = 496.0
-offset_bottom = 390.0
-text = "Cosmetics"
-
 [node name="Cosmetics" parent="." instance=ExtResource("23_ogpao")]
 visible = false
 layout_mode = 1
@@ -280,6 +302,9 @@ offset_bottom = 8.0
 [connection signal="mouse_entered" from="ShopButton" to="." method="_on_shop_button_mouse_entered"]
 [connection signal="mouse_exited" from="ShopButton" to="." method="_on_shop_button_mouse_exited"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="mouse_entered" from="CosmeticsButton" to="." method="_on_cosmetics_button_mouse_entered"]
+[connection signal="mouse_exited" from="CosmeticsButton" to="." method="_on_cosmetics_button_mouse_exited"]
+[connection signal="pressed" from="CosmeticsButton" to="." method="_on_cosmetics_button_pressed"]
 [connection signal="mouse_entered" from="OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="mouse_exited" from="OptionsButton" to="." method="_on_options_button_mouse_exited"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
@@ -287,4 +312,3 @@ offset_bottom = 8.0
 [connection signal="mouse_exited" from="LeftArea" to="." method="_on_left_area_mouse_exited"]
 [connection signal="mouse_entered" from="RightArea" to="." method="_on_right_area_mouse_entered"]
 [connection signal="mouse_exited" from="RightArea" to="." method="_on_right_area_mouse_exited"]
-[connection signal="pressed" from="CosmeticsButton" to="." method="_on_cosmetics_button_pressed"]

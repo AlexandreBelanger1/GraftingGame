@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://1qd8kob7xq4n"]
+
+[ext_resource type="Script" path="res://scripts/GardenLevel.gd" id="1_nad2o"]
+[ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="2_e6cmg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pq7nb"]
+bg_color = Color(1, 1, 1, 0.407843)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypbmm"]
+bg_color = Color(0.957848, 0.899566, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[node name="GardenLevel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nad2o")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 2.0
+offset_right = 574.0
+offset_bottom = 18.0
+theme_override_styles/background = SubResource("StyleBoxFlat_pq7nb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ypbmm")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_right = 35.0
+offset_bottom = 24.0
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_right = 26.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = -6.0
+offset_right = 573.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_e6cmg")
+theme_override_font_sizes/font_size = 32
+text = "GARDEN TIER"
+horizontal_alignment = 1

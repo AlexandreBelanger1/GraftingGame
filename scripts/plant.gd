@@ -4,12 +4,13 @@ class_name plant extends StaticBody2D
 @onready var water_bar = $WaterBar
 @onready var water_consumption = $WaterConsumption
 @onready var plant_options = $PlantOptions
+@onready var xp_timer = $xpTimer
 
 
 var waterLevel = 0.00
 var waterCapacity = 43200
 var waterConsumptionRate = 2000
-
+var xpGain = 1
 
 const FLOWER = preload("res://Scenes/flowers/flower.tscn")
 var plantSpecialType = "none"
@@ -27,11 +28,11 @@ var stemModifiers = {"StemGrowthRate": 1}
 
 func _ready():
 	SignalBus.waterBarEnable.connect(waterBarEnable)
-	SignalBus.changeGameSpeed.connect(setWaterConsumptionRate)
+	SignalBus.changeGameSpeed.connect(adjustTimeVariables)
 	SignalBus.plantOptions.connect(enablePlantOptions)
 
 func setup():
-	setWaterConsumptionRate()
+	adjustTimeVariables()
 	var seed = Global.selectedSeed
 	if seed != null:
 		roots.setup(seed.getSeed("roots"))
@@ -60,7 +61,7 @@ func loadPlant(data:potData):
 	stemType = data.plantStem
 	roots.loadRoots(data)
 	stem.loadStem(data)
-	setWaterConsumptionRate()
+	adjustTimeVariables()
 	waterLevel = data.waterSeconds
 	if waterLevel > 0:
 		water_consumption.start()
@@ -75,6 +76,7 @@ func loadPlant(data:potData):
 				flower.setComplete(data.plantFlower,flowerModifiers)
 				waterLevel = data.waterSeconds
 				water_bar.value = waterLevel
+				xp_timer.start()
 			else:
 				flower.setup(flowerType,flowerModifiers)
 				flower.setFrame(data.flowerFrame)
@@ -168,6 +170,10 @@ func configureStats():
 	sellValue = stem.getStat(6) + (stem.getStat(5) * fStats.sellValue)
 	specialTypeSetup()
 
+func setFlowersComplete():
+	flowerComplete = true
+	xp_timer.start()
+
 func shake():
 	for flower in flowers:
 		flower.shakeFlower()
@@ -195,6 +201,7 @@ func sellFlowers():
 		i.queue_free()
 	restartFlowerGrowth()
 	flowerComplete = false
+	xp_timer.stop()
 
 func restartFlowerGrowth():
 	var index = 0
@@ -275,9 +282,9 @@ func removeModifier(type:String,magnitude:float):
 
 
 
-func setWaterConsumptionRate():
-	#waterConsumptionRate = (1/Global.gameSpeed) *1000
+func adjustTimeVariables():
 	water_consumption.wait_time = Global.gameSpeed * 10
+	xpGain = (stem.getStat(2) + fStats.productionRate)*Global.gameSpeed
 
 func _on_water_consumption_timeout():
 	if waterLevel > 0:
@@ -297,3 +304,6 @@ func getPlantOptions():
 
 func getFlowers():
 	return flowers
+
+func _on_xp_timer_timeout():
+	SignalBus.gainXP.emit(xpGain)

@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://i72pdbnas3qk"]
+
+[ext_resource type="Script" path="res://scripts/Decorative.gd" id="1_andm6"]
+[ext_resource type="Texture2D" uid="uid://b2ekkiyx5pip5" path="res://Assets/Sprites/Decorative/GodotPlushie16.png" id="2_amvi3"]
+[ext_resource type="AudioStream" uid="uid://bl5fracburlcf" path="res://Assets/Audio/pickupPop.mp3" id="4_1nkwq"]
+[ext_resource type="Script" path="res://scripts/GrabArea.gd" id="4_04sbn"]
+[ext_resource type="AudioStream" uid="uid://db4snmllc4qor" path="res://Assets/Audio/setdownPop.mp3" id="5_f1frv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b3fi8"]
+radius = 5.09902
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t77dk"]
+radius = 5.0
+
+[node name="GodotPlushie" type="StaticBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_andm6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_amvi3")
+offset = Vector2(0, -6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_b3fi8")
+
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("4_04sbn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_t77dk")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1nkwq")
+bus = &"SFX"
+
+[node name="PlaceSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_f1frv")
+bus = &"SFX"
+
+[connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
+[connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]
+[connection signal="mouse_entered" from="GrabArea" to="." method="_on_grab_area_mouse_entered"]
+[connection signal="mouse_exited" from="GrabArea" to="." method="_on_grab_area_mouse_exited"]

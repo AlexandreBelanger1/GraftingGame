@@ -73,6 +73,7 @@ theme_override_constants/h_separation = 32
 theme_override_constants/v_separation = 10
 
 [node name="smallPot" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 texture_normal = ExtResource("3_oo1r2")
@@ -80,24 +81,91 @@ texture_pressed = ExtResource("4_oas80")
 texture_hover = ExtResource("4_oas80")
 
 [node name="mediumPot" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("5_ja68u")
 texture_pressed = ExtResource("6_b8wmh")
 texture_hover = ExtResource("6_b8wmh")
 
 [node name="bonsaiPot" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("7_0rr13")
 texture_pressed = ExtResource("8_0ensl")
 texture_hover = ExtResource("8_0ensl")
 
 [node name="mysterySeedTier1Button" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("9_5tn3o")
+texture_pressed = ExtResource("10_nqvsb")
+texture_hover = ExtResource("10_nqvsb")
+
+[node name="cactusSeed" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("9_5tn3o")
+texture_pressed = ExtResource("10_nqvsb")
+texture_hover = ExtResource("10_nqvsb")
+
+[node name="pansySeed" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("9_5tn3o")
+texture_pressed = ExtResource("10_nqvsb")
+texture_hover = ExtResource("10_nqvsb")
+
+[node name="poppySeed" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("9_5tn3o")
+texture_pressed = ExtResource("10_nqvsb")
+texture_hover = ExtResource("10_nqvsb")
+
+[node name="tulipSeed" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("9_5tn3o")
+texture_pressed = ExtResource("10_nqvsb")
+texture_hover = ExtResource("10_nqvsb")
+
+[node name="tomatoSeed" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("9_5tn3o")
+texture_pressed = ExtResource("10_nqvsb")
+texture_hover = ExtResource("10_nqvsb")
+
+[node name="pepperSeed" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("9_5tn3o")
+texture_pressed = ExtResource("10_nqvsb")
+texture_hover = ExtResource("10_nqvsb")
+
+[node name="bleedingheartSeed" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("9_5tn3o")
+texture_pressed = ExtResource("10_nqvsb")
+texture_hover = ExtResource("10_nqvsb")
+
+[node name="sunflowerSeed" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("9_5tn3o")
+texture_pressed = ExtResource("10_nqvsb")
+texture_hover = ExtResource("10_nqvsb")
+
+[node name="chiveSeed" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("9_5tn3o")
 texture_pressed = ExtResource("10_nqvsb")
 texture_hover = ExtResource("10_nqvsb")
 
 [node name="mutationRod" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("12_p8h2a")
@@ -105,6 +173,7 @@ texture_pressed = ExtResource("13_aqrsr")
 texture_hover = ExtResource("13_aqrsr")
 
 [node name="Apiary" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("14_ksecv")
@@ -112,31 +181,12 @@ texture_pressed = ExtResource("15_lxctk")
 texture_hover = ExtResource("15_lxctk")
 
 [node name="Greenhouse" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("16_fe43p")
 texture_pressed = ExtResource("17_aldhk")
 texture_hover = ExtResource("17_aldhk")
-
-[node name="ColorRect4" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-
-[node name="ColorRect5" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-
-[node name="ColorRect6" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-
-[node name="ColorRect7" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-
-[node name="ColorRect11" type="ColorRect" parent="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
 
 [node name="Foreground" type="NinePatchRect" parent="."]
 layout_mode = 0
@@ -150,23 +200,50 @@ volume_db = -11.971
 bus = &"SFX"
 
 [connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/smallPot" to="." method="_on_small_pot_mouse_entered"]
-[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/smallPot" to="." method="_on_small_pot_mouse_exited"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/smallPot" to="." method="hideDescription"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/smallPot" to="." method="_on_small_pot_pressed"]
 [connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mediumPot" to="." method="_on_medium_pot_mouse_entered"]
-[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mediumPot" to="." method="_on_medium_pot_mouse_exited"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mediumPot" to="." method="hideDescription"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mediumPot" to="." method="_on_medium_pot_pressed"]
 [connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/bonsaiPot" to="." method="_on_bonsai_pot_mouse_entered"]
-[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/bonsaiPot" to="." method="_on_bonsai_pot_mouse_exited"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/bonsaiPot" to="." method="hideDescription"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/bonsaiPot" to="." method="_on_bonsai_pot_pressed"]
 [connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mysterySeedTier1Button" to="." method="_on_mystery_seed_tier_1_button_mouse_entered"]
-[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mysterySeedTier1Button" to="." method="_on_mystery_seed_tier_1_button_mouse_exited"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mysterySeedTier1Button" to="." method="hideDescription"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mysterySeedTier1Button" to="." method="_on_mystery_seed_tier_1_button_pressed"]
+[connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/cactusSeed" to="." method="_on_cactus_seed_mouse_entered"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/cactusSeed" to="." method="hideDescription"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/cactusSeed" to="." method="_on_cactus_seed_pressed"]
+[connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/pansySeed" to="." method="_on_pansy_seed_mouse_entered"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/pansySeed" to="." method="hideDescription"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/pansySeed" to="." method="_on_pansy_seed_pressed"]
+[connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/poppySeed" to="." method="_on_poppy_seed_mouse_entered"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/poppySeed" to="." method="hideDescription"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/poppySeed" to="." method="_on_poppy_seed_pressed"]
+[connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/tulipSeed" to="." method="_on_tulip_seed_mouse_entered"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/tulipSeed" to="." method="hideDescription"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/tulipSeed" to="." method="_on_tulip_seed_pressed"]
+[connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/tomatoSeed" to="." method="_on_tomato_seed_mouse_entered"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/tomatoSeed" to="." method="hideDescription"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/tomatoSeed" to="." method="_on_tomato_seed_pressed"]
+[connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/pepperSeed" to="." method="_on_pepper_seed_mouse_entered"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/pepperSeed" to="." method="hideDescription"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/pepperSeed" to="." method="_on_pepper_seed_pressed"]
+[connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/bleedingheartSeed" to="." method="_on_bleedingheart_seed_mouse_entered"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/bleedingheartSeed" to="." method="hideDescription"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/bleedingheartSeed" to="." method="_on_bleedingheart_seed_pressed"]
+[connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/sunflowerSeed" to="." method="_on_sunflower_seed_mouse_entered"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/sunflowerSeed" to="." method="hideDescription"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/sunflowerSeed" to="." method="_on_sunflower_seed_pressed"]
+[connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/chiveSeed" to="." method="_on_chive_seed_mouse_entered"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/chiveSeed" to="." method="hideDescription"]
+[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/chiveSeed" to="." method="_on_chive_seed_pressed"]
 [connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mutationRod" to="." method="_on_mutation_rod_mouse_entered"]
-[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mutationRod" to="." method="_on_mutation_rod_mouse_exited"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mutationRod" to="." method="hideDescription"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/mutationRod" to="." method="_on_mutation_rod_pressed"]
 [connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/Apiary" to="." method="_on_apiary_mouse_entered"]
-[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/Apiary" to="." method="_on_apiary_mouse_exited"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/Apiary" to="." method="hideDescription"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/Apiary" to="." method="_on_apiary_pressed"]
 [connection signal="mouse_entered" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/Greenhouse" to="." method="_on_greenhouse_mouse_entered"]
-[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/Greenhouse" to="." method="_on_greenhouse_mouse_exited"]
+[connection signal="mouse_exited" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/Greenhouse" to="." method="hideDescription"]
 [connection signal="pressed" from="Background/MarginContainer/VBoxContainer/ScrollContainer/HFlowContainer/Greenhouse" to="." method="_on_greenhouse_pressed"]
