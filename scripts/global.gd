@@ -70,9 +70,9 @@ var tier1Seeds = {0: "cactus", 1: "sunflower", 2: "chive", 3: "poppy", 4: "tomat
 
 var specialTypeDict = {"moon": "res://Scenes/specialTypes/moon.tres", "emerald": "res://Scenes/specialTypes/emerald.tres", "rainbow": "res://Scenes/specialTypes/rainbow.tres"}
 
-var pickupCursor = preload("res://Assets/Sprites/UISprites/Cursor1.png")
-var grabCursor = preload("res://Assets/Sprites/UISprites/Cursor2.png")
-var seedCursor = preload("res://Assets/Sprites/UISprites/Cursor3.png")
-var defaultCursor = preload("res://Assets/Sprites/UISprites/Cursor4.png")
+var pickupCursor = preload("res://Assets/Sprites/UISprites/CursorTrowel32.png") #preload("res://Assets/Sprites/UISprites/Cursor1.png")
+var grabCursor = preload("res://Assets/Sprites/UISprites/CursorTrowel32.png")#preload("res://Assets/Sprites/UISprites/Cursor2.png")
+var seedCursor = preload("res://Assets/Sprites/UISprites/CursorTrowel32.png")#preload("res://Assets/Sprites/UISprites/Cursor3.png")
+var defaultCursor = preload("res://Assets/Sprites/UISprites/CursorTrowel32.png")#preload("res://Assets/Sprites/UISprites/Cursor4.png")
 
 var decorationPrices = {"GodotPlushie": 40}

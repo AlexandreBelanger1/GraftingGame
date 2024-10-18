@@ -10,11 +10,19 @@ func _physics_process(_delta):
 	global_position.x += direction * speed
 
 func _on_player_ui_move_camera_left():
-	direction = -1
+	if global_position.x <= limit_left:
+		direction = 0
+		print_debug("cannot move left!")
+	else:
+		direction = -1
+		print_debug("moving left!")
 
 
 func _on_player_ui_move_camera_right():
-	direction = 1
+	if global_position.x >= limit_right:
+		direction = 0
+	else:
+		direction = 1
 
 
 func _on_player_ui_stop_camera():

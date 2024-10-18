@@ -1,0 +1,368 @@
+[gd_scene load_steps=8 format=3 uid="uid://dcxl6m3dcjno"]
+
+[ext_resource type="Script" path="res://scripts/stats.gd" id="1_1v4ey"]
+[ext_resource type="FontFile" uid="uid://0r6o7hckjs42" path="res://Assets/Fonts/m6x11plus.ttf" id="1_vibkm"]
+[ext_resource type="FontFile" uid="uid://c3jn081c7a8ic" path="res://Assets/Fonts/m5x7.ttf" id="2_l887b"]
+[ext_resource type="Texture2D" uid="uid://bvlyv5uwx13f0" path="res://Assets/Sprites/UISprites/AchievementFrame-2.png" id="3_31nyu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm2e6"]
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e75ce"]
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4xu4"]
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Stats" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("1_1v4ey")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 495.0
+offset_bottom = 326.0
+color = Color(0.580392, 0.4, 0.282353, 0.882353)
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 0
+offset_right = 465.0
+offset_bottom = 325.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_vibkm")
+theme_override_font_sizes/font_size = 36
+text = "STATS"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_pm2e6")
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="GoldEarned" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "Gold Earned:"
+
+[node name="XPEarned" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "XP Earned:"
+
+[node name="SeedsPlanted" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "Seeds Planted:"
+
+[node name="FlowersHarvested" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "Flowers Harvested:"
+
+[node name="SeedsHarvested" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "Seeds Harvested:"
+
+[node name="SeedsSold" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "Seeds Sold:"
+
+[node name="Water Usage" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "Water Usage:"
+
+[node name="WorldLifetime" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "World Lifetime:"
+
+[node name="In-gameTime" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "In-game Time:"
+
+[node name="PlantStatContainer" type="VBoxContainer" parent="Background/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/HBoxContainer/PlantStatContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_vibkm")
+theme_override_font_sizes/font_size = 36
+text = "FLOWERS"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/MarginContainer/HBoxContainer/PlantStatContainer"]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e75ce")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/MarginContainer/HBoxContainer/PlantStatContainer/ScrollContainer"]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="FlowerContainer" type="GridContainer" parent="Background/MarginContainer/HBoxContainer/PlantStatContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+columns = 4
+
+[node name="Label3" type="Label" parent="Background/MarginContainer/HBoxContainer/PlantStatContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_vibkm")
+theme_override_font_sizes/font_size = 36
+text = "STEMS"
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Background/MarginContainer/HBoxContainer/PlantStatContainer"]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w4xu4")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/MarginContainer/HBoxContainer/PlantStatContainer/ScrollContainer2"]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="StemContainer" type="GridContainer" parent="Background/MarginContainer/HBoxContainer/PlantStatContainer/ScrollContainer2/MarginContainer"]
+layout_mode = 2
+columns = 4
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Background/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_vibkm")
+theme_override_font_sizes/font_size = 36
+text = "ACHIEVEMENTS"
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_pm2e6")
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="Achievement" type="TextureRect" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_31nyu")
+
+[node name="Text" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer/Achievement"]
+layout_mode = 2
+offset_top = 3.0
+offset_right = 149.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement2" type="TextureRect" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_31nyu")
+
+[node name="Text" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer/Achievement2"]
+layout_mode = 2
+offset_top = 3.0
+offset_right = 149.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement3" type="TextureRect" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_31nyu")
+
+[node name="Text" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer/Achievement3"]
+layout_mode = 2
+offset_top = 3.0
+offset_right = 149.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement4" type="TextureRect" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_31nyu")
+
+[node name="Text" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer/Achievement4"]
+layout_mode = 2
+offset_top = 3.0
+offset_right = 149.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement5" type="TextureRect" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_31nyu")
+
+[node name="Text" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer/Achievement5"]
+layout_mode = 2
+offset_top = 3.0
+offset_right = 149.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement6" type="TextureRect" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_31nyu")
+
+[node name="Text" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer/Achievement6"]
+layout_mode = 2
+offset_top = 3.0
+offset_right = 149.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement7" type="TextureRect" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_31nyu")
+
+[node name="Text" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer/Achievement7"]
+layout_mode = 2
+offset_top = 3.0
+offset_right = 149.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement8" type="TextureRect" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_31nyu")
+
+[node name="Text" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer/Achievement8"]
+layout_mode = 2
+offset_top = 3.0
+offset_right = 149.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement9" type="TextureRect" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_31nyu")
+
+[node name="Text" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer/Achievement9"]
+layout_mode = 2
+offset_top = 3.0
+offset_right = 149.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement10" type="TextureRect" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_31nyu")
+
+[node name="Text" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer/Achievement10"]
+layout_mode = 2
+offset_top = 3.0
+offset_right = 149.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Achievement11" type="TextureRect" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_31nyu")
+
+[node name="Text" type="Label" parent="Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/VBoxContainer/Achievement11"]
+layout_mode = 2
+offset_top = 3.0
+offset_right = 149.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("2_l887b")
+theme_override_font_sizes/font_size = 16
+text = "LOCKED"
+horizontal_alignment = 1
+vertical_alignment = 1

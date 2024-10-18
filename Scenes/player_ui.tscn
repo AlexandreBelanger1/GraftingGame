@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://33hfn4s0xca2"]
+[gd_scene load_steps=32 format=3 uid="uid://33hfn4s0xca2"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/UISprites/LeftArrow.png" id="1_cmnag"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
@@ -13,25 +13,28 @@
 [ext_resource type="Texture2D" uid="uid://j17thefc01wv" path="res://Assets/Sprites/UISprites/SeedPouchHighlight.png" id="8_f0syd"]
 [ext_resource type="PackedScene" uid="uid://brw2nd1ekpwdt" path="res://Scenes/options_menu.tscn" id="9_0pr4o"]
 [ext_resource type="Texture2D" uid="uid://dcgpi07n5uhbk" path="res://Assets/Sprites/UISprites/OptionsHighlighted.png" id="9_f8o4n"]
+[ext_resource type="Texture2D" uid="uid://dowpswhtbabtm" path="res://Assets/Sprites/UISprites/StatsButton-1.png" id="10_4xfq0"]
 [ext_resource type="PackedScene" uid="uid://dxltbvsrf4kup" path="res://Scenes/seed_bag_ui.tscn" id="11_7xi0e"]
+[ext_resource type="Texture2D" uid="uid://jvrfsncak0sq" path="res://Assets/Sprites/UISprites/StatsButton-2.png" id="11_a0y70"]
 [ext_resource type="AudioStream" uid="uid://dpc2gweqfe1um" path="res://Assets/Audio/ButtonHover.wav" id="11_emu7a"]
 [ext_resource type="PackedScene" uid="uid://b6lvcvorg4s4" path="res://Scenes/confirm_selection_ui.tscn" id="13_v7vt8"]
-[ext_resource type="Texture2D" uid="uid://52ux1jdj28g" path="res://Assets/Sprites/UISprites/GoldSymbol.png" id="16_pw1t5"]
 [ext_resource type="PackedScene" uid="uid://1qd8kob7xq4n" path="res://Scenes/garden_level.tscn" id="17_rxtwv"]
 [ext_resource type="PackedScene" uid="uid://y6isy4kjqnqv" path="res://Scenes/tooltip.tscn" id="19_yw2fp"]
+[ext_resource type="Texture2D" uid="uid://cjuahf3c1vw06" path="res://Assets/Sprites/UISprites/SmallGoldIcon.png" id="21_epgil"]
 [ext_resource type="Texture2D" uid="uid://c8jkjp0nva5qn" path="res://Assets/Sprites/UISprites/Cosmetics-1.png" id="23_lus81"]
 [ext_resource type="PackedScene" uid="uid://3kb5k1aavtp5" path="res://Scenes/cosmetics.tscn" id="23_ogpao"]
 [ext_resource type="Texture2D" uid="uid://cdidfrf1bgqb" path="res://Assets/Sprites/UISprites/Cosmetics-2.png" id="24_36ihj"]
 [ext_resource type="PackedScene" uid="uid://cgg1cbrhdkj8m" path="res://Scenes/mouse_tool_tip.tscn" id="25_qw6m8"]
 [ext_resource type="PackedScene" uid="uid://cdlfi5e3mkjnx" path="res://Scenes/shop_ui.tscn" id="27_sxlbi"]
+[ext_resource type="PackedScene" uid="uid://dcxl6m3dcjno" path="res://Scenes/stats.tscn" id="29_hkga4"]
 [ext_resource type="PackedScene" uid="uid://bd8xwn5fgq18m" path="res://Scenes/harvest_ui.tscn" id="31_csspk"]
 [ext_resource type="PackedScene" uid="uid://ba8ypojgo8as2" path="res://Scenes/sell_ui.tscn" id="32_mo70n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dmpm"]
-size = Vector2(107.5, 402.5)
+size = Vector2(107.5, 357.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajftf"]
-size = Vector2(123.5, 401)
+size = Vector2(123.5, 354.5)
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
@@ -128,9 +131,9 @@ text = "Cosmetics
 [node name="OptionsLabel" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 1563.0
+offset_left = 1833.0
 offset_top = 309.0
-offset_right = 1647.0
+offset_right = 1917.0
 offset_bottom = 347.0
 theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
@@ -142,24 +145,53 @@ theme_override_fonts/font = ExtResource("5_krgbh")
 theme_override_font_sizes/font_size = 48
 text = "OPTIONS"
 
+[node name="StatsLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1815.0
+offset_top = 309.0
+offset_right = 1899.0
+offset_bottom = 347.0
+theme_override_colors/font_color = Color(1.44392e-07, 0.317689, 0.403089, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("5_krgbh")
+theme_override_font_sizes/font_size = 48
+text = "STATS"
+
 [node name="CurrencyCounter" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1691.0
-offset_top = 364.0
-offset_right = 1757.0
-offset_bottom = 397.0
+offset_left = 135.0
+offset_top = 362.0
+offset_right = 201.0
+offset_bottom = 395.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("4_6hr8t")
 text = "20
 "
+horizontal_alignment = 2
+
+[node name="StatsButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1819.0
+offset_top = 352.0
+offset_right = 1835.0
+offset_bottom = 368.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("10_4xfq0")
+texture_pressed = ExtResource("11_a0y70")
+texture_hover = ExtResource("11_a0y70")
 
 [node name="OptionsButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 1580.0
+offset_left = 1871.0
 offset_top = 351.0
-offset_right = 1628.0
+offset_right = 1919.0
 offset_bottom = 399.0
 texture_normal = ExtResource("7_5yl0y")
 texture_pressed = ExtResource("9_f8o4n")
@@ -224,8 +256,9 @@ pitch_scale = 0.71
 bus = &"SFX"
 
 [node name="GoldSymbol" type="Sprite2D" parent="."]
-position = Vector2(1655, 375)
-texture = ExtResource("16_pw1t5")
+position = Vector2(213, 375)
+scale = Vector2(3, 3)
+texture = ExtResource("21_epgil")
 
 [node name="Tooltip" parent="." instance=ExtResource("19_yw2fp")]
 layout_mode = 1
@@ -243,7 +276,7 @@ offset_bottom = 1.0
 [node name="LeftArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArea"]
-position = Vector2(55.25, 199.75)
+position = Vector2(55.25, 177.25)
 shape = SubResource("RectangleShape2D_5dmpm")
 
 [node name="LeftArrow" type="Sprite2D" parent="LeftArea"]
@@ -257,7 +290,7 @@ texture = ExtResource("1_cmnag")
 position = Vector2(-23, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
-position = Vector2(1881, 204)
+position = Vector2(1881, 180.75)
 shape = SubResource("RectangleShape2D_ajftf")
 
 [node name="RightArrow" type="Sprite2D" parent="RightArea"]
@@ -296,6 +329,14 @@ offset_top = 8.0
 offset_right = 177.0
 offset_bottom = 8.0
 
+[node name="Stats" parent="." instance=ExtResource("29_hkga4")]
+visible = false
+layout_mode = 1
+offset_left = 856.0
+offset_top = 12.0
+offset_right = 856.0
+offset_bottom = 12.0
+
 [connection signal="mouse_entered" from="SeedsButton" to="." method="_on_seeds_button_mouse_entered"]
 [connection signal="mouse_exited" from="SeedsButton" to="." method="_on_seeds_button_mouse_exited"]
 [connection signal="pressed" from="SeedsButton" to="." method="_on_seeds_button_pressed"]
@@ -305,6 +346,9 @@ offset_bottom = 8.0
 [connection signal="mouse_entered" from="CosmeticsButton" to="." method="_on_cosmetics_button_mouse_entered"]
 [connection signal="mouse_exited" from="CosmeticsButton" to="." method="_on_cosmetics_button_mouse_exited"]
 [connection signal="pressed" from="CosmeticsButton" to="." method="_on_cosmetics_button_pressed"]
+[connection signal="mouse_entered" from="StatsButton" to="." method="_on_stats_button_mouse_entered"]
+[connection signal="mouse_exited" from="StatsButton" to="." method="_on_stats_button_mouse_exited"]
+[connection signal="pressed" from="StatsButton" to="." method="_on_stats_button_pressed"]
 [connection signal="mouse_entered" from="OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="mouse_exited" from="OptionsButton" to="." method="_on_options_button_mouse_exited"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

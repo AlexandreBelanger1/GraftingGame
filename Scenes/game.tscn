@@ -72,7 +72,10 @@ size_flags_stretch_ratio = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 12)
+offset = Vector2(320, 0)
 zoom = Vector2(3, 3)
+limit_left = 0
+limit_right = 0
 script = ExtResource("3_tva00")
 
 [node name="SeedPouchMarker" type="Area2D" parent="Camera2D"]

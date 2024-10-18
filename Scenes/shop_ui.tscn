@@ -30,6 +30,7 @@ offset_right = 1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_yltsc")
 
 [node name="Background" type="NinePatchRect" parent="."]

@@ -81,3 +81,4 @@ func _on_texture_rect_pressed():
 	for child in grid_container.get_children():
 		child.queue_free()
 		SignalBus.addGold.emit(1)
+		SignalBus.seedSold.emit(1)

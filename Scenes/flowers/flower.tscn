@@ -568,12 +568,11 @@ script = ExtResource("1_crkqh")
 
 [node name="GrowthTimer" type="Timer" parent="."]
 wait_time = 2.0
-autostart = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_dsx0u")
-animation = &"tulipFlower"
+animation = &"cactusFlower"
 
 [node name="SeedGenTimer" type="Timer" parent="."]
 wait_time = 30.0

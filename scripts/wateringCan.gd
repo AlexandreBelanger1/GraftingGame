@@ -128,6 +128,7 @@ func _physics_process(delta):
 
 func pourWater(delta):
 	waterLevel-= delta*20
+	SignalBus.waterUsed.emit(delta*20)
 	water_bar.value = waterLevel
 	for x in affectedPlants:
 		x.addWater()

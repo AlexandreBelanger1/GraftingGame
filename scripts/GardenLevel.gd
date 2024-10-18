@@ -3,7 +3,7 @@ extends Control
 @onready var label = $ColorRect/Label
 
 var level = 1
-var levelThreshhold = [0,1000,5000,10000,20000,35000,50000]
+var levelThreshhold = [0,1000,5000,10000,20000,35000,50000,90000,150000,250000,500000,1000000,1500000,3000000,5000000,10000000]
 var savePath = "user://saveLevel.tres"
 
 func _ready():

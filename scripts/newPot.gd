@@ -38,6 +38,8 @@ func _input(event):
 				releaseFlag = true
 
 func _physics_process(_delta):
+	if Plant != null:
+		SignalBus.setTooltip.emit(Plant.getTooltip(1),Plant.getTooltip(2),Plant.getTooltip(3),Plant.getTooltip(4),Plant.getTooltip(5),Plant.getTooltip(6), Plant.getTooltip(7))
 	if releaseFlag:
 		potRelease()
 		releaseFlag = false
@@ -129,9 +131,9 @@ func _notification(what):
 
 
 func _on_grab_area_mouse_entered():
-	set_physics_process(true)
-	processing = true
 	if not Global.is_dragging:
+		set_physics_process(true)
+		processing = true
 		draggable = true
 		z_index = 1
 		if Plant == null:
@@ -215,6 +217,7 @@ func save():
 	return data
 
 func loadState(data:potData):
+	set_physics_process(false)
 	global_position = data.position
 	potType = data.potType
 	loadStats(statsDict[potType])

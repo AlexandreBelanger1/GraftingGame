@@ -102,8 +102,10 @@ func checkRootSize():
 			queue_free()
 		else:
 			Global.selectedSeed.queue_free()
+			SignalBus.seedPlanted.emit(1)
 	else:
 		Global.selectedSeed.queue_free()
+		SignalBus.seedPlanted.emit(1)
 
 func _on_stem_stem_complete():
 	for i in stem.stats.flowerCount:
@@ -197,6 +199,7 @@ func specialTypeSetup():
 func sellFlowers():
 	for i in flowers:
 		if flowerComplete:
+			SignalBus.flowerHarvested.emit(1)
 			SignalBus.addGold.emit(load(Global.flowerStatsDict[flowerType]).sellValue)
 		i.queue_free()
 	restartFlowerGrowth()

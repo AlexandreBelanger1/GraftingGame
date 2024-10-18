@@ -32,10 +32,10 @@ script = ExtResource("1_nad2o")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_left = 43.0
-offset_top = 2.0
-offset_right = 574.0
-offset_bottom = 18.0
+offset_left = 44.0
+offset_top = -5.0
+offset_right = 347.0
+offset_bottom = 26.0
 theme_override_styles/background = SubResource("StyleBoxFlat_pq7nb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ypbmm")
 step = 1.0
@@ -60,8 +60,8 @@ horizontal_alignment = 1
 layout_mode = 0
 offset_left = 44.0
 offset_top = -6.0
-offset_right = 573.0
-offset_bottom = 20.0
+offset_right = 264.0
+offset_bottom = 24.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_e6cmg")

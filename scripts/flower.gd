@@ -24,12 +24,14 @@ func _on_growth_timer_timeout():
 
 func growthCalculate():
 	var water = get_parent().getWaterLevel()
+	if water > 0: 
+		sprite_2d.frame += 1
 	if sprite_2d.frame == stats.growthFrames:
+		print_debug("here1")
+		SignalBus.addFlowerStat.emit(sprite_2d.animation)
 		growth_timer.stop()
 		seed_gen_timer.start()
 		get_parent().setFlowersComplete()
-	elif water > 0: 
-		sprite_2d.frame += 1
 	setGrowthRate()
 
 func setGrowthRate():
@@ -126,8 +128,7 @@ func shakeFlower():
 		seed.global_position = global_position
 		var targetFallLocation = get_parent().get_parent().global_position.y + 10
 		seed.fall(targetFallLocation)
-		#seed.global_position.y = get_parent().get_parent().global_position.y + 10
-		#seed.global_position.x = global_position.x
+		SignalBus.seedHarvested.emit(1)
 		seed = null
 		seed_gen_timer.start()
 
@@ -203,6 +204,8 @@ func growWhileAway(waterSeconds:float,deltaTime:float):
 		else:
 			deltaTime = 0
 	if sprite_2d.frame == stats.growthFrames:
+		print_debug("here2")
+		SignalBus.addFlowerStat.emit(sprite_2d.animation)
 		get_parent().setFlowersComplete()
 	if waterSeconds < 0.00:
 		waterSeconds = 0.00

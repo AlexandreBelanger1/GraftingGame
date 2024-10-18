@@ -19,6 +19,8 @@ extends Control
 @onready var seeds_label = $SeedsLabel
 @onready var cosmetics = $Cosmetics
 @onready var cosmetics_label = $CosmeticsLabel
+@onready var stats_label = $StatsLabel
+@onready var stats = $Stats
 
 
 
@@ -66,12 +68,19 @@ func _on_seeds_button_pressed():
 func _on_options_button_pressed():
 	button_clicked.play()
 	options_menu.visible = !options_menu.visible
+	stats.visible = false
 
 func _on_cosmetics_button_pressed():
 	button_clicked.play()
 	seed_bag_ui.visible = false
 	shop_UI.visible = false
 	cosmetics.visible = !cosmetics.visible
+
+func _on_stats_button_pressed():
+	SignalBus.updateTimeStats.emit()
+	button_clicked.play()
+	options_menu.visible = false
+	stats.visible = !stats.visible
 
 #UI BUTTON ENTERED
 func _on_shop_button_mouse_entered():
@@ -90,7 +99,9 @@ func _on_cosmetics_button_mouse_entered():
 	button_hover.play()
 	cosmetics_label.visible = true
 
-
+func _on_stats_button_mouse_entered():
+	button_hover.play()
+	stats_label.visible = true
 
 
 #UI BUTTON EXITED
@@ -106,6 +117,9 @@ func _on_options_button_mouse_exited():
 func _on_cosmetics_button_mouse_exited():
 	cosmetics_label.visible = false
 
+func _on_stats_button_mouse_exited():
+	stats_label.visible = false
+
 #OTHER FUNCTIONS
 func updateCurrency():
 	currency_counter.text = str(Global.gold)
@@ -114,9 +128,3 @@ func enableConfirmUI():
 	confirm_selection_ui.visible = true
 	SignalBus.setTooltip.emit("null",0,0,0,0,0,0)
 	SignalBus.mouseTooltip.emit("","","None","None","",false,false)
-
-
-
-
-
-

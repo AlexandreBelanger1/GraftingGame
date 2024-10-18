@@ -45,6 +45,7 @@ func growthCalculate():
 	var water = get_parent().getWaterLevel()
 	if sprite_2d.frame == stats.growthFrames:
 		growth_timer.stop()
+		SignalBus.addStemStat.emit(sprite_2d.animation) #I love how jank this is
 		emit_signal("stemComplete")
 		var particleEffect = PARTICLES.instantiate()
 		add_child(particleEffect)
@@ -65,8 +66,6 @@ func startGrowing():
 
 func setGrowthRate():
 	growthWaitTime = (Global.gameSpeed) * (1.00/(float(stats.growthRate)*growthRateModifier))
-	#growthWaitTime = Global.gameSpeed * float(100.00/(float(stats.growthRate)* growthRateModifier))
-	#growth_timer.wait_time = growthWaitTime
 
 func getStat(value: int):
 	if value == 1:
@@ -96,6 +95,7 @@ func growthWhileAway(data:potData):
 		else:
 			deltaTime = 0
 	if sprite_2d.frame == stats.growthFrames:
+		SignalBus.addStemStat.emit(sprite_2d.animation)
 		growth_timer.stop()
 		emit_signal("growFlowersWhileAway", waterSeconds,deltaTime)
 	else:

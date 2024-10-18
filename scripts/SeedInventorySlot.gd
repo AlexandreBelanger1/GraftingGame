@@ -66,4 +66,5 @@ func saveSeed():
 func _input(event):
 	if Input.is_action_just_pressed("RMB") and hovered:
 		SignalBus.addGold.emit(1)
+		SignalBus.seedSold.emit(1)
 		queue_free()
