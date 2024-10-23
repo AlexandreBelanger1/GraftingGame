@@ -1,6 +1,9 @@
 extends Node2D
 @onready var player_ui = $CanvasLayer/PlayerUI
 @onready var get_gold = $GetGold
+@onready var camera_2d = $Camera2D
+@onready var music_player = $MusicPlayer
+
 
 const BONSAI_POT = preload("res://Scenes/Pots/BonsaiPot.tscn")
 const MEDIUM_POT = preload("res://Scenes/Pots/MediumPot.tscn")
@@ -17,6 +20,9 @@ const SIMPLE = preload("res://Scenes/MapThemes/simple.tscn")
 
 var savePath = "user://savegame.tres"
 var themeName = "Simple"
+var sfxVolume
+var musicVolume
+
 func _ready():
 	windowSetup()
 	Global.seedPouch = seed_pouch_marker
@@ -28,10 +34,12 @@ func _ready():
 	SignalBus.gridToggle.connect(toggleGrid)
 	SignalBus.windowSetup.connect(windowSetup)
 	SignalBus.changeBackground.connect(setBackground)
+	SignalBus.saveVolume.connect(setVolume)
 	if not FileAccess.file_exists(savePath):
 		SignalBus.saveGame.emit()
 	else:
 		SignalBus.loadGame.emit()
+	music_player.start()
 
 func addCurrency(value: int):
 	Global.gold += value
@@ -51,10 +59,10 @@ func new_save_game():
 	ResourceSaver.save(savedGame, savePath)
 	load_game()
 	#createWateringCan(Vector2(180,0))
-	createPot(Vector2(0,0))
-	createPot(Vector2(100,0))
-	createSeed(Vector2(0,50))
-	createSeed(Vector2(100,50))
+	createPot(Vector2(200,0))
+	createPot(Vector2(300,0))
+	createSeed(Vector2(200,50))
+	createSeed(Vector2(300,50))
 	save_game()
 
 func save_game():
@@ -71,6 +79,10 @@ func save_game():
 	savedGame.gold = Global.gold
 	savedGame.themeName = themeName
 	savedGame.timeOfSave = str(Time.get_unix_time_from_system())
+	savedGame.cameraUpgradeLeft = camera_2d.save(1)
+	savedGame.cameraUpgradeRight = camera_2d.save(2)
+	savedGame.musicVolume = str(musicVolume)
+	savedGame.sfxVolume = str(sfxVolume)
 	ResourceSaver.save(savedGame, savePath)
 	print_debug(savedGame.potsArray)
 
@@ -100,7 +112,13 @@ func load_game():
 	if savedGame.wateringCan != null:
 		loadWaterCan(savedGame.wateringCan)
 	else:
-		createWateringCan(Vector2(-38,78))
+		createWateringCan(Vector2(350,78))
+	camera_2d.load(1,savedGame.cameraUpgradeLeft)
+	camera_2d.load(2,savedGame.cameraUpgradeRight)
+	musicVolume = float(savedGame.musicVolume)
+	sfxVolume = float(savedGame.sfxVolume)
+	SignalBus.loadVolume.emit("Music",musicVolume)
+	SignalBus.loadVolume.emit("SFX",sfxVolume)
 	Global.gold = savedGame.gold
 	setBackground(savedGame.themeName)
 	player_ui.updateCurrency()
@@ -195,3 +213,10 @@ func setBackground(value:String):
 		background = SIMPLE.instantiate()
 	map_style.add_child(background)
 	background.global_position = Vector2(0,0)
+
+
+func setVolume(Bus:String, value:float):
+	if Bus == "SFX":
+		sfxVolume = value
+	elif Bus == "Music":
+		musicVolume = value

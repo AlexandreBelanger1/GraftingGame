@@ -21,7 +21,7 @@ var cycleNumber = 1
 func _ready():
 	set_physics_process(false)
 	songList = [song_1, song_2,song_3,song_4,song_5,song_6,song_7,song_8,song_9,song_10,song_11]
-	start()
+	#start()
 
 func start():
 	Song1 = songList.pick_random()

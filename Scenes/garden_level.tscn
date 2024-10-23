@@ -1,25 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://1qd8kob7xq4n"]
+[gd_scene load_steps=7 format=3 uid="uid://1qd8kob7xq4n"]
 
 [ext_resource type="Script" path="res://scripts/GardenLevel.gd" id="1_nad2o"]
 [ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="2_e6cmg"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pq7nb"]
-bg_color = Color(1, 1, 1, 0.407843)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypbmm"]
-bg_color = Color(0.957848, 0.899566, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
-border_blend = true
+[ext_resource type="Texture2D" uid="uid://cma7i7ioioa8s" path="res://Assets/Sprites/UISprites/GardenLevelFrame-1.png" id="2_hbifr"]
+[ext_resource type="Texture2D" uid="uid://dhv4hckhd473h" path="res://Assets/Sprites/UISprites/GardenLevelFrame-2.png" id="3_dycs5"]
+[ext_resource type="Texture2D" uid="uid://b6tovieqo0i7e" path="res://Assets/Sprites/UISprites/GardenLevelNumberFrame.png" id="4_sj72a"]
+[ext_resource type="FontFile" uid="uid://0r6o7hckjs42" path="res://Assets/Fonts/m6x11plus.ttf" id="5_mcqne"]
 
 [node name="GardenLevel" type="Control"]
 layout_mode = 3
@@ -30,38 +16,44 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nad2o")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
+custom_minimum_size = Vector2(300, 30)
 layout_mode = 0
-offset_left = 44.0
-offset_top = -5.0
-offset_right = 347.0
-offset_bottom = 26.0
-theme_override_styles/background = SubResource("StyleBoxFlat_pq7nb")
-theme_override_styles/fill = SubResource("StyleBoxFlat_ypbmm")
-step = 1.0
+offset_left = 38.0
+offset_right = 338.0
+offset_bottom = 30.0
 value = 50.0
-show_percentage = false
+nine_patch_stretch = true
+texture_under = ExtResource("2_hbifr")
+texture_progress = ExtResource("3_dycs5")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 9.0
-offset_right = 35.0
-offset_bottom = 24.0
+offset_left = 11.0
+offset_right = 41.0
+offset_bottom = 30.0
+texture = ExtResource("4_sj72a")
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_right = 26.0
-offset_bottom = 23.0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 30.0
+offset_bottom = 27.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.330306, 0.745093, 0.294086, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("5_mcqne")
+theme_override_font_sizes/font_size = 18
 text = "1"
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 44.0
-offset_top = -6.0
-offset_right = 264.0
-offset_bottom = 24.0
+offset_left = 38.0
+offset_right = 338.0
+offset_bottom = 30.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_e6cmg")

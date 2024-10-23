@@ -1,6 +1,4 @@
 extends Control
-@onready var left_arrow = $LeftArea/LeftArrow
-@onready var right_arrow = $RightArea/RightArrow
 @onready var shop_button = $ShopButton
 @onready var seeds_button = $SeedsButton
 @onready var cosmetics_button = $CosmeticsButton
@@ -26,30 +24,10 @@ extends Control
 
 
 var UIhidden = false
-signal moveCameraLeft
-signal stopCamera
-signal moveCameraRight
+
 
 func _ready():
 	SignalBus.confirmUI.connect(enableConfirmUI)
-
-
-#CAMERA CONROLS
-func _on_left_area_mouse_entered():
-	emit_signal("moveCameraLeft")
-	left_arrow.visible = true
-
-func _on_left_area_mouse_exited():
-	emit_signal("stopCamera")
-	left_arrow.visible = false
-
-func _on_right_area_mouse_entered():
-	emit_signal("moveCameraRight")
-	right_arrow.visible = true
-
-func _on_right_area_mouse_exited():
-	emit_signal("stopCamera")
-	right_arrow.visible = false
 
 
 #UI BUTTON PRESSED

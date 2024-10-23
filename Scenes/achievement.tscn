@@ -1,0 +1,259 @@
+[gd_scene load_steps=27 format=3 uid="uid://de8ph6yr6kleq"]
+
+[ext_resource type="Script" path="res://scripts/AchievementDisplay.gd" id="1_kymca"]
+[ext_resource type="Texture2D" uid="uid://bvlyv5uwx13f0" path="res://Assets/Sprites/UISprites/AchievementFrame-2.png" id="2_ci30n"]
+[ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="3_yxi8c"]
+[ext_resource type="Texture2D" uid="uid://cvn7f1wp6c575" path="res://Assets/Sprites/UISprites/AchievementFrame-3.png" id="4_jpe15"]
+[ext_resource type="FontFile" uid="uid://c3jn081c7a8ic" path="res://Assets/Fonts/m5x7.ttf" id="5_320ib"]
+[ext_resource type="Texture2D" uid="uid://dsyg8i1e2mpft" path="res://Assets/Sprites/UISprites/FlowerFramesLarge/bleeding heart-1-1.png" id="6_2a0h5"]
+[ext_resource type="Texture2D" uid="uid://denluil6r68qg" path="res://Assets/Sprites/UISprites/StemFrames/bleedhingheartStem-1.png" id="7_tf4as"]
+[ext_resource type="Texture2D" uid="uid://dwnrayxvn7cve" path="res://Assets/Sprites/UISprites/FlowerFramesLarge/cactusFlower-4-1.png" id="8_mweag"]
+[ext_resource type="Texture2D" uid="uid://7pxxbuqvnjom" path="res://Assets/Sprites/UISprites/StemFrames/Cactus-1.png" id="9_k4dfs"]
+[ext_resource type="Texture2D" uid="uid://c6nhexvma6ajb" path="res://Assets/Sprites/UISprites/FlowerFramesLarge/chiveFlower-1-1.png" id="10_fb468"]
+[ext_resource type="Texture2D" uid="uid://b57mjwydjdpb" path="res://Assets/Sprites/UISprites/StemFrames/ChivesStem-1.png" id="11_e1xo6"]
+[ext_resource type="Texture2D" uid="uid://dj5iiet2aojkl" path="res://Assets/Sprites/UISprites/FlowerFramesLarge/PansyFlower-1-1.png" id="12_y50jc"]
+[ext_resource type="Texture2D" uid="uid://clagfs0m28o56" path="res://Assets/Sprites/UISprites/StemFrames/PansyStem-1.png" id="13_ncugg"]
+[ext_resource type="Texture2D" uid="uid://dgex1a8b6ik7h" path="res://Assets/Sprites/UISprites/FlowerFramesLarge/pepperFlower-17-1.png" id="14_jgfrd"]
+[ext_resource type="Texture2D" uid="uid://dkcih5pq1t7dn" path="res://Assets/Sprites/UISprites/StemFrames/pepperStem-1.png" id="15_sbg7q"]
+[ext_resource type="Texture2D" uid="uid://dof8dr7brivdl" path="res://Assets/Sprites/UISprites/FlowerFramesLarge/poppyFlower-1-1.png" id="16_ahtlv"]
+[ext_resource type="Texture2D" uid="uid://dv5p055qsp10k" path="res://Assets/Sprites/UISprites/StemFrames/poppyStem-1.png" id="17_gikm5"]
+[ext_resource type="Texture2D" uid="uid://dssi6u1np2kcm" path="res://Assets/Sprites/UISprites/FlowerFramesLarge/SunflowerFlower-1-1.png" id="18_tfsi0"]
+[ext_resource type="Texture2D" uid="uid://dqq1jtjcwij6q" path="res://Assets/Sprites/UISprites/StemFrames/SunflowerStem-1.png" id="19_65kw7"]
+[ext_resource type="Texture2D" uid="uid://cf1xd8fkr1nrg" path="res://Assets/Sprites/UISprites/FlowerFramesLarge/Tomato-1-1.png" id="20_bii5i"]
+[ext_resource type="Texture2D" uid="uid://b65wh8fs7j3ua" path="res://Assets/Sprites/UISprites/StemFrames/TomatoStem-1.png" id="21_kn6bm"]
+[ext_resource type="Texture2D" uid="uid://bnfbdcm6gl1c4" path="res://Assets/Sprites/UISprites/FlowerFramesLarge/whiteTulipFlower-7-1.png" id="22_psno2"]
+[ext_resource type="Texture2D" uid="uid://dwx530lwwngnv" path="res://Assets/Sprites/UISprites/StemFrames/tulipStem-1.png" id="23_upb4b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aq3op"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7w36w"]
+bg_color = Color(0.30398, 0.647379, 0.285266, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_an0px"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_2a0h5")
+}],
+"loop": true,
+"name": &"bleedingheartFlower",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_tf4as")
+}],
+"loop": true,
+"name": &"bleedingheartStem",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_mweag")
+}],
+"loop": true,
+"name": &"cactusFlower",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_k4dfs")
+}],
+"loop": true,
+"name": &"cactusStem",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_fb468")
+}],
+"loop": true,
+"name": &"chiveFlower",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_e1xo6")
+}],
+"loop": true,
+"name": &"chiveStem",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_y50jc")
+}],
+"loop": true,
+"name": &"pansyFlower",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_ncugg")
+}],
+"loop": true,
+"name": &"pansyStem",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_jgfrd")
+}],
+"loop": true,
+"name": &"pepperFlower",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_sbg7q")
+}],
+"loop": true,
+"name": &"pepperStem",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_ahtlv")
+}],
+"loop": true,
+"name": &"poppyFlower",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_gikm5")
+}],
+"loop": true,
+"name": &"poppyStem",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_tfsi0")
+}],
+"loop": true,
+"name": &"sunflowerFlower",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_65kw7")
+}],
+"loop": true,
+"name": &"sunflowerStem",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_bii5i")
+}],
+"loop": true,
+"name": &"tomatoFlower",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_kn6bm")
+}],
+"loop": true,
+"name": &"tomatoStem",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_psno2")
+}],
+"loop": true,
+"name": &"tulipFlower",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_upb4b")
+}],
+"loop": true,
+"name": &"tulipStem",
+"speed": 5.0
+}]
+
+[node name="Achievement" type="Control"]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kymca")
+
+[node name="Incomplete" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+texture = ExtResource("2_ci30n")
+
+[node name="progressLabel" type="Label" parent="Incomplete"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 11.0
+offset_right = 147.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("3_yxi8c")
+text = "progress:"
+
+[node name="ProgressBar" type="ProgressBar" parent="Incomplete"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 17.0
+offset_right = 139.0
+offset_bottom = 22.0
+theme_override_styles/background = SubResource("StyleBoxFlat_aq3op")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7w36w")
+show_percentage = false
+
+[node name="Complete" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+texture = ExtResource("4_jpe15")
+
+[node name="completeLabel" type="Label" parent="Complete"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 14.0
+offset_right = 150.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("3_yxi8c")
+text = "COMPLETE"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 150.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_320ib")
+text = "TITLE"
+horizontal_alignment = 1
+
+[node name="Icon" type="AnimatedSprite2D" parent="."]
+position = Vector2(17, 15)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_an0px")
+animation = &"sunflowerStem"
+
+[node name="Unknown" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 30.0
+texture = ExtResource("2_ci30n")
+
+[node name="completeLabel" type="Label" parent="Unknown"]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 151.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("3_yxi8c")
+text = "???"
+horizontal_alignment = 1

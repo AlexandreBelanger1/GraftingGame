@@ -1,6 +1,7 @@
 extends Control
 @onready var flower_container = $Background/MarginContainer/HBoxContainer/PlantStatContainer/ScrollContainer/MarginContainer/FlowerContainer
 @onready var stem_container = $Background/MarginContainer/HBoxContainer/PlantStatContainer/ScrollContainer2/MarginContainer/StemContainer
+@onready var achievement_container = $Background/MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/MarginContainer/achievementContainer
 
 
 @onready var gold_earned = $Background/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/GoldEarned
@@ -14,6 +15,16 @@ extends Control
 @onready var in_game_time = $"Background/MarginContainer/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/In-gameTime"
 
 var savePath = "user://saveStats.tres"
+
+var achievementConditions = {"pansyStem": 5,"poppyStem": 5,"cactusStem": 5,"bleedingheartStem": 5,"chiveStem": 5,
+"tulipStem": 5,"sunflowerStem":5,"tomatoStem": 5,"pepperStem": 5,
+"pansyFlower": 100, "poppyFlower": 100, "cactusFlower": 100, "bleedingheartFlower": 100,"chiveFlower": 100, "tulipFlower": 100, "sunflowerFlower": 100, 
+"tomatoFlower": 100, "pepperFlower":100}
+var achieved = []
+var active = []
+var inactive = ["pansyStem","poppyStem","cactusStem","bleedingheartStem","chiveStem","tulipStem","sunflowerStem","tomatoStem","pepperStem","pansyFlower", "poppyFlower",
+ "cactusFlower", "bleedingheartFlower","chiveFlower", "tulipFlower", "sunflowerFlower", "tomatoFlower", "pepperFlower"]
+
 var stemDict = {"pansyStem": 0,"poppyStem": 0,"cactusStem": 0,"bleedingheartStem": 0,"chiveStem": 0,"tulipStem": 0,"sunflowerStem": 0,"tomatoStem": 0,"pepperStem": 0}
 var flowerDict = { "pansyFlower": 0, "poppyFlower": 0, "cactusFlower": 0, "bleedingheartFlower": 0,"chiveFlower": 0, "tulipFlower": 0, "sunflowerFlower": 0, 
 "tomatoFlower": 0, "pepperFlower": 0}
@@ -99,6 +110,30 @@ func updateGameTime():
 	else:
 		in_game_time.text = "In-Game time: "+ str(inGameTime/86400) + " days"
 
+func achievementUpdate(value:String, type:String):
+	for child in achievement_container.get_children():
+		if child.name == value:
+			var inactiveIndex = inactive.find(value)
+			if  inactiveIndex != -1:
+				inactive.pop_at(inactiveIndex)
+				active.append(value)
+				child.setActive()
+			var activeIndex = active.find(value)
+			if  activeIndex != -1:
+				if type == "Stem":
+					child.setProgress((float(stemDict[value])/ float(achievementConditions[value]))*100.00)
+					if float(stemDict[value])/ float(achievementConditions[value]) >= 1.00:
+						child.setComplete()
+						active.pop_at(activeIndex)
+						achieved.append(value)
+				elif type == "Flower":
+					child.setProgress((float(flowerDict[value])/ float(achievementConditions[value]))*100.00)
+					if float(flowerDict[value])/ float(achievementConditions[value]) >= 1.00:
+						child.setComplete()
+						active.pop_at(activeIndex)
+						achieved.append(value)
+
+
 
 func setWorldTimeStart():
 	worldTimeStart = Time.get_unix_time_from_system()
@@ -120,6 +155,7 @@ func flowerStatUpdate(value:String):
 		plantFrame.name = value
 		plantFrame.setImage(value)
 		plantFrame.setCount(flowerDict[value])
+	achievementUpdate(value,"Flower")
 
 const STEM_COMPONENT_STAT = preload("res://Scenes/stem_component_stat.tscn")
 func stemStatUpdate(value:String):
@@ -135,6 +171,7 @@ func stemStatUpdate(value:String):
 		plantFrame.name = value
 		plantFrame.setImage(value)
 		plantFrame.setCount(stemDict[value])
+	achievementUpdate(value,"Stem")
 
 func loadFlowerDict():
 	for key in flowerDict.keys():
@@ -154,6 +191,23 @@ func loatStemDict():
 			plantFrame.setImage(key)
 			plantFrame.setCount(stemDict[key])
 
+func loadAchievements():
+	for child in achievement_container.get_children():
+		child.setUnknown()
+		child.setup(child.name)
+		if achieved.find(child.name) != -1:
+			child.setComplete()
+		elif active.find(child.name) != -1:
+			child.setActive()
+			if flowerDict.has(child.name):
+				print_debug(child.name)
+				achievementUpdate(child.name,"Flower")
+			elif stemDict.has(child.name):
+				achievementUpdate(child.name,"Stem")
+	
+	
+
+
 
 func saveGame():
 	updateGameTime()
@@ -169,6 +223,9 @@ func saveGame():
 	savedGame.inGameTime = inGameTime
 	savedGame.flowerDict = flowerDict
 	savedGame.stemDict = stemDict
+	savedGame.achieved = achieved
+	savedGame.inactive = inactive
+	savedGame.active = active
 	ResourceSaver.save(savedGame, savePath)
 
 func loadGame():
@@ -189,6 +246,10 @@ func loadGame():
 	stemDict = savedGame.stemDict
 	loadFlowerDict()
 	loatStemDict()
+	achieved = savedGame.achieved
+	inactive = savedGame.inactive
+	active = savedGame.active
+	loadAchievements()
 	inGameTime = savedGame.inGameTime
 	worldTimeStart = float(savedGame.worldTimeStart)
 
@@ -207,6 +268,15 @@ func newSaveGame():
 	stemDict = {"pansyStem": 0,"poppyStem": 0,"cactusStem": 0,"bleedingheartStem": 0,"chiveStem": 0,"tulipStem": 0,"sunflowerStem": 0,"tomatoStem": 0,"pepperStem": 0}
 	flowerDict = { "pansyFlower": 0, "poppyFlower": 0, "cactusFlower": 0, "bleedingheartFlower": 0,"chiveFlower": 0, "tulipFlower": 0, "sunflowerFlower": 0, 
 "tomatoFlower": 0, "pepperFlower": 0}
+	achieved = []
+	active = []
+	inactive = ["pansyStem","poppyStem","cactusStem","bleedingheartStem","chiveStem","tulipStem","sunflowerStem","tomatoStem","pepperStem","pansyFlower", "poppyFlower",
+ "cactusFlower", "bleedingheartFlower","chiveFlower", "tulipFlower", "sunflowerFlower", "tomatoFlower", "pepperFlower"]	
+	for child in stem_container.get_children():
+		child.queue_free()
+	for child in flower_container.get_children():
+		child.queue_free()
+
 	setWorldTimeStart()
 	setSessionTimeStart()
 	saveGame()

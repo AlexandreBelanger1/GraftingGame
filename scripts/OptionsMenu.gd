@@ -3,7 +3,12 @@ extends Control
 @onready var borderless_button = $BorderlessButton
 @onready var credits = $Credits
 @onready var confirm_new_save = $ConfirmNewSave
+@onready var music_slider = $MusicSlider
+@onready var sfx_slider = $SFXSlider
 
+
+func _ready():
+	SignalBus.loadVolume.connect(loadVolume)
 
 func _on_save_button_pressed():
 	SignalBus.saveGame.emit()
@@ -42,12 +47,22 @@ func _on_fit_window_button_pressed():
 
 func _on_sfx_slider_value_changed(value):
 	var sfx_index= AudioServer.get_bus_index("SFX")
+	SignalBus.saveVolume.emit("SFX",value)
 	AudioServer.set_bus_volume_db(sfx_index, linear_to_db(value))
 
 
 func _on_music_slider_value_changed(value):
 	var music_index= AudioServer.get_bus_index("Music")
+	SignalBus.saveVolume.emit("Music",value)
 	AudioServer.set_bus_volume_db(music_index, linear_to_db(value))
+
+func loadVolume(Bus:String,value:float):
+	var music_index= AudioServer.get_bus_index(Bus)
+	AudioServer.set_bus_volume_db(music_index, linear_to_db(value))
+	if Bus == "SFX":
+		sfx_slider.value = value
+	elif Bus == "Music":
+		music_slider.value = value
 
 
 func _on_credits_button_pressed():

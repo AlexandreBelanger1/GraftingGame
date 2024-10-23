@@ -8,3 +8,7 @@ class_name saveFile extends Resource
 @export var wateringCan: waterCanData
 @export var timeOfSave:String
 @export var themeName = "Simple"
+@export var cameraUpgradeRight = 0
+@export var cameraUpgradeLeft = 0
+@export var sfxVolume:String ="0.50"
+@export var musicVolume:String ="0.50"

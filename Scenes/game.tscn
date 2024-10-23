@@ -1,10 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://h66tp54xyqug"]
+[gd_scene load_steps=18 format=3 uid="uid://h66tp54xyqug"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7p2bg"]
 [ext_resource type="PackedScene" uid="uid://b2cqern60mt1m" path="res://Scenes/music_player.tscn" id="2_ospun"]
-[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="3_tva00"]
-[ext_resource type="Script" path="res://scripts/SeedPouchMarker.gd" id="5_vmy6b"]
-[ext_resource type="PackedScene" uid="uid://dsovbdr3nkavq" path="res://Scenes/water_tap.tscn" id="6_3f86x"]
+[ext_resource type="PackedScene" uid="uid://cyw4ijuiqkcir" path="res://Scenes/cameraController.tscn" id="4_w4o3s"]
 [ext_resource type="PackedScene" uid="uid://33hfn4s0xca2" path="res://Scenes/player_ui.tscn" id="6_wttbp"]
 [ext_resource type="PackedScene" uid="uid://cqh4e41syn33i" path="res://Scenes/MapThemes/Beach.tscn" id="9_c35hq"]
 [ext_resource type="PackedScene" uid="uid://cowc03phhw5ol" path="res://Scenes/MapThemes/void.tscn" id="10_88woi"]
@@ -12,9 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://dfgfft6j3cvss" path="res://Assets/Audio/GetCoin(1).wav" id="12_7eqkb"]
 [ext_resource type="PackedScene" uid="uid://6xi5li0qd1ju" path="res://Scenes/MapThemes/floating_farm_area.tscn" id="13_wgd25"]
 [ext_resource type="PackedScene" uid="uid://no02omwqsrkf" path="res://Scenes/MapThemes/japanese_house.tscn" id="14_snt4a"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_hmvow"]
-radius = 2.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s7sj8"]
 distance = -62.0
@@ -70,26 +65,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 12)
-offset = Vector2(320, 0)
-zoom = Vector2(3, 3)
-limit_left = 0
-limit_right = 0
-script = ExtResource("3_tva00")
-
-[node name="SeedPouchMarker" type="Area2D" parent="Camera2D"]
-position = Vector2(-233, 56)
-collision_layer = 0
-collision_mask = 8
-script = ExtResource("5_vmy6b")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/SeedPouchMarker"]
-shape = SubResource("CircleShape2D_hmvow")
-
-[node name="WaterTap" parent="Camera2D" instance=ExtResource("6_3f86x")]
-z_index = 4
-position = Vector2(-38, 67)
+[node name="Camera2D" parent="." instance=ExtResource("4_w4o3s")]
 
 [node name="DeskHitbox" type="StaticBody2D" parent="."]
 position = Vector2(-53, 3)
@@ -136,9 +112,3 @@ position = Vector2(-1, -73)
 [node name="GetGold" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_7eqkb")
 bus = &"SFX"
-
-[connection signal="moveCameraLeft" from="CanvasLayer/PlayerUI" to="Camera2D" method="_on_player_ui_move_camera_left"]
-[connection signal="moveCameraRight" from="CanvasLayer/PlayerUI" to="Camera2D" method="_on_player_ui_move_camera_right"]
-[connection signal="stopCamera" from="CanvasLayer/PlayerUI" to="Camera2D" method="_on_player_ui_stop_camera"]
-[connection signal="area_entered" from="Camera2D/SeedPouchMarker" to="Camera2D/SeedPouchMarker" method="_on_area_entered"]
-[connection signal="body_entered" from="Camera2D/SeedPouchMarker" to="Camera2D/SeedPouchMarker" method="_on_body_entered"]

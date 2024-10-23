@@ -1,8 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://33hfn4s0xca2"]
+[gd_scene load_steps=28 format=3 uid="uid://33hfn4s0xca2"]
 
-[ext_resource type="Texture2D" uid="uid://cf5xxdufb0v2v" path="res://Assets/Sprites/UISprites/LeftArrow.png" id="1_cmnag"]
 [ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_d7na4"]
-[ext_resource type="Texture2D" uid="uid://bty7uvdq5owoh" path="res://Assets/Sprites/UISprites/RightArrow.png" id="2_kyxwa"]
 [ext_resource type="FontFile" uid="uid://decbyrlmfeftw" path="res://Assets/Fonts/Kenney Pixel Square.ttf" id="4_6hr8t"]
 [ext_resource type="FontFile" uid="uid://ddl4w61y7kd01" path="res://Assets/Fonts/m3x6.ttf" id="5_krgbh"]
 [ext_resource type="PackedScene" uid="uid://b0cgbfnl4vmte" path="res://Scenes/shop_panel.tscn" id="6_cbd4w"]
@@ -29,12 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://dcxl6m3dcjno" path="res://Scenes/stats.tscn" id="29_hkga4"]
 [ext_resource type="PackedScene" uid="uid://bd8xwn5fgq18m" path="res://Scenes/harvest_ui.tscn" id="31_csspk"]
 [ext_resource type="PackedScene" uid="uid://ba8ypojgo8as2" path="res://Scenes/sell_ui.tscn" id="32_mo70n"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dmpm"]
-size = Vector2(107.5, 357.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajftf"]
-size = Vector2(123.5, 354.5)
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
@@ -240,9 +232,9 @@ offset_bottom = 403.0
 [node name="GardenLevel" parent="." instance=ExtResource("17_rxtwv")]
 layout_mode = 1
 offset_left = 933.0
-offset_top = 369.0
+offset_top = 365.0
 offset_right = 933.0
-offset_bottom = 369.0
+offset_bottom = 365.0
 
 [node name="ButtonHover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_emu7a")
@@ -272,33 +264,6 @@ layout_mode = 1
 offset_top = 1.0
 offset_right = 0.0
 offset_bottom = 1.0
-
-[node name="LeftArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArea"]
-position = Vector2(55.25, 177.25)
-shape = SubResource("RectangleShape2D_5dmpm")
-
-[node name="LeftArrow" type="Sprite2D" parent="LeftArea"]
-visible = false
-z_index = 10
-position = Vector2(75, 197)
-scale = Vector2(4, 4)
-texture = ExtResource("1_cmnag")
-
-[node name="RightArea" type="Area2D" parent="."]
-position = Vector2(-23, -4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea"]
-position = Vector2(1881, 180.75)
-shape = SubResource("RectangleShape2D_ajftf")
-
-[node name="RightArrow" type="Sprite2D" parent="RightArea"]
-visible = false
-z_index = 10
-position = Vector2(1867, 193)
-scale = Vector2(4, 4)
-texture = ExtResource("2_kyxwa")
 
 [node name="SellUI" parent="." instance=ExtResource("32_mo70n")]
 visible = false
@@ -332,9 +297,9 @@ offset_bottom = 8.0
 [node name="Stats" parent="." instance=ExtResource("29_hkga4")]
 visible = false
 layout_mode = 1
-offset_left = 856.0
+offset_left = 1329.0
 offset_top = 12.0
-offset_right = 856.0
+offset_right = 1329.0
 offset_bottom = 12.0
 
 [connection signal="mouse_entered" from="SeedsButton" to="." method="_on_seeds_button_mouse_entered"]
@@ -352,7 +317,3 @@ offset_bottom = 12.0
 [connection signal="mouse_entered" from="OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="mouse_exited" from="OptionsButton" to="." method="_on_options_button_mouse_exited"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="mouse_entered" from="LeftArea" to="." method="_on_left_area_mouse_entered"]
-[connection signal="mouse_exited" from="LeftArea" to="." method="_on_left_area_mouse_exited"]
-[connection signal="mouse_entered" from="RightArea" to="." method="_on_right_area_mouse_entered"]
-[connection signal="mouse_exited" from="RightArea" to="." method="_on_right_area_mouse_exited"]
